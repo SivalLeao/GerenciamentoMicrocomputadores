@@ -45,7 +45,7 @@ public class ClienteListImpl implements ClienteDAO {
 
         for (Cliente cliente: this.lista) {
 
-            if ( cliente.getNome().equals(cpf)) {
+            if ( cliente.getCpf().equals(cpf)) {
 
                 return cliente;
             }

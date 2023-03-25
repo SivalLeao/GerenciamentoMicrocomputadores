@@ -1,6 +1,6 @@
 package com.pbl.gerenciamentomicrocomputadores;
 
-import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
+import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
-import com.pbl.gerenciamentomicrocomputadores.dao.cliente.ClienteDAO;
+import com.pbl.gerenciamentomicrocomputadores.dao.tecnico.TecnicoDAO;
 
 public class MainApplication extends Application {
     @Override
@@ -29,7 +29,7 @@ public class MainApplication extends Application {
 
         // Área de testes
 
-        ClienteDAO clienteDAO = DAO.getCliente();
+        TecnicoDAO tecnicoDAO = DAO.getTecnico();
 
         String nome;
         String endereco;
@@ -39,9 +39,9 @@ public class MainApplication extends Application {
         Scanner scan = new Scanner(System.in);
         int opcao;
 
-        System.out.printf("MENU\n[1] Cadastrar Cliente\n[2] Ver lista de Clientes\n" +
-                "[3] Deletar Cliente\n[4] Atualizar Cliente\n[5] Encontrar Cliente por " +
-                "ID\n[6] Encontrar Cliente por CPF\n[7] Deletar lista de Clientes\n[8] Encerrar\n\n> ");
+        System.out.printf("MENU\n[1] Cadastrar Tecnico\n[2] Ver lista de Tecnicos\n" +
+                "[3] Deletar Tecnico\n[4] Atualizar Tecnico\n[5] Encontrar Tecnico por " +
+                "ID\n[6] Encontrar Tecnico por CPF\n[7] Deletar lista de Tecnicos\n[8] Encerrar\n\n> ");
         opcao = scan.nextInt();
         scan.nextLine();
 
@@ -49,74 +49,74 @@ public class MainApplication extends Application {
 
             if (opcao == 1) {
 
-                Cliente cliente = new Cliente();
+                Tecnico tecnico = new Tecnico();
 
                 System.out.print("\nNome: ");
                 nome = scan.nextLine();
-                while (cliente.validarNome(nome) == false) {
+                while (tecnico.validarNome(nome) == false) {
 
                     System.out.print("Dado inválido! Escreva um nome de pelo menos 3 caracteres, contendo apenas letras.\n\nNome: ");
                     nome = scan.nextLine();
                 }
-                cliente.setNome(nome);
+                tecnico.setNome(nome);
 
                 System.out.print("\nEndereço: ");
                 endereco = scan.nextLine();
-                while (cliente.validarEndereco(endereco) == false) {
+                while (tecnico.validarEndereco(endereco) == false) {
 
                     System.out.print("Dado inválido! Escreva um endereço de pelo menos 3 caracteres.\n\nEndereço: ");
                     endereco = scan.nextLine();
                 }
-                cliente.setEndereco(endereco);
+                tecnico.setEndereco(endereco);
 
                 System.out.print("\nNúmero de telefone: ");
                 telefone = scan.nextLine();
-                while (cliente.validarTelefone(telefone) == false) {
+                while (tecnico.validarTelefone(telefone) == false) {
 
                     System.out.print("Dado inválido! Escreva um número de telefone com 11 números.\n\nTelefone: ");
                     telefone = scan.nextLine();
                 }
-                cliente.setTelefone(telefone);
+                tecnico.setTelefone(telefone);
 
                 System.out.print("\nCPF: ");
                 cpf = scan.nextLine();
-                while (cliente.validarCpf(cpf) == false) {
+                while (tecnico.validarCpf(cpf) == false) {
 
                     System.out.print("Dado inválido! Escreva um CPF com 11 números.\n\nCPF: ");
                     cpf = scan.nextLine();
                 }
-                cliente.setCpf(cpf);
+                tecnico.setCpf(cpf);
 
-                clienteDAO.create(cliente);
+                tecnicoDAO.create(tecnico);
             }
             else if (opcao == 2) {
 
-                List<Cliente> listClientes = new ArrayList<Cliente>();
+                List<Tecnico> listTecnicos = new ArrayList<Tecnico>();
 
-                listClientes = clienteDAO.findMany();
+                listTecnicos = tecnicoDAO.findMany();
 
-                for ( Cliente cliente: listClientes) {
+                for ( Tecnico tecnico: listTecnicos) {
 
-                    System.out.println("\nID: " + cliente.getId());
-                    System.out.println("Nome: " + cliente.getNome());
-                    System.out.println("Endereço: " + cliente.getEndereco());
-                    System.out.println("Número de telefone: " + cliente.getTelefone());
-                    System.out.println("CPF: " + cliente.getCpf());
+                    System.out.println("\nID: " + tecnico.getId());
+                    System.out.println("Nome: " + tecnico.getNome());
+                    System.out.println("Endereço: " + tecnico.getEndereco());
+                    System.out.println("Número de telefone: " + tecnico.getTelefone());
+                    System.out.println("CPF: " + tecnico.getCpf());
                 }
             }
             else if (opcao == 3) {
 
                 int id;
-                System.out.print("\nID do Cliente: ");
+                System.out.print("\nID do Tecnico: ");
                 id = scan.nextInt();
                 scan.nextLine();
 
-                boolean idExiste = clienteDAO.checkId(id);
+                boolean idExiste = tecnicoDAO.checkId(id);
 
                 if (idExiste == true) {
 
-                    clienteDAO.delete(id);
-                    System.out.print("\nO Cliente foi apagado.\n");
+                    tecnicoDAO.delete(id);
+                    System.out.print("\nO Tecnico foi apagado.\n");
                 } else {
 
                     System.out.printf("\nID não encontrado.\n");
@@ -125,54 +125,54 @@ public class MainApplication extends Application {
             }
             else if (opcao == 4) {
 
-                Cliente cliente = new Cliente();
+                Tecnico tecnico = new Tecnico();
 
                 int id;
-                System.out.print("\nID do Cliente: ");
+                System.out.print("\nID do Tecnico: ");
                 id = scan.nextInt();
                 scan.nextLine();
 
-                if (clienteDAO.checkId(id)) {
+                if (tecnicoDAO.checkId(id)) {
 
                     System.out.print("\nNome: ");
                     nome = scan.nextLine();
-                    while (cliente.validarNome(nome) == false) {
+                    while (tecnico.validarNome(nome) == false) {
 
                         System.out.print("Dado inválido! Escreva um nome de pelo menos 3 caracteres, contendo apenas letras.\n\nNome: ");
                         nome = scan.nextLine();
                     }
-                    cliente.setNome(nome);
+                    tecnico.setNome(nome);
 
                     System.out.print("\nEndereço: ");
                     endereco = scan.nextLine();
-                    while (cliente.validarEndereco(endereco) == false) {
+                    while (tecnico.validarEndereco(endereco) == false) {
 
                         System.out.print("Dado inválido! Escreva um endereço de pelo menos 3 caracteres.\n\nEndereço: ");
                         endereco = scan.nextLine();
                     }
-                    cliente.setEndereco(endereco);
+                    tecnico.setEndereco(endereco);
 
                     System.out.print("\nNúmero de telefone: ");
                     telefone = scan.nextLine();
-                    while (cliente.validarTelefone(telefone) == false) {
+                    while (tecnico.validarTelefone(telefone) == false) {
 
                         System.out.print("Dado inválido! Escreva um número de telefone com 11 números.\n\nTelefone: ");
                         telefone = scan.nextLine();
                     }
-                    cliente.setTelefone(telefone);
+                    tecnico.setTelefone(telefone);
 
                     System.out.print("\nCPF: ");
                     cpf = scan.nextLine();
-                    while (cliente.validarCpf(cpf) == false) {
+                    while (tecnico.validarCpf(cpf) == false) {
 
                         System.out.print("Dado inválido! Escreva um CPF com 11 números.\n\nCPF: ");
                         cpf = scan.nextLine();
                     }
-                    cliente.setCpf(cpf);
+                    tecnico.setCpf(cpf);
 
-                    cliente.setId(id);
+                    tecnico.setId(id);
 
-                    clienteDAO.update(cliente);
+                    tecnicoDAO.update(tecnico);
                 }
                 else {
 
@@ -182,45 +182,45 @@ public class MainApplication extends Application {
             }
             else if (opcao == 5) {
 
-                Cliente cliente = new Cliente();
+                Tecnico tecnico = new Tecnico();
 
                 int id;
-                System.out.print("\nID do Cliente: ");
+                System.out.print("\nID do Tecnico: ");
                 id = scan.nextInt();
                 scan.nextLine();
 
-                cliente = clienteDAO.findById(id);
+                tecnico = tecnicoDAO.findById(id);
 
-                if (cliente == null) {
+                if (tecnico == null) {
 
                     System.out.println("\nID não encontrado.");
                 }
                 else {
 
-                    System.out.println("Nome: " + cliente.getNome());
-                    System.out.println("Endereço: " + cliente.getEndereco());
-                    System.out.println("Número de telefone: " + cliente.getTelefone());
-                    System.out.println("CPF: " + cliente.getCpf());
+                    System.out.println("Nome: " + tecnico.getNome());
+                    System.out.println("Endereço: " + tecnico.getEndereco());
+                    System.out.println("Número de telefone: " + tecnico.getTelefone());
+                    System.out.println("CPF: " + tecnico.getCpf());
                 }
 
             }
             else if (opcao == 6) {
 
-                Cliente cliente = new Cliente();
+                Tecnico tecnico = new Tecnico();
 
                 System.out.print("\nCPF: ");
                 cpf = scan.nextLine();
-                while (cliente.validarCpf(cpf) == false) {
+                while (tecnico.validarCpf(cpf) == false) {
 
                     System.out.print("Dado inválido! Escreva um CPF com 11 números.\n\nCPF: ");
                     cpf = scan.nextLine();
                 }
 
-                boolean cpfExiste = clienteDAO.checkCpf(cpf);
+                boolean cpfExiste = tecnicoDAO.checkCpf(cpf);
 
                 if (cpfExiste == true) {
 
-                    System.out.printf("\nO cliente existe.\n");
+                    System.out.printf("\nO tecnico existe.\n");
                 } else {
 
                     System.out.printf("\nCpf não existe.\n");
@@ -228,13 +228,13 @@ public class MainApplication extends Application {
             }
             else if (opcao == 7) {
 
-                clienteDAO.deleteMany();
+                tecnicoDAO.deleteMany();
                 System.out.println("\nLista apagada.");
             }
 
-            System.out.printf("\nMENU\n[1] Cadastrar Cliente\n[2] Ver lista de Clientes\n" +
-                    "[3] Deletar Cliente\n[4] Atualizar Cliente\n[5] Encontrar Cliente por " +
-                    "ID\n[6] Encontrar Cliente por CPF\n[7] Deletar lista de Clientes\n[8] Encerrar\n\n> ");
+            System.out.printf("\nMENU\n[1] Cadastrar Tecnico\n[2] Ver lista de Tecnicos\n" +
+                    "[3] Deletar Tecnico\n[4] Atualizar Tecnico\n[5] Encontrar Tecnico por " +
+                    "ID\n[6] Encontrar Tecnico por CPF\n[7] Deletar lista de Tecnicos\n[8] Encerrar\n\n> ");
             opcao = scan.nextInt();
             scan.nextLine();
         }
