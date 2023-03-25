@@ -1,7 +1,7 @@
 package com.pbl.gerenciamentomicrocomputadores;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+//import javafx.fxml.FXML;
+//import javafx.scene.control.Label;
 
 public class MainController {
     /*
@@ -13,7 +13,5 @@ public class MainController {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
      */
-    public void etc(){
-        System.out.println();
-    }
+
 }
