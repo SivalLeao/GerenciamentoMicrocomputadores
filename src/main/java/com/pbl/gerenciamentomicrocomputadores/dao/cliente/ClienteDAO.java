@@ -5,4 +5,8 @@ import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
 
 public interface ClienteDAO extends CRUD<Cliente> {
 
+    public Cliente findByCpf (String cpf);
+
+    public boolean checkCpf (String cpf);
+
 }
