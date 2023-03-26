@@ -2,8 +2,8 @@ package com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico;
 
 import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class OrdemDeServicoListImpl implements OrdemDeServicoDAO {
@@ -23,8 +23,8 @@ public class OrdemDeServicoListImpl implements OrdemDeServicoDAO {
     public void create(OrdemDeServico ordemDeServico) {
 
         ordemDeServico.setIdOrdem(this.id);
-        ordemDeServico.setDataInicio(new Date());
         this.id += 10;
+        ordemDeServico.setDataInicio(LocalDateTime.now());
         this.lista.add(ordemDeServico);
     }
 
@@ -65,7 +65,7 @@ public class OrdemDeServicoListImpl implements OrdemDeServicoDAO {
 
                 if (status.equals("Finalizado")) {
 
-                    this.lista.get(i).setDataFim(new Date());
+                    this.lista.get(i).setDataFim(LocalDateTime.now());
                 }
             }
         }

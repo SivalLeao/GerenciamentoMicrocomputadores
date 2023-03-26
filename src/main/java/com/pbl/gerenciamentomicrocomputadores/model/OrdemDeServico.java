@@ -1,7 +1,8 @@
 package com.pbl.gerenciamentomicrocomputadores.model;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class OrdemDeServico {
@@ -12,9 +13,9 @@ public class OrdemDeServico {
 
     private int idTecnico;
 
-    private Date dataInicio;
+    private LocalDateTime dataInicio;
 
-    private Date dataFim;
+    private LocalDateTime dataFim;
 
     private String statusAtual;
 
@@ -41,13 +42,13 @@ public class OrdemDeServico {
 
     public int getIdTecnico () { return this.idTecnico; }
 
-    public void setDataInicio (Date dataInicio) { this.dataInicio = dataInicio; }
+    public void setDataInicio (LocalDateTime dataInicio) { this.dataInicio = dataInicio; }
 
-    public Date getDataInicio () { return this.dataInicio; }
+    public LocalDateTime getDataInicio () { return this.dataInicio; }
 
-    public void setDataFim (Date dataFim) { this.dataFim = dataFim; }
+    public void setDataFim (LocalDateTime dataFim) { this.dataFim = dataFim; }
 
-    public Date getDataFim () { return this.dataFim; }
+    public LocalDateTime getDataFim () { return this.dataFim; }
 
     public void setStatusAtual (String statusAtual) { this.statusAtual = statusAtual; }
 
@@ -74,5 +75,11 @@ public class OrdemDeServico {
     public void setValorTotal (int valorTotal) { this.valorTotal = valorTotal; }
 
     public int getValorTotal () { return this.valorTotal; }
+
+    public long calcularTempoDeServico () {
+
+        return ChronoUnit.SECONDS.between(this.dataInicio, this.dataFim);
+
+    }
 
 }
