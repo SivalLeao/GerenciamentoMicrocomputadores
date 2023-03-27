@@ -39,9 +39,16 @@ public class MainApplication extends Application {
         Scanner scan = new Scanner(System.in);
         int opcao;
 
-        System.out.printf("MENU\n[1] Cadastrar Tecnico\n[2] Ver lista de Tecnicos\n" +
+
+
+        System.out.printf("MENU\n" +
+                "[1] Cadastrar Tecnico     [] " +
+                "[2] Ver lista de Tecnicos\n" +
                 "[3] Deletar Tecnico\n[4] Atualizar Tecnico\n[5] Encontrar Tecnico por " +
                 "ID\n[6] Encontrar Tecnico por CPF\n[7] Deletar lista de Tecnicos\n[8] Encerrar\n\n> ");
+
+
+
         opcao = scan.nextInt();
         scan.nextLine();
 
