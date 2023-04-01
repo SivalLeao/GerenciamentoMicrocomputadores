@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class ClienteListImplTest {
     @Test
     void create(){
-        ClienteDAO dao = new ClienteListImpl();
+        ClienteDAO dao = new ClienteImpl();
 
         //Declaracao
         Cliente c1 = new Cliente();
@@ -38,7 +38,7 @@ public class ClienteListImplTest {
 
     @Test
     void findById(){
-        ClienteDAO dao = new ClienteListImpl();
+        ClienteDAO dao = new ClienteImpl();
 
         //Declaracao
         Cliente c1 = new Cliente();
@@ -67,7 +67,7 @@ public class ClienteListImplTest {
 
     @Test
     void update(){
-        ClienteDAO dao = new ClienteListImpl();
+        ClienteDAO dao = new ClienteImpl();
         //Declaracao
         Cliente c1 = new Cliente();
         Cliente c2 = new Cliente();
@@ -94,7 +94,7 @@ public class ClienteListImplTest {
     }
     @Test
     void delete(){
-        ClienteDAO dao = new ClienteListImpl();
+        ClienteDAO dao = new ClienteImpl();
         //Declaracao
         Cliente c1 = new Cliente();
         Cliente c2 = new Cliente();
@@ -132,7 +132,7 @@ public class ClienteListImplTest {
 
     @Test
     void fandMany() {
-        ClienteDAO dao = new ClienteListImpl();
+        ClienteDAO dao = new ClienteImpl();
 
         //Declaracao
         Cliente c1 = new Cliente();
@@ -168,7 +168,7 @@ public class ClienteListImplTest {
 
     @Test
     void checkId(){
-        ClienteDAO dao = new ClienteListImpl();
+        ClienteDAO dao = new ClienteImpl();
         //Declaracao
         Cliente c1 = new Cliente();
         //
@@ -187,7 +187,7 @@ public class ClienteListImplTest {
 
     @Test
     void deleteMany(){
-        ClienteDAO dao = new ClienteListImpl();
+        ClienteDAO dao = new ClienteImpl();
 
         //Declaracao
         Cliente c1 = new Cliente();

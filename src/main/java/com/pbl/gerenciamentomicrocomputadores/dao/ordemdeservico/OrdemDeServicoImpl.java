@@ -6,13 +6,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrdemDeServicoListImpl implements OrdemDeServicoDAO {
+public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
 
     private List<OrdemDeServico> lista;
 
     private int id;
 
-    public OrdemDeServicoListImpl () {
+    public OrdemDeServicoImpl() {
 
         this.lista = new ArrayList<OrdemDeServico>();
         this.id = 1113;

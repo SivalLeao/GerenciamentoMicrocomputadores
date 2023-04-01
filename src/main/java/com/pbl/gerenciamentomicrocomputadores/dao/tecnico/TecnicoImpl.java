@@ -6,13 +6,13 @@ import java.util.List;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
 
 
-public class TecnicoListImpl implements TecnicoDAO {
+public class TecnicoImpl implements TecnicoDAO {
 
     private List<Tecnico> lista;
 
     private int id;
 
-    public TecnicoListImpl() {
+    public TecnicoImpl() {
 
         this.lista = new ArrayList<Tecnico>();
         this.id = 1111;

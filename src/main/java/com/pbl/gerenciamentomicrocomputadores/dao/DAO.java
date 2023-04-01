@@ -1,11 +1,11 @@
 package com.pbl.gerenciamentomicrocomputadores.dao;
 
 import com.pbl.gerenciamentomicrocomputadores.dao.cliente.ClienteDAO;
-import com.pbl.gerenciamentomicrocomputadores.dao.cliente.ClienteListImpl;
+import com.pbl.gerenciamentomicrocomputadores.dao.cliente.ClienteImpl;
 import com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico.OrdemDeServicoDAO;
-import com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico.OrdemDeServicoListImpl;
+import com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico.OrdemDeServicoImpl;
 import com.pbl.gerenciamentomicrocomputadores.dao.tecnico.TecnicoDAO;
-import com.pbl.gerenciamentomicrocomputadores.dao.tecnico.TecnicoListImpl;
+import com.pbl.gerenciamentomicrocomputadores.dao.tecnico.TecnicoImpl;
 
 public class DAO {
 
@@ -17,21 +17,21 @@ public class DAO {
 
     public static ClienteDAO getCliente() {
         if (clienteDAO == null) {
-            clienteDAO = new ClienteListImpl();
+            clienteDAO = new ClienteImpl();
         }
         return clienteDAO;
     }
 
     public static TecnicoDAO getTecnico() {
         if (tecnicoDAO == null) {
-            tecnicoDAO = new TecnicoListImpl();
+            tecnicoDAO = new TecnicoImpl();
         }
         return tecnicoDAO;
     }
 
     public static OrdemDeServicoDAO getOrdemDeServico () {
         if (ordemDeServicoDAO == null) {
-            ordemDeServicoDAO = new OrdemDeServicoListImpl();
+            ordemDeServicoDAO = new OrdemDeServicoImpl();
         }
         return ordemDeServicoDAO;
     }

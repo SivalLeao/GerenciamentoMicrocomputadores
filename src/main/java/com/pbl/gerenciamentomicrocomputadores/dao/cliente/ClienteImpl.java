@@ -6,13 +6,13 @@ import java.util.List;
 import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
 
 
-public class ClienteListImpl implements ClienteDAO {
+public class ClienteImpl implements ClienteDAO {
 
     private List<Cliente> lista;
 
     private int id;
 
-    public ClienteListImpl() {
+    public ClienteImpl() {
 
         this.lista = new ArrayList<Cliente>();
         this.id = 1112;

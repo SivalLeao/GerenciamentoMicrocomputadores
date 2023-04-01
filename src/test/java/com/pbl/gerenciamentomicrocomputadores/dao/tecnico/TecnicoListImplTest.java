@@ -1,7 +1,5 @@
 package com.pbl.gerenciamentomicrocomputadores.dao.tecnico;
 
-import com.pbl.gerenciamentomicrocomputadores.dao.tecnico.TecnicoDAO;
-import com.pbl.gerenciamentomicrocomputadores.dao.tecnico.TecnicoListImpl;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class TecnicoListImplTest {
     @Test
     void create(){
-        TecnicoDAO dao = new TecnicoListImpl();
+        TecnicoDAO dao = new TecnicoImpl();
 
         //Declaracao
         Tecnico t1 = new Tecnico();
@@ -39,7 +37,7 @@ public class TecnicoListImplTest {
 
     @Test
     void findById(){
-        TecnicoDAO dao = new TecnicoListImpl();
+        TecnicoDAO dao = new TecnicoImpl();
 
         //Declaracao
         Tecnico t1 = new Tecnico();
@@ -68,7 +66,7 @@ public class TecnicoListImplTest {
 
     @Test
     void update(){
-        TecnicoDAO dao = new TecnicoListImpl();
+        TecnicoDAO dao = new TecnicoImpl();
         //Declaracao
         Tecnico t1 = new Tecnico();
         Tecnico t2 = new Tecnico();
@@ -95,7 +93,7 @@ public class TecnicoListImplTest {
     }
     @Test
     void delete(){
-        TecnicoDAO dao = new TecnicoListImpl();
+        TecnicoDAO dao = new TecnicoImpl();
         //Declaracao
         Tecnico t1 = new Tecnico();
         Tecnico t2 = new Tecnico();
@@ -133,7 +131,7 @@ public class TecnicoListImplTest {
 
     @Test
     void fandMany() {
-        TecnicoDAO dao = new TecnicoListImpl();
+        TecnicoDAO dao = new TecnicoImpl();
 
         //Declaracao
         Tecnico t1 = new Tecnico();
@@ -169,7 +167,7 @@ public class TecnicoListImplTest {
 
     @Test
     void checkId(){
-        TecnicoDAO dao = new TecnicoListImpl();
+        TecnicoDAO dao = new TecnicoImpl();
         //Declaracao
         Tecnico t1 = new Tecnico();
         //
@@ -188,7 +186,7 @@ public class TecnicoListImplTest {
 
     @Test
     void deleteMany(){
-        TecnicoDAO dao = new TecnicoListImpl();
+        TecnicoDAO dao = new TecnicoImpl();
 
         //Declaracao
         Tecnico t1 = new Tecnico();
