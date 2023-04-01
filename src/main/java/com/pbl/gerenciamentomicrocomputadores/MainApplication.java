@@ -166,7 +166,7 @@ public class MainApplication extends Application {
                     tecnicoDAO.create(cadastrar_tec());
                     break;
                 case 2:
-                    cadastrar_cli();
+                    clienteDAO.create(cadastrar_cli());
                     break;
                 case 3:
                     List<Tecnico> listTecnicos = new ArrayList<Tecnico>();

@@ -23,7 +23,7 @@ public class OrdemDeServico {
 
     private List<String> listItens;
 
-    private int valorTotal;
+    private RelatorioServico relatorioServico;
 
     public OrdemDeServico () {
 
@@ -71,10 +71,6 @@ public class OrdemDeServico {
 
         return listItens;
     }
-
-    public void setValorTotal (int valorTotal) { this.valorTotal = valorTotal; }
-
-    public int getValorTotal () { return this.valorTotal; }
 
     public long calcularTempoDeServico () {
 

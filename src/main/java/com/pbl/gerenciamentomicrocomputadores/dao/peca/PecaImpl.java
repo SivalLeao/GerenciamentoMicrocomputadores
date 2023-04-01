@@ -1,6 +1,5 @@
 package com.pbl.gerenciamentomicrocomputadores.dao.peca;
 
-import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
 import com.pbl.gerenciamentomicrocomputadores.model.Peca;
 
 import java.util.HashMap;
@@ -24,18 +23,10 @@ public class PecaImpl implements PecaDao {
     }
 
     @Override
-    public Peca findById (int id) {
-        return null;
-    }
-
-    @Override
     public void update (Peca peca) {
 
         lista.put(peca.getNome(), peca);
     }
-
-    @Override
-    public void delete(int id) { }
 
     @Override
     public void removeQuantity (String nome, int quantidade) {
@@ -60,11 +51,6 @@ public class PecaImpl implements PecaDao {
         return listPeca;
     }
 
-    @Override
-    public boolean checkId(int id) {
-        return false;
-    }
-
     public boolean checkQuatity (String nome, int quantidade) {
 
         if (this.lista.get(nome).getQuantidade() >= quantidade) {
@@ -76,6 +62,17 @@ public class PecaImpl implements PecaDao {
             return false;
         }
     }
+
+    @Override
+    public Peca findById (int id) {
+        return null;
+    }
+
+    @Override
+    public void delete(int id) { }
+
+    @Override
+    public boolean checkId(int id) { return false; }
 
     @Override
     public void deleteMany() { }

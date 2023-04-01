@@ -82,7 +82,6 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
                 return;
             }
         }
-
     }
 
     @Override
