@@ -60,6 +60,7 @@ public class MainApplication extends Application {
             System.out.print("Dado inválido! Escreva um número de telefone com 11 números.\n\nTelefone: ");
             telefone = scan.nextLine();
         }
+
         tecnico.setTelefone(telefone);
 
         System.out.print("\nCPF: ");

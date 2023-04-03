@@ -34,7 +34,14 @@ public class PecaImpl implements PecaDao {
         int novaQuantidade;
 
         novaQuantidade = this.lista.get(nome).getQuantidade() - quantidade;
+        this.lista.get(nome).setQuantidade(novaQuantidade);
+    }
+    @Override
+    public void addQuantity (String nome, int quantidade){
 
+        int novaQuantidade;
+
+        novaQuantidade = this.lista.get(nome).getQuantidade() + quantidade;
         this.lista.get(nome).setQuantidade(novaQuantidade);
     }
 
@@ -49,6 +56,18 @@ public class PecaImpl implements PecaDao {
         }
 
         return listPeca;
+    }
+    @Override
+    public boolean checkByName(String nome){
+
+        for (String key: this.lista.keySet()) {
+            if (nome.equals(key)){
+                return true;
+            }
+
+
+        }
+        return false;
     }
 
     public boolean checkQuatity (String nome, int quantidade) {
