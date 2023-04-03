@@ -1,5 +1,6 @@
 package com.pbl.gerenciamentomicrocomputadores.model;
 
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +17,16 @@ public class OrdemDeServico {
 
     private String statusAtual;
 
-    private TipoDeServico tipoDeServico;
+    private String tipoDeServico;
+
+    private List<String> listItens;
 
     private RelatorioServico relatorioServico;
+
+    public OrdemDeServico () {
+
+        this.listItens = new ArrayList<String>();
+    }
 
     public void setIdOrdem (int id) { this.idOrdem = id; }
 
@@ -40,9 +48,23 @@ public class OrdemDeServico {
 
     public String getStatusAtual () { return this.statusAtual; }
 
-    public void setTipoDeServico (TipoDeServico tipoDeServico) { this.tipoDeServico = tipoDeServico; }
+    public void setTipoDeServico (String tipoDeServico) { this.tipoDeServico = tipoDeServico; }
 
-    public TipoDeServico getTipoDeServico () { return this.tipoDeServico; }
+    public String getTipoDeServico () { return this.tipoDeServico; }
+
+    public void setListItens (String item) { this.listItens.add(item); }
+
+    public List<String> getListItens () {
+
+        List<String> listItens = new ArrayList<String>();
+
+        for (String item: this.listItens) {
+
+            listItens.add(item);
+        }
+
+        return listItens;
+    }
 
     public long calcularTempoDeServico () {
 
