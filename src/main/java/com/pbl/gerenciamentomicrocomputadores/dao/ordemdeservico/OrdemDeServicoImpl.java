@@ -24,7 +24,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
 
         ordemDeServico.setIdOrdem(this.id);
         this.id += 10;
-        ordemDeServico.setDataInicio(LocalDateTime.now());
+        ordemDeServico.getData().setDataInicio(LocalDateTime.now());
         this.lista.add(ordemDeServico);
     }
 
@@ -65,7 +65,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
 
                 if (status.equals("Finalizado")) {
 
-                    this.lista.get(i).setDataFim(LocalDateTime.now());
+                    this.lista.get(i).getData().setDataFim(LocalDateTime.now());
                 }
             }
         }

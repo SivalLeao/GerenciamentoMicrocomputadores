@@ -13,9 +13,7 @@ public class OrdemDeServico {
 
     private int idTecnico;
 
-    private LocalDateTime dataInicio;
-
-    private LocalDateTime dataFim;
+    private Data data;
 
     private String statusAtual;
 
@@ -42,13 +40,9 @@ public class OrdemDeServico {
 
     public int getIdTecnico () { return this.idTecnico; }
 
-    public void setDataInicio (LocalDateTime dataInicio) { this.dataInicio = dataInicio; }
+    public void setData (Data data) { this.data = data; }
 
-    public LocalDateTime getDataInicio () { return this.dataInicio; }
-
-    public void setDataFim (LocalDateTime dataFim) { this.dataFim = dataFim; }
-
-    public LocalDateTime getDataFim () { return this.dataFim; }
+    public Data getData () { return this.data; }
 
     public void setStatusAtual (String statusAtual) { this.statusAtual = statusAtual; }
 
@@ -74,7 +68,7 @@ public class OrdemDeServico {
 
     public long calcularTempoDeServico () {
 
-        return ChronoUnit.SECONDS.between(this.dataInicio, this.dataFim);
+        return ChronoUnit.SECONDS.between(this.data.getDataInicio(), this.data.getDataFim());
 
     }
 
