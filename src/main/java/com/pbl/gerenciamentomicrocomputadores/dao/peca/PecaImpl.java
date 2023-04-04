@@ -9,23 +9,23 @@ import java.util.List;
 
 public class PecaImpl implements PecaDao {
 
-    private Map<String, Peca> lista;
+    private Map<String, Peca> map;
 
     public PecaImpl () {
 
-        this.lista = new HashMap<String, Peca>();
+        this.map = new HashMap<String, Peca>();
     }
 
     @Override
     public void create (Peca peca) {
 
-        lista.put(peca.getNome(), peca);
+        map.put(peca.getNome(), peca);
     }
 
     @Override
     public void update (Peca peca) {
 
-        lista.put(peca.getNome(), peca);
+        map.put(peca.getNome(), peca);
     }
 
     @Override
@@ -33,16 +33,16 @@ public class PecaImpl implements PecaDao {
 
         int novaQuantidade;
 
-        novaQuantidade = this.lista.get(nome).getQuantidade() - quantidade;
-        this.lista.get(nome).setQuantidade(novaQuantidade);
+        novaQuantidade = this.map.get(nome).getQuantidade() - quantidade;
+        this.map.get(nome).setQuantidade(novaQuantidade);
     }
     @Override
     public void addQuantity (String nome, int quantidade){
 
         int novaQuantidade;
 
-        novaQuantidade = this.lista.get(nome).getQuantidade() + quantidade;
-        this.lista.get(nome).setQuantidade(novaQuantidade);
+        novaQuantidade = this.map.get(nome).getQuantidade() + quantidade;
+        this.map.get(nome).setQuantidade(novaQuantidade);
     }
 
     @Override
@@ -50,9 +50,9 @@ public class PecaImpl implements PecaDao {
 
         List<Peca> listPeca = new ArrayList<Peca>();
 
-        for (String nome: this.lista.keySet()) {
+        for (String nome: this.map.keySet()) {
 
-            listPeca.add(this.lista.get(nome));
+            listPeca.add(this.map.get(nome));
         }
 
         return listPeca;
@@ -60,7 +60,7 @@ public class PecaImpl implements PecaDao {
     @Override
     public boolean checkByName(String nome){
 
-        for (String key: this.lista.keySet()) {
+        for (String key: this.map.keySet()) {
             if (nome.equals(key)){
                 return true;
             }
@@ -72,7 +72,7 @@ public class PecaImpl implements PecaDao {
 
     public boolean checkQuatity (String nome, int quantidade) {
 
-        if (this.lista.get(nome).getQuantidade() >= quantidade) {
+        if (this.map.get(nome).getQuantidade() >= quantidade) {
 
             return true;
         }

@@ -1,17 +1,17 @@
 package com.pbl.gerenciamentomicrocomputadores.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TipoDeServico {
 
     private String TipoDeTarefa;
 
-    private List<String> listItens;
+    private Map<String, Integer> mapItens;
 
     public TipoDeServico () {
 
-        this.listItens = new ArrayList<String>();
+        this.mapItens = new HashMap<String, Integer>();
 
     }
 
@@ -19,18 +19,18 @@ public class TipoDeServico {
 
     public String getTipoDeTarefa () { return TipoDeTarefa; }
 
-    public void setListItens (String item) { this.listItens.add(item); }
+    public void setMapItens (String nomePeca, int quantidade) { this.mapItens.put(nomePeca, quantidade); }
 
-    public List<String> getListItens () {
+    public Map<String, Integer> getMapItens () {
 
-        List<String> listItens = new ArrayList<String>();
+        Map<String, Integer> mapItens = new HashMap<String, Integer>();
 
-        for (String item: this.listItens) {
+        for (String nomeItem: this.mapItens.keySet()) {
 
-            listItens.add(item);
+            mapItens.put(nomeItem, this.mapItens.get(nomeItem));
         }
 
-        return listItens;
+        return mapItens;
     }
 
 }
