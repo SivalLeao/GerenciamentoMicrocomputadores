@@ -3,13 +3,13 @@ package com.pbl.gerenciamentomicrocomputadores.model;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TipoDeServico {
+public class DescricaoServico {
 
     private String TipoDeTarefa;
 
     private Map<String, Integer> mapItens;
 
-    public TipoDeServico () {
+    public DescricaoServico() {
 
         this.mapItens = new HashMap<String, Integer>();
 

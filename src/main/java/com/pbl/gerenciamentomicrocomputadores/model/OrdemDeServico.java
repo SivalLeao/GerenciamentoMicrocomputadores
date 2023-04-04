@@ -14,9 +14,11 @@ public class OrdemDeServico {
 
     private String statusAtual;
 
-    private TipoDeServico tipoDeServico;
+    private DescricaoServico descricaoServico;
 
     private RelatorioServico relatorioServico;
+
+    private Fatura fatura;
 
     public void setIdOrdem (int id) { this.idOrdem = id; }
 
@@ -38,14 +40,21 @@ public class OrdemDeServico {
 
     public String getStatusAtual () { return this.statusAtual; }
 
-    public void setTipoDeServico (TipoDeServico tipoDeServico) { this.tipoDeServico = tipoDeServico; }
+    public void setDescricaoServico (DescricaoServico descricaoServico) { this.descricaoServico = descricaoServico; }
 
-    public TipoDeServico getTipoDeServico () { return this.tipoDeServico; }
+    public DescricaoServico getDescricaoServico () { return this.descricaoServico; }
+
+    public void setRelatorioServico(RelatorioServico relatorioServico) { this.relatorioServico = relatorioServico; }
+
+    public RelatorioServico getRelatorioServico() { return relatorioServico; }
+
+    public void setFatura(Fatura fatura) { this.fatura = fatura; }
+
+    public Fatura getFatura() { return fatura; }
 
     public long calcularTempoDeServico () {
 
         return ChronoUnit.SECONDS.between(this.data.getDataInicio(), this.data.getDataFim());
-
     }
 
 }
