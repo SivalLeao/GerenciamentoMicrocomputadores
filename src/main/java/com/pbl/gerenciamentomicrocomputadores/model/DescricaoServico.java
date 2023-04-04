@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class DescricaoServico {
 
-    private String TipoDeTarefa;
+    private String tipoDeTarefa;
 
     private Map<String, Integer> mapItens;
 
@@ -15,9 +15,9 @@ public class DescricaoServico {
 
     }
 
-    public void setTipoDeTarefa (String tipoDeTarefa) { TipoDeTarefa = tipoDeTarefa; }
+    public void setTipoDeTarefa (String tipoDeTarefa) { this.tipoDeTarefa = tipoDeTarefa; }
 
-    public String getTipoDeTarefa () { return TipoDeTarefa; }
+    public String getTipoDeTarefa () { return this.tipoDeTarefa; }
 
     public void setMapItens (String nomePeca, int quantidade) { this.mapItens.put(nomePeca, quantidade); }
 

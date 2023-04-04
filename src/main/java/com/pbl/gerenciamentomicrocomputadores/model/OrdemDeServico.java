@@ -44,13 +44,13 @@ public class OrdemDeServico {
 
     public DescricaoServico getDescricaoServico () { return this.descricaoServico; }
 
-    public void setRelatorioServico(RelatorioServico relatorioServico) { this.relatorioServico = relatorioServico; }
+    public void setRelatorioServico (RelatorioServico relatorioServico) { this.relatorioServico = relatorioServico; }
 
-    public RelatorioServico getRelatorioServico() { return relatorioServico; }
+    public RelatorioServico getRelatorioServico () { return relatorioServico; }
 
-    public void setFatura(Fatura fatura) { this.fatura = fatura; }
+    public void setFatura (Fatura fatura) { this.fatura = fatura; }
 
-    public Fatura getFatura() { return fatura; }
+    public Fatura getFatura () { return fatura; }
 
     public long calcularTempoDeServico () {
 
