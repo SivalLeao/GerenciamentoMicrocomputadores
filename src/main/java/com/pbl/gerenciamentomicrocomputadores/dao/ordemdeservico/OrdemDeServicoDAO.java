@@ -11,4 +11,6 @@ public interface OrdemDeServicoDAO extends CRUD<OrdemDeServico> {
 
     public void updateStatus (int idOrdem, String status);
 
+    public boolean checkStatus ();
+
 }

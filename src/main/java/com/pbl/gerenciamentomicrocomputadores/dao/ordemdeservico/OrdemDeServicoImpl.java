@@ -126,6 +126,19 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
         return false;
     }
 
+    public boolean checkStatus () {
+
+        for (OrdemDeServico ordemDeServico: this.lista) {
+
+            if (ordemDeServico.getStatusAtual().equals("Em andamento")) {
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     @Override
     public void deleteMany () {
 

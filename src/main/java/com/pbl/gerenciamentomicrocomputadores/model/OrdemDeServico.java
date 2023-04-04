@@ -20,6 +20,14 @@ public class OrdemDeServico {
 
     private Fatura fatura;
 
+    public OrdemDeServico () {
+
+        this.data = new Data();
+        this.descricaoServico = new DescricaoServico();
+        this.relatorioServico = new RelatorioServico();
+        this.fatura = new Fatura();
+    }
+
     public void setIdOrdem (int id) { this.idOrdem = id; }
 
     public int getIdOrdem () { return this.idOrdem; }
