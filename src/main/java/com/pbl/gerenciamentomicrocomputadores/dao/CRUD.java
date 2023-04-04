@@ -14,7 +14,7 @@ public interface CRUD<T>  {
 
     public List<T> findMany ();
 
-    public boolean checkId (int id);
+    public boolean checkById (int id);
 
     public void deleteMany ();
 

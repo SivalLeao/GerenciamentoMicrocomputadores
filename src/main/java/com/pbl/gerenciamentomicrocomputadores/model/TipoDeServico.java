@@ -15,13 +15,13 @@ public class TipoDeServico {
 
     }
 
-    public void setTipoDeTarefa(String tipoDeTarefa) { TipoDeTarefa = tipoDeTarefa; }
+    public void setTipoDeTarefa (String tipoDeTarefa) { TipoDeTarefa = tipoDeTarefa; }
 
-    public String getTipoDeTarefa() { return TipoDeTarefa; }
+    public String getTipoDeTarefa () { return TipoDeTarefa; }
 
     public void setListItens (String item) { this.listItens.add(item); }
 
-    public List<String> getListItens() {
+    public List<String> getListItens () {
 
         List<String> listItens = new ArrayList<String>();
 

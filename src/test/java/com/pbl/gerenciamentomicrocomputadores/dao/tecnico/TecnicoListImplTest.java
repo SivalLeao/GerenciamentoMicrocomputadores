@@ -178,8 +178,8 @@ public class TecnicoListImplTest {
 
         dao.create(t1);
 
-        boolean checkId =dao.checkId(1111);
-        boolean checkIdFalse= dao.checkId(0);
+        boolean checkId =dao.checkById(1111);
+        boolean checkIdFalse= dao.checkById(0);
         assertEquals(true, checkId);
         assertEquals(false, checkIdFalse);
     }

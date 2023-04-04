@@ -12,7 +12,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
 
     private int id;
 
-    public OrdemDeServicoImpl() {
+    public OrdemDeServicoImpl () {
 
         this.lista = new ArrayList<OrdemDeServico>();
         this.id = 1113;
@@ -20,7 +20,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
 
 
     @Override
-    public void create(OrdemDeServico ordemDeServico) {
+    public void create (OrdemDeServico ordemDeServico) {
 
         ordemDeServico.setIdOrdem(this.id);
         this.id += 10;
@@ -113,7 +113,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
     }
 
     @Override
-    public boolean checkId (int idOrdem) {
+    public boolean checkById (int idOrdem) {
 
         for (OrdemDeServico ordemDeServico: this.lista) {
 

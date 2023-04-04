@@ -91,7 +91,7 @@ public class PecaImpl implements PecaDao {
     public void delete(int id) { }
 
     @Override
-    public boolean checkId(int id) { return false; }
+    public boolean checkById(int id) { return false; }
 
     @Override
     public void deleteMany() { }

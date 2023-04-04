@@ -8,27 +8,27 @@ public class Peca {
 
     private double valor;
 
-    public void setNome(String nome) {
+    public void setNome (String nome) {
         this.nome = nome;
     }
 
-    public String getNome() {
+    public String getNome () {
         return nome;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade (int quantidade) {
         this.quantidade = quantidade;
     }
 
-    public int getQuantidade() {
+    public int getQuantidade () {
         return quantidade;
     }
 
-    public void setValor(double valor) {
+    public void setValor (double valor) {
         this.valor = valor;
     }
 
-    public double getValor() {
+    public double getValor () {
         return valor;
     }
 

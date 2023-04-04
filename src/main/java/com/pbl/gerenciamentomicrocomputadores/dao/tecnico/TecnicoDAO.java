@@ -7,6 +7,6 @@ public interface TecnicoDAO extends CRUD<Tecnico>{
 
     public Tecnico findByCpf (String cpf);
 
-    public boolean checkCpf (String cpf);
+    public boolean checkByCpf (String cpf);
 
 }

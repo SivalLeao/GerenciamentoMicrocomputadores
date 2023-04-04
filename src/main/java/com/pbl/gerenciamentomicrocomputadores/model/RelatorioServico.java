@@ -8,16 +8,16 @@ public class RelatorioServico {
 
     private long tempoDeEspera;
 
-    public void setValorTotal(int valorTotal) { this.valorTotal = valorTotal; }
+    public void setValorTotal (int valorTotal) { this.valorTotal = valorTotal; }
 
-    public int getValorTotal() { return valorTotal; }
+    public int getValorTotal () { return valorTotal; }
 
-    public void setSatisfacaoCliente(String satisfacaoCliente) { this.satisfacaoCliente = satisfacaoCliente; }
+    public void setSatisfacaoCliente (String satisfacaoCliente) { this.satisfacaoCliente = satisfacaoCliente; }
 
-    public String getSatisfacaoCliente() { return satisfacaoCliente; }
+    public String getSatisfacaoCliente () { return satisfacaoCliente; }
 
-    public void setTempoDeEspera(long tempoDeEspera) { this.tempoDeEspera = tempoDeEspera; }
+    public void setTempoDeEspera (long tempoDeEspera) { this.tempoDeEspera = tempoDeEspera; }
 
-    public long getTempoDeEspera() { return tempoDeEspera; }
+    public long getTempoDeEspera () { return tempoDeEspera; }
 
 }

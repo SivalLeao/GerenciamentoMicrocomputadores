@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
 
-
 public class TecnicoImpl implements TecnicoDAO {
 
     private List<Tecnico> lista;
@@ -94,7 +93,7 @@ public class TecnicoImpl implements TecnicoDAO {
     }
 
     @Override
-    public boolean checkId (int id) {
+    public boolean checkById(int id) {
 
         for (Tecnico tecnico: this.lista) {
 
@@ -108,7 +107,7 @@ public class TecnicoImpl implements TecnicoDAO {
     }
 
     @Override
-    public boolean checkCpf (String cpf) {
+    public boolean checkByCpf(String cpf) {
 
         for (Tecnico tecnico: this.lista) {
 
@@ -124,7 +123,7 @@ public class TecnicoImpl implements TecnicoDAO {
     @Override
     public void deleteMany () {
 
-        this.lista = new ArrayList<>();
+        this.lista = new ArrayList<Tecnico>();
         this.id = 1111;
     }
 

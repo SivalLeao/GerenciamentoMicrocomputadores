@@ -7,6 +7,6 @@ public interface ClienteDAO extends CRUD<Cliente> {
 
     public Cliente findByCpf (String cpf);
 
-    public boolean checkCpf (String cpf);
+    public boolean checkByCpf (String cpf);
 
 }

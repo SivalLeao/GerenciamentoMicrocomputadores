@@ -16,23 +16,29 @@ public class DAO {
     private static OrdemDeServicoDAO ordemDeServicoDAO;
 
     public static ClienteDAO getCliente() {
+
         if (clienteDAO == null) {
             clienteDAO = new ClienteImpl();
         }
+
         return clienteDAO;
     }
 
     public static TecnicoDAO getTecnico() {
+
         if (tecnicoDAO == null) {
             tecnicoDAO = new TecnicoImpl();
         }
+
         return tecnicoDAO;
     }
 
     public static OrdemDeServicoDAO getOrdemDeServico () {
+
         if (ordemDeServicoDAO == null) {
             ordemDeServicoDAO = new OrdemDeServicoImpl();
         }
+
         return ordemDeServicoDAO;
     }
 

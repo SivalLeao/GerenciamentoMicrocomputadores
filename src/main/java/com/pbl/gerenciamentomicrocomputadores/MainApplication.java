@@ -203,7 +203,7 @@ public class MainApplication extends Application {
                     id = scan.nextInt();
                     scan.nextLine();
 
-                    boolean idExiste_tec = tecnicoDAO.checkId(id);
+                    boolean idExiste_tec = tecnicoDAO.checkById(id);
 
                     if (idExiste_tec == true) {
 
@@ -220,7 +220,7 @@ public class MainApplication extends Application {
                     id = scan.nextInt();
                     scan.nextLine();
 
-                    boolean idExiste_cli = clienteDAO.checkId(id);
+                    boolean idExiste_cli = clienteDAO.checkById(id);
 
                     if (idExiste_cli == true) {
 
@@ -238,7 +238,7 @@ public class MainApplication extends Application {
                     id = scan.nextInt();
                     scan.nextLine();
 
-                    if (tecnicoDAO.checkId(id)) {
+                    if (tecnicoDAO.checkById(id)) {
 
                         tecnico = cadastrar_tec();
                         tecnico.setId(id);
@@ -256,7 +256,7 @@ public class MainApplication extends Application {
                     id = scan.nextInt();
                     scan.nextLine();
 
-                    if (clienteDAO.checkId(id)) {
+                    if (clienteDAO.checkById(id)) {
 
                         cliente = cadastrar_cli();
                         cliente.setId(id);
@@ -314,7 +314,7 @@ public class MainApplication extends Application {
                         cpf = scan.nextLine();
                     }
 
-                    cpfExiste = tecnicoDAO.checkCpf(cpf);
+                    cpfExiste = tecnicoDAO.checkByCpf(cpf);
 
                     if (cpfExiste == true) {
 
@@ -335,7 +335,7 @@ public class MainApplication extends Application {
                         cpf = scan.nextLine();
                     }
 
-                    cpfExiste = clienteDAO.checkCpf(cpf);
+                    cpfExiste = clienteDAO.checkByCpf(cpf);
 
                     if (cpfExiste == true) {
 
