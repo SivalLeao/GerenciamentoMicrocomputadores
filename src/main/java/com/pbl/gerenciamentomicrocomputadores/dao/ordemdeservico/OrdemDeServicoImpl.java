@@ -126,11 +126,11 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
         return false;
     }
 
-    public boolean checkStatus () {
+    public boolean checkStatus (int idTecnico) {
 
         for (OrdemDeServico ordemDeServico: this.lista) {
 
-            if (ordemDeServico.getStatusAtual().equals("Em andamento")) {
+            if (ordemDeServico.getIdTecnico() == idTecnico && ordemDeServico.getStatusAtual().equals("Em andamento")) {
 
                 return true;
             }
