@@ -25,7 +25,6 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
         ordemDeServico.setIdOrdem(this.id);
         ordemDeServico.setStatusAtual("Em espera");
         this.id += 10;
-        ordemDeServico.getData().setDataInicio(LocalDateTime.now());
         this.lista.add(ordemDeServico);
     }
 

@@ -12,6 +12,14 @@ public abstract class Pessoa {
 
     private int id;
 
+    public Pessoa (String nome, String endereco, String telefone, String cpf) {
+
+        this.nome = nome;
+        this.endereco = endereco;
+        this.telefone = telefone;
+        this.cpf = cpf;
+    }
+
     public void setNome(String nome) { this.nome = nome; }
 
     public String getNome() { return nome; }

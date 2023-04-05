@@ -1,5 +1,6 @@
 package com.pbl.gerenciamentomicrocomputadores.model;
 
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 public class OrdemDeServico {
@@ -12,21 +13,19 @@ public class OrdemDeServico {
 
     private Data data;
 
-    private String statusAtual;
-
     private DescricaoServico descricaoServico;
 
-    private double valorTotalFatura;
+    private String statusAtual;
+
     private String formaPagamento;
 
     private String satisfacaoCliente;
 
-    private long tempoDeEspera;
-
+    private double valorTotalFatura;
 
     public OrdemDeServico () {
 
-        this.data = new Data();
+        this.data = new Data( LocalDateTime.now());
         this.descricaoServico = new DescricaoServico();
     }
 
@@ -46,47 +45,39 @@ public class OrdemDeServico {
 
     public Data getData () { return this.data; }
 
-    public void setStatusAtual (String statusAtual) { this.statusAtual = statusAtual; }
-
-    public String getStatusAtual () { return this.statusAtual; }
-
     public void setDescricaoServico (DescricaoServico descricaoServico) { this.descricaoServico = descricaoServico; }
 
     public DescricaoServico getDescricaoServico () { return this.descricaoServico; }
 
-    public long calcularTempoDeServico () {
+    public void setStatusAtual (String statusAtual) { this.statusAtual = statusAtual; }
 
-        return ChronoUnit.SECONDS.between(this.data.getDataInicio(), this.data.getDataFim());
-    }
+    public String getStatusAtual () { return this.statusAtual; }
 
     public void setFormaPagamento(String formaPagamento) {
         this.formaPagamento = formaPagamento;
     }
 
     public String getFormaPagamento() {
-        return formaPagamento;
+        return this.formaPagamento;
     }
+
+    public void setSatisfacaoCliente (String satisfacaoCliente) {
+        this.satisfacaoCliente = satisfacaoCliente;
+    }
+
+    public String getSatisfacaoCliente () { return this.satisfacaoCliente; }
 
     public void setValorTotalFatura(double valorTotalFatura) {
         this.valorTotalFatura = valorTotalFatura;
     }
 
     public double getValorTotalFatura() {
-        return valorTotalFatura;
-    }
-    public void setSatisfacaoCliente (String satisfacaoCliente) {
-        this.satisfacaoCliente = satisfacaoCliente;
+        return this.valorTotalFatura;
     }
 
-    public String getSatisfacaoCliente () {
-        return satisfacaoCliente;
+    public long calcularTempoDeServico () {
+
+        return ChronoUnit.SECONDS.between(this.data.getDataInicio(), this.data.getDataFim());
     }
 
-    public void setTempoDeEspera (long tempoDeEspera) {
-        this.tempoDeEspera = tempoDeEspera;
-    }
-
-    public long getTempoDeEspera () {
-        return tempoDeEspera;
-    }
 }

@@ -8,6 +8,16 @@ public class Peca {
 
     private double valor;
 
+    private double custo;
+
+    public Peca (String nome, int quantidade, double valor, double custo) {
+
+        this.nome = nome;
+        this.quantidade = quantidade;
+        this.valor = valor;
+        this.custo = custo;
+    }
+
     public void setNome (String nome) {
         this.nome = nome;
     }
@@ -31,5 +41,9 @@ public class Peca {
     public double getValor () {
         return valor;
     }
+
+    public void setCusto(double custo) { this.custo = custo; }
+
+    public double getCusto() { return custo; }
 
 }
