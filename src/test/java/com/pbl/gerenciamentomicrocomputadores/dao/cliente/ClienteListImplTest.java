@@ -110,7 +110,7 @@ public class ClienteListImplTest {
         c2.setEndereco("Rua B num 2");
         c2.setTelefone("75666666666");
         // Cliente 3
-        c3.setNome("Herobrine");
+        c3.setNome("Tony");
         c3.setCpf("77777777777");
         c3.setEndereco("Rua C num 3");
         c3.setTelefone("75555555555");
@@ -149,7 +149,7 @@ public class ClienteListImplTest {
         c2.setEndereco("Rua B num 2");
         c2.setTelefone("75666666666");
         // Cliente 3
-        c3.setNome("Herobrine");
+        c3.setNome("Tony");
         c3.setCpf("77777777777");
         c3.setEndereco("Rua C num 3");
         c3.setTelefone("75555555555");
@@ -204,7 +204,7 @@ public class ClienteListImplTest {
         c2.setEndereco("Rua B num 2");
         c2.setTelefone("75666666666");
         // Cliente 3
-        c3.setNome("Herobrine");
+        c3.setNome("Tony");
         c3.setCpf("77777777777");
         c3.setEndereco("Rua C num 3");
         c3.setTelefone("75555555555");

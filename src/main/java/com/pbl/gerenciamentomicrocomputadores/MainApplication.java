@@ -216,7 +216,7 @@ public class MainApplication extends Application {
                     break;
                 case 6:
 
-                    System.out.print("\nID do Tecnico: ");
+                    System.out.print("\nID do Cliente: ");
                     id = scan.nextInt();
                     scan.nextLine();
 
@@ -325,7 +325,7 @@ public class MainApplication extends Application {
                     }
                     break;
                 case 12:
-                    Tecnico cliente_cpf = new Tecnico();
+                    Cliente cliente_cpf = new Cliente();
 
                     System.out.print("\nCPF: ");
                     cpf = scan.nextLine();

@@ -13,4 +13,6 @@ public interface OrdemDeServicoDAO extends CRUD<OrdemDeServico> {
 
     public boolean checkStatus (int idTecnico);
 
+
+
 }

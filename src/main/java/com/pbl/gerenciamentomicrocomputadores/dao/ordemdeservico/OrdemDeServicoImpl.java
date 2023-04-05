@@ -23,6 +23,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
     public void create (OrdemDeServico ordemDeServico) {
 
         ordemDeServico.setIdOrdem(this.id);
+        ordemDeServico.setStatusAtual("Em espera");
         this.id += 10;
         ordemDeServico.getData().setDataInicio(LocalDateTime.now());
         this.lista.add(ordemDeServico);

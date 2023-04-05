@@ -109,7 +109,7 @@ public class TecnicoListImplTest {
         t2.setEndereco("Rua B num 2");
         t2.setTelefone("75666666666");
         // Tecnico 3
-        t3.setNome("Herobrine");
+        t3.setNome("Tony");
         t3.setCpf("77777777777");
         t3.setEndereco("Rua C num 3");
         t3.setTelefone("75555555555");
@@ -148,7 +148,7 @@ public class TecnicoListImplTest {
         t2.setEndereco("Rua B num 2");
         t2.setTelefone("75666666666");
         // Tecnico 3
-        t3.setNome("Herobrine");
+        t3.setNome("Tony");
         t3.setCpf("77777777777");
         t3.setEndereco("Rua C num 3");
         t3.setTelefone("75555555555");
@@ -203,7 +203,7 @@ public class TecnicoListImplTest {
         t2.setEndereco("Rua B num 2");
         t2.setTelefone("75666666666");
         // Tecnico 3
-        t3.setNome("Herobrine");
+        t3.setNome("Tony");
         t3.setCpf("77777777777");
         t3.setEndereco("Rua C num 3");
         t3.setTelefone("75555555555");

@@ -16,16 +16,18 @@ public class OrdemDeServico {
 
     private DescricaoServico descricaoServico;
 
-    private RelatorioServico relatorioServico;
+    private double valorTotalFatura;
+    private String formaPagamento;
 
-    private Fatura fatura;
+    private String satisfacaoCliente;
+
+    private long tempoDeEspera;
+
 
     public OrdemDeServico () {
 
         this.data = new Data();
         this.descricaoServico = new DescricaoServico();
-        this.relatorioServico = new RelatorioServico();
-        this.fatura = new Fatura();
     }
 
     public void setIdOrdem (int id) { this.idOrdem = id; }
@@ -52,17 +54,39 @@ public class OrdemDeServico {
 
     public DescricaoServico getDescricaoServico () { return this.descricaoServico; }
 
-    public void setRelatorioServico (RelatorioServico relatorioServico) { this.relatorioServico = relatorioServico; }
-
-    public RelatorioServico getRelatorioServico () { return relatorioServico; }
-
-    public void setFatura (Fatura fatura) { this.fatura = fatura; }
-
-    public Fatura getFatura () { return fatura; }
-
     public long calcularTempoDeServico () {
 
         return ChronoUnit.SECONDS.between(this.data.getDataInicio(), this.data.getDataFim());
     }
 
+    public void setFormaPagamento(String formaPagamento) {
+        this.formaPagamento = formaPagamento;
+    }
+
+    public String getFormaPagamento() {
+        return formaPagamento;
+    }
+
+    public void setValorTotalFatura(double valorTotalFatura) {
+        this.valorTotalFatura = valorTotalFatura;
+    }
+
+    public double getValorTotalFatura() {
+        return valorTotalFatura;
+    }
+    public void setSatisfacaoCliente (String satisfacaoCliente) {
+        this.satisfacaoCliente = satisfacaoCliente;
+    }
+
+    public String getSatisfacaoCliente () {
+        return satisfacaoCliente;
+    }
+
+    public void setTempoDeEspera (long tempoDeEspera) {
+        this.tempoDeEspera = tempoDeEspera;
+    }
+
+    public long getTempoDeEspera () {
+        return tempoDeEspera;
+    }
 }
