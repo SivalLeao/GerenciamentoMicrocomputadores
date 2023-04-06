@@ -97,6 +97,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
         return listOrdemDeServico;
     }
 
+    @Override
     public List<OrdemDeServico> findByIdTecnico (int idTecnico) {
 
         List<OrdemDeServico> listOrdemDeServico = new ArrayList<OrdemDeServico>();
@@ -126,6 +127,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
         return false;
     }
 
+    @Override
     public boolean checkStatus (int idTecnico) {
 
         for (OrdemDeServico ordemDeServico: this.lista) {

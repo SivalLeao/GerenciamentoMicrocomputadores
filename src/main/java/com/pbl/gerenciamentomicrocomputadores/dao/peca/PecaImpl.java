@@ -36,6 +36,7 @@ public class PecaImpl implements PecaDao {
         novaQuantidade = this.map.get(nome).getQuantidade() - quantidade;
         this.map.get(nome).setQuantidade(novaQuantidade);
     }
+
     @Override
     public void addQuantity (String nome, int quantidade){
 
@@ -57,16 +58,17 @@ public class PecaImpl implements PecaDao {
 
         return listPeca;
     }
+
     @Override
     public boolean checkByName(String nome){
 
         for (String key: this.map.keySet()) {
+
             if (nome.equals(key)){
                 return true;
             }
-
-
         }
+
         return false;
     }
 
@@ -95,4 +97,5 @@ public class PecaImpl implements PecaDao {
 
     @Override
     public void deleteMany() { }
+
 }
