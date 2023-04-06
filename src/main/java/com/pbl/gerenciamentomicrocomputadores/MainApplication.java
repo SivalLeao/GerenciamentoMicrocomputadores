@@ -25,7 +25,8 @@ public class MainApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
-    public static Tecnico cadastrar_tec(){
+    public static void cadastrar_tec(){
+        /*
         TecnicoDAO tecnicoDAO = DAO.getTecnico();
 
         String nome;
@@ -73,9 +74,11 @@ public class MainApplication extends Application {
         tecnico.setCpf(cpf);
 
         return tecnico;
+        */
     }
 
-    public static Cliente cadastrar_cli(){
+    public static void cadastrar_cli(){
+        /*
         ClienteDAO clienteDAO = DAO.getCliente();
 
         String nome;
@@ -122,10 +125,12 @@ public class MainApplication extends Application {
         cliente.setCpf(cpf);
 
         return cliente;
+         */
     }
 
 
     public static void main(String[] args) {
+        /*
         //launch();
 
         // Área de testes
@@ -354,6 +359,6 @@ public class MainApplication extends Application {
                     System.out.println("\nLista apagada.");
             }
         } while(on);
-
+         */
     }
 }
