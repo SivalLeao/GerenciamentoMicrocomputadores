@@ -1,5 +1,7 @@
 package com.pbl.gerenciamentomicrocomputadores.model;
 
+import java.text.Normalizer;
+
 public class Peca {
 
     private String nome;
@@ -12,14 +14,14 @@ public class Peca {
 
     public Peca (String nome, int quantidade, double valor, double custo) {
 
-        this.nome = nome;
+        this.nome = Normalizer.normalize(nome, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
         this.quantidade = quantidade;
         this.valor = valor;
         this.custo = custo;
     }
 
     public void setNome (String nome) {
-        this.nome = nome;
+        this.nome = Normalizer.normalize(nome, Normalizer.Form.NFD).toLowerCase();
     }
 
     public String getNome () {
@@ -42,8 +44,12 @@ public class Peca {
         return valor;
     }
 
-    public void setCusto(double custo) { this.custo = custo; }
+    public void setCusto(double custo) {
+        this.custo = custo;
+    }
 
-    public double getCusto() { return custo; }
+    public double getCusto() {
+        return custo;
+    }
 
 }
