@@ -1,223 +1,219 @@
 package com.pbl.gerenciamentomicrocomputadores.dao.cliente;
 
-import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
 
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ClienteListImplTest {
 
     @Test
-    void findMany() {
+    void create () {
 
-        Cliente cliente0 = new Cliente("Steve", "Rua A num 1", "75985085085", "71071071021");
-        Cliente cliente1 = new Cliente("Camilla", "Rua Peixes num 14", "75995095095", "16016016021");
-        Cliente cliente2 = new Cliente("Dayana", "Rua Pôr do Sol num 8", "75925025025", "32032032021");
+        ClienteDAO dao = new ClienteImpl();
 
-        DAO.getCliente().create( cliente0);
-        DAO.getCliente().create( cliente1);
-        DAO.getCliente().create( cliente2);
+        Cliente c0 = new Cliente("Steve", "Rua Capricórnio num 1", "66666666666", "11111111111");
+        Cliente c1 = new Cliente("Dayana", "Rua Aquário num 2", "77777777777", "22222222222");
 
-        List<Cliente> lista = DAO.getCliente().findMany();
+        dao.create( c0);
+        dao.create( c1);
 
-        assertEquals( lista.get(0), cliente1);
-        assertEquals( lista.get(1), cliente1);
-        assertEquals( lista.get(2), cliente2);
-    }
-
-    @Test
-    void create(){
-
-        Cliente cliente1 = new Cliente("Steve", "Rua A num 1", "75985085085", "71071071021");
-        Cliente cliente2 = new Cliente("Camilla", "Rua Peixes num 14", "75995095095", "16016016021");
-        Cliente cliente3 = new Cliente("Dayana", "Rua Pôr do Sol num 8", "75925025025", "32032032021");
-
-        DAO.getCliente().create( cliente1);
-        DAO.getCliente().create( cliente2);
-        DAO.getCliente().create( cliente3);
-
-        List<Cliente> lista = DAO.getCliente().findMany();
+        List<Cliente> lista = dao.findMany();
 
         assertEquals( lista.get(0).getNome(), "Steve");
-        assertEquals( lista.get(0).getEndereco(), "Rua A num 1");
-        assertEquals( lista.get(0).getTelefone(), "75985085085");
-        assertEquals( lista.get(0).getCpf(), "71071071021");
+        assertEquals( lista.get(0).getEndereco(), "Rua Capricórnio num 1");
+        assertEquals( lista.get(0).getTelefone(), "66666666666");
+        assertEquals( lista.get(0).getCpf(), "11111111111");
+        assertEquals( lista.get(0).getId(), 1112);
 
-        assertEquals( lista.get(1).getNome(), "Camilla");
-        assertEquals( lista.get(1).getEndereco(), "Rua Peixes num 14");
-        assertEquals( lista.get(1).getTelefone(), "75995095095");
-        assertEquals( lista.get(1).getCpf(), "16016016021");
-
-        assertEquals( lista.get(2).getNome(), "Dayana");
-        assertEquals( lista.get(2).getEndereco(), "Rua Pôr do Sol num 8");
-        assertEquals( lista.get(2).getTelefone(), "75925025025");
-        assertEquals( lista.get(2).getCpf(), "32032032021");
+        assertEquals( lista.get(1).getNome(), "Dayana");
+        assertEquals( lista.get(1).getEndereco(), "Rua Aquário num 2");
+        assertEquals( lista.get(1).getTelefone(), "77777777777");
+        assertEquals( lista.get(1).getCpf(), "22222222222");
+        assertEquals( lista.get(1).getId(), 1122);
     }
 
     @Test
-    void findById(){
-        /*
+    void findMany () {
+
         ClienteDAO dao = new ClienteImpl();
 
-        //Declaracao
-        Cliente c1 = new Cliente();
-        Cliente c2 = new Cliente();
-        //
-        c1.setNome("Steve");
-        c1.setCpf("99999999999");
-        c1.setEndereco("Rua A num 1");
-        c1.setTelefone("75777777777");
-        //
-        c2.setNome("Alex");
-        c2.setCpf("88888888888");
-        c2.setEndereco("Rua B num 2");
-        c2.setTelefone("71666666666");
-        //
+        Cliente c0 = new Cliente("Steve", "Rua Capricórnio num 1", "66666666666", "11111111111");
+        Cliente c1 = new Cliente("Dayana", "Rua Aquário num 2", "77777777777", "22222222222");
 
+        dao.create( c0);
+        dao.create( c1);
 
+        List<Cliente> lista = dao.findMany();
 
-        dao.create(c1);
-        dao.create(c2);
+        assertEquals( 2, lista.size());
 
-
-        assertEquals(1112, c1.getId());
-        assertEquals(1122, c2.getId());
-        */
+        assertEquals( lista.get(0), c0);
+        assertEquals( lista.get(1), c1);
     }
 
     @Test
-    void update(){
-        /*
+    void findById () {
+
         ClienteDAO dao = new ClienteImpl();
-        //Declaracao
-        Cliente c1 = new Cliente();
-        Cliente c2 = new Cliente();
-        //
-        c1.setNome("Steve");
-        c1.setCpf("99999999999");
-        c1.setEndereco("Rua A num 1");
-        c1.setTelefone("75777777777");
 
+        Cliente c0 = new Cliente("Steve", "Rua Capricórnio num 1", "66666666666", "11111111111");
+        Cliente c1 = new Cliente("Dayana", "Rua Aquário num 2", "77777777777", "22222222222");
 
-        dao.create(c1);
+        dao.create( c0);
+        dao.create( c1);
 
-        //
-        c1.setNome("Alex");
-        c1.setCpf("88888888888");
-        c1.setEndereco("Rua B num 2");
-        c1.setTelefone("71666666666");
+        Cliente ById0 = dao.findById(1112);
+        assertEquals( c0, ById0);
 
-
-        dao.update(c1);
-
-        assertEquals(1112, c1.getId()); // para atualizado o Id conserva
-        assertEquals("Alex", c1.getNome());
-
-         */
-
+        Cliente ById1 = dao.findById(1122);
+        assertEquals( c1, ById1);
     }
+
+    @Test
+    void findByCpf () {
+
+        ClienteDAO dao = new ClienteImpl();
+
+        Cliente c0 = new Cliente("Steve", "Rua Capricórnio num 1", "66666666666", "11111111111");
+        Cliente c1 = new Cliente("Dayana", "Rua Aquário num 2", "77777777777", "22222222222");
+
+        dao.create( c0);
+        dao.create( c1);
+
+        Cliente ByCpf0 = dao.findByCpf("11111111111");
+        assertEquals( c0, ByCpf0);
+
+        Cliente ByCpf1 = dao.findByCpf("22222222222");
+        assertEquals( c1, ByCpf1);
+    }
+
+    @Test
+    void update () {
+
+        ClienteDAO dao = new ClienteImpl();
+
+        Cliente c0 = new Cliente("Steve", "Rua Capricórnio num 1", "66666666666", "11111111111");
+        Cliente c1 = new Cliente("Dayana", "Rua Aquário num 2", "77777777777", "22222222222");
+
+        dao.create( c0);
+        dao.create( c1);
+
+        Cliente newC0 = dao.findById(1112);
+        assertEquals( newC0, c0);
+
+        Cliente newC1 = new Cliente("Camilla", "Rua Libra num 3", "88888888888", "33333333333");
+        newC1.setId(1112);
+
+        dao.update(newC1);
+
+        Cliente newC2 = dao.findById(1112);
+
+        assertEquals( newC2.getNome(), "Camilla");
+        assertEquals( newC2.getEndereco(), "Rua Libra num 3");
+        assertEquals( newC2.getTelefone(), "88888888888");
+        assertEquals( newC2.getCpf(), "33333333333");
+
+        assertEquals( newC2, newC1);
+    }
+
     @Test
     void delete(){
-        /*
+
         ClienteDAO dao = new ClienteImpl();
-        //Declaracao
-        Cliente c1 = new Cliente();
-        Cliente c2 = new Cliente();
-        Cliente c3 = new Cliente();
-        // Cliente 1
-        c1.setNome("Steve");
-        c1.setCpf("99999999999");
-        c1.setEndereco("Rua A num 1");
-        c1.setTelefone("75777777777");
-        // Cliente 2
-        c2.setNome("Alex");
-        c2.setCpf("88888888888");
-        c2.setEndereco("Rua B num 2");
-        c2.setTelefone("75666666666");
-        // Cliente 3
-        c3.setNome("Tony");
-        c3.setCpf("77777777777");
-        c3.setEndereco("Rua C num 3");
-        c3.setTelefone("75555555555");
-        //
-        dao.create(c1);
-        dao.create(c2);
-        dao.create(c3);
 
+        Cliente c0 = new Cliente("Steve", "Rua Capricórnio num 1", "66666666666", "11111111111");
+        Cliente c1 = new Cliente("Dayana", "Rua Aquário num 2", "77777777777", "22222222222");
+        Cliente c2 = new Cliente("Camilla", "Rua Libra num 3", "88888888888", "33333333333");
+        Cliente c3 = new Cliente("Bernardo", "Rua Virgem num 4", "99999999999", "44444444444");
+        Cliente c4 = new Cliente("Morgana", "Rua Leão num 5", "00000000000", "55555555555");
 
-        dao.delete(1122);
+        dao.create( c0);
+        dao.create( c1);
+        dao.create( c2);
+        dao.create( c3);
+        dao.create( c4);
 
-        Cliente ById = dao.findById(1122);
-        assertNull(ById);
+        dao.delete(1112);
+        dao.delete(1132);
+        dao.delete(1152);
 
-        List<Cliente> many = dao.findMany();
-        assertEquals(2, many.size());
-        */
+        Cliente ById0 = dao.findById(1112);
+        assertNull(ById0);
+
+        Cliente ById1 = dao.findById(1132);
+        assertNull(ById1);
+
+        Cliente ById2 = dao.findById(1152);
+        assertNull(ById2);
+
+        List<Cliente> lista = dao.findMany();
+        assertEquals(2, lista.size());
     }
 
     @Test
-    void checkId(){
-        /*
+    void checkById(){
+
         ClienteDAO dao = new ClienteImpl();
-        //Declaracao
-        Cliente c1 = new Cliente();
-        //
-        c1.setNome("Steve");
-        c1.setCpf("99999999999");
-        c1.setEndereco("Rua A num 1");
-        c1.setTelefone("75777777777");
 
-        dao.create(c1);
+        Cliente c0 = new Cliente("Bernardo", "Rua Virgem num 4", "99999999999", "44444444444");
+        Cliente c1 = new Cliente("Morgana", "Rua Leão num 5", "00000000000", "55555555555");
 
-        boolean checkId =dao.checkById(1112);
-        boolean checkIdFalse= dao.checkById(0);
-        assertEquals(true, checkId);
-        assertEquals(false, checkIdFalse);
+        dao.create( c0);
+        dao.create( c1);
 
-         */
+        Boolean ById0 = dao.checkById(1112);
+        assertTrue(ById0);
+
+        Boolean ById1 = dao.checkById(1122);
+        assertTrue(ById1);
+
+        Boolean ById2 = dao.checkById(1132);
+        assertFalse(ById2);
+    }
+
+    @Test
+    void checkByCpf(){
+
+        ClienteDAO dao = new ClienteImpl();
+
+        Cliente c0 = new Cliente("Bernardo", "Rua Virgem num 4", "99999999999", "44444444444");
+        Cliente c1 = new Cliente("Morgana", "Rua Leão num 5", "00000000000", "55555555555");
+
+        dao.create( c0);
+        dao.create( c1);
+
+        Boolean ByCpf0 = dao.checkByCpf("44444444444");
+        assertTrue(ByCpf0);
+
+        Boolean ByCpf1 = dao.checkByCpf("55555555555");
+        assertTrue(ByCpf1);
+
+        Boolean ByCpf2 = dao.checkByCpf("66666666666");
+        assertFalse(ByCpf2);
     }
 
     @Test
     void deleteMany(){
-        /*
+
         ClienteDAO dao = new ClienteImpl();
 
-        //Declaracao
-        Cliente c1 = new Cliente();
-        Cliente c2 = new Cliente();
-        Cliente c3 = new Cliente();
-        // Cliente 1
-        c1.setNome("Steve");
-        c1.setCpf("99999999999");
-        c1.setEndereco("Rua A num 1");
-        c1.setTelefone("75777777777");
-        // Cliente 2
-        c2.setNome("Alex");
-        c2.setCpf("88888888888");
-        c2.setEndereco("Rua B num 2");
-        c2.setTelefone("75666666666");
-        // Cliente 3
-        c3.setNome("Tony");
-        c3.setCpf("77777777777");
-        c3.setEndereco("Rua C num 3");
-        c3.setTelefone("75555555555");
-        //
-        dao.create(c1);
-        dao.create(c2);
-        dao.create(c3);
+        Cliente c0 = new Cliente("Camilla", "Rua Libra num 3", "88888888888", "33333333333");
+        Cliente c1 = new Cliente("Bernardo", "Rua Virgem num 4", "99999999999", "44444444444");
+        Cliente c2 = new Cliente("Morgana", "Rua Leão num 5", "00000000000", "55555555555");
 
+        dao.create( c0);
+        dao.create( c1);
+        dao.create( c2);
 
-
-        assertEquals(3, dao.findMany().size());
         dao.deleteMany();
-        assertEquals(0, dao.findMany().size());
 
-         */
+        List<Cliente> lista = dao.findMany();
+
+        assertEquals(0, lista.size());
     }
 
 }
