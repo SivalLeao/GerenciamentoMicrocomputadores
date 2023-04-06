@@ -7,13 +7,31 @@ import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PecaImpl implements PecaDao {
+public class PecaImpl implements PecaDAO {
 
     private Map<String, Peca> map;
 
     public PecaImpl () {
 
         this.map = new HashMap<String, Peca>();
+
+        Peca peca0 = new Peca("RAM", 10, 20, 20);
+        this.map.put(peca0.getNome(), peca0);
+
+        Peca peca1 = new Peca("placa mãe", 10, 100, 100);
+        this.map.put(peca1.getNome(), peca1);
+
+        Peca peca2 = new Peca("fonte", 10, 30, 30);
+        this.map.put(peca2.getNome(), peca2);
+
+        Peca peca3 = new Peca("placa de vídeo", 10, 100, 100);
+        this.map.put(peca3.getNome(), peca3);
+
+        Peca peca4 = new Peca("HD", 10, 30, 30);
+        this.map.put(peca4.getNome(), peca4);
+
+        Peca peca5 = new Peca("SSD", 10, 30, 30);
+        this.map.put(peca5.getNome(), peca5);
     }
 
     @Override
@@ -82,6 +100,21 @@ public class PecaImpl implements PecaDao {
 
             return false;
         }
+    }
+
+    public List<Peca> quantityAlert () {
+
+        List<Peca> listPeca = new ArrayList<Peca>();
+
+        for (String nomePeca: this.map.keySet()) {
+
+            if (this.map.get(nomePeca).getQuantidade() <= 5) {
+
+                listPeca.add(this.map.get(nomePeca));
+            }
+        }
+
+        return listPeca;
     }
 
     @Override
