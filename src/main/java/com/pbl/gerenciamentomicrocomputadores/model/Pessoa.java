@@ -3,8 +3,8 @@ package com.pbl.gerenciamentomicrocomputadores.model;
 /** Classe abstrata para as classes Cliente e Tecnico. Inclui a declaração de atributos, métodos de inserção
  * e retorno, e métodos de validação de dados.
  *
- * @author Silvio Oliveira
- * @author Sival Leão
+ * @author Silvio Oliveira,  Sival Leão.
+ * @version 1.0.
  */
 
 public abstract class Pessoa {

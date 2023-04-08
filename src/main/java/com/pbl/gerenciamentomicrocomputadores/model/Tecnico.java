@@ -3,9 +3,10 @@ package com.pbl.gerenciamentomicrocomputadores.model;
 /**  Classe para objetos do tipo Técnico. É uma extensão da classe abstrata Pessoa, herdando
  *  seus atributos, juntamente com os setters e getters.
  *
- * @author Silvio Oliveira
- * @author Sival Leão
+ * @author Silvio Oliveira,  Sival Leão.
+ * @version 1.0.
  */
+
 public class Tecnico extends Pessoa {
 
     /** Construtor que recebe como parâmetros a maioria dos atributos da classe para inseri-las

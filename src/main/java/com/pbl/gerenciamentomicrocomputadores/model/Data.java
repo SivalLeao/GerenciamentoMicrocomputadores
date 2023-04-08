@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 
 /** Classe para objetos do tipo Data. Possui a data de início e a de finalização do serviço como atributos.
  *
- * @author Silvio Oliveira
- * @author Sival Leão
+ * @author Silvio Oliveira,  Sival Leão.
+ * @version 1.0.
  */
 
 public class Data {
