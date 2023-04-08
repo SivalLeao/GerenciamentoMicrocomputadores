@@ -1,16 +1,27 @@
 package com.pbl.gerenciamentomicrocomputadores.model;
 
+/** Classe abstrata para as classes Cliente e Tecnico. Inclui a declaração de atributos, métodos de inserção
+ * e retorno, e métodos de validação de dados.
+ *
+ * @author Silvio Oliveira
+ * @author Sival Leão
+ */
+
 public abstract class Pessoa {
 
     private String nome;
-
     private String endereco;
-
     private String telefone;
-
     private String cpf;
-
     private int id;
+
+    /** Construtor que recebe como parâmetros a maioria dos atributos da classe para inseri-las
+     * diretamente.
+     *
+     * @param nome String - nome do clente.
+     * @param endereco String - endereço do cliente.
+     * @param telefone String - telefone do cliente.
+     * @param cpf String - CPF do cliente.*/
 
     public Pessoa (String nome, String endereco, String telefone, String cpf) {
 
@@ -20,13 +31,35 @@ public abstract class Pessoa {
         this.cpf = cpf;
     }
 
-    public void setNome(String nome) { this.nome = nome; }
+
+    /** Método para inserir o dado no atributo nome.
+     *
+     * @param nome String - nome da pessoa.*/
+
+    public void setNome (String nome) { this.nome = nome; }
+
+    /** Método de retorno do nome da pessoa.
+     *
+     * @return String - nome da pessoa.*/
 
     public String getNome() { return nome; }
 
+    /** Método para inserir o dado no atributo endereco.
+     *
+     * @param endereco String - endereço da pessoa.*/
+
     public void setEndereco(String endereco) { this.endereco = endereco; }
 
+    /** Método de retorno do endereço da pessoa.
+     *
+     * @return String - endereço da pessoa.*/
+
     public String getEndereco() { return endereco; }
+
+    /** Método para inserir o dado no atributo telefone. A informação é convertida para uma melhor forma de
+     * armazenamento antes de ser inserida no atributo.
+     *
+     * @param telefone String - telefone da pessoa.*/
 
     public void setTelefone(String telefone) {
         String Telefone = telefone.replaceAll("\\s+|\\(+|\\)+|-+", "");
@@ -34,7 +67,16 @@ public abstract class Pessoa {
         this.telefone = telefoneFormatado;
     }
 
+    /** Método de retorno do número de telefone da pessoa.
+     *
+     * @return String - telefone da pessoa.*/
+
     public String getTelefone() { return telefone; }
+
+    /** Método para inserir o dado no atributo cpf. A informação é convertida para uma melhor forma de
+     * armazenamento antes de ser inserida no atributo.
+     *
+     * @param cpf String - CPF da pessoa.*/
 
     public void setCpf(String cpf) {
         String Cpf = cpf.replaceAll("\\s+|\\.|-+", "");
@@ -42,13 +84,31 @@ public abstract class Pessoa {
         this.cpf = CpfFormatado;
     }
 
+    /** Método de retorno do CPF da pessoa.
+     *
+     * @return String - CPF da pessoa.*/
+
     public String getCpf() {
         return cpf;
     }
 
+    /** Método para inserir o dado no atributo id.
+     *
+     * @param id int - ID da pessoa.*/
+
     public void setId (int id) { this.id = id; }
 
+    /** Método de retorno do ID da pessoa.
+     *
+     * @return int - ID da pessoa.*/
+
     public int getId() { return id; }
+
+    /** Método para validar o nome inserido pelo usuário. Retorna o boolean true se for um dado válido,
+     * e false, caso não seja. Checa se o nome só tem letras e espaços, e possui três ou mais caracteres.
+     *
+     * @param nome String - nome inserido pelo usuário.
+     * @return boolean - resultado da checagem.*/
 
     public boolean validarNome (String nome) {
 
@@ -61,6 +121,12 @@ public abstract class Pessoa {
         return false;
     }
 
+    /** Método para validar o endereço inserido pelo usuário. Retorna o boolean true se for um dado válido,
+     * e false, caso não seja. Checa se possui três ou mais caracteres.
+     *
+     * @param endereco String - endereço inserido pelo usuário.
+     * @return boolean - resultado da checagem.*/
+
     public boolean validarEndereco (String endereco) {
 
         if ( (endereco.replaceAll("\\s+", "").length() >= 3)) {
@@ -70,6 +136,12 @@ public abstract class Pessoa {
 
         return false;
     }
+
+    /** Método para validar o número de telefone inserido pelo usuário. Retorna o boolean true se for um dado válido,
+     * e false, caso não seja. Checa se possui 11 números, tirando outros símbolos.
+     *
+     * @param telefone String - número de telefone inserido pelo usuário.
+     * @return boolean - resultado da checagem.*/
 
     public boolean validarTelefone (String telefone) {
 
@@ -81,6 +153,12 @@ public abstract class Pessoa {
 
         return false;
     }
+
+    /** Método para validar o CPF inserido pelo usuário. Retorna o boolean true se for um dado válido,
+     * e false, caso não seja. Checa se possui 11 números, tirando outros símbolos.
+     *
+     * @param cpf String - CPF inserido pelo usuário.
+     * @return boolean - resultado da checagem.*/
 
     public boolean validarCpf (String cpf) {
 
