@@ -10,6 +10,8 @@ public interface OrdemDeServicoDAO extends CRUD<OrdemDeServico> {
 
     public List<OrdemDeServico> findByIdTecnico (int idTecnico);
 
+    public List<OrdemDeServico> openListTecnico (int idTecnico);
+
     public Map<String, Integer> updateStatus (int idOrdem, String status);
 
     public boolean checkStatus (int idTecnico);

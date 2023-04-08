@@ -124,6 +124,25 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
     }
 
     @Override
+    public List<OrdemDeServico> openListTecnico (int idTecnico) {
+
+        List<OrdemDeServico> listOrdemDeServico = new ArrayList<OrdemDeServico>();
+
+        for (OrdemDeServico ordemDeServico: this.lista) {
+
+            if (ordemDeServico.getIdTecnico() == idTecnico) {
+
+                if (ordemDeServico.getStatusAtual().equals("Em andamento") || ordemDeServico.getStatusAtual().equals("Em espera")) {
+
+                    listOrdemDeServico.add(ordemDeServico);
+                }
+            }
+        }
+
+        return listOrdemDeServico;
+    }
+
+    @Override
     public boolean checkById (int idOrdem) {
 
         for (OrdemDeServico ordemDeServico: this.lista) {
