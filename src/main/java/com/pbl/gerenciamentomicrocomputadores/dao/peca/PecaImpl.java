@@ -67,7 +67,7 @@ public class PecaImpl implements PecaDAO {
     }
 
     @Override
-    public List<Peca> findMany() {
+    public List<Peca> findMany () {
 
         List<Peca> listPeca = new ArrayList<Peca>();
 
@@ -117,6 +117,18 @@ public class PecaImpl implements PecaDAO {
         }
 
         return listPeca;
+    }
+
+    public void refundQuantity (Map<String, Integer> mapItens) {
+
+        int novaQuantidade;
+
+        for (String nomePeca: mapItens.keySet()) {
+
+            novaQuantidade = this.map.get(nomePeca).getQuantidade() + mapItens.get(nomePeca);
+
+            this.map.get(nomePeca).setQuantidade( novaQuantidade);
+        }
     }
 
     @Override

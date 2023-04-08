@@ -4,6 +4,7 @@ import com.pbl.gerenciamentomicrocomputadores.dao.CRUD;
 import com.pbl.gerenciamentomicrocomputadores.model.Peca;
 
 import java.util.List;
+import java.util.Map;
 
 public interface PecaDAO extends CRUD<Peca> {
 
@@ -16,5 +17,7 @@ public interface PecaDAO extends CRUD<Peca> {
     public boolean checkQuatity (String nome, int quantidade);
 
     public List<Peca> quantityAlert ();
+
+    public void refundQuantity (Map<String, Integer> mapItens);
 
 }
