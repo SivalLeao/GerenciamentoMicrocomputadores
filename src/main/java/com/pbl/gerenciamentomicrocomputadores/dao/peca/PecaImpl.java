@@ -151,18 +151,42 @@ public class PecaImpl implements PecaDAO {
         return mapItens;
     }
 
-    @Override
-    public Peca findById (int id) {
-        return null;
+    public void removePeca (String nomePeca) {
+
+        this.map.remove(nomePeca);
     }
+
+    @Override
+    public void deleteMany () {
+
+        this.map.clear();
+
+        Peca peca0 = new Peca("ram", 0, 20, 20);
+        this.map.put(peca0.getNome(), peca0);
+
+        Peca peca1 = new Peca("placa mae", 0, 100, 100);
+        this.map.put(peca1.getNome(), peca1);
+
+        Peca peca2 = new Peca("fonte", 0, 30, 30);
+        this.map.put(peca2.getNome(), peca2);
+
+        Peca peca3 = new Peca("placa de video", 0, 100, 100);
+        this.map.put(peca3.getNome(), peca3);
+
+        Peca peca4 = new Peca("hd", 0, 30, 30);
+        this.map.put(peca4.getNome(), peca4);
+
+        Peca peca5 = new Peca("ssd", 0, 30, 30);
+        this.map.put(peca5.getNome(), peca5);
+    }
+
+    @Override
+    public Peca findById (int id) { return null;}
 
     @Override
     public void delete(int id) { }
 
     @Override
     public boolean checkById(int id) { return false; }
-
-    @Override
-    public void deleteMany() { }
 
 }

@@ -22,4 +22,6 @@ public interface PecaDAO extends CRUD<Peca> {
 
     public Map<String, Integer> refundQuantity (Map<String, Integer> mapItens);
 
+    public void removePeca (String nomePeca);
+
 }
