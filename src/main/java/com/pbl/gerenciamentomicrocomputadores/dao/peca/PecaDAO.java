@@ -12,6 +12,8 @@ public interface PecaDAO extends CRUD<Peca> {
 
     public void addQuantity (String nome, int quatidade);
 
+    public Map<String, Peca> findFullMap ();
+
     boolean checkByName (String nome);
 
     public boolean checkQuatity (String nome, int quantidade);

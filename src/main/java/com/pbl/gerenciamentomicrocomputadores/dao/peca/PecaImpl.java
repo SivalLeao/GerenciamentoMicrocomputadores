@@ -80,6 +80,19 @@ public class PecaImpl implements PecaDAO {
     }
 
     @Override
+    public Map<String, Peca> findFullMap () {
+
+        Map<String, Peca> mapPeca = new HashMap<String, Peca>();
+
+        for (String nomePeca: this.map.keySet()) {
+
+            mapPeca.put(nomePeca, this.map.get(nomePeca));
+        }
+
+        return mapPeca;
+    }
+
+    @Override
     public boolean checkByName(String nome){
 
         for (String key: this.map.keySet()) {
