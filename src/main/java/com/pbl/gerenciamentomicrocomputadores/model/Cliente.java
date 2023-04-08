@@ -5,6 +5,7 @@ package com.pbl.gerenciamentomicrocomputadores.model;
  *
  * @author Silvio Oliveira
  * @author Sival Leão
+ * @version 1.0.
  */
 public class Cliente extends Pessoa {
 
