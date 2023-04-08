@@ -20,6 +20,6 @@ public interface PecaDAO extends CRUD<Peca> {
 
     public List<Peca> quantityAlert ();
 
-    public void refundQuantity (Map<String, Integer> mapItens);
+    public Map<String, Integer> refundQuantity (Map<String, Integer> mapItens);
 
 }

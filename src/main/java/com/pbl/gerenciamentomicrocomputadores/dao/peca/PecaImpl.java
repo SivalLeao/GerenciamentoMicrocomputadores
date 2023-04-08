@@ -132,16 +132,23 @@ public class PecaImpl implements PecaDAO {
         return listPeca;
     }
 
-    public void refundQuantity (Map<String, Integer> mapItens) {
+    public Map<String, Integer> refundQuantity (Map<String, Integer> mapItens) {
 
         int novaQuantidade;
 
         for (String nomePeca: mapItens.keySet()) {
 
-            novaQuantidade = this.map.get(nomePeca).getQuantidade() + mapItens.get(nomePeca);
+            if (this.map.containsKey(nomePeca)) {
 
-            this.map.get(nomePeca).setQuantidade( novaQuantidade);
+                novaQuantidade = this.map.get(nomePeca).getQuantidade() + mapItens.get(nomePeca);
+
+                mapItens.remove(nomePeca);
+
+                this.map.get(nomePeca).setQuantidade(novaQuantidade);
+            }
         }
+
+        return mapItens;
     }
 
     @Override
