@@ -20,13 +20,13 @@ public interface CRUD<T>  {
     /** Método de retorno do objeto através da busca por ID.
      *
      * @param id int - número de ID.
-     * @return T - objeto encontrado após a busca através do ID.*/
+     * @return obj - objeto encontrado após a busca através do ID.*/
 
     public T findById (int id);
 
     /** Método de atualização dos dados de um objeto na estrutura de armazenamento.
      *
-     * @param T obj objeto que deve ser atualizado.*/
+     * @param obj objeto que deve ser atualizado.*/
 
     public void update (T obj);
 
@@ -38,14 +38,14 @@ public interface CRUD<T>  {
 
     /** Método de retorno da lista completa de dados armazenados.
      *
-     * @return T - lista de objetos armazenados.*/
+     * @return List - lista de objetos armazenados.*/
 
     public List<T> findMany ();
 
     /** Método para checar se determinado objeto existe no armazenamento através do ID.
      *
      * @param id int - ID do objeto.
-     * @return boolean - resultado da checagem se o objeto está contido no armazenamento ou não.*/
+     * @return boolean - resultado da checagem. Se o objeto está contido no armazenamento ou não.*/
 
     public boolean checkById (int id);
 
