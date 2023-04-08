@@ -5,6 +5,7 @@ import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
 
@@ -55,7 +56,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
         }
     }
 
-    public void updateStatus (int idOrdem, String status) {
+    public Map<String, Integer> updateStatus (int idOrdem, String status) {
 
         for (int i = 0; i < this.lista.size(); i++) {
 
@@ -66,9 +67,18 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
                 if (status.equals("Finalizado")) {
 
                     this.lista.get(i).getData().setDataFim(LocalDateTime.now());
+                    return null;
+                }
+                else if (status.equals("Cancelado")) {
+
+                    OrdemDeServico ordemDeServico = findById(idOrdem);
+
+                    return ordemDeServico.getDescricaoServico().getMapItens();
                 }
             }
         }
+
+        return null;
     }
 
     @Override
