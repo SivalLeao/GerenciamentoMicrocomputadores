@@ -2,6 +2,8 @@ package com.pbl.gerenciamentomicrocomputadores.model;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
+import java.util.Map;
 
 public class OrdemDeServico {
 
@@ -78,6 +80,36 @@ public class OrdemDeServico {
     public long calcularTempoDeServico () {
 
         return ChronoUnit.SECONDS.between(this.data.getDataInicio(), this.data.getDataFim());
+    }
+
+    public double calcularValorServico (Map<String, Peca> mapPeca) {
+
+        Map<String, Integer> mapPecaServico = this.descricaoServico.getMapItens();
+
+        double valorPecas = 0.0;
+
+        if (this.descricaoServico.getTipoDeServico().equals("Montagem/Instalação")) {
+
+            for (String nomePeca : mapPecaServico.keySet()) {
+
+                valorPecas += mapPeca.get(nomePeca).getValor() * mapPecaServico.get(nomePeca);
+            }
+
+        }
+        else if (this.descricaoServico.getTipoDeServico().equals("Sistema operacional")) {
+
+            valorPecas = 50;
+        }
+        else if (this.descricaoServico.getTipoDeServico().equals("Programas")) {
+
+            valorPecas = 10;
+        }
+        else if (this.descricaoServico.getTipoDeServico().equals("Limpeza")) {
+
+            valorPecas = 70;
+        }
+
+        return valorPecas;
     }
 
 }
