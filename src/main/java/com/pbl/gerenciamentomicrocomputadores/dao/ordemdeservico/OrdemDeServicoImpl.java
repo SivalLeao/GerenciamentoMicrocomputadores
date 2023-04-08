@@ -173,7 +173,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
     @Override
     public void deleteMany () {
 
-        this.lista = new ArrayList<OrdemDeServico>();
+        this.lista.clear();
         this.id = 1113;
     }
 

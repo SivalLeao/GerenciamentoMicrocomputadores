@@ -123,7 +123,7 @@ public class TecnicoImpl implements TecnicoDAO {
     @Override
     public void deleteMany () {
 
-        this.lista = new ArrayList<Tecnico>();
+        this.lista.clear();
         this.id = 1111;
     }
 

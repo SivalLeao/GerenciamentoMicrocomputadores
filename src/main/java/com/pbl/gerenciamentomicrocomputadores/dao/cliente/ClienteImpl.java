@@ -123,7 +123,7 @@ public class ClienteImpl implements ClienteDAO {
     @Override
     public void deleteMany () {
 
-        this.lista = new ArrayList<Cliente>();
+        this.lista.clear();
         this.id = 1112;
     }
 
