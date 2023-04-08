@@ -51,8 +51,12 @@ public class PecaImpl implements PecaDAO {
     public void removeQuantity (String nome, int quantidade) {
 
         int novaQuantidade;
-        String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
+
+        String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD)
+                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
+
         novaQuantidade = this.map.get(nomeFormatado).getQuantidade() - quantidade;
+
         this.map.get(nomeFormatado).setQuantidade(novaQuantidade);
     }
 
@@ -60,23 +64,13 @@ public class PecaImpl implements PecaDAO {
     public void addQuantity (String nome, int quantidade){
 
         int novaQuantidade;
-        String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
+
+        String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD)
+                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
 
         novaQuantidade = this.map.get(nomeFormatado).getQuantidade() + quantidade;
+
         this.map.get(nomeFormatado).setQuantidade(novaQuantidade);
-    }
-
-    @Override
-    public List<Peca> findMany () {
-
-        List<Peca> listPeca = new ArrayList<Peca>();
-
-        for (String nome: this.map.keySet()) {
-
-            listPeca.add(this.map.get(nome));
-        }
-
-        return listPeca;
     }
 
     @Override
@@ -93,11 +87,23 @@ public class PecaImpl implements PecaDAO {
     }
 
     @Override
+    public Peca findByName (String nome) {
+
+        String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD)
+                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
+
+        return this.map.get(nomeFormatado);
+    }
+
+    @Override
     public boolean checkByName(String nome){
+
+        String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD)
+                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
 
         for (String key: this.map.keySet()) {
 
-            if (nome.equals(key)){
+            if (nomeFormatado.equals(key)){
                 return true;
             }
         }
@@ -105,9 +111,12 @@ public class PecaImpl implements PecaDAO {
         return false;
     }
 
-    public boolean checkQuatity (String nome, int quantidade) {
+    public boolean checkQuantity (String nome, int quantidade) {
 
-        if (this.map.get(nome).getQuantidade() >= quantidade) {
+        String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD)
+                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
+
+        if (this.map.get(nomeFormatado).getQuantidade() >= quantidade) {
 
             return true;
         }
@@ -136,24 +145,31 @@ public class PecaImpl implements PecaDAO {
 
         int novaQuantidade;
 
+        Map<String, Integer> mapItensNaoDevolvidos = new HashMap<String, Integer>();
+
         for (String nomePeca: mapItens.keySet()) {
 
             if (this.map.containsKey(nomePeca)) {
 
                 novaQuantidade = this.map.get(nomePeca).getQuantidade() + mapItens.get(nomePeca);
 
-                mapItens.remove(nomePeca);
-
                 this.map.get(nomePeca).setQuantidade(novaQuantidade);
+            }
+            else {
+
+                mapItensNaoDevolvidos.put(nomePeca, mapItens.get(nomePeca));
             }
         }
 
-        return mapItens;
+        return mapItensNaoDevolvidos;
     }
 
     public void removePeca (String nomePeca) {
 
-        this.map.remove(nomePeca);
+        String nomeFormatado = Normalizer.normalize(nomePeca, Normalizer.Form.NFD)
+                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
+
+        this.map.remove(nomeFormatado);
     }
 
     @Override
@@ -179,6 +195,9 @@ public class PecaImpl implements PecaDAO {
         Peca peca5 = new Peca("ssd", 0, 30, 30);
         this.map.put(peca5.getNome(), peca5);
     }
+
+    @Override
+    public List<Peca> findMany () { return null;};
 
     @Override
     public Peca findById (int id) { return null;}
