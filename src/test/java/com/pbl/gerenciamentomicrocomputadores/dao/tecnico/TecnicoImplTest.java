@@ -10,24 +10,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TecnicoImplTest {
 
     @Test
-    void findMany () {
-
-        TecnicoDAO dao = new TecnicoImpl();
-
-        Tecnico t1 = new Tecnico("Leonard","Nova Jérsei","44444444444","55555555555");
-        Tecnico t2 = new Tecnico("Sheldon","Galveston, Texas","77777777777","33333333333");
-
-        dao.create(t1);
-        dao.create(t2);
-
-        List<Tecnico> lista = dao.findMany();
-        assertEquals(2,lista.size());
-
-        assertEquals(lista.get(0), t1);
-        assertEquals(lista.get(1), t2);
-    }
-
-    @Test
     void create () {
 
         TecnicoDAO dao = new TecnicoImpl();
@@ -51,6 +33,24 @@ public class TecnicoImplTest {
         assertEquals(lista.get(1).getTelefone(),"77777777777");
         assertEquals(lista.get(1).getCpf(),"33333333333");
         assertEquals(lista.get(1).getId(),1121);
+    }
+
+    @Test
+    void findMany () {
+
+        TecnicoDAO dao = new TecnicoImpl();
+
+        Tecnico t1 = new Tecnico("Leonard","Nova Jérsei","44444444444","55555555555");
+        Tecnico t2 = new Tecnico("Sheldon","Galveston, Texas","77777777777","33333333333");
+
+        dao.create(t1);
+        dao.create(t2);
+
+        List<Tecnico> lista = dao.findMany();
+        assertEquals(2,lista.size());
+
+        assertEquals(lista.get(0), t1);
+        assertEquals(lista.get(1), t2);
     }
 
     @Test
