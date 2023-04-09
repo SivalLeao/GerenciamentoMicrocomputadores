@@ -8,9 +8,20 @@ import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
 
+/** É responsável por armazenar todos as peças do sistema, e estruturar os métodos
+ * necessários para inserir, consultar, alterar ou remover. Implementa a interface PecaDAO.
+ *
+ * @author Silvio Oliveira,  Sival Leão.
+ * @version 1.0.
+ */
+
 public class PecaImpl implements PecaDAO {
 
     private Map<String, Peca> map;
+
+    /** Construtor que inicializa a estrutura de armazenamento de peças. A peças básicas já são inseridas
+     * com 10 de quantidade e seus valores padrões. Todos os nomes das peças são colocados na estrutura com
+     * letras minúsculas e sem acentos.*/
 
     public PecaImpl () {
 
@@ -35,17 +46,36 @@ public class PecaImpl implements PecaDAO {
         this.map.put(peca5.getNome(), peca5);
     }
 
+    /** Método para inserir um objeto do tipo Peca na estrutura HashMap de armazenamento.
+     * O nome da peça é usado como chave e o objeto é o conteúdo.
+     *
+     * @param peca Peca - peça que deve ser inserida.*/
+
     @Override
     public void create (Peca peca) {
 
         map.put(peca.getNome(), peca);
     }
 
+    /** Método para atualizar as informações de uma peça na estrutura. O nome é utilizado para encontrar
+     * o objeto antigo que representava a peça, substituindo-o pelo novo objeto com as informações atualizadas.
+     *
+     * @param peca Peca - peça que deve ser atualizada.*/
+
     @Override
     public void update (Peca peca) {
 
         map.put(peca.getNome(), peca);
     }
+
+    /** Método para remover determinada quantidade de uma peça específica. A peça é identificada
+     * pelo nome. Antes de fazer as alterações na quantidade, as letras do nome são convertidas para
+     * minúsculo e os acentos são retirados, para que a busca possa ser feita. O método checkQuantity
+     * deve ser usado antes de chamar removeQuantity para conferir se a quantidade pode ser retirada sem
+     * ultrapassar o limite.
+     *
+     * @param nome String - nome da peça.
+     * @param quantidade int - quantidade que deve ser retirada da peça.*/
 
     @Override
     public void removeQuantity (String nome, int quantidade) {
@@ -60,6 +90,13 @@ public class PecaImpl implements PecaDAO {
         this.map.get(nomeFormatado).setQuantidade(novaQuantidade);
     }
 
+    /** Método para adicionar determinada quantidade de uma peça específica. A peça é identificada
+     * pelo nome. Antes de fazer as alterações na quantidade,  as letras do nome são convertidas
+     * para minúsculo e seus acentos são retirados, para que a busca possa ser feita.
+     *
+     * @param nome String - nome da peça.
+     * @param quantidade int - quantidade que deve ser adicionada da peça.*/
+
     @Override
     public void addQuantity (String nome, int quantidade){
 
@@ -72,6 +109,12 @@ public class PecaImpl implements PecaDAO {
 
         this.map.get(nomeFormatado).setQuantidade(novaQuantidade);
     }
+
+    /** Método de retorno de todo o armazenamento de peças do sistema. Os dados são compactados em
+     * uma estrutura do tipo HashMap, que tem o nome da peça como chave e o objeto do tipo Peca como
+     * conteúdo.
+     *
+     * @return Map<String, Peca> - estrutura com todas as peças do sistema armazenadas.*/
 
     @Override
     public Map<String, Peca> findFullMap () {
@@ -86,6 +129,12 @@ public class PecaImpl implements PecaDAO {
         return mapPeca;
     }
 
+    /** Método de retorno de uma peça através da busca por nome. Antes de realizar a busca, as letras do
+     * nome são convertidas para minúsculo e seus acentos são retirados.
+     *
+     * @param nome String - nome da peça.
+     * @return Peca - peça encontrada após a busca por nome.*/
+
     @Override
     public Peca findByName (String nome) {
 
@@ -94,6 +143,12 @@ public class PecaImpl implements PecaDAO {
 
         return this.map.get(nomeFormatado);
     }
+
+    /** Método para checar se uma peça está armazenada no sistema através da busca por nome. Antes de
+     * realizar a busca, as letras do nome são convertidas para minúsculo e seus acentos são retirados.
+     *
+     * @param nome String - nome da peça.
+     * @return boolean - resultado da busca pela peça. Se foi achada ou não.*/
 
     @Override
     public boolean checkByName(String nome){
@@ -111,6 +166,16 @@ public class PecaImpl implements PecaDAO {
         return false;
     }
 
+    /** Método para checar se um tipo de peça tem quantidade suficiente para realizar
+     * determinada ordem de serviço de montagem. Antes de fazer a checagem, as letras do nome
+     * são convertidas para minúsculo e seus acentos são retirados, para que as informações
+     * possam ser encontradas.
+     *
+     * @param nome String - nome da peça.
+     * @param quantidade int - quantidade que o serviço precisa utilizar da peça.
+     * @return boolean - resultado da checagem de quantidade. Se a peça possui a quantidade suficiente
+     * ou não.*/
+
     public boolean checkQuantity (String nome, int quantidade) {
 
         String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD)
@@ -126,6 +191,11 @@ public class PecaImpl implements PecaDAO {
         }
     }
 
+    /** Método para encontrar as peças do sistema que estão com uma baixa quantidade. O valor de alerta é 5.
+     * Se uma peça tiver quantidade igual ou menor ao valor de alerta, ela é adicionada na lista de retorno.
+     *
+     * @return List<Peca> - lista de peças com baixa quantidade.*/
+
     public List<Peca> quantityAlert () {
 
         List<Peca> listPeca = new ArrayList<Peca>();
@@ -140,6 +210,16 @@ public class PecaImpl implements PecaDAO {
 
         return listPeca;
     }
+
+    /** Método para devolver a quantidade retirada das peças para a realização de uma
+     * ordem de serviço. Utilizado quando uma ordem de serviço é cancelada e as peças precisam ser
+     * adicionadas novamente. Caso algumas peças não possam ser retornadas ao sistema, uma estrutura
+     * listando elas é retornada pelo método.
+     *
+     * @param mapItens Map<String,Integer> - estrutura com o nome das peças e suas quantidades
+     *                 que devem ser devolvidas.
+     * @return Map<String,Integer> - estrutura com os nomes as peças que não puderam ser devolvidas
+     * e suas quantidade.*/
 
     public Map<String, Integer> refundQuantity (Map<String, Integer> mapItens) {
 
@@ -164,13 +244,22 @@ public class PecaImpl implements PecaDAO {
         return mapItensNaoDevolvidos;
     }
 
-    public void removePeca (String nomePeca) {
+    /** Método para remover uma peça do armazenamento. A peça é encontrada através do nome. Antes de
+     * fazer a procura da localização, as letras do nome são convertidas para minúsculo e os acentos são retirados.
+     *
+     * @param nome String - nome da peça que deve ser removida.*/
 
-        String nomeFormatado = Normalizer.normalize(nomePeca, Normalizer.Form.NFD)
+    public void removePeca (String nome) {
+
+        String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD)
                 .replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
 
         this.map.remove(nomeFormatado);
     }
+
+    /** Método para esvaziar todo o armazenamento de peças. A função clear é usada para limpar toda
+     * a estrutura HashMap. As peças básicas são adicionadas novamente, porém com suas quantidades
+     * zeradas.*/
 
     @Override
     public void deleteMany () {
