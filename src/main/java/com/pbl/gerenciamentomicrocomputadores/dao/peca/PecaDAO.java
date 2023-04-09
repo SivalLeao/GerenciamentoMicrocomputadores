@@ -70,10 +70,10 @@ public interface PecaDAO extends CRUD<Peca> {
 
     public List<Peca> quantityAlert ();
 
-    /** Método para retornar a quantidade retirada das peças no sistema para a realização de uma
+    /** Método para devolver a quantidade retirada das peças para a realização de uma
      * ordem de serviço. Utilizado quando uma ordem de serviço é cancelada e as peças precisam ser
-     * devolvidas. Caso algumas peças não possam ser retornadas ao sistema, uma estrutura listando elas é
-     * retornada pelo método.
+     * adicionadas novamente. Caso algumas peças não possam ser retornadas ao sistema, uma estrutura
+     * listando elas é retornada pelo método.
      *
      * @param mapItens Map<String,Integer> - estrutura com o nome das peças e suas quantidades
      *                 que devem ser devolvidas.
@@ -84,8 +84,8 @@ public interface PecaDAO extends CRUD<Peca> {
 
     /** Método para remover uma peça do armazenamento. A peça é encontrada através do nome.
      *
-     * @param nomePeca String - nome da peça que deve ser removida.*/
+     * @param nome String - nome da peça que deve ser removida.*/
 
-    public void removePeca (String nomePeca);
+    public void removePeca (String nome);
 
 }
