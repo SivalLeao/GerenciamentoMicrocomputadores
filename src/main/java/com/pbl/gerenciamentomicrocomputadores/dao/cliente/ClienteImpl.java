@@ -19,7 +19,7 @@ public class ClienteImpl implements ClienteDAO {
     private int id;
 
     /** Construtor que inicializa a lista de armazenamento de clientes e o número de ID. O ID do
-     * Cliente possui o 2 como número fixo na casa da unidade, modificando apenas os valores nas
+     * cliente possui o 2 como número fixo na casa da unidade, modificando apenas os valores nas
      * outras casas.*/
 
     public ClienteImpl () {
@@ -29,7 +29,7 @@ public class ClienteImpl implements ClienteDAO {
     }
 
     /** Método para adicionar um cliente na lista. O ID é inserido nos dados do cliente antes de
-     * adicioná-lo na lista. O valor 10 é somado no ID para o próximo cliente.
+     * adicioná-lo na lista. O valor 10 é somado no atributo id para o próximo cliente.
      *
      * @param cliente Cliente - cliente que deve ser armazenado.*/
 
@@ -100,8 +100,7 @@ public class ClienteImpl implements ClienteDAO {
 
     /** Método para remover um cliente através da busca por ID.
      *
-     * @param id int - ID do cliente que deve ser removido.
-     */
+     * @param id int - ID do cliente que deve ser removido.*/
 
     @Override
     public void delete (int id) {
@@ -118,8 +117,7 @@ public class ClienteImpl implements ClienteDAO {
 
     /** Método de retorno de toda a lista de clientes armazenada no sistema.
      *
-     * @return List<Cliente> - lista de clientes do sistema.
-     */
+     * @return List<Cliente> - lista de clientes do sistema.*/
 
     @Override
     public List<Cliente> findMany () {
