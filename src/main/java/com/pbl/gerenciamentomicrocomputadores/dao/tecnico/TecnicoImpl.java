@@ -15,7 +15,6 @@ import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
 public class TecnicoImpl implements TecnicoDAO {
 
     private List<Tecnico> lista;
-
     private int id;
 
     /** Construtor que inicializa a lista de armazenamento de técnicos e o número de ID. O ID do

@@ -15,7 +15,6 @@ import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
 public class ClienteImpl implements ClienteDAO {
 
     private List<Cliente> lista;
-
     private int id;
 
     /** Construtor que inicializa a lista de armazenamento de clientes e o número de ID. O ID do
