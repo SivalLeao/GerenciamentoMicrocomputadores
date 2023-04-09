@@ -2,8 +2,7 @@ package com.pbl.gerenciamentomicrocomputadores.model;
 /** Classe para objetos do tipo Peca. É responsavel por armazenar as informações de
  *  uma nova peças novas na assistência técnica.
  *
- * @author Silvio Oliveira
- * @author Sival Leão
+ * @author Silvio Oliveira,  Sival Leão.
  * @version 1.0.
  */
 
