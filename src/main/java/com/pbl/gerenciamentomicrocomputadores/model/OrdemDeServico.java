@@ -36,9 +36,11 @@ public class OrdemDeServico {
     /** Construtor responsável por definir a hora atual da criação da ordem de serviço e criar um objeto vazio
      * para armazenar as informações do serviço solicitado pelo cliente.
      */
-    public OrdemDeServico () {
+    public OrdemDeServico ( int idTecnico, int idCliente) {
 
         this.data = new Data( LocalDateTime.now());
+        this.idTecnico = idTecnico;
+        this.idCliente = idCliente;
         this.descricaoServico = new DescricaoServico();
     }
 
