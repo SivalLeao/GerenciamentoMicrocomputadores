@@ -3,8 +3,8 @@
   <p>Sistema de Gerenciamento de Microcomputadores</p>
   
 </h1>
-<blockquote> Projeto utilizado como ferramento de avaliação para a disciplina de 
-MI - Programação do curso de Engenharia de Comutação da UEFS.</blockquote>
+<blockquote> Projeto utilizado como ferramenta de avaliação para a disciplina de 
+MI - Programação do curso de Engenharia de Computação da UEFS.</blockquote>
 
 ## :blue_book: Sobre
 
