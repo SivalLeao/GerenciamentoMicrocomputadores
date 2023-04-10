@@ -2,8 +2,7 @@ package com.pbl.gerenciamentomicrocomputadores.model;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PessoaTest {
 
@@ -44,6 +43,17 @@ public class PessoaTest {
         assertTrue( t0.validarCpf( "123.456.789-01"));
         assertTrue( t0.validarCpf( "12345678901"));
         assertFalse( t0.validarCpf( "1234567890"));
+    }
+    @Test
+    void imprimirPessoa(){
+        Cliente c0 = new Cliente("Dayana", "Rua Aquário num 2", "77777777777", "22222222222");
+        c0.setId(1112);
+
+        assertEquals("""
+                             NOME: Dayana
+                             CPF: 22222222222           TELEFONE: 77777777777      ID: 1112
+                             ENDEREÇO: Rua Aquário num 2     
+                            """,c0.imprimirPessoa());
     }
     
 }
