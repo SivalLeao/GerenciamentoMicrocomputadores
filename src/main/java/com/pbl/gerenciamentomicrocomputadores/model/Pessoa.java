@@ -170,5 +170,14 @@ public abstract class Pessoa {
 
         return false;
     }
+    public String imprimirPessoa() {
+        return String.format(
+                """
+                 NOME: %s  
+                 CPF: %s           TELEFONE: %s      ID: %d
+                 ENDEREÇO: %s       
+                """, this.nome, this.cpf, this.telefone, this.id, this.endereco
+        );
+    }
 
 }
