@@ -15,7 +15,7 @@ public class PecaTest {
                 Nome: teclado
                 Quantidade: 2
                 Valor: 40,0
-                Custo: 30,
+                Custo: 30,0
                 """, peca0.imprimirPeca());
     }
 
