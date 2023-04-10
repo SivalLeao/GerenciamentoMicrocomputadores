@@ -81,4 +81,16 @@ public class Peca {
 
     public double getCusto () { return custo; }
 
+    public String imprimirPeca () {
+
+        return String.format(
+                """
+                Nome: %s
+                Quantidade: %d
+                Valor: %.1f
+                Custo: %.1f
+                """,
+                this.nome, this.quantidade, this.valor, this.custo);
+    }
+
 }

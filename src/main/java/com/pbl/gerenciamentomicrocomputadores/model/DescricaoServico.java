@@ -45,7 +45,7 @@ public class DescricaoServico {
      *
      * @param nomePeca String - Nome da peça
      * @param quantidade int - Quantidade da peça*/
-    
+
     public void setMapItens (String nomePeca, int quantidade) {
         this.mapItens.put(nomePeca, quantidade);
     }
@@ -64,6 +64,54 @@ public class DescricaoServico {
         }
 
         return mapItens;
+    }
+
+    public String imprimirDescricaoServico () {
+
+        String descricao = "";
+
+        if ( this.tipoDeServico.equals("Montagem/Instalação")) {
+            descricao = "Montagem/Instalação de peças";
+        }
+        else if ( this.tipoDeServico.equals("Sistema operacional")) {
+            descricao = "Formatação/Instalação de sistema operacional";
+        }
+        else if ( this.tipoDeServico.equals("Programas")) {
+            descricao = "Formatação/Instalação de programas";
+        }
+        else if ( this.tipoDeServico.equals("Limpeza")) {
+            descricao = "Limpeza";
+        }
+
+        String dadosPecas;
+
+        if ( this.tipoDeServico.equals("Montagem/Instalação")) {
+
+            dadosPecas = "\nPeças:\n";
+            String linhaString = "";
+            int contador = 0;
+
+            for (String nomePeca: this.mapItens.keySet()) {
+
+                contador++;
+
+                linhaString = String.format("\nPeça %d - nome: %s ; quantidade: %d",
+                        contador, nomePeca, this.mapItens.get(nomePeca));
+
+                dadosPecas = dadosPecas.concat(linhaString);
+            }
+
+        }
+        else {
+
+            dadosPecas = "";
+        }
+
+        return String.format(
+                """
+                Descrição: %s%s
+                """,
+                descricao, dadosPecas);
     }
 
 }
