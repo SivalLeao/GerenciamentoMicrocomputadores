@@ -42,8 +42,3 @@ desenvolvimento dos testes de unidade.
 - :x: Fase 3: Persistência de dados. Garantir que as informações sejam armazenadas e 
 recuperadas de forma consistente.
 - :x: Fase 4: Implementação da interface gráfica.
-
-## Colaboradores
-
-- Silvio Oliveira
-- Sival Leão
