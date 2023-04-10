@@ -170,14 +170,18 @@ public abstract class Pessoa {
 
         return false;
     }
+
+    /** Método de impressão dos dados cadastrais de uma pessoa.
+     *
+     * @return String - texto formatado contendo dados de cadastro de uma pessoa
+     */
     public String imprimirPessoa() {
         return String.format(
                 """
                  NOME: %s  
                  CPF: %s           TELEFONE: %s      ID: %d
                  ENDEREÇO: %s       
-                """, this.nome, this.cpf, this.telefone, this.id, this.endereco
-        );
+                """, this.nome, this.cpf, this.telefone, this.id, this.endereco);
     }
 
 }
