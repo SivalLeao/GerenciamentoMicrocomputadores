@@ -81,6 +81,10 @@ public class Peca {
 
     public double getCusto () { return custo; }
 
+    /** Método para converter todos os dados da peça em um único objeto String e retornar ao usuário.
+     *
+     * @return String - informações da peça.*/
+
     public String imprimirPeca () {
 
         return String.format(

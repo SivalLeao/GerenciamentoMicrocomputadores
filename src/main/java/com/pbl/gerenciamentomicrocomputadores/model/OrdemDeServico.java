@@ -206,7 +206,7 @@ public class OrdemDeServico {
      * peças em estoque, para fazer a contagem do preço pelos itens utilizados, caso o tipo de serviço
      * seja uma montagem. Outros serviços possuem valor fixo.
      *
-     * @param mapPeca map - informações das peças em estoque. O preço das peças é a informação procurada.
+     * @param mapPeca Map - informações das peças em estoque. O preço das peças é a informação procurada.
      * @return double - valor total do serviço*/
 
     public double calcularValorServico (Map<String, Peca> mapPeca) {
@@ -239,6 +239,11 @@ public class OrdemDeServico {
         return valorServico;
     }
 
+    /** Método de retorno dos dados básicos da ordem de serviço. Incluindo o ID da ordem, ID do cliente,
+     * ID do técnico e o status atual.
+     *
+     * @return String - informações da ordem de serviço.*/
+
     public String imprimirOrdem () {
 
         return String.format(
@@ -250,6 +255,13 @@ public class OrdemDeServico {
                 """,
                 this.idOrdem, this.idCliente, this.idTecnico, this.statusAtual);
     }
+
+    /** Método de retorno das informações da fatura. Incluindo o tipo de serviço; as peças utilizadas,
+     * juntamente com os seus preços e quantidades; e o valor total do serviço.
+     *
+     * @param informacoesEstoque Map<String,Peca> - estrutura com as informações das peças armazenadas
+     *                           em estoque.
+     * @return String - informações da fatura.*/
 
     public String imprimirFatura (Map<String, Peca> informacoesEstoque) {
 
@@ -287,6 +299,13 @@ public class OrdemDeServico {
                 """,
                 this.descricaoServico.getTipoDeServico(), dadosPecas, this.valorTotalFatura);
     }
+
+    /** Método de retorno das informações do relatório. Incluindo tempo médio de espera; as peças utilizadas,
+     * juntamente com os seus custos para a assistência técnica e suas quantidades; e a satisfação do cliente.
+     *
+     * @param informacoesEstoque Map<String,Peca> - estrutura com as informações das peças armazenadas
+     *                           em estoque.
+     * @return String - informações do relatório.*/
 
     public String imprimirRelatorio (Map<String, Peca> informacoesEstoque) {
 
