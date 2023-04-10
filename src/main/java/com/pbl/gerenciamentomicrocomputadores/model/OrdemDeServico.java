@@ -33,7 +33,8 @@ public class OrdemDeServico {
     private double valorTotalFatura;
 
     /** Construtor responsável por definir a hora atual da criação da ordem de serviço e criar um objeto vazio
-     * para armazenar as informações da descrição do tipo de serviço solicitado pelo cliente.*/
+     * para armazenar as informações da descrição do tipo de serviço solicitado pelo cliente. Os atributos da
+     * forma de pagamento e da satisfação do cliente são inicializados com textos vazios.*/
 
     public OrdemDeServico ( int idTecnico, int idCliente) {
 
@@ -41,6 +42,8 @@ public class OrdemDeServico {
         this.idTecnico = idTecnico;
         this.idCliente = idCliente;
         this.descricaoServico = new DescricaoServico();
+        this.formaPagamento = "";
+        this.satisfacaoCliente = "";
     }
 
     /** Método para inserir o ID da ordem de serviço.
