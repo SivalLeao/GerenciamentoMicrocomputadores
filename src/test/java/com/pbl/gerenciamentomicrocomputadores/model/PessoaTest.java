@@ -54,6 +54,14 @@ public class PessoaTest {
                              CPF: 22222222222           TELEFONE: 77777777777      ID: 1112
                              ENDEREÇO: Rua Aquário num 2     
                             """,c0.imprimirPessoa());
+
+        Tecnico t0 = new Tecnico("Joana", "Rua Libra, 22", "88888888888", "11111111111");
+        t0.setId(1111);
+
+        assertEquals("""
+                             NOME: Joana
+                             CPF: 11111111111           TELEFONE: 88888888888      ID: 1111
+                             ENDEREÇO: Rua Libra, 22    
+                            """,t0.imprimirPessoa());
     }
-    
 }
