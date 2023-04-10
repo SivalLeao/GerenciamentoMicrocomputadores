@@ -2,17 +2,16 @@ package com.pbl.gerenciamentomicrocomputadores.model;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.List;
 import java.util.Map;
 
 /** Classe para objetos do tipo OrdemDeServico. É responsável por armazenar as informações de gerenciamento do
- *  pedido de serviço que o cliente solicitar à assistência técnica, contendo informações como o ID da própria
- *  ordem, o ID do técnico responsável e do cliente, além da descrição e outras informações importantes do serviço
- *  solicitado.
+ *  pedido de serviço que o cliente solicitar à assistência técnica. Contém informações, como o ID da própria
+ *  ordem, o ID do técnico responsável e o ID do cliente, além da descrição e outras informações relevantes.
  *
  * @author Silvio Oliveira,  Sival Leão.
  * @version 1.0.
  */
+
 public class OrdemDeServico {
 
     private int idOrdem;
@@ -34,8 +33,8 @@ public class OrdemDeServico {
     private double valorTotalFatura;
 
     /** Construtor responsável por definir a hora atual da criação da ordem de serviço e criar um objeto vazio
-     * para armazenar as informações do serviço solicitado pelo cliente.
-     */
+     * para armazenar as informações da descrição do tipo de serviço solicitado pelo cliente.*/
+
     public OrdemDeServico ( int idTecnico, int idCliente) {
 
         this.data = new Data( LocalDateTime.now());
@@ -44,192 +43,197 @@ public class OrdemDeServico {
         this.descricaoServico = new DescricaoServico();
     }
 
-    /** Método para inserir o dado no atributo idOrdem.
+    /** Método para inserir o ID da ordem de serviço.
      *
-     * @param id int - Id da ordem de serviço
-     */
+     * @param id int - ID da ordem de serviço*/
+
     public void setIdOrdem (int id) {
         this.idOrdem = id;
     }
 
-    /** Método que retorna o id da ordem de serviço.
+    /** Método para retornar o ID da ordem de serviço.
      *
-     * @return int - Id da ordem de serviço
-     */
+     * @return int - ID da ordem de serviço*/
+
     public int getIdOrdem () {
         return this.idOrdem;
     }
 
-    /** Método para inserir o dado no atributo idCliente.
+    /** Método para inserir o ID do clinte que solicitou a ordem de serviço.
      *
-     * @param id int - Id do cliente
-     */
+     * @param id int - ID do cliente*/
+
     public void setIdCliente (int id) {
         this.idCliente = id;
     }
 
-    /** Método que retorna o id do cliente.
+    /** Método que retorna o ID do cliente que solicitou a ordem de serviço.
      *
-     * @return int - Id do cliente
-     */
+     * @return int - ID do cliente*/
+
     public int getIdCliente () {
         return this.idCliente;
     }
 
-    /** Método para inserir o dado no atributo idTecnico.
+    /** Método para inserir o ID do técnico responsável pela ordem de serviço.
      *
-     * @param id int - Id do técnico
-     */
+     * @param id int - ID do técnico*/
+
     public void setIdTecnico (int id) {
         this.idTecnico = id;
     }
 
-    /** Método que retorna o id do técnico.
+    /** Método que retorna o ID do técnico responsável pela ordem de serviço.
      *
-     * @return int - Id do técnico
-     */
+     * @return int - ID do técnico*/
+
     public int getIdTecnico () {
         return this.idTecnico;
     }
 
-    /** Método para inserir o dado no atributo data.
+    /** Método para inserir o objeto do tipo Data, que contém a data inicial e a final da realização do serviço.
      *
-     * @param data Data - data
-     */
+     * @param data Data - objeto que contém as datas do serviço*/
+
     public void setData (Data data) {
         this.data = data;
     }
 
-    /** Método que retorna a data.
+    /** Método que retorna o objeto do tipo Data.
      *
-     * @return Data - data
-     */
+     * @return Data - objeto que contém as datas do serviço*/
+
     public Data getData () {
         return this.data;
     }
 
-    /** Método para inserir o dado no atributo descricaoServico.
+    /** Método para inserir o objeto do tipo DescricaoServico, que contém os detalhes do
+     * tipo de serviço solicitado pelo cliente.
      *
-     * @param descricaoServico DescricaoServico - descricaoServico
-     */
+     * @param descricaoServico DescricaoServico - objeto que contém os detalhes do tipo de serviço*/
+
     public void setDescricaoServico (DescricaoServico descricaoServico) {
         this.descricaoServico = descricaoServico;
     }
 
-    /** Método que retorna descricaoServico.
+    /** Método que retorna o objeto do tipo DescricaoServico.
      *
-     * @return DescricaoServico - descricaoServico
-     */
+     * @return DescricaoServico - objeto que contém os detalhes do tipo de serviço*/
+
     public DescricaoServico getDescricaoServico () {
         return this.descricaoServico;
     }
 
-    /** Método para inserir o dado no atributo statusAtual.
+    /** Método para inserir o status atual do serviço.
      *
-     * @param statusAtual String - statusAtual
-     */
+     * @param statusAtual String - status atual do serviço*/
+
     public void setStatusAtual (String statusAtual) {
         this.statusAtual = statusAtual;
     }
 
-    /** Método que retorna statusAtual.
+    /** Método que retorna o status atual do serviço.
      *
-     * @return String - statusAtual
-     */
+     * @return String - status atual do serviço*/
+
     public String getStatusAtual () {
         return this.statusAtual;
     }
 
-    /** Método para inserir o dado no atributo formaPagamento.
+    /** Método para inserir a forma de pagamento do serviço realizado.
      *
-     * @param formaPagamento String - formaPagamento
-     */
+     * @param formaPagamento String - forma de pagamento do serviço*/
+
     public void setFormaPagamento(String formaPagamento) {
         this.formaPagamento = formaPagamento;
     }
 
-    /** Método que retorna formaPagamento.
+    /** Método que retorna a forma de pagamento do serviço realizado.
      *
-     * @return String - formaPagamento
-     */
+     * @return String - forma de pagamento do serviço*/
+
     public String getFormaPagamento() {
         return this.formaPagamento;
     }
 
-    /** Método para inserir o dado no atributo satisfacaoCliente.
+    /** Método para inserir a satisfação do cliente.
      *
-     * @param satisfacaoCliente String - satisfacaoCliente
-     */
+     * @param satisfacaoCliente String - satisfação do cliente*/
+
     public void setSatisfacaoCliente (String satisfacaoCliente) {
         this.satisfacaoCliente = satisfacaoCliente;
     }
 
-    /** Método que retorna satisfacaoCliente.
+    /** Método que retorna a satisfação do cliente.
      *
-     * @return String - satisfacaoCliente
-     */
+     * @return String - satisfação do cliente*/
+
     public String getSatisfacaoCliente () {
         return this.satisfacaoCliente;
     }
 
-    /** Método para inserir o dado no atributo satisfacaoCliente.
+    /** Método para inserir o valor total do serviço.
      *
-     * @param valorTotalFatura double - valorTotalFatura
-     */
+     * @param valorTotalFatura double - valor total do serviço*/
+
     public void setValorTotalFatura(double valorTotalFatura) {
         this.valorTotalFatura = valorTotalFatura;
     }
 
-    /** Método que retorna valorTotalFatura.
+    /** Método que retorna o valor total do serviço.
      *
-     * @return double - valorTotalFatura
-     */
+     * @return double - valor total do serviço*/
+
     public double getValorTotalFatura() {
         return this.valorTotalFatura;
     }
 
-    /** Método que retorna o tempo gasto para realizar o serviço.
+    /** Método que retorna o tempo de realização do serviço. É contado da data e horário de cadastro da
+     * ordem de serviço até o momento que o status é declarado como "Finalizado". A diferença está sendo
+     * medida em segundos.
      *
-     * @return "long - tempo de duração
-     */
+     * @return long - tempo de realização do serviço*/
+
     public long calcularTempoDeServico () {
 
         return ChronoUnit.SECONDS.between(this.data.getDataInicio(), this.data.getDataFim());
     }
 
-    /** Método que calcula o valor total do serviço prestado..
+    /** Método que calcula o valor total da ordem de serviço. Recebe como parâmetro os dados das
+     * peças em estoque, para fazer a contagem do preço pelos itens utilizados, caso o tipo de serviço
+     * seja uma montagem. Outros serviços possuem valor fixo.
      *
-     * @param mapPeca map - mapPeca
-     * @return double - valorPecas
-     */
+     * @param mapPeca map - informações das peças em estoque. O preço das peças é a informação procurada.
+     * @return double - valor total do serviço*/
+
     public double calcularValorServico (Map<String, Peca> mapPeca) {
 
         Map<String, Integer> mapPecaServico = this.descricaoServico.getMapItens();
 
-        double valorPecas = 0.0;
+        double valorServico = 0.0;
 
         if (this.descricaoServico.getTipoDeServico().equals("Montagem/Instalação")) {
 
             for (String nomePeca : mapPecaServico.keySet()) {
 
-                valorPecas += mapPeca.get(nomePeca).getValor() * mapPecaServico.get(nomePeca);
+                valorServico += mapPeca.get(nomePeca).getValor() * mapPecaServico.get(nomePeca);
             }
 
         }
         else if (this.descricaoServico.getTipoDeServico().equals("Sistema operacional")) {
 
-            valorPecas = 50;
+            valorServico = 50;
         }
         else if (this.descricaoServico.getTipoDeServico().equals("Programas")) {
 
-            valorPecas = 10;
+            valorServico = 10;
         }
         else if (this.descricaoServico.getTipoDeServico().equals("Limpeza")) {
 
-            valorPecas = 70;
+            valorServico = 70;
         }
 
-        return valorPecas;
+        return valorServico;
     }
 
 }
