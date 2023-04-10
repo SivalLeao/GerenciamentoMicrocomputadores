@@ -43,27 +43,41 @@ desenvolvimento dos testes de unidade.
 recuperadas de forma consistente.
 - :x: Fase 4: Implementação da interface gráfica.
 
-## Atuais funcionalidades
+## :gear: Atuais funcionalidades
 
 - Gerenciamento de clientes e técnicos:
-<blockquote> Cadastro</blockquote>
-<blockquote> Atualização automática do número de ID</blockquote>
-<blockquote> Consultar cadastros por número de ID e CPF</blockquote>
-<blockquote> Retornar todas a lista de cadastros do armazenamento</blockquote>
+<blockquote> Cadastrar</blockquote>
+<blockquote> Atualizar número de ID automaticamente</blockquote>
 <blockquote> Atualizar informações</blockquote>
-<blockquote> Checagem de cadastro por número de ID e CPF</blockquote>
+<blockquote> Consultar cadastros por número de ID e CPF</blockquote>
+<blockquote> Retornar toda a lista de cadastros do armazenamento</blockquote>
+<blockquote> Checar cadastro por número de ID e CPF</blockquote>
 <blockquote> Deletar cadastro por número de ID</blockquote>
 <blockquote> Deletar toda a lista de armazenamento</blockquote>
 
 - Gerenciamento de ordens de serviço:
 <blockquote> Cadastrar</blockquote>
-<blockquote> Atualização automática do número de ID</blockquote>
+<blockquote> Atualizar número de ID automaticamente</blockquote>
+<blockquote> Atualizar informações</blockquote>
 <blockquote> Consultar dados por número de ID</blockquote>
 <blockquote> Retornar toda a lista de cadastros do armazenamento</blockquote>
 <blockquote> Retornar lista de ordens de serviço de um técnico</blockquote>
 <blockquote> Retornar lista de ordens de serviço em aberto de um técnico</blockquote>
-<blockquote> Checagem de cadastro por número de ID</blockquote>
+<blockquote> Checar cadastro por número de ID</blockquote>
 <blockquote> Checar se o técnico possui alguma ordem de serviço em andamento</blockquote>
-<blockquote> Atualizar informações</blockquote>
 <blockquote> Deletar cadastro por número de ID</blockquote>
+<blockquote> Deletar toda a lista de armazenamento</blockquote>
+
+- Gerenciamento de peças:
+<blockquote> Inserir</blockquote>
+<blockquote> Inicializar as peças básicas dos requisitos</blockquote>
+<blockquote> Atualizar informações</blockquote>
+<blockquote> Remover e adicionar quantidades</blockquote>
+<blockquote> Consultar dados pelo nome</blockquote>
+<blockquote> Checagem de existência por nome</blockquote>
+<blockquote> Checagem da quantidade de determinada peça</blockquote>
+<blockquote> Retornar toda a lista do armazenamento</blockquote>
+<blockquote> Retornar lista com as peças com quantidade abaixo do limite de alerta</blockquote>
+<blockquote> Devolver peças de uma ordem de serviço cancelada</blockquote>
+<blockquote> Deletar peça por nome</blockquote>
 <blockquote> Deletar toda a lista de armazenamento</blockquote>
