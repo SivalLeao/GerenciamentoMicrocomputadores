@@ -31,7 +31,7 @@ estoque, reabastecimento, e controle de custos;
 aceitar diversos tipos de pagamentos;
 - Relatório: É possível gerar relatórios para os serviços prestados;
 
-## Status do projeto
+## :computer: Status do projeto
 
 - :heavy_check_mark: Fase 1: Análise dos requisitos. Montagem do Diagrama de Casos de Uso e Diagrama de 
 Classes
