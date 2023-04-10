@@ -239,4 +239,91 @@ public class OrdemDeServico {
         return valorServico;
     }
 
+    public String imprimirOrdem () {
+
+        return String.format(
+                """
+                ID da ordem: %d
+                ID do cliente: %d
+                ID do técnico: %d
+                Status atual: %s
+                """,
+                this.idOrdem, this.idCliente, this.idTecnico, this.statusAtual);
+    }
+
+    public String imprimirFatura (Map<String, Peca> informacoesEstoque) {
+
+        String dadosPecas;
+
+        if ( this.descricaoServico.getTipoDeServico().equals("Montagem/Instalação")) {
+
+            Map<String, Integer> itensUsados = this.descricaoServico.getMapItens();
+
+            dadosPecas = "\nPeças utilizadas:\n";
+            String linhaString = "";
+            int contador = 0;
+
+            for (String nomePeca: itensUsados.keySet()) {
+
+                contador++;
+
+                linhaString = String.format("\nPeça %d - nome: %s ; preço: %.1f ; quantidade: %d",
+                        contador, nomePeca, informacoesEstoque.get(nomePeca).getValor(), itensUsados.get(nomePeca));
+
+                dadosPecas = dadosPecas.concat(linhaString);
+            }
+
+            dadosPecas = dadosPecas.concat("\n");
+        }
+        else {
+
+            dadosPecas = "";
+        }
+
+        return String.format(
+                """
+                Tipo de serviço: %s%s
+                Valor total: %.1f
+                """,
+                this.descricaoServico.getTipoDeServico(), dadosPecas, this.valorTotalFatura);
+    }
+
+    public String imprimirRelatorio (Map<String, Peca> informacoesEstoque) {
+
+        String dadosPecas;
+
+        if ( this.descricaoServico.getTipoDeServico().equals("Montagem/Instalação")) {
+
+            Map<String, Integer> itensUsados = this.descricaoServico.getMapItens();
+
+            dadosPecas = "\nPeças utilizadas:\n";
+            String linhaString = "";
+            int contador = 0;
+
+            for (String nomePeca: itensUsados.keySet()) {
+
+                contador++;
+
+                linhaString = String.format("\nPeça %d - nome: %s ; custo: %.1f ; quantidade: %d",
+                        contador, nomePeca, informacoesEstoque.get(nomePeca).getCusto(), itensUsados.get(nomePeca));
+
+                dadosPecas = dadosPecas.concat(linhaString);
+            }
+
+            dadosPecas = dadosPecas.concat("\n");
+        }
+        else {
+
+            dadosPecas = "";
+        }
+
+        return String.format(
+                """
+                Tempo médio de espera: %d segundos%s
+                Satisfação do cliente: %s
+                """,
+                calcularTempoDeServico(), dadosPecas, this.satisfacaoCliente);
+    }
+
+
 }
