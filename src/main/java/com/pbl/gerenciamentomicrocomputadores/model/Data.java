@@ -49,6 +49,11 @@ public class Data {
 
     public LocalDateTime getDataFim () { return this.dataFim; }
 
+    /** Método de conversão das datas de inicialização e finalização do serviço em um único
+     * objeto String.
+     *
+     * @return String - datas armazenadas.*/
+
     public String imprimirDatas () {
 
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");

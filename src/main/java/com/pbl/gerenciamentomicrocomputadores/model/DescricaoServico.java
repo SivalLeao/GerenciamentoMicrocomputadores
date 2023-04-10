@@ -66,6 +66,10 @@ public class DescricaoServico {
         return mapItens;
     }
 
+    /** Método de retorno dos dados da descrição do serviço em um único objeto String.
+     *
+     * @return String - informações da descrição do serviço.*/
+
     public String imprimirDescricaoServico () {
 
         String descricao = "";

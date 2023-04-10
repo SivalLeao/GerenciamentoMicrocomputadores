@@ -9,7 +9,7 @@ public class PecaTest {
     @Test
     void imprimirPeca () {
 
-        Peca peca0 = new Peca( "teclado", 2, 40, 30);
+        Peca peca0 = new Peca( "teclado", 2, 40.0, 30.0);
 
         assertEquals("""
                 Nome: teclado
