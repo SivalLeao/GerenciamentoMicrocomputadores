@@ -26,7 +26,7 @@ public interface OrdemDeServicoDAO extends CRUD<OrdemDeServico> {
     /** Método de retorno da lista de ordens de serviço em aberto de um determinado técnico. A busca pelas
      * ordens é feita através do ID do técnico.
      *
-     * @param idTecnico int - id do técnico
+     * @param idTecnico int - ID do técnico
      * @return List<OrdemDeServico> - lista de ordens de serviço em aberto atribuídas a um técnico específico*/
 
     public List<OrdemDeServico> openListTecnico (int idTecnico);
