@@ -1,5 +1,7 @@
 package com.pbl.gerenciamentomicrocomputadores.model;
 
+import com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico.OrdemDeServicoDAO;
+import com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico.OrdemDeServicoImpl;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -63,6 +65,125 @@ public class OrdemDeServicoTest {
 
         valorServico = ordem0.calcularValorServico( mapItensValor);
         assertEquals(70, valorServico);
+    }
+
+    @Test
+    void imprimirOrdem () {
+
+        OrdemDeServicoDAO dao = new OrdemDeServicoImpl();
+
+        OrdemDeServico ordem0 = new OrdemDeServico( 1111, 1112);
+
+        dao.create(ordem0);
+
+        assertEquals( """
+                ID da ordem: 1113
+                ID do cliente: 1112
+                ID do técnico: 1111
+                Status atual: Em espera
+                """, ordem0.imprimirOrdem());
+    }
+
+    @Test
+    void  imprimirFatura () {
+
+        Map<String, Peca> mapItensValor = new HashMap<String, Peca>();
+
+        Peca peca0 = new Peca("ram", 3, 20, 20);
+        Peca peca1 = new Peca("hd", 3, 30, 30);
+
+        mapItensValor.put("ram", peca0);
+        mapItensValor.put("hd", peca1);
+
+        OrdemDeServico ordem0 = new OrdemDeServico( 1111, 1112);
+
+        ordem0.getDescricaoServico().setTipoDeServico("Montagem/Instalação");
+        ordem0.getDescricaoServico().setMapItens("ram", 3);
+        ordem0.getDescricaoServico().setMapItens("hd", 1);
+
+        double valorServico = ordem0.calcularValorServico(mapItensValor);
+
+        ordem0.setValorTotalFatura(valorServico);
+
+        assertEquals("""
+                Tipo de serviço: Montagem/Instalação
+                Peças utilizadas:
+                
+                Peça 1 - nome: hd ; preço: 30,0 ; quantidade: 1
+                Peça 2 - nome: ram ; preço: 20,0 ; quantidade: 3
+                
+                Valor total: 90,0
+                """, ordem0.imprimirFatura(mapItensValor));
+
+
+        OrdemDeServico ordem1 = new OrdemDeServico( 1121, 1122);
+
+        ordem1.getDescricaoServico().setTipoDeServico("Limpeza");
+
+        valorServico = ordem1.calcularValorServico(mapItensValor);
+
+        ordem1.setValorTotalFatura(valorServico);
+
+        assertEquals("""
+                Tipo de serviço: Limpeza
+                Valor total: 70,0
+                """, ordem1.imprimirFatura(mapItensValor));
+    }
+
+    @Test
+    void imprimirRelatorio () {
+
+        Map<String, Peca> mapItensValor = new HashMap<String, Peca>();
+
+        Peca peca0 = new Peca("ram", 3, 20, 10);
+        Peca peca1 = new Peca("hd", 3, 30, 15);
+
+        mapItensValor.put("ram", peca0);
+        mapItensValor.put("hd", peca1);
+
+        OrdemDeServico ordem0 = new OrdemDeServico( 1111, 1112);
+
+        ordem0.getDescricaoServico().setTipoDeServico("Montagem/Instalação");
+        ordem0.getDescricaoServico().setMapItens("ram", 3);
+        ordem0.getDescricaoServico().setMapItens("hd", 1);
+        ordem0.setSatisfacaoCliente("Trabalho bem feito");
+
+        LocalDateTime dataInicial = LocalDateTime.parse("2023-04-09 13:46:10",
+                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        LocalDateTime dataFinal = LocalDateTime.parse("2023-04-09 13:46:35",
+                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
+        ordem0.getData().setDataInicio( dataInicial);
+        ordem0.getData().setDataFim( dataFinal);
+
+        assertEquals("""
+                Tempo médio de espera: 25 segundos
+                Peças utilizadas:
+                
+                Peça 1 - nome: hd ; custo: 15,0 ; quantidade: 1
+                Peça 2 - nome: ram ; custo: 10,0 ; quantidade: 3
+                
+                Satisfação do cliente: Trabalho bem feito
+                """, ordem0.imprimirRelatorio(mapItensValor));
+
+        OrdemDeServico ordem1 = new OrdemDeServico( 1121, 1122);
+
+        ordem1.getDescricaoServico().setTipoDeServico("Sistema operacional");
+        ordem1.setSatisfacaoCliente("Trabalho demorado");
+
+        dataInicial = LocalDateTime.parse("2023-04-09 13:46:00",
+                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        dataFinal = LocalDateTime.parse("2023-04-09 13:47:40",
+                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
+        ordem1.getData().setDataInicio( dataInicial);
+        ordem1.getData().setDataFim( dataFinal);
+
+        assertEquals("""
+                Tempo médio de espera: 100 segundos
+                Satisfação do cliente: Trabalho demorado
+                """, ordem1.imprimirRelatorio(mapItensValor));
+
     }
 
 }
