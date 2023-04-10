@@ -165,13 +165,13 @@ public class ClienteImplTest {
         dao.create( c0);
         dao.create( c1);
 
-        Boolean ById0 = dao.checkById(1112);
+        boolean ById0 = dao.checkById(1112);
         assertTrue(ById0);
 
-        Boolean ById1 = dao.checkById(1122);
+        boolean ById1 = dao.checkById(1122);
         assertTrue(ById1);
 
-        Boolean ById2 = dao.checkById(1132);
+        boolean ById2 = dao.checkById(1132);
         assertFalse(ById2);
     }
 
@@ -186,13 +186,13 @@ public class ClienteImplTest {
         dao.create( c0);
         dao.create( c1);
 
-        Boolean ByCpf0 = dao.checkByCpf("44444444444");
+        boolean ByCpf0 = dao.checkByCpf("44444444444");
         assertTrue(ByCpf0);
 
-        Boolean ByCpf1 = dao.checkByCpf("55555555555");
+        boolean ByCpf1 = dao.checkByCpf("55555555555");
         assertTrue(ByCpf1);
 
-        Boolean ByCpf2 = dao.checkByCpf("66666666666");
+        boolean ByCpf2 = dao.checkByCpf("66666666666");
         assertFalse(ByCpf2);
     }
 

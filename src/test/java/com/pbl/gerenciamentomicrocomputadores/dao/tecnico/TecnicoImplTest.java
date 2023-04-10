@@ -164,13 +164,13 @@ public class TecnicoImplTest {
         dao.create(t1);
         dao.create(t2);
 
-        Boolean ById1 = dao.checkById(1111);
+        boolean ById1 = dao.checkById(1111);
         assertTrue(ById1);
 
-        Boolean ById2 = dao.checkById(1121);
+        boolean ById2 = dao.checkById(1121);
         assertTrue(ById2);
 
-        Boolean ById3 = dao.checkById(1131);
+        boolean ById3 = dao.checkById(1131);
         assertFalse(ById3);
     }
 
@@ -185,13 +185,13 @@ public class TecnicoImplTest {
         dao.create(t1);
         dao.create(t2);
 
-        Boolean ByCpf1 = dao.checkByCpf("55555555555");
+        boolean ByCpf1 = dao.checkByCpf("55555555555");
         assertTrue(ByCpf1);
 
-        Boolean ByCpf2 = dao.checkByCpf("33333333333");
+        boolean ByCpf2 = dao.checkByCpf("33333333333");
         assertTrue(ByCpf2);
 
-        Boolean ByCpf3 = dao.checkByCpf("11111111111");
+        boolean ByCpf3 = dao.checkByCpf("11111111111");
         assertFalse(ByCpf3);
     }
 
