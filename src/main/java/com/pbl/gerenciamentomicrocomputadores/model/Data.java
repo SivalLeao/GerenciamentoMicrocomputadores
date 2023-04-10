@@ -1,6 +1,7 @@
 package com.pbl.gerenciamentomicrocomputadores.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /** Classe para objetos do tipo Data. Possui a data de início e a de finalização do serviço como atributos.
  *
@@ -47,5 +48,20 @@ public class Data {
      * @return LocalDateTime - data de finalização do serviço.*/
 
     public LocalDateTime getDataFim () { return this.dataFim; }
+
+    public String imprimirDatas () {
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+        String dataInicial = this.dataInicio.format(dateTimeFormatter);
+        String dataFinal = this.dataFim.format(dateTimeFormatter);
+
+        return String.format(
+                """
+                Data e horário de início: %s
+                Data e horário de finalização: %s
+                """,
+                dataInicial, dataFinal);
+    }
 
 }
