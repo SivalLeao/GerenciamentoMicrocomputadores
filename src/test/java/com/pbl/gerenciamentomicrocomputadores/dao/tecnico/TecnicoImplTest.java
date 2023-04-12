@@ -1,6 +1,7 @@
 package com.pbl.gerenciamentomicrocomputadores.dao.tecnico;
 
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -8,18 +9,32 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TecnicoImplTest {
+    private TecnicoDAO dao;
+    private Tecnico t1;
+    private Tecnico t2;
+    private Tecnico t3;
+    private Tecnico t4;
+    private Tecnico t5;
 
-    @Test
-    void create () {
+    @BeforeEach
+    public void setUp () {
+        dao = new TecnicoImpl();
 
-        TecnicoDAO dao = new TecnicoImpl();
-
-        Tecnico t1 = new Tecnico("Leonard","Nova Jérsei","44444444444","55555555555");
-        Tecnico t2 = new Tecnico("Sheldon","Galveston, Texas","77777777777","33333333333");
+        t1 = new Tecnico("Leonard","Nova Jérsei","44444444444","55555555555");
+        t2 = new Tecnico("Sheldon","Galveston, Texas","77777777777","33333333333");
+        t3 = new Tecnico("Penny","Nebraska","99999999999","11111111111");
+        t4 = new Tecnico("Amy","Glendale","88888888888","22222222222");
+        t5 = new Tecnico("Bernadette","Califórnia","66666666666","00000000000");
 
         dao.create(t1);
         dao.create(t2);
+        dao.create(t3);
+        dao.create(t4);
+        dao.create(t5);
+    }
 
+    @Test
+    void create () {
         List<Tecnico> lista = dao.findMany();
 
         assertEquals(lista.get(0).getNome(),"Leonard");
@@ -37,17 +52,8 @@ public class TecnicoImplTest {
 
     @Test
     void findMany () {
-
-        TecnicoDAO dao = new TecnicoImpl();
-
-        Tecnico t1 = new Tecnico("Leonard","Nova Jérsei","44444444444","55555555555");
-        Tecnico t2 = new Tecnico("Sheldon","Galveston, Texas","77777777777","33333333333");
-
-        dao.create(t1);
-        dao.create(t2);
-
         List<Tecnico> lista = dao.findMany();
-        assertEquals(2,lista.size());
+        assertEquals(5,lista.size());
 
         assertEquals(lista.get(0), t1);
         assertEquals(lista.get(1), t2);
@@ -55,15 +61,6 @@ public class TecnicoImplTest {
 
     @Test
     void findById () {
-
-        TecnicoDAO dao = new TecnicoImpl();
-
-        Tecnico t1 = new Tecnico("Leonard","Nova Jérsei","44444444444","55555555555");
-        Tecnico t2 = new Tecnico("Sheldon","Galveston, Texas","77777777777","33333333333");
-
-        dao.create(t1);
-        dao.create(t2);
-
         Tecnico ById1 = dao.findById(1111);
         assertEquals(t1, ById1);
 
@@ -73,15 +70,6 @@ public class TecnicoImplTest {
 
     @Test
     void findByCpf () {
-
-        TecnicoDAO dao = new TecnicoImpl();
-
-        Tecnico t1 = new Tecnico("Leonard","Nova Jérsei","44444444444","55555555555");
-        Tecnico t2 = new Tecnico("Sheldon","Galveston, Texas","77777777777","33333333333");
-
-        dao.create(t1);
-        dao.create(t2);
-
         Tecnico ByCpf1 = dao.findByCpf("55555555555");
         assertEquals(t1, ByCpf1);
 
@@ -91,16 +79,6 @@ public class TecnicoImplTest {
 
     @Test
     void update () {
-
-        TecnicoDAO dao = new TecnicoImpl();
-
-        Tecnico t1 = new Tecnico("Leonard","Nova Jérsei","44444444444","55555555555");
-        Tecnico t2 = new Tecnico("Sheldon","Galveston, Texas","77777777777","33333333333");
-
-        dao.create(t1);
-        dao.create(t2);
-
-
         Tecnico newT1 = dao.findById(1111);
         assertEquals(t1, newT1);
 
@@ -122,20 +100,6 @@ public class TecnicoImplTest {
     @Test
     void delete () {
 
-        TecnicoDAO dao = new TecnicoImpl();
-
-        Tecnico t1 = new Tecnico("Leonard","Nova Jérsei","44444444444","55555555555");
-        Tecnico t2 = new Tecnico("Sheldon","Galveston, Texas","77777777777","33333333333");
-        Tecnico t3 = new Tecnico("Penny","Nebraska","99999999999","11111111111");
-        Tecnico t4 = new Tecnico("Amy","Glendale","88888888888","22222222222");
-        Tecnico t5 = new Tecnico("Bernadette","Califórnia","66666666666","00000000000");
-
-        dao.create(t1);
-        dao.create(t2);
-        dao.create(t3);
-        dao.create(t4);
-        dao.create(t5);
-
         dao.delete(1111);
         dao.delete(1131);
         dao.delete(1151);
@@ -156,34 +120,18 @@ public class TecnicoImplTest {
     @Test
     void checkId () {
 
-        TecnicoDAO dao = new TecnicoImpl();
-
-        Tecnico t1 = new Tecnico("Leonard","Nova Jérsei","44444444444","55555555555");
-        Tecnico t2 = new Tecnico("Sheldon","Galveston, Texas","77777777777","33333333333");
-
-        dao.create(t1);
-        dao.create(t2);
-
         boolean ById1 = dao.checkById(1111);
         assertTrue(ById1);
 
         boolean ById2 = dao.checkById(1121);
         assertTrue(ById2);
 
-        boolean ById3 = dao.checkById(1131);
+        boolean ById3 = dao.checkById(1161);
         assertFalse(ById3);
     }
 
     @Test
     void checkByCpf () {
-
-        TecnicoDAO dao = new TecnicoImpl();
-
-        Tecnico t1 = new Tecnico("Leonard","Nova Jérsei","44444444444","55555555555");
-        Tecnico t2 = new Tecnico("Sheldon","Galveston, Texas","77777777777","33333333333");
-
-        dao.create(t1);
-        dao.create(t2);
 
         boolean ByCpf1 = dao.checkByCpf("55555555555");
         assertTrue(ByCpf1);
@@ -191,28 +139,19 @@ public class TecnicoImplTest {
         boolean ByCpf2 = dao.checkByCpf("33333333333");
         assertTrue(ByCpf2);
 
-        boolean ByCpf3 = dao.checkByCpf("11111111111");
+        boolean ByCpf3 = dao.checkByCpf("11118888888");
         assertFalse(ByCpf3);
     }
 
     @Test
     void deleteMany () {
 
-        TecnicoDAO dao = new TecnicoImpl();
-
-        Tecnico t1 = new Tecnico("Leonard","Nova Jérsei","44444444444","55555555555");
-        Tecnico t2 = new Tecnico("Sheldon","Galveston, Texas","77777777777","33333333333");
-        Tecnico t3 = new Tecnico("Penny","Nebraska","99999999999","11111111111");
-
-        dao.create(t1);
-        dao.create(t2);
-        dao.create(t3);
+        List<Tecnico> lista = dao.findMany();
+        assertEquals(5, lista.size());
 
         dao.deleteMany();
 
-        List<Tecnico> lista = dao.findMany();
-
+        lista = dao.findMany();
         assertEquals(0, lista.size());
     }
-
 }
