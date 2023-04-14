@@ -2,6 +2,7 @@ package com.pbl.gerenciamentomicrocomputadores.dao.cliente;
 
 import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -9,18 +10,32 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ClienteImplTest {
+    private ClienteDAO dao;
+    private Cliente c0;
+    private Cliente c1;
+    private Cliente c2;
+    private Cliente c3;
+    private Cliente c4;
 
-    @Test
-    void create () {
+    @BeforeEach
+    public void setUp() {
+        dao = new ClienteImpl();
 
-        ClienteDAO dao = new ClienteImpl();
-
-        Cliente c0 = new Cliente("Steve", "Rua Capricórnio num 1", "66666666666", "11111111111");
-        Cliente c1 = new Cliente("Dayana", "Rua Aquário num 2", "77777777777", "22222222222");
+        c0 = new Cliente("Steve", "Rua Capricórnio num 1", "66666666666", "11111111111");
+        c1 = new Cliente("Dayana", "Rua Aquário num 2", "77777777777", "22222222222");
+        c2 = new Cliente("Camilla", "Rua Libra num 3", "88888888888", "33333333333");
+        c3 = new Cliente("Bernardo", "Rua Virgem num 4", "99999999999", "44444444444");
+        c4 = new Cliente("Morgana", "Rua Leão num 5", "00000000000", "55555555555");
 
         dao.create( c0);
         dao.create( c1);
+        dao.create( c2);
+        dao.create( c3);
+        dao.create( c4);
+    }
 
+    @Test
+    void create () {
         List<Cliente> lista = dao.findMany();
 
         assertEquals( lista.get(0).getNome(), "Steve");
@@ -38,18 +53,9 @@ public class ClienteImplTest {
 
     @Test
     void findMany () {
-
-        ClienteDAO dao = new ClienteImpl();
-
-        Cliente c0 = new Cliente("Steve", "Rua Capricórnio num 1", "66666666666", "11111111111");
-        Cliente c1 = new Cliente("Dayana", "Rua Aquário num 2", "77777777777", "22222222222");
-
-        dao.create( c0);
-        dao.create( c1);
-
         List<Cliente> lista = dao.findMany();
 
-        assertEquals( 2, lista.size());
+        assertEquals( 5, lista.size());
 
         assertEquals( lista.get(0), c0);
         assertEquals( lista.get(1), c1);
@@ -57,15 +63,6 @@ public class ClienteImplTest {
 
     @Test
     void findById () {
-
-        ClienteDAO dao = new ClienteImpl();
-
-        Cliente c0 = new Cliente("Steve", "Rua Capricórnio num 1", "66666666666", "11111111111");
-        Cliente c1 = new Cliente("Dayana", "Rua Aquário num 2", "77777777777", "22222222222");
-
-        dao.create( c0);
-        dao.create( c1);
-
         Cliente ById0 = dao.findById(1112);
         assertEquals( c0, ById0);
 
@@ -75,15 +72,6 @@ public class ClienteImplTest {
 
     @Test
     void findByCpf () {
-
-        ClienteDAO dao = new ClienteImpl();
-
-        Cliente c0 = new Cliente("Steve", "Rua Capricórnio num 1", "66666666666", "11111111111");
-        Cliente c1 = new Cliente("Dayana", "Rua Aquário num 2", "77777777777", "22222222222");
-
-        dao.create( c0);
-        dao.create( c1);
-
         Cliente ByCpf0 = dao.findByCpf("11111111111");
         assertEquals( c0, ByCpf0);
 
@@ -93,15 +81,6 @@ public class ClienteImplTest {
 
     @Test
     void update () {
-
-        ClienteDAO dao = new ClienteImpl();
-
-        Cliente c0 = new Cliente("Steve", "Rua Capricórnio num 1", "66666666666", "11111111111");
-        Cliente c1 = new Cliente("Dayana", "Rua Aquário num 2", "77777777777", "22222222222");
-
-        dao.create( c0);
-        dao.create( c1);
-
         Cliente newC0 = dao.findById(1112);
         assertEquals( newC0, c0);
 
@@ -122,21 +101,6 @@ public class ClienteImplTest {
 
     @Test
     void delete(){
-
-        ClienteDAO dao = new ClienteImpl();
-
-        Cliente c0 = new Cliente("Steve", "Rua Capricórnio num 1", "66666666666", "11111111111");
-        Cliente c1 = new Cliente("Dayana", "Rua Aquário num 2", "77777777777", "22222222222");
-        Cliente c2 = new Cliente("Camilla", "Rua Libra num 3", "88888888888", "33333333333");
-        Cliente c3 = new Cliente("Bernardo", "Rua Virgem num 4", "99999999999", "44444444444");
-        Cliente c4 = new Cliente("Morgana", "Rua Leão num 5", "00000000000", "55555555555");
-
-        dao.create( c0);
-        dao.create( c1);
-        dao.create( c2);
-        dao.create( c3);
-        dao.create( c4);
-
         dao.delete(1112);
         dao.delete(1132);
         dao.delete(1152);
@@ -156,36 +120,18 @@ public class ClienteImplTest {
 
     @Test
     void checkById(){
-
-        ClienteDAO dao = new ClienteImpl();
-
-        Cliente c0 = new Cliente("Bernardo", "Rua Virgem num 4", "99999999999", "44444444444");
-        Cliente c1 = new Cliente("Morgana", "Rua Leão num 5", "00000000000", "55555555555");
-
-        dao.create( c0);
-        dao.create( c1);
-
         boolean ById0 = dao.checkById(1112);
         assertTrue(ById0);
 
         boolean ById1 = dao.checkById(1122);
         assertTrue(ById1);
 
-        boolean ById2 = dao.checkById(1132);
+        boolean ById2 = dao.checkById(1162);
         assertFalse(ById2);
     }
 
     @Test
     void checkByCpf(){
-
-        ClienteDAO dao = new ClienteImpl();
-
-        Cliente c0 = new Cliente("Bernardo", "Rua Virgem num 4", "99999999999", "44444444444");
-        Cliente c1 = new Cliente("Morgana", "Rua Leão num 5", "00000000000", "55555555555");
-
-        dao.create( c0);
-        dao.create( c1);
-
         boolean ByCpf0 = dao.checkByCpf("44444444444");
         assertTrue(ByCpf0);
 
@@ -198,22 +144,10 @@ public class ClienteImplTest {
 
     @Test
     void deleteMany(){
-
-        ClienteDAO dao = new ClienteImpl();
-
-        Cliente c0 = new Cliente("Camilla", "Rua Libra num 3", "88888888888", "33333333333");
-        Cliente c1 = new Cliente("Bernardo", "Rua Virgem num 4", "99999999999", "44444444444");
-        Cliente c2 = new Cliente("Morgana", "Rua Leão num 5", "00000000000", "55555555555");
-
-        dao.create( c0);
-        dao.create( c1);
-        dao.create( c2);
-
         dao.deleteMany();
 
         List<Cliente> lista = dao.findMany();
 
         assertEquals(0, lista.size());
     }
-
 }
