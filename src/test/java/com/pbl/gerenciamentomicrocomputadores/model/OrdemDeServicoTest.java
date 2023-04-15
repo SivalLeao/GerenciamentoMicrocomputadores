@@ -34,7 +34,7 @@ public class OrdemDeServicoTest {
         peca0 = new Peca("ram", 3, 20, 20);
         peca1 = new Peca("hd", 3, 30, 30);
 
-        Map<String, Peca> estoque = new HashMap<String, Peca>();
+        estoque = new HashMap<String, Peca>();
 
         estoque.put("ram", peca0);
         estoque.put("hd", peca1);
