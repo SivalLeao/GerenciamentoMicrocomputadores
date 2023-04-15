@@ -11,12 +11,14 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class OrdemDeServicoImplTest {
+
     private OrdemDeServicoDAO dao;
     private OrdemDeServico ordem0;
     private OrdemDeServico ordem1;
     private OrdemDeServico ordem2;
     private OrdemDeServico ordem3;
     private OrdemDeServico ordem4;
+
     @BeforeEach
     void setUp() {
         dao = new OrdemDeServicoImpl();
@@ -36,26 +38,13 @@ public class OrdemDeServicoImplTest {
 
     @Test
     void create () {
-        ordem0.getDescricaoServico().setTipoDeServico("Montagem/Instalação");
-        ordem0.getDescricaoServico().setMapItens("ram", 2);
-        ordem0.getDescricaoServico().setMapItens("hd", 1);
-        ordem0.setFormaPagamento("Cartão de crédito");
-        ordem0.setSatisfacaoCliente("Excelente");
-
-        ordem1.getDescricaoServico().setTipoDeServico("Limpeza");
-        ordem1.setFormaPagamento("Transferência bancária");
-        ordem1.setSatisfacaoCliente("Muito bom");
-
-        dao.create(ordem0);
-        dao.create(ordem1);
-
         List<OrdemDeServico> lista = dao.findMany();
 
         assertEquals( lista.get(0), ordem0);
         assertEquals( lista.get(1), ordem1);
 
-        assertEquals(1163, lista.get(0).getIdOrdem());
-        assertEquals(1173, lista.get(1).getIdOrdem());
+        assertEquals(1113, lista.get(0).getIdOrdem());
+        assertEquals(1123, lista.get(1).getIdOrdem());
 
         assertEquals("Em espera", lista.get(0).getStatusAtual());
         assertEquals("Em espera", lista.get(1).getStatusAtual());
@@ -87,22 +76,22 @@ public class OrdemDeServicoImplTest {
 
         assertEquals( dao.findById(1113), ordem0);
 
-        OrdemDeServico ordem1 = new OrdemDeServico(1121, 1122);
+        OrdemDeServico newOrdem1 = new OrdemDeServico(1121, 1122);
 
-        ordem1.setIdOrdem(1113);
-        ordem1.getDescricaoServico().setTipoDeServico("Limpeza");
-        ordem1.setFormaPagamento("Transferência bancária");
-        ordem1.setSatisfacaoCliente("Muito bom");
+        newOrdem1.setIdOrdem(1113);
+        newOrdem1.getDescricaoServico().setTipoDeServico("Limpeza");
+        newOrdem1.setFormaPagamento("Transferência bancária");
+        newOrdem1.setSatisfacaoCliente("Muito bom");
 
-        dao.update(ordem1);
+        dao.update(newOrdem1);
 
-        OrdemDeServico ordem2 = dao.findById(1113);
+        OrdemDeServico newOrdem2 = dao.findById(1113);
 
-        assertEquals( ordem2, ordem1);
+        assertEquals( newOrdem2, newOrdem1);
 
-        assertEquals("Limpeza", ordem2.getDescricaoServico().getTipoDeServico());
-        assertEquals("Transferência bancária", ordem2.getFormaPagamento());
-        assertEquals("Muito bom", ordem2.getSatisfacaoCliente());
+        assertEquals("Limpeza", newOrdem2.getDescricaoServico().getTipoDeServico());
+        assertEquals("Transferência bancária", newOrdem2.getFormaPagamento());
+        assertEquals("Muito bom", newOrdem2.getSatisfacaoCliente());
     }
 
     @Test

@@ -10,6 +10,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ClienteImplTest {
+
     private ClienteDAO dao;
     private Cliente c0;
     private Cliente c1;

@@ -11,7 +11,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PecaImplTest {
-    PecaDAO dao = new PecaImpl();
+    private PecaDAO dao;
     private Peca peca0;
     private Peca peca1;
     private Peca peca2;
@@ -70,26 +70,26 @@ public class PecaImplTest {
 
         assertEquals( mapPeca.get("cooler"), peca1);
 
-        Peca peca1 = new Peca("Cooler", 1, 50, 40);
+        Peca newPeca1 = new Peca("Cooler", 1, 50, 40);
 
-        dao.update(peca1);
+        dao.update(newPeca1);
 
         mapPeca = dao.findFullMap();
 
-        assertEquals( mapPeca.get("cooler"), peca1);
+        assertEquals( mapPeca.get("cooler"), newPeca1);
 
         assertEquals("cooler", mapPeca.get("cooler").getNome());
         assertEquals(1, mapPeca.get("cooler").getQuantidade());
         assertEquals(50, mapPeca.get("cooler").getValor());
         assertEquals(40, mapPeca.get("cooler").getCusto());
 
-        Peca peca2 = new Peca("HD", 5, 25.50, 20);
+        Peca newPeca2 = new Peca("HD", 5, 25.50, 20);
 
-        dao.update(peca2);
+        dao.update(newPeca2);
 
         mapPeca = dao.findFullMap();
 
-        assertEquals( mapPeca.get("hd"), peca2);
+        assertEquals( mapPeca.get("hd"), newPeca2);
 
         assertEquals("hd", mapPeca.get("hd").getNome());
         assertEquals(5, mapPeca.get("hd").getQuantidade());
