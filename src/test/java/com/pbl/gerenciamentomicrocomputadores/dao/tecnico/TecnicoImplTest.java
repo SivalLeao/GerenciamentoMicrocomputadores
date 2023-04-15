@@ -17,7 +17,7 @@ public class TecnicoImplTest {
     private Tecnico t5;
 
     @BeforeEach
-    public void setUp () {
+    void setUp () {
         dao = new TecnicoImpl();
 
         t1 = new Tecnico("Leonard","Nova Jérsei","44444444444","55555555555");

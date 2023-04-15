@@ -18,7 +18,7 @@ public class ClienteImplTest {
     private Cliente c4;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         dao = new ClienteImpl();
 
         c0 = new Cliente("Steve", "Rua Capricórnio num 1", "66666666666", "11111111111");
