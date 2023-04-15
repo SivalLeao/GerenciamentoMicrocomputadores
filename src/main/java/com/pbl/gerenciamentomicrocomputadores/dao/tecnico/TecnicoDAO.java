@@ -17,13 +17,13 @@ public interface TecnicoDAO extends CRUD<Tecnico>{
      * @param cpf String - CPF do tecnico.
      * @return Tecnico - técnico encontrado após a busca por CPF.*/
 
-    public Tecnico findByCpf (String cpf);
+    public Tecnico encontrarPorCpf(String cpf);
 
     /** Método para checar se um técnico está armazenado no sistema. Busca feita por CPF.
      *
      * @param cpf String - CPF do técnico.
      * @return boolean - resultado da busca pelo técnico. Se foi achado ou não.*/
 
-    public boolean checkByCpf (String cpf);
+    public boolean checarPorCpf(String cpf);
 
 }

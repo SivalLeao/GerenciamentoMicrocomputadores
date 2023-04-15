@@ -33,7 +33,7 @@ public class TecnicoImpl implements TecnicoDAO {
      * @param tecnico Tecnico - técnico que deve ser armazenado.*/
 
     @Override
-    public void create (Tecnico tecnico) {
+    public void criar(Tecnico tecnico) {
 
         tecnico.setId(this.id);
         this.id += 10;
@@ -46,7 +46,7 @@ public class TecnicoImpl implements TecnicoDAO {
      * @return Tecnico - técnico encontrado após a busca.*/
 
     @Override
-    public Tecnico findById (int id) {
+    public Tecnico encontrarPorId(int id) {
 
         for (Tecnico tecnico: this.lista) {
 
@@ -65,7 +65,7 @@ public class TecnicoImpl implements TecnicoDAO {
      * @return Tecnico - técnico encontrado após a busca.*/
 
     @Override
-    public Tecnico findByCpf (String cpf) {
+    public Tecnico encontrarPorCpf(String cpf) {
 
         for (Tecnico tecnico: this.lista) {
 
@@ -85,7 +85,7 @@ public class TecnicoImpl implements TecnicoDAO {
      * @param tecnico Tecnico - técnico que deve ser atualizado.*/
 
     @Override
-    public void update (Tecnico tecnico) {
+    public void atualizar(Tecnico tecnico) {
 
         for (int i = 0; i < this.lista.size(); i++) {
 
@@ -102,7 +102,7 @@ public class TecnicoImpl implements TecnicoDAO {
      * @param id int - ID do técnico que deve ser removido.*/
 
     @Override
-    public void delete (int id) {
+    public void remover(int id) {
 
         for (int i = 0; i < this.lista.size(); i++) {
 
@@ -119,7 +119,7 @@ public class TecnicoImpl implements TecnicoDAO {
      * @return List<Tecnico> - lista de técnicos do sistema.*/
 
     @Override
-    public List<Tecnico> findMany () {
+    public List<Tecnico> encontrarTodos() {
 
         List<Tecnico> listTecnico = new ArrayList<Tecnico>();
 
@@ -137,7 +137,7 @@ public class TecnicoImpl implements TecnicoDAO {
      * @return boolean - resultado da busca pelo técnico. Se foi achado ou não.*/
 
     @Override
-    public boolean checkById(int id) {
+    public boolean checarPorId(int id) {
 
         for (Tecnico tecnico: this.lista) {
 
@@ -156,7 +156,7 @@ public class TecnicoImpl implements TecnicoDAO {
      * @return boolean - resultado da busca pelo técnico. Se foi achado ou não.*/
 
     @Override
-    public boolean checkByCpf(String cpf) {
+    public boolean checarPorCpf(String cpf) {
 
         for (Tecnico tecnico: this.lista) {
 
@@ -173,7 +173,7 @@ public class TecnicoImpl implements TecnicoDAO {
      * limpar a lista. A contagem de ID é resetada para o valor inicial.*/
 
     @Override
-    public void deleteMany () {
+    public void removerTodos() {
 
         this.lista.clear();
         this.id = 1111;
