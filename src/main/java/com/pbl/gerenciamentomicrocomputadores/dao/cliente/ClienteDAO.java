@@ -17,13 +17,13 @@ public interface ClienteDAO extends CRUD<Cliente> {
      * @param cpf String - CPF do cliente.
      * @return Cliente - cliente encontrado após a busca por CPF.*/
 
-    public Cliente findByCpf (String cpf);
+    public Cliente encontrarPorCpf(String cpf);
 
     /** Método para checar se um cliente está armazenado no sistema. Busca feita por CPF.
      *
      * @param cpf String - CPF do cliente.
      * @return boolean - resultado da busca pelo cliente. Se foi achado ou não.*/
 
-    public boolean checkByCpf (String cpf);
+    public boolean checarPorCpf(String cpf);
 
 }

@@ -33,7 +33,7 @@ public class ClienteImpl implements ClienteDAO {
      * @param cliente Cliente - cliente que deve ser armazenado.*/
 
     @Override
-    public void create (Cliente cliente) {
+    public void criar(Cliente cliente) {
 
         cliente.setId(this.id);
         this.id += 10;
@@ -46,7 +46,7 @@ public class ClienteImpl implements ClienteDAO {
      * @return Cliente - cliente encontrado após a busca.*/
 
     @Override
-    public Cliente findById (int id) {
+    public Cliente encontrarPorId(int id) {
 
         for (Cliente cliente: this.lista) {
 
@@ -65,7 +65,7 @@ public class ClienteImpl implements ClienteDAO {
      * @return Cliente - cliente encontrado após a busca.*/
 
     @Override
-    public Cliente findByCpf (String cpf) {
+    public Cliente encontrarPorCpf(String cpf) {
 
         for (Cliente cliente: this.lista) {
 
@@ -85,7 +85,7 @@ public class ClienteImpl implements ClienteDAO {
      * @param cliente Cliente - cliente que deve ser atualizado.*/
 
     @Override
-    public void update (Cliente cliente) {
+    public void atualizar(Cliente cliente) {
 
         for (int i = 0; i < this.lista.size(); i++) {
 
@@ -102,7 +102,7 @@ public class ClienteImpl implements ClienteDAO {
      * @param id int - ID do cliente que deve ser removido.*/
 
     @Override
-    public void delete (int id) {
+    public void remover(int id) {
 
         for (int i = 0; i < this.lista.size(); i++) {
 
@@ -119,7 +119,7 @@ public class ClienteImpl implements ClienteDAO {
      * @return List<Cliente> - lista de clientes do sistema.*/
 
     @Override
-    public List<Cliente> findMany () {
+    public List<Cliente> encontrarTodos() {
 
         List<Cliente> listCliente = new ArrayList<Cliente>();
 
@@ -137,7 +137,7 @@ public class ClienteImpl implements ClienteDAO {
      * @return boolean - resultado da busca pelo cliente. Se foi achado ou não.*/
 
     @Override
-    public boolean checkById (int id) {
+    public boolean checarPorId(int id) {
 
         for (Cliente cliente: this.lista) {
 
@@ -156,7 +156,7 @@ public class ClienteImpl implements ClienteDAO {
      * @return boolean - resultado da busca pelo cliente. Se foi achado ou não.*/
 
     @Override
-    public boolean checkByCpf (String cpf) {
+    public boolean checarPorCpf(String cpf) {
 
         for (Cliente cliente: this.lista) {
 
@@ -173,7 +173,7 @@ public class ClienteImpl implements ClienteDAO {
      * limpar a lista. A contagem de ID é resetada para o valor inicial.*/
 
     @Override
-    public void deleteMany () {
+    public void removerTodos() {
 
         this.lista.clear();
         this.id = 1112;
