@@ -15,42 +15,42 @@ public interface CRUD<T>  {
      *
      * @param obj objeto que deve ser inserido.*/
 
-    public void create (T obj);
+    public void criar(T obj);
 
     /** Método de retorno do objeto através da busca por ID.
      *
      * @param id int - número de ID.
      * @return obj - objeto encontrado após a busca por ID.*/
 
-    public T findById (int id);
+    public T encontrarPorId(int id);
 
     /** Método de atualização dos dados de um objeto na estrutura de armazenamento.
      *
      * @param obj objeto que deve ser atualizado.*/
 
-    public void update (T obj);
+    public void atualizar(T obj);
 
     /** Método para remover determinado objeto da estrutura de armazenamento.
      *
      * @param id int - ID do objeto que deve ser removido.*/
 
-    public void delete (int id);
+    public void remover(int id);
 
     /** Método de retorno da lista completa de dados armazenados.
      *
      * @return List - lista de objetos armazenados.*/
 
-    public List<T> findMany ();
+    public List<T> encontrarTodos();
 
     /** Método para checar se determinado objeto existe no armazenamento. Busca feita através do ID.
      *
      * @param id int - ID do objeto.
      * @return boolean - resultado da checagem. Se o objeto foi encontrado ou não.*/
 
-    public boolean checkById (int id);
+    public boolean checarPorId(int id);
 
     /** Método para esvaziar todo o armazenamento.*/
 
-    public void deleteMany ();
+    public void removerTodos();
 
 }
