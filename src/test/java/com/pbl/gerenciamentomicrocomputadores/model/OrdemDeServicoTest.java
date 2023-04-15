@@ -2,6 +2,7 @@ package com.pbl.gerenciamentomicrocomputadores.model;
 
 import com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico.OrdemDeServicoDAO;
 import com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico.OrdemDeServicoImpl;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -12,12 +13,28 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class OrdemDeServicoTest {
+    private OrdemDeServicoDAO dao;
+    private OrdemDeServico ordem0;
+    private OrdemDeServico ordem1;
+    private Peca peca0;
+    private Peca peca1;
+
+    @BeforeEach
+    void setUp() {
+        dao = new OrdemDeServicoImpl();
+
+        ordem0 = new OrdemDeServico( 1111, 1112);
+        ordem1 = new OrdemDeServico( 1121, 1122);
+
+        dao.create(ordem0);
+        dao.create(ordem1);
+
+        peca0 = new Peca("ram", 3, 20, 20);
+        peca1 = new Peca("hd", 3, 30, 30);
+    }
 
     @Test
     void calcularTempoDeServico () {
-
-        OrdemDeServico ordem0 = new OrdemDeServico(1111, 1112);
-
         LocalDateTime dataInicial = LocalDateTime.parse("2023-04-09 13:46:10",
                 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         LocalDateTime dataFinal = LocalDateTime.parse("2023-04-09 13:46:25",
@@ -33,17 +50,11 @@ public class OrdemDeServicoTest {
 
     @Test
     void calcularValorServico () {
-
-        OrdemDeServico ordem0 = new OrdemDeServico(1111, 1112);
-
         ordem0.getDescricaoServico().setTipoDeServico("Montagem/Instalação");
         ordem0.getDescricaoServico().setMapItens("ram", 2);
         ordem0.getDescricaoServico().setMapItens("hd", 2);
 
         Map<String, Peca> mapItensValor = new HashMap<String, Peca>();
-
-        Peca peca0 = new Peca("ram", 3, 20, 20);
-        Peca peca1 = new Peca("hd", 3, 30, 30);
 
         mapItensValor.put("ram", peca0);
         mapItensValor.put("hd", peca1);
@@ -69,13 +80,6 @@ public class OrdemDeServicoTest {
 
     @Test
     void imprimirOrdem () {
-
-        OrdemDeServicoDAO dao = new OrdemDeServicoImpl();
-
-        OrdemDeServico ordem0 = new OrdemDeServico( 1111, 1112);
-
-        dao.create(ordem0);
-
         assertEquals( """
                 ID da ordem: 1113
                 ID do cliente: 1112
@@ -86,16 +90,10 @@ public class OrdemDeServicoTest {
 
     @Test
     void  imprimirFatura () {
-
         Map<String, Peca> mapItensValor = new HashMap<String, Peca>();
-
-        Peca peca0 = new Peca("ram", 3, 20, 20);
-        Peca peca1 = new Peca("hd", 3, 30, 30);
 
         mapItensValor.put("ram", peca0);
         mapItensValor.put("hd", peca1);
-
-        OrdemDeServico ordem0 = new OrdemDeServico( 1111, 1112);
 
         ordem0.getDescricaoServico().setTipoDeServico("Montagem/Instalação");
         ordem0.getDescricaoServico().setMapItens("ram", 3);
@@ -115,9 +113,6 @@ public class OrdemDeServicoTest {
                 Valor total: 90,0
                 """, ordem0.imprimirFatura(mapItensValor));
 
-
-        OrdemDeServico ordem1 = new OrdemDeServico( 1121, 1122);
-
         ordem1.getDescricaoServico().setTipoDeServico("Limpeza");
 
         valorServico = ordem1.calcularValorServico(mapItensValor);
@@ -134,9 +129,6 @@ public class OrdemDeServicoTest {
     void imprimirRelatorio () {
 
         Map<String, Peca> mapItensValor = new HashMap<String, Peca>();
-
-        Peca peca0 = new Peca("ram", 3, 20, 10);
-        Peca peca1 = new Peca("hd", 3, 30, 15);
 
         mapItensValor.put("ram", peca0);
         mapItensValor.put("hd", peca1);
@@ -160,13 +152,12 @@ public class OrdemDeServicoTest {
                 Tempo médio de espera: 25 segundos
                 Peças utilizadas:
                 
-                Peça 1 - nome: hd ; custo: 15,0 ; quantidade: 1
-                Peça 2 - nome: ram ; custo: 10,0 ; quantidade: 3
+                Peça 1 - nome: hd ; custo: 30,0 ; quantidade: 1
+                Peça 2 - nome: ram ; custo: 20,0 ; quantidade: 3
                 
                 Satisfação do cliente: Trabalho bem feito
                 """, ordem0.imprimirRelatorio(mapItensValor));
 
-        OrdemDeServico ordem1 = new OrdemDeServico( 1121, 1122);
 
         ordem1.getDescricaoServico().setTipoDeServico("Sistema operacional");
         ordem1.setSatisfacaoCliente("Trabalho demorado");
