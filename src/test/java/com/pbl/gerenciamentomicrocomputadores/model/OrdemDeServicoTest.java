@@ -28,8 +28,8 @@ public class OrdemDeServicoTest {
         ordem0 = new OrdemDeServico( 1111, 1112);
         ordem1 = new OrdemDeServico( 1121, 1122);
 
-        dao.create(ordem0);
-        dao.create(ordem1);
+        dao.criar(ordem0);
+        dao.criar(ordem1);
 
         peca0 = new Peca("ram", 3, 20, 20);
         peca1 = new Peca("hd", 3, 30, 30);
