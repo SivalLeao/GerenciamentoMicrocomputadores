@@ -24,14 +24,14 @@ public class PecaImplTest {
         peca1 = new Peca("Cooler", 4, 40, 35);
         peca2 = new Peca("Teclado", 6, 20, 15);
 
-        dao.create(peca0);
-        dao.create(peca1);
-        dao.create(peca2);
+        dao.criar(peca0);
+        dao.criar(peca1);
+        dao.criar(peca2);
     }
 
     @Test
-    void create() {
-        Map<String, Peca> mapPeca = dao.findFullMap();
+    void criar() {
+        Map<String, Peca> mapPeca = dao.encontrarTodoMap();
 
         assertEquals( mapPeca.get(peca0.getNome()), peca0);
 
@@ -47,8 +47,8 @@ public class PecaImplTest {
     }
 
     @Test
-    void findFullMap () {
-        Map<String, Peca> mapPeca = dao.findFullMap();
+    void encontrarTodoMap () {
+        Map<String, Peca> mapPeca = dao.encontrarTodoMap();
 
         assertEquals(9, mapPeca.size());
 
@@ -64,17 +64,17 @@ public class PecaImplTest {
     }
 
     @Test
-    void update () {
+    void atualizar () {
 
-        Map<String, Peca> mapPeca = dao.findFullMap();
+        Map<String, Peca> mapPeca = dao.encontrarTodoMap();
 
         assertEquals( mapPeca.get("cooler"), peca1);
 
         Peca newPeca1 = new Peca("Cooler", 1, 50, 40);
 
-        dao.update(newPeca1);
+        dao.atualizar(newPeca1);
 
-        mapPeca = dao.findFullMap();
+        mapPeca = dao.encontrarTodoMap();
 
         assertEquals( mapPeca.get("cooler"), newPeca1);
 
@@ -85,9 +85,9 @@ public class PecaImplTest {
 
         Peca newPeca2 = new Peca("HD", 5, 25.50, 20);
 
-        dao.update(newPeca2);
+        dao.atualizar(newPeca2);
 
-        mapPeca = dao.findFullMap();
+        mapPeca = dao.encontrarTodoMap();
 
         assertEquals( mapPeca.get("hd"), newPeca2);
 
@@ -98,63 +98,63 @@ public class PecaImplTest {
     }
 
     @Test
-    void findByName () {
-        assertEquals( dao.findByName("Cooler"), peca1);
-        assertNull( dao.findByName("Mouse"));
+    void encontrarPorNome () {
+        assertEquals( dao.encontrarPorNome("Cooler"), peca1);
+        assertNull( dao.encontrarPorNome("Mouse"));
     }
 
     @Test
-    void checkByName () {
-        assertTrue(dao.checkByName("Cooler"));
-        assertTrue(dao.checkByName("Processador"));
-        assertTrue(dao.checkByName("SSD"));
-        assertFalse(dao.checkByName("Mouse"));
+    void checarPorNome () {
+        assertTrue(dao.checarPorNome("Cooler"));
+        assertTrue(dao.checarPorNome("Processador"));
+        assertTrue(dao.checarPorNome("SSD"));
+        assertFalse(dao.checarPorNome("Mouse"));
     }
 
     @Test
-    void checkQuantity () {
-        assertTrue(dao.checkQuantity("Cooler", 2));
-        assertTrue(dao.checkQuantity("SSD", 10));
+    void checarQuantidade () {
+        assertTrue(dao.checarQuantidade("Cooler", 2));
+        assertTrue(dao.checarQuantidade("SSD", 10));
 
-        assertFalse(dao.checkQuantity("Processador", 6));
-        assertFalse(dao.checkQuantity("SSD", 11));
+        assertFalse(dao.checarQuantidade("Processador", 6));
+        assertFalse(dao.checarQuantidade("SSD", 11));
     }
 
     @Test
-    void removeQuantity () {
-        Map<String, Peca> mapPeca = dao.findFullMap();
+    void removerQuantidade () {
+        Map<String, Peca> mapPeca = dao.encontrarTodoMap();
 
         assertEquals(4, mapPeca.get("cooler").getQuantidade());
         assertEquals(10, mapPeca.get("placa mae").getQuantidade());
 
-        dao.removeQuantity("cooler", 2);
-        dao.removeQuantity("placa mae", 6);
+        dao.removerQuantidade("cooler", 2);
+        dao.removerQuantidade("placa mae", 6);
 
-        mapPeca = dao.findFullMap();
+        mapPeca = dao.encontrarTodoMap();
 
         assertEquals(2, mapPeca.get("cooler").getQuantidade());
         assertEquals(4, mapPeca.get("placa mae").getQuantidade());
     }
 
     @Test
-    void addQuantity () {
-        Map<String, Peca> mapPeca = dao.findFullMap();
+    void adicionarQuantidade () {
+        Map<String, Peca> mapPeca = dao.encontrarTodoMap();
 
         assertEquals(4, mapPeca.get("cooler").getQuantidade());
         assertEquals(10, mapPeca.get("placa de video").getQuantidade());
 
-        dao.addQuantity("cooler", 2);
-        dao.addQuantity("placa de video", 6);
+        dao.adicionarQuantidade("cooler", 2);
+        dao.adicionarQuantidade("placa de video", 6);
 
-        mapPeca = dao.findFullMap();
+        mapPeca = dao.encontrarTodoMap();
 
         assertEquals(6, mapPeca.get("cooler").getQuantidade());
         assertEquals(16, mapPeca.get("placa de video").getQuantidade());
     }
 
     @Test
-    void quantityAlert () {
-        List<Peca> listPeca = dao.quantityAlert();
+    void alertaDeQuantidade () {
+        List<Peca> listPeca = dao.alertaDeQuantidade();
 
         assertEquals(2, listPeca.size());
 
@@ -163,7 +163,7 @@ public class PecaImplTest {
     }
 
     @Test
-    void refundQuantity () {
+    void devolverQuantidade () {
         Map<String, Integer> mapItensServico = new HashMap<String, Integer>();
 
         mapItensServico.put("ram", 5);
@@ -171,42 +171,42 @@ public class PecaImplTest {
         mapItensServico.put("cooler", 5);
         mapItensServico.put("mouse", 5);
 
-        Map<String, Integer> mapItensRetornados = dao.refundQuantity( mapItensServico);
+        Map<String, Integer> mapItensRetornados = dao.devolverQuantidade( mapItensServico);
 
         assertEquals(1, mapItensRetornados.size());
         assertTrue( mapItensRetornados.containsKey("mouse"));
 
-        Map<String, Peca> mapPeca = dao.findFullMap();
+        Map<String, Peca> mapPeca = dao.encontrarTodoMap();
 
         assertEquals(15, mapPeca.get("ram").getQuantidade());
         assertEquals(15, mapPeca.get("processador").getQuantidade());
     }
 
     @Test
-    void removePeca () {
-        assertTrue( dao.checkByName("Processador"));
+    void removerPeca () {
+        assertTrue( dao.checarPorNome("Processador"));
 
-        dao.removePeca("Processador");
-        dao.removePeca("Placa Mãe");
+        dao.removerPeca("Processador");
+        dao.removerPeca("Placa Mãe");
 
-        assertFalse( dao.checkByName("Processador"));
-        assertFalse( dao.checkByName("Placa Mãe"));
+        assertFalse( dao.checarPorNome("Processador"));
+        assertFalse( dao.checarPorNome("Placa Mãe"));
     }
 
     @Test
-    void deleteMany () {
-        Map<String, Peca> mapPeca = dao.findFullMap();
+    void removerTodos () {
+        Map<String, Peca> mapPeca = dao.encontrarTodoMap();
 
         assertEquals(9, mapPeca.size());
-        assertTrue(dao.checkByName("Processador"));
-        assertEquals(10, dao.findByName("ram").getQuantidade());
+        assertTrue(dao.checarPorNome("Processador"));
+        assertEquals(10, dao.encontrarPorNome("ram").getQuantidade());
 
-        dao.deleteMany();
+        dao.removerTodos();
 
-        mapPeca = dao.findFullMap();
+        mapPeca = dao.encontrarTodoMap();
 
         assertEquals(6, mapPeca.size());
-        assertFalse(dao.checkByName("Processador"));
-        assertEquals(0, dao.findByName("ram").getQuantidade());
+        assertFalse(dao.checarPorNome("Processador"));
+        assertEquals(0, dao.encontrarPorNome("ram").getQuantidade());
     }
 }
