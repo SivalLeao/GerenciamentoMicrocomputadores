@@ -36,7 +36,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
      * @param ordemDeServico OrdemDeServico - ordem de serviço que deve ser armazenada.*/
 
     @Override
-    public void create (OrdemDeServico ordemDeServico) {
+    public void criar(OrdemDeServico ordemDeServico) {
 
         ordemDeServico.setIdOrdem(this.id);
         ordemDeServico.setStatusAtual("Em espera");
@@ -50,7 +50,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
      * @return OrdemDeServico - ordem de serviço encontrada após a busca*/
 
     @Override
-    public OrdemDeServico findById (int idOrdem) {
+    public OrdemDeServico encontrarPorId(int idOrdem) {
 
         for (OrdemDeServico ordemDeServico: this.lista) {
 
@@ -70,7 +70,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
      * @param ordemDeServico OrdemDeServico - ordem de serviço que deve ser atualizada.*/
 
     @Override
-    public void update (OrdemDeServico ordemDeServico) {
+    public void atualizar(OrdemDeServico ordemDeServico) {
 
         for (int i = 0; i < this.lista.size(); i++) {
 
@@ -92,7 +92,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
      * @return Map<String, Integer> - estrutura HashMap contendo as peças utilizadas no serviço que devem
      * ser devolvidas ao estoque, caso a ordem de serviço seja cancelada*/
 
-    public Map<String, Integer> updateStatus (int idOrdem, String status) {
+    public Map<String, Integer> atualizarStatus(int idOrdem, String status) {
 
         for (int i = 0; i < this.lista.size(); i++) {
 
@@ -107,7 +107,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
                 }
                 else if (status.equals("Cancelado")) {
 
-                    OrdemDeServico ordemDeServico = findById(idOrdem);
+                    OrdemDeServico ordemDeServico = encontrarPorId(idOrdem);
 
                     return ordemDeServico.getDescricaoServico().getMapItens();
                 }
@@ -122,7 +122,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
      * @param idOrdem int - ID da ordem de serviço que deve ser removida.*/
 
     @Override
-    public void delete (int idOrdem) {
+    public void remover(int idOrdem) {
 
         for (int i = 0; i < this.lista.size(); i++) {
 
@@ -139,7 +139,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
      * @return List<OrdemDeServico> - lista de ordens de serviço do sistema*/
 
     @Override
-    public List<OrdemDeServico> findMany () {
+    public List<OrdemDeServico> encontrarTodos() {
 
         List<OrdemDeServico> listOrdemDeServico = new ArrayList<OrdemDeServico>();
 
@@ -158,7 +158,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
      * @return List<OrdemDeServico> - lista de ordens de serviço atribuídas a um técnico específico*/
 
     @Override
-    public List<OrdemDeServico> findByIdTecnico (int idTecnico) {
+    public List<OrdemDeServico> encontrarPorIdTecnico(int idTecnico) {
 
         List<OrdemDeServico> listOrdemDeServico = new ArrayList<OrdemDeServico>();
 
@@ -181,7 +181,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
      * @return List<OrdemDeServico> - lista de ordens de serviço em aberto atribuídas a um técnico específico*/
 
     @Override
-    public List<OrdemDeServico> openListTecnico (int idTecnico) {
+    public List<OrdemDeServico> listaEmAbertoTecnico(int idTecnico) {
 
         List<OrdemDeServico> listOrdemDeServico = new ArrayList<OrdemDeServico>();
 
@@ -206,7 +206,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
      * @return boolean - resultado da busca pela ordem de serviço. Se foi achada ou não.*/
 
     @Override
-    public boolean checkById (int idOrdem) {
+    public boolean checarPorId(int idOrdem) {
 
         for (OrdemDeServico ordemDeServico: this.lista) {
 
@@ -227,7 +227,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
      * atribuída a um técnico. Se foi achada ou não*/
 
     @Override
-    public boolean checkStatus (int idTecnico) {
+    public boolean checarStatusEmAndamento(int idTecnico) {
 
         for (OrdemDeServico ordemDeServico: this.lista) {
 
@@ -244,7 +244,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
      * limpar a lista. A contagem de ID é resetada para o valor inicial*/
 
     @Override
-    public void deleteMany () {
+    public void removerTodos() {
 
         this.lista.clear();
         this.id = 1113;
