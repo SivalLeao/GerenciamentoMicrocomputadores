@@ -27,16 +27,16 @@ public class TecnicoImplTest {
         t4 = new Tecnico("Amy","Glendale","88888888888","22222222222");
         t5 = new Tecnico("Bernadette","Califórnia","66666666666","00000000000");
 
-        dao.create(t1);
-        dao.create(t2);
-        dao.create(t3);
-        dao.create(t4);
-        dao.create(t5);
+        dao.criar(t1);
+        dao.criar(t2);
+        dao.criar(t3);
+        dao.criar(t4);
+        dao.criar(t5);
     }
 
     @Test
-    void create () {
-        List<Tecnico> lista = dao.findMany();
+    void criar () {
+        List<Tecnico> lista = dao.encontrarTodos();
 
         assertEquals(lista.get(0).getNome(),"Leonard");
         assertEquals(lista.get(0).getEndereco(),"Nova Jérsei");
@@ -52,8 +52,8 @@ public class TecnicoImplTest {
     }
 
     @Test
-    void findMany () {
-        List<Tecnico> lista = dao.findMany();
+    void encontrarTodos () {
+        List<Tecnico> lista = dao.encontrarTodos();
         assertEquals(5,lista.size());
 
         assertEquals(lista.get(0), t1);
@@ -61,34 +61,34 @@ public class TecnicoImplTest {
     }
 
     @Test
-    void findById () {
-        Tecnico ById1 = dao.findById(1111);
+    void encontrarPorId () {
+        Tecnico ById1 = dao.encontrarPorId(1111);
         assertEquals(t1, ById1);
 
-        Tecnico ById2 = dao.findById(1121);
+        Tecnico ById2 = dao.encontrarPorId(1121);
         assertEquals(t2, ById2);
     }
 
     @Test
-    void findByCpf () {
-        Tecnico ByCpf1 = dao.findByCpf("55555555555");
+    void encontrarPorCpf () {
+        Tecnico ByCpf1 = dao.encontrarPorCpf("55555555555");
         assertEquals(t1, ByCpf1);
 
-        Tecnico ByCpf2 = dao.findByCpf("33333333333");
+        Tecnico ByCpf2 = dao.encontrarPorCpf("33333333333");
         assertEquals(t2, ByCpf2);
     }
 
     @Test
-    void update () {
-        Tecnico newT1 = dao.findById(1111);
+    void atualizar () {
+        Tecnico newT1 = dao.encontrarPorId(1111);
         assertEquals(t1, newT1);
 
         Tecnico newT2 = new Tecnico("Penny","Nebraska","99999999999","11111111111");
         newT2.setId(1111);
 
-        dao.update(newT2);
+        dao.atualizar(newT2);
 
-        Tecnico newT3 = dao.findById(1111);
+        Tecnico newT3 = dao.encontrarPorId(1111);
 
         assertEquals(newT3.getNome(),"Penny");
         assertEquals(newT3.getEndereco(),"Nebraska");
@@ -99,60 +99,60 @@ public class TecnicoImplTest {
     }
 
     @Test
-    void delete () {
+    void remover () {
 
-        dao.delete(1111);
-        dao.delete(1131);
-        dao.delete(1151);
+        dao.remover(1111);
+        dao.remover(1131);
+        dao.remover(1151);
 
-        Tecnico ById1 = dao.findById(1111);
+        Tecnico ById1 = dao.encontrarPorId(1111);
         assertNull(ById1);
 
-        Tecnico ById2 = dao.findById(1131);
+        Tecnico ById2 = dao.encontrarPorId(1131);
         assertNull(ById2);
 
-        Tecnico ById3 = dao.findById(1151);
+        Tecnico ById3 = dao.encontrarPorId(1151);
         assertNull(ById3);
 
-        List<Tecnico> lista = dao.findMany();
+        List<Tecnico> lista = dao.encontrarTodos();
         assertEquals(2, lista.size());
     }
 
     @Test
-    void checkId () {
+    void checarPorId () {
 
-        boolean ById1 = dao.checkById(1111);
+        boolean ById1 = dao.checarPorId(1111);
         assertTrue(ById1);
 
-        boolean ById2 = dao.checkById(1121);
+        boolean ById2 = dao.checarPorId(1121);
         assertTrue(ById2);
 
-        boolean ById3 = dao.checkById(1161);
+        boolean ById3 = dao.checarPorId(1161);
         assertFalse(ById3);
     }
 
     @Test
-    void checkByCpf () {
+    void checarPorCpf () {
 
-        boolean ByCpf1 = dao.checkByCpf("55555555555");
+        boolean ByCpf1 = dao.checarPorCpf("55555555555");
         assertTrue(ByCpf1);
 
-        boolean ByCpf2 = dao.checkByCpf("33333333333");
+        boolean ByCpf2 = dao.checarPorCpf("33333333333");
         assertTrue(ByCpf2);
 
-        boolean ByCpf3 = dao.checkByCpf("11118888888");
+        boolean ByCpf3 = dao.checarPorCpf("11118888888");
         assertFalse(ByCpf3);
     }
 
     @Test
-    void deleteMany () {
+    void removerTodos () {
 
-        List<Tecnico> lista = dao.findMany();
+        List<Tecnico> lista = dao.encontrarTodos();
         assertEquals(5, lista.size());
 
-        dao.deleteMany();
+        dao.removerTodos();
 
-        lista = dao.findMany();
+        lista = dao.encontrarTodos();
         assertEquals(0, lista.size());
     }
 }
