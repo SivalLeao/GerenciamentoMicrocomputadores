@@ -70,7 +70,7 @@ public class PecaImpl implements PecaDAO {
 
     /** Método para remover determinada quantidade de uma peça específica. A peça é identificada
      * pelo nome. Antes de fazer as alterações na quantidade, as letras do nome são convertidas para
-     * minúsculo e os acentos são retirados, para que a busca possa ser feita. O método checkQuantity
+     * minúsculo e os acentos são retirados, para que a busca possa ser feita. O método checarQuantidade
      * deve ser usado antes de chamar removeQuantity para conferir se a quantidade pode ser retirada sem
      * ultrapassar o limite.
      *
