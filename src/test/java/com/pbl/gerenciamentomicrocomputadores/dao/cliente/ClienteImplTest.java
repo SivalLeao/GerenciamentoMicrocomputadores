@@ -28,16 +28,16 @@ public class ClienteImplTest {
         c3 = new Cliente("Bernardo", "Rua Virgem num 4", "99999999999", "44444444444");
         c4 = new Cliente("Morgana", "Rua Leão num 5", "00000000000", "55555555555");
 
-        dao.create( c0);
-        dao.create( c1);
-        dao.create( c2);
-        dao.create( c3);
-        dao.create( c4);
+        dao.criar( c0);
+        dao.criar( c1);
+        dao.criar( c2);
+        dao.criar( c3);
+        dao.criar( c4);
     }
 
     @Test
-    void create () {
-        List<Cliente> lista = dao.findMany();
+    void criar () {
+        List<Cliente> lista = dao.encontrarTodos();
 
         assertEquals( lista.get(0).getNome(), "Steve");
         assertEquals( lista.get(0).getEndereco(), "Rua Capricórnio num 1");
@@ -53,8 +53,8 @@ public class ClienteImplTest {
     }
 
     @Test
-    void findMany () {
-        List<Cliente> lista = dao.findMany();
+    void encontrarTodos () {
+        List<Cliente> lista = dao.encontrarTodos();
 
         assertEquals( 5, lista.size());
 
@@ -63,34 +63,34 @@ public class ClienteImplTest {
     }
 
     @Test
-    void findById () {
-        Cliente ById0 = dao.findById(1112);
+    void encontrarPorId () {
+        Cliente ById0 = dao.encontrarPorId(1112);
         assertEquals( c0, ById0);
 
-        Cliente ById1 = dao.findById(1122);
+        Cliente ById1 = dao.encontrarPorId(1122);
         assertEquals( c1, ById1);
     }
 
     @Test
-    void findByCpf () {
-        Cliente ByCpf0 = dao.findByCpf("11111111111");
+    void encontrarPorCpf () {
+        Cliente ByCpf0 = dao.encontrarPorCpf("11111111111");
         assertEquals( c0, ByCpf0);
 
-        Cliente ByCpf1 = dao.findByCpf("22222222222");
+        Cliente ByCpf1 = dao.encontrarPorCpf("22222222222");
         assertEquals( c1, ByCpf1);
     }
 
     @Test
-    void update () {
-        Cliente newC0 = dao.findById(1112);
+    void atualizar () {
+        Cliente newC0 = dao.encontrarPorId(1112);
         assertEquals( newC0, c0);
 
         Cliente newC1 = new Cliente("Camilla", "Rua Libra num 3", "88888888888", "33333333333");
         newC1.setId(1112);
 
-        dao.update(newC1);
+        dao.atualizar(newC1);
 
-        Cliente newC2 = dao.findById(1112);
+        Cliente newC2 = dao.encontrarPorId(1112);
 
         assertEquals( newC2.getNome(), "Camilla");
         assertEquals( newC2.getEndereco(), "Rua Libra num 3");
@@ -101,53 +101,53 @@ public class ClienteImplTest {
     }
 
     @Test
-    void delete(){
-        dao.delete(1112);
-        dao.delete(1132);
-        dao.delete(1152);
+    void remover(){
+        dao.remover(1112);
+        dao.remover(1132);
+        dao.remover(1152);
 
-        Cliente ById0 = dao.findById(1112);
+        Cliente ById0 = dao.encontrarPorId(1112);
         assertNull(ById0);
 
-        Cliente ById1 = dao.findById(1132);
+        Cliente ById1 = dao.encontrarPorId(1132);
         assertNull(ById1);
 
-        Cliente ById2 = dao.findById(1152);
+        Cliente ById2 = dao.encontrarPorId(1152);
         assertNull(ById2);
 
-        List<Cliente> lista = dao.findMany();
+        List<Cliente> lista = dao.encontrarTodos();
         assertEquals(2, lista.size());
     }
 
     @Test
-    void checkById(){
-        boolean ById0 = dao.checkById(1112);
+    void checarPorId(){
+        boolean ById0 = dao.checarPorId(1112);
         assertTrue(ById0);
 
-        boolean ById1 = dao.checkById(1122);
+        boolean ById1 = dao.checarPorId(1122);
         assertTrue(ById1);
 
-        boolean ById2 = dao.checkById(1162);
+        boolean ById2 = dao.checarPorId(1162);
         assertFalse(ById2);
     }
 
     @Test
-    void checkByCpf(){
-        boolean ByCpf0 = dao.checkByCpf("44444444444");
+    void checarPorCpf(){
+        boolean ByCpf0 = dao.checarPorCpf("44444444444");
         assertTrue(ByCpf0);
 
-        boolean ByCpf1 = dao.checkByCpf("55555555555");
+        boolean ByCpf1 = dao.checarPorCpf("55555555555");
         assertTrue(ByCpf1);
 
-        boolean ByCpf2 = dao.checkByCpf("66666666666");
+        boolean ByCpf2 = dao.checarPorCpf("66666666666");
         assertFalse(ByCpf2);
     }
 
     @Test
-    void deleteMany(){
-        dao.deleteMany();
+    void removerTodos(){
+        dao.removerTodos();
 
-        List<Cliente> lista = dao.findMany();
+        List<Cliente> lista = dao.encontrarTodos();
 
         assertEquals(0, lista.size());
     }
