@@ -52,7 +52,7 @@ public class PecaImpl implements PecaDAO {
      * @param peca Peca - peça que deve ser inserida.*/
 
     @Override
-    public void create (Peca peca) {
+    public void criar(Peca peca) {
 
         map.put(peca.getNome(), peca);
     }
@@ -63,7 +63,7 @@ public class PecaImpl implements PecaDAO {
      * @param peca Peca - peça que deve ser atualizada.*/
 
     @Override
-    public void update (Peca peca) {
+    public void atualizar(Peca peca) {
 
         map.put(peca.getNome(), peca);
     }
@@ -78,7 +78,7 @@ public class PecaImpl implements PecaDAO {
      * @param quantidade int - quantidade que deve ser retirada da peça.*/
 
     @Override
-    public void removeQuantity (String nome, int quantidade) {
+    public void removerQuantidade(String nome, int quantidade) {
 
         int novaQuantidade;
 
@@ -98,7 +98,7 @@ public class PecaImpl implements PecaDAO {
      * @param quantidade int - quantidade que deve ser adicionada da peça.*/
 
     @Override
-    public void addQuantity (String nome, int quantidade){
+    public void adicionarQuantidade(String nome, int quantidade){
 
         int novaQuantidade;
 
@@ -117,7 +117,7 @@ public class PecaImpl implements PecaDAO {
      * @return Map<String, Peca> - estrutura com todas as peças do sistema armazenadas.*/
 
     @Override
-    public Map<String, Peca> findFullMap () {
+    public Map<String, Peca> encontrarTodoMap() {
 
         Map<String, Peca> mapPeca = new HashMap<String, Peca>();
 
@@ -136,7 +136,7 @@ public class PecaImpl implements PecaDAO {
      * @return Peca - peça encontrada após a busca por nome.*/
 
     @Override
-    public Peca findByName (String nome) {
+    public Peca encontrarPorNome(String nome) {
 
         String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD)
                 .replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
@@ -151,7 +151,7 @@ public class PecaImpl implements PecaDAO {
      * @return boolean - resultado da busca pela peça. Se foi achada ou não.*/
 
     @Override
-    public boolean checkByName(String nome){
+    public boolean checarPorNome(String nome){
 
         String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD)
                 .replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
@@ -176,7 +176,7 @@ public class PecaImpl implements PecaDAO {
      * @return boolean - resultado da checagem de quantidade. Se a peça possui a quantidade suficiente
      * ou não.*/
 
-    public boolean checkQuantity (String nome, int quantidade) {
+    public boolean checarQuantidade(String nome, int quantidade) {
 
         String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD)
                 .replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
@@ -196,7 +196,7 @@ public class PecaImpl implements PecaDAO {
      *
      * @return List<Peca> - lista de peças com baixa quantidade.*/
 
-    public List<Peca> quantityAlert () {
+    public List<Peca> alertaDeQuantidade() {
 
         List<Peca> listPeca = new ArrayList<Peca>();
 
@@ -221,7 +221,7 @@ public class PecaImpl implements PecaDAO {
      * @return Map<String,Integer> - estrutura com os nomes as peças que não puderam ser devolvidas
      * e suas quantidade.*/
 
-    public Map<String, Integer> refundQuantity (Map<String, Integer> mapItens) {
+    public Map<String, Integer> devolverQuantidade(Map<String, Integer> mapItens) {
 
         int novaQuantidade;
 
@@ -249,7 +249,7 @@ public class PecaImpl implements PecaDAO {
      *
      * @param nome String - nome da peça que deve ser removida.*/
 
-    public void removePeca (String nome) {
+    public void removerPeca(String nome) {
 
         String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD)
                 .replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
@@ -262,7 +262,7 @@ public class PecaImpl implements PecaDAO {
      * zeradas.*/
 
     @Override
-    public void deleteMany () {
+    public void removerTodos() {
 
         this.map.clear();
 
@@ -286,15 +286,15 @@ public class PecaImpl implements PecaDAO {
     }
 
     @Override
-    public List<Peca> findMany () { return null;};
+    public List<Peca> encontrarTodos() { return null;};
 
     @Override
-    public Peca findById (int id) { return null;}
+    public Peca encontrarPorId(int id) { return null;}
 
     @Override
-    public void delete(int id) { }
+    public void remover(int id) { }
 
     @Override
-    public boolean checkById(int id) { return false; }
+    public boolean checarPorId(int id) { return false; }
 
 }

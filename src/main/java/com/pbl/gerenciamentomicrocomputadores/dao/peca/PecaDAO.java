@@ -21,7 +21,7 @@ public interface PecaDAO extends CRUD<Peca> {
      * @param nome String - nome da peça.
      * @param quantidade int - quantidade que deve ser retirada da peça.*/
 
-    public void removeQuantity (String nome, int quantidade);
+    public void removerQuantidade(String nome, int quantidade);
 
     /** Método para adicionar determinada quantidade de uma peça específica. A peça é identificada
      * pelo nome.
@@ -29,7 +29,7 @@ public interface PecaDAO extends CRUD<Peca> {
      * @param nome String - nome da peça.
      * @param quantidade int - quantidade que deve ser adicionada da peça.*/
 
-    public void addQuantity (String nome, int quantidade);
+    public void adicionarQuantidade(String nome, int quantidade);
 
     /** Método de retorno de todo o armazenamento de peças do sistema. Os dados são compactados em
      * uma estrutura do tipo HashMap que tem o nome da peça como chave e o objeto do tipo Peca como
@@ -37,21 +37,21 @@ public interface PecaDAO extends CRUD<Peca> {
      *
      * @return Map<String, Peca> - estrutura com todas as peças do sistema armazenadas.*/
 
-    public Map<String, Peca> findFullMap ();
+    public Map<String, Peca> encontrarTodoMap();
 
     /** Método de retorno de uma peça através da busca por nome.
      *
      * @param nome String - nome da peça.
      * @return Peca - peça encontrada após a busca por nome.*/
 
-    public Peca findByName (String nome);
+    public Peca encontrarPorNome(String nome);
 
     /** Método para checar se uma peça está armazenada no sistema através da busca por nome.
      *
      * @param nome String - nome da peça.
      * @return boolean - resultado da busca pela peça. Se foi achada ou não.*/
 
-    boolean checkByName (String nome);
+    public boolean checarPorNome(String nome);
 
     /** Método para checar se um tipo de peça tem quantidade suficiente para realizar
      * determinada ordem de serviço de montagem.
@@ -61,14 +61,14 @@ public interface PecaDAO extends CRUD<Peca> {
      * @return boolean - resultado da checagem de quantidade. Se a peça possui a quantidade suficiente
      * ou não.*/
 
-    public boolean checkQuantity (String nome, int quantidade);
+    public boolean checarQuantidade(String nome, int quantidade);
 
     /** Método para encontrar as peças do sistema que estão com uma baixa quantidade. Com o objetivo
      * de alertar o usuário.
      *
      * @return List<Peca> - lista de peças com baixa quantidade.*/
 
-    public List<Peca> quantityAlert ();
+    public List<Peca> alertaDeQuantidade();
 
     /** Método para devolver a quantidade retirada das peças para a realização de uma
      * ordem de serviço. Utilizado quando uma ordem de serviço é cancelada e as peças precisam ser
@@ -80,12 +80,12 @@ public interface PecaDAO extends CRUD<Peca> {
      * @return Map<String,Integer> - estrutura com os nomes as peças que não puderam ser devolvidas
      * e suas quantidade.*/
 
-    public Map<String, Integer> refundQuantity (Map<String, Integer> mapItens);
+    public Map<String, Integer> devolverQuantidade(Map<String, Integer> mapItens);
 
     /** Método para remover uma peça do armazenamento. A peça é encontrada através do nome.
      *
      * @param nome String - nome da peça que deve ser removida.*/
 
-    public void removePeca (String nome);
+    public void removerPeca(String nome);
 
 }
