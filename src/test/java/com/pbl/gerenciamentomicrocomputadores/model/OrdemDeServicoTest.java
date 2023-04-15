@@ -13,11 +13,13 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class OrdemDeServicoTest {
+
     private OrdemDeServicoDAO dao;
     private OrdemDeServico ordem0;
     private OrdemDeServico ordem1;
     private Peca peca0;
     private Peca peca1;
+    private Map<String, Peca> estoque;
 
     @BeforeEach
     void setUp() {
@@ -31,6 +33,11 @@ public class OrdemDeServicoTest {
 
         peca0 = new Peca("ram", 3, 20, 20);
         peca1 = new Peca("hd", 3, 30, 30);
+
+        Map<String, Peca> estoque = new HashMap<String, Peca>();
+
+        estoque.put("ram", peca0);
+        estoque.put("hd", peca1);
     }
 
     @Test
@@ -54,27 +61,27 @@ public class OrdemDeServicoTest {
         ordem0.getDescricaoServico().setMapItens("ram", 2);
         ordem0.getDescricaoServico().setMapItens("hd", 2);
 
-        Map<String, Peca> mapItensValor = new HashMap<String, Peca>();
+        Map<String, Peca> estoque = new HashMap<String, Peca>();
 
-        mapItensValor.put("ram", peca0);
-        mapItensValor.put("hd", peca1);
+        estoque.put("ram", peca0);
+        estoque.put("hd", peca1);
 
-        double valorServico = ordem0.calcularValorServico( mapItensValor);
+        double valorServico = ordem0.calcularValorServico( estoque);
         assertEquals(100, valorServico);
 
         ordem0.getDescricaoServico().setTipoDeServico("Sistema operacional");
 
-        valorServico = ordem0.calcularValorServico( mapItensValor);
+        valorServico = ordem0.calcularValorServico( estoque);
         assertEquals(50, valorServico);
 
         ordem0.getDescricaoServico().setTipoDeServico("Programas");
 
-        valorServico = ordem0.calcularValorServico( mapItensValor);
+        valorServico = ordem0.calcularValorServico( estoque);
         assertEquals(10, valorServico);
 
         ordem0.getDescricaoServico().setTipoDeServico("Limpeza");
 
-        valorServico = ordem0.calcularValorServico( mapItensValor);
+        valorServico = ordem0.calcularValorServico( estoque);
         assertEquals(70, valorServico);
     }
 
@@ -90,16 +97,12 @@ public class OrdemDeServicoTest {
 
     @Test
     void  imprimirFatura () {
-        Map<String, Peca> mapItensValor = new HashMap<String, Peca>();
-
-        mapItensValor.put("ram", peca0);
-        mapItensValor.put("hd", peca1);
 
         ordem0.getDescricaoServico().setTipoDeServico("Montagem/Instalação");
         ordem0.getDescricaoServico().setMapItens("ram", 3);
         ordem0.getDescricaoServico().setMapItens("hd", 1);
 
-        double valorServico = ordem0.calcularValorServico(mapItensValor);
+        double valorServico = ordem0.calcularValorServico(estoque);
 
         ordem0.setValorTotalFatura(valorServico);
 
@@ -111,29 +114,22 @@ public class OrdemDeServicoTest {
                 Peça 2 - nome: ram ; preço: 20,0 ; quantidade: 3
                 
                 Valor total: 90,0
-                """, ordem0.imprimirFatura(mapItensValor));
+                """, ordem0.imprimirFatura(estoque));
 
         ordem1.getDescricaoServico().setTipoDeServico("Limpeza");
 
-        valorServico = ordem1.calcularValorServico(mapItensValor);
+        valorServico = ordem1.calcularValorServico(estoque);
 
         ordem1.setValorTotalFatura(valorServico);
 
         assertEquals("""
                 Tipo de serviço: Limpeza
                 Valor total: 70,0
-                """, ordem1.imprimirFatura(mapItensValor));
+                """, ordem1.imprimirFatura(estoque));
     }
 
     @Test
     void imprimirRelatorio () {
-
-        Map<String, Peca> mapItensValor = new HashMap<String, Peca>();
-
-        mapItensValor.put("ram", peca0);
-        mapItensValor.put("hd", peca1);
-
-        OrdemDeServico ordem0 = new OrdemDeServico( 1111, 1112);
 
         ordem0.getDescricaoServico().setTipoDeServico("Montagem/Instalação");
         ordem0.getDescricaoServico().setMapItens("ram", 3);
@@ -156,7 +152,7 @@ public class OrdemDeServicoTest {
                 Peça 2 - nome: ram ; custo: 20,0 ; quantidade: 3
                 
                 Satisfação do cliente: Trabalho bem feito
-                """, ordem0.imprimirRelatorio(mapItensValor));
+                """, ordem0.imprimirRelatorio(estoque));
 
 
         ordem1.getDescricaoServico().setTipoDeServico("Sistema operacional");
@@ -173,7 +169,7 @@ public class OrdemDeServicoTest {
         assertEquals("""
                 Tempo médio de espera: 100 segundos
                 Satisfação do cliente: Trabalho demorado
-                """, ordem1.imprimirRelatorio(mapItensValor));
+                """, ordem1.imprimirRelatorio(estoque));
 
     }
 

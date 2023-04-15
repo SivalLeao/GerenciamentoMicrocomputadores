@@ -9,7 +9,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TecnicoImplTest {
-    
+
     private TecnicoDAO dao;
     private Tecnico t1;
     private Tecnico t2;
