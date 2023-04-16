@@ -1,7 +1,9 @@
 package com.pbl.gerenciamentomicrocomputadores.dao.cliente;
 
+import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +22,7 @@ public class ClienteImplTest {
 
     @BeforeEach
     void setUp() {
-        dao = new ClienteImpl();
+        dao = DAO.getCliente();
 
         c0 = new Cliente("Steve", "Rua Capricórnio num 1", "66666666666", "11111111111");
         c1 = new Cliente("Dayana", "Rua Aquário num 2", "77777777777", "22222222222");
@@ -33,6 +35,12 @@ public class ClienteImplTest {
         dao.criar( c2);
         dao.criar( c3);
         dao.criar( c4);
+    }
+
+    @AfterEach
+    void reset() {
+
+        dao.removerTodos();
     }
 
     @Test

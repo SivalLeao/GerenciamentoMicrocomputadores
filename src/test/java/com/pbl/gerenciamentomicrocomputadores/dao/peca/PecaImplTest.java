@@ -1,6 +1,8 @@
 package com.pbl.gerenciamentomicrocomputadores.dao.peca;
 
+import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.Peca;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +20,7 @@ public class PecaImplTest {
 
     @BeforeEach
     void setUp() {
-        dao = new PecaImpl();
+        dao = DAO.getPeca();
 
         peca0 = new Peca("Processador", 5, 50, 40);
         peca1 = new Peca("Cooler", 4, 40, 35);
@@ -27,6 +29,30 @@ public class PecaImplTest {
         dao.criar(peca0);
         dao.criar(peca1);
         dao.criar(peca2);
+    }
+
+    @AfterEach
+    void reset() {
+
+        dao.removerTodos();
+
+        Peca pecaBasica0 = new Peca("ram", 10, 20, 20);
+        dao.atualizar(pecaBasica0);
+
+        Peca pecaBasica1 = new Peca("placa mae", 10, 100, 100);
+        dao.atualizar(pecaBasica1);
+
+        Peca pecaBasica2 = new Peca("fonte", 10, 30, 30);
+        dao.atualizar(pecaBasica2);
+
+        Peca pecaBasica3 = new Peca("placa de video", 10, 100, 100);
+        dao.atualizar(pecaBasica3);
+
+        Peca pecaBasica4 = new Peca("hd", 10, 30, 30);
+        dao.atualizar(pecaBasica4);
+
+        Peca pecaBasica5 = new Peca("ssd", 10, 30, 30);
+        dao.atualizar(pecaBasica5);
     }
 
     @Test

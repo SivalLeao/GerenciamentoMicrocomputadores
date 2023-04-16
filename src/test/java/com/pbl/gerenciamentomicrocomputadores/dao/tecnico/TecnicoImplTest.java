@@ -1,6 +1,8 @@
 package com.pbl.gerenciamentomicrocomputadores.dao.tecnico;
 
+import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +21,7 @@ public class TecnicoImplTest {
 
     @BeforeEach
     void setUp () {
-        dao = new TecnicoImpl();
+        dao = DAO.getTecnico();
 
         t1 = new Tecnico("Leonard","Nova Jérsei","44444444444","55555555555");
         t2 = new Tecnico("Sheldon","Galveston, Texas","77777777777","33333333333");
@@ -32,6 +34,12 @@ public class TecnicoImplTest {
         dao.criar(t3);
         dao.criar(t4);
         dao.criar(t5);
+    }
+
+    @AfterEach
+    void reset() {
+
+        dao.removerTodos();
     }
 
     @Test

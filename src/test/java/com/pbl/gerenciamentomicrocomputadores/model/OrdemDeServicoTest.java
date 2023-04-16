@@ -1,7 +1,9 @@
 package com.pbl.gerenciamentomicrocomputadores.model;
 
+import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico.OrdemDeServicoDAO;
-import com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico.OrdemDeServicoImpl;
+
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +25,7 @@ public class OrdemDeServicoTest {
 
     @BeforeEach
     void setUp() {
-        dao = new OrdemDeServicoImpl();
+        dao = DAO.getOrdemDeServico();
 
         ordem0 = new OrdemDeServico( 1111, 1112);
         ordem1 = new OrdemDeServico( 1121, 1122);
@@ -38,6 +40,12 @@ public class OrdemDeServicoTest {
 
         estoque.put("ram", peca0);
         estoque.put("hd", peca1);
+    }
+
+    @AfterEach
+    void reset() {
+
+        dao.removerTodos();
     }
 
     @Test
