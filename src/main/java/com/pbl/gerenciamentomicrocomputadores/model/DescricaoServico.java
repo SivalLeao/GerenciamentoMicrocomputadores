@@ -13,7 +13,6 @@ import java.util.Map;
 public class DescricaoServico {
 
     private String tipoDeServico;
-
     private Map<String, Integer> mapItens;
 
     /** Construtor responsável por inicializar o atributo mapItens, que será responsável por

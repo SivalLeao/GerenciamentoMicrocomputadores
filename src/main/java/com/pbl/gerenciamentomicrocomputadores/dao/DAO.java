@@ -20,11 +20,8 @@ import com.pbl.gerenciamentomicrocomputadores.dao.peca.PecaImpl;
 public class DAO {
 
     private static ClienteDAO clienteDAO;
-
     private static TecnicoDAO tecnicoDAO;
-
     private static OrdemDeServicoDAO ordemDeServicoDAO;
-
     private static PecaDAO pecaDAO;
 
     /** Método de retorno do atributo clienteDAO, que é responsável por armazenar os dados

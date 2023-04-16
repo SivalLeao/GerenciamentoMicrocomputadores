@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PessoaTest {
+
     private Cliente c0;
     private Tecnico t0;
 

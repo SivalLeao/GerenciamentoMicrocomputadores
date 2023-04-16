@@ -13,6 +13,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PecaImplTest {
+
     private PecaDAO dao;
     private Peca peca0;
     private Peca peca1;

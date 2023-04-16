@@ -17,7 +17,6 @@ import java.util.Map;
 public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
 
     private List<OrdemDeServico> lista;
-
     private int id;
 
     /** Construtor que inicializa a lista de armazenamento de ordens de serviço e o número de ID. O ID da

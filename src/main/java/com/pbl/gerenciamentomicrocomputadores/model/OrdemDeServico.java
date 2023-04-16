@@ -15,21 +15,13 @@ import java.util.Map;
 public class OrdemDeServico {
 
     private int idOrdem;
-
     private int idCliente;
-
     private int idTecnico;
-
     private Data data;
-
     private DescricaoServico descricaoServico;
-
     private String statusAtual;
-
     private String formaPagamento;
-
     private String satisfacaoCliente;
-
     private double valorTotalFatura;
 
     /** Construtor responsável por definir a hora atual da criação da ordem de serviço e criar um objeto vazio
