@@ -22,6 +22,7 @@ public class ClienteImplTest {
 
     @BeforeEach
     void setUp() {
+
         dao = DAO.getCliente();
 
         c0 = new Cliente("Steve", "Rua Capricórnio num 1", "66666666666", "11111111111");
@@ -44,7 +45,8 @@ public class ClienteImplTest {
     }
 
     @Test
-    void criar () {
+    void criar() {
+
         List<Cliente> lista = dao.encontrarTodos();
 
         assertEquals( lista.get(0).getNome(), "Steve");
@@ -61,7 +63,8 @@ public class ClienteImplTest {
     }
 
     @Test
-    void encontrarTodos () {
+    void encontrarTodos() {
+
         List<Cliente> lista = dao.encontrarTodos();
 
         assertEquals( 5, lista.size());
@@ -71,7 +74,8 @@ public class ClienteImplTest {
     }
 
     @Test
-    void encontrarPorId () {
+    void encontrarPorId() {
+
         Cliente ById0 = dao.encontrarPorId(1112);
         assertEquals( c0, ById0);
 
@@ -80,7 +84,8 @@ public class ClienteImplTest {
     }
 
     @Test
-    void encontrarPorCpf () {
+    void encontrarPorCpf() {
+
         Cliente ByCpf0 = dao.encontrarPorCpf("11111111111");
         assertEquals( c0, ByCpf0);
 
@@ -89,7 +94,8 @@ public class ClienteImplTest {
     }
 
     @Test
-    void atualizar () {
+    void atualizar() {
+
         Cliente newC0 = dao.encontrarPorId(1112);
         assertEquals( newC0, c0);
 
@@ -109,7 +115,8 @@ public class ClienteImplTest {
     }
 
     @Test
-    void remover(){
+    void remover() {
+
         dao.remover(1112);
         dao.remover(1132);
         dao.remover(1152);
@@ -128,7 +135,8 @@ public class ClienteImplTest {
     }
 
     @Test
-    void checarPorId(){
+    void checarPorId() {
+
         boolean ById0 = dao.checarPorId(1112);
         assertTrue(ById0);
 
@@ -140,7 +148,8 @@ public class ClienteImplTest {
     }
 
     @Test
-    void checarPorCpf(){
+    void checarPorCpf() {
+
         boolean ByCpf0 = dao.checarPorCpf("44444444444");
         assertTrue(ByCpf0);
 
@@ -152,11 +161,13 @@ public class ClienteImplTest {
     }
 
     @Test
-    void removerTodos(){
+    void removerTodos() {
+
         dao.removerTodos();
 
         List<Cliente> lista = dao.encontrarTodos();
 
         assertEquals(0, lista.size());
     }
+
 }

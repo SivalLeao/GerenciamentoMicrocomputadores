@@ -20,6 +20,7 @@ public class PecaImplTest {
 
     @BeforeEach
     void setUp() {
+
         dao = DAO.getPeca();
 
         peca0 = new Peca("Processador", 5, 50, 40);
@@ -57,6 +58,7 @@ public class PecaImplTest {
 
     @Test
     void criar() {
+
         Map<String, Peca> mapPeca = dao.encontrarTodoMap();
 
         assertEquals( mapPeca.get(peca0.getNome()), peca0);
@@ -73,7 +75,8 @@ public class PecaImplTest {
     }
 
     @Test
-    void encontrarTodoMap () {
+    void encontrarTodoMap() {
+
         Map<String, Peca> mapPeca = dao.encontrarTodoMap();
 
         assertEquals(9, mapPeca.size());
@@ -90,7 +93,7 @@ public class PecaImplTest {
     }
 
     @Test
-    void atualizar () {
+    void atualizar() {
 
         Map<String, Peca> mapPeca = dao.encontrarTodoMap();
 
@@ -124,13 +127,15 @@ public class PecaImplTest {
     }
 
     @Test
-    void encontrarPorNome () {
+    void encontrarPorNome() {
+
         assertEquals( dao.encontrarPorNome("Cooler"), peca1);
         assertNull( dao.encontrarPorNome("Mouse"));
     }
 
     @Test
-    void checarPorNome () {
+    void checarPorNome() {
+
         assertTrue(dao.checarPorNome("Cooler"));
         assertTrue(dao.checarPorNome("Processador"));
         assertTrue(dao.checarPorNome("SSD"));
@@ -138,7 +143,8 @@ public class PecaImplTest {
     }
 
     @Test
-    void checarQuantidade () {
+    void checarQuantidade() {
+
         assertTrue(dao.checarQuantidade("Cooler", 2));
         assertTrue(dao.checarQuantidade("SSD", 10));
 
@@ -147,7 +153,8 @@ public class PecaImplTest {
     }
 
     @Test
-    void removerQuantidade () {
+    void removerQuantidade() {
+
         Map<String, Peca> mapPeca = dao.encontrarTodoMap();
 
         assertEquals(4, mapPeca.get("cooler").getQuantidade());
@@ -163,7 +170,8 @@ public class PecaImplTest {
     }
 
     @Test
-    void adicionarQuantidade () {
+    void adicionarQuantidade() {
+
         Map<String, Peca> mapPeca = dao.encontrarTodoMap();
 
         assertEquals(4, mapPeca.get("cooler").getQuantidade());
@@ -179,7 +187,8 @@ public class PecaImplTest {
     }
 
     @Test
-    void alertaDeQuantidade () {
+    void alertaDeQuantidade() {
+
         List<Peca> listPeca = dao.alertaDeQuantidade();
 
         assertEquals(2, listPeca.size());
@@ -189,7 +198,8 @@ public class PecaImplTest {
     }
 
     @Test
-    void devolverQuantidade () {
+    void devolverQuantidade() {
+
         Map<String, Integer> mapItensServico = new HashMap<String, Integer>();
 
         mapItensServico.put("ram", 5);
@@ -209,7 +219,8 @@ public class PecaImplTest {
     }
 
     @Test
-    void removerPeca () {
+    void removerPeca() {
+
         assertTrue( dao.checarPorNome("Processador"));
 
         dao.removerPeca("Processador");
@@ -220,7 +231,8 @@ public class PecaImplTest {
     }
 
     @Test
-    void removerTodos () {
+    void removerTodos() {
+
         Map<String, Peca> mapPeca = dao.encontrarTodoMap();
 
         assertEquals(9, mapPeca.size());
@@ -235,4 +247,5 @@ public class PecaImplTest {
         assertFalse(dao.checarPorNome("Processador"));
         assertEquals(0, dao.encontrarPorNome("ram").getQuantidade());
     }
+
 }

@@ -25,6 +25,7 @@ public class OrdemDeServicoTest {
 
     @BeforeEach
     void setUp() {
+
         dao = DAO.getOrdemDeServico();
 
         ordem0 = new OrdemDeServico( 1111, 1112);
@@ -49,7 +50,8 @@ public class OrdemDeServicoTest {
     }
 
     @Test
-    void calcularTempoDeServico () {
+    void calcularTempoDeServico() {
+
         LocalDateTime dataInicial = LocalDateTime.parse("2023-04-09 13:46:10",
                 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         LocalDateTime dataFinal = LocalDateTime.parse("2023-04-09 13:46:25",
@@ -64,7 +66,8 @@ public class OrdemDeServicoTest {
     }
 
     @Test
-    void calcularValorServico () {
+    void calcularValorServico() {
+
         ordem0.getDescricaoServico().setTipoDeServico("Montagem/Instalação");
         ordem0.getDescricaoServico().setMapItens("ram", 2);
         ordem0.getDescricaoServico().setMapItens("hd", 2);
@@ -94,7 +97,8 @@ public class OrdemDeServicoTest {
     }
 
     @Test
-    void imprimirOrdem () {
+    void imprimirOrdem() {
+
         assertEquals( """
                 ID da ordem: 1113
                 ID do cliente: 1112
@@ -104,7 +108,7 @@ public class OrdemDeServicoTest {
     }
 
     @Test
-    void  imprimirFatura () {
+    void  imprimirFatura() {
 
         ordem0.getDescricaoServico().setTipoDeServico("Montagem/Instalação");
         ordem0.getDescricaoServico().setMapItens("ram", 3);
@@ -137,7 +141,7 @@ public class OrdemDeServicoTest {
     }
 
     @Test
-    void imprimirRelatorio () {
+    void imprimirRelatorio() {
 
         ordem0.getDescricaoServico().setTipoDeServico("Montagem/Instalação");
         ordem0.getDescricaoServico().setMapItens("ram", 3);

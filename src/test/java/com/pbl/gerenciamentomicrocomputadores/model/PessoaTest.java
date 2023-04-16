@@ -11,12 +11,13 @@ public class PessoaTest {
 
     @BeforeEach
     public void setUp() {
+
         c0 = new Cliente("Dayana", "Rua Aquário num 2", "77777777777", "22222222222");
         t0 = new Tecnico("Samire", "Rua Libra, 23", "88888888888", "11111111111");
-
     }
     @Test
-    void validarNome () {
+    void validarNome() {
+
         assertTrue( c0.validarNome("Day"));
         assertFalse( c0.validarNome("Day 10"));
         assertFalse( c0.validarNome("Da"));
@@ -27,7 +28,8 @@ public class PessoaTest {
     }
 
     @Test
-    void validarEndereco () {
+    void validarEndereco() {
+
         assertTrue( c0.validarEndereco("Rua"));
         assertFalse( c0.validarNome("Ru"));
 
@@ -36,7 +38,8 @@ public class PessoaTest {
     }
 
     @Test
-    void validarTelefone () {
+    void validarTelefone() {
+
         assertTrue( c0.validarTelefone( "(13) 53476-9012"));
         assertTrue( c0.validarTelefone( "13534769012"));
         assertFalse( c0.validarTelefone( "1567562096"));
@@ -47,7 +50,8 @@ public class PessoaTest {
     }
 
     @Test
-    void validarCpf () {
+    void validarCpf() {
+
         assertTrue( c0.validarCpf( "321.654.987-10"));
         assertTrue( c0.validarCpf( "32165498710"));
         assertFalse( c0.validarCpf( "0987654321"));
@@ -58,7 +62,8 @@ public class PessoaTest {
     }
 
     @Test
-    void imprimirPessoa(){
+    void imprimirPessoa() {
+
         c0.setId(1112);
         assertEquals("""
                              NOME: Dayana
@@ -73,4 +78,5 @@ public class PessoaTest {
                              ENDEREÇO: Rua Libra, 23    
                             """,t0.imprimirPessoa());
     }
+
 }

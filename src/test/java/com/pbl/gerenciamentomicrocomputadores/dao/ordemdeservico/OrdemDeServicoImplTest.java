@@ -23,6 +23,7 @@ public class OrdemDeServicoImplTest {
 
     @BeforeEach
     void setUp() {
+
         dao = DAO.getOrdemDeServico();
 
         ordem0 = new OrdemDeServico( 1111, 1112);
@@ -45,7 +46,8 @@ public class OrdemDeServicoImplTest {
     }
 
     @Test
-    void criar () {
+    void criar() {
+
         List<OrdemDeServico> lista = dao.encontrarTodos();
 
         assertEquals( lista.get(0), ordem0);
@@ -59,7 +61,8 @@ public class OrdemDeServicoImplTest {
     }
 
     @Test
-    void encontrarTodos () {
+    void encontrarTodos() {
+
         List<OrdemDeServico> lista = dao.encontrarTodos();
 
         assertEquals(5, lista.size());
@@ -69,13 +72,15 @@ public class OrdemDeServicoImplTest {
     }
 
     @Test
-    void encontrarPorId () {
+    void encontrarPorId() {
+
         assertEquals( dao.encontrarPorId(1113), ordem0);
         assertEquals( dao.encontrarPorId(1123), ordem1);
     }
 
     @Test
-    void atualizar () {
+    void atualizar() {
+
         ordem0.getDescricaoServico().setTipoDeServico("Montagem/Instalação");
         ordem0.getDescricaoServico().setMapItens("ram", 2);
         ordem0.getDescricaoServico().setMapItens("hd", 1);
@@ -103,7 +108,8 @@ public class OrdemDeServicoImplTest {
     }
 
     @Test
-    void atualizarStatus () {
+    void atualizarStatus() {
+
         ordem0.getDescricaoServico().setTipoDeServico("Montagem/Instalação");
         ordem0.getDescricaoServico().setMapItens("ram", 2);
         ordem0.getDescricaoServico().setMapItens("hd", 1);
@@ -135,7 +141,8 @@ public class OrdemDeServicoImplTest {
     }
 
     @Test
-    void remover () {
+    void remover() {
+
         assertEquals( 5, dao.encontrarTodos().size());
 
         assertEquals( ordem0, dao.encontrarPorId(1113));
@@ -156,7 +163,8 @@ public class OrdemDeServicoImplTest {
     }
 
     @Test
-    void encontrarPorIdTecnico () {
+    void encontrarPorIdTecnico() {
+
         List<OrdemDeServico> listaTecnico = dao.encontrarPorIdTecnico(1111);
 
         assertEquals( 2, listaTecnico.size());
@@ -166,7 +174,8 @@ public class OrdemDeServicoImplTest {
     }
 
     @Test
-    void listaEmAbertoTecnico () {
+    void listaEmAbertoTecnico() {
+
         dao.atualizarStatus(1123, "Finalizado");
         dao.atualizarStatus(1133, "Cancelado");
         dao.atualizarStatus(1143, "Em andamento");
@@ -180,14 +189,16 @@ public class OrdemDeServicoImplTest {
     }
 
     @Test
-    void checarPorId () {
+    void checarPorId() {
+
         assertTrue( dao.checarPorId(1113));
         assertTrue( dao.checarPorId(1123));
         assertFalse( dao.checarPorId(1163));
     }
 
     @Test
-    void checarStatusEmAndamento () {
+    void checarStatusEmAndamento() {
+
         dao.atualizarStatus(1113, "Finalizado");
         dao.atualizarStatus(1133, "Cancelado");
         dao.atualizarStatus(1153, "Em andamento");
@@ -200,7 +211,8 @@ public class OrdemDeServicoImplTest {
     }
 
     @Test
-    void removerTodos () {
+    void removerTodos() {
+
         List<OrdemDeServico> lista = dao.encontrarTodos();
 
         assertEquals( 5, lista.size());
@@ -211,4 +223,5 @@ public class OrdemDeServicoImplTest {
 
         assertEquals( 0, lista.size());
     }
+
 }

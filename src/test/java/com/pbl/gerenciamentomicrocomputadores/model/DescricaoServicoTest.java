@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DescricaoServicoTest {
 
     @Test
-    void imprimirDescricaoServico () {
+    void imprimirDescricaoServico() {
 
         OrdemDeServico ordem0 = new OrdemDeServico( 1111, 1112);;
 

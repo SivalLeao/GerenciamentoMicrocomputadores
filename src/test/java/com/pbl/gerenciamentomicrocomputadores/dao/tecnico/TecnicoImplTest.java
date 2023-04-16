@@ -20,7 +20,8 @@ public class TecnicoImplTest {
     private Tecnico t5;
 
     @BeforeEach
-    void setUp () {
+    void setUp() {
+
         dao = DAO.getTecnico();
 
         t1 = new Tecnico("Leonard","Nova Jérsei","44444444444","55555555555");
@@ -43,7 +44,8 @@ public class TecnicoImplTest {
     }
 
     @Test
-    void criar () {
+    void criar() {
+
         List<Tecnico> lista = dao.encontrarTodos();
 
         assertEquals(lista.get(0).getNome(),"Leonard");
@@ -60,7 +62,8 @@ public class TecnicoImplTest {
     }
 
     @Test
-    void encontrarTodos () {
+    void encontrarTodos() {
+
         List<Tecnico> lista = dao.encontrarTodos();
         assertEquals(5,lista.size());
 
@@ -69,7 +72,8 @@ public class TecnicoImplTest {
     }
 
     @Test
-    void encontrarPorId () {
+    void encontrarPorId() {
+
         Tecnico ById1 = dao.encontrarPorId(1111);
         assertEquals(t1, ById1);
 
@@ -78,7 +82,8 @@ public class TecnicoImplTest {
     }
 
     @Test
-    void encontrarPorCpf () {
+    void encontrarPorCpf() {
+
         Tecnico ByCpf1 = dao.encontrarPorCpf("55555555555");
         assertEquals(t1, ByCpf1);
 
@@ -87,7 +92,8 @@ public class TecnicoImplTest {
     }
 
     @Test
-    void atualizar () {
+    void atualizar() {
+
         Tecnico newT1 = dao.encontrarPorId(1111);
         assertEquals(t1, newT1);
 
@@ -107,7 +113,7 @@ public class TecnicoImplTest {
     }
 
     @Test
-    void remover () {
+    void remover() {
 
         dao.remover(1111);
         dao.remover(1131);
@@ -127,7 +133,7 @@ public class TecnicoImplTest {
     }
 
     @Test
-    void checarPorId () {
+    void checarPorId() {
 
         boolean ById1 = dao.checarPorId(1111);
         assertTrue(ById1);
@@ -140,7 +146,7 @@ public class TecnicoImplTest {
     }
 
     @Test
-    void checarPorCpf () {
+    void checarPorCpf() {
 
         boolean ByCpf1 = dao.checarPorCpf("55555555555");
         assertTrue(ByCpf1);
@@ -153,7 +159,7 @@ public class TecnicoImplTest {
     }
 
     @Test
-    void removerTodos () {
+    void removerTodos() {
 
         List<Tecnico> lista = dao.encontrarTodos();
         assertEquals(5, lista.size());
@@ -163,4 +169,5 @@ public class TecnicoImplTest {
         lista = dao.encontrarTodos();
         assertEquals(0, lista.size());
     }
+
 }

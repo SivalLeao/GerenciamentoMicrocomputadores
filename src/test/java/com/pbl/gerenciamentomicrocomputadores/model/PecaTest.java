@@ -7,7 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PecaTest {
 
     @Test
-    void imprimirPeca () {
+    void imprimirPeca() {
+
         Peca peca0 = new Peca( "teclado", 2, 40.0, 30.0);
 
         assertEquals("""
@@ -17,4 +18,5 @@ public class PecaTest {
                 Custo: 30,0
                 """, peca0.imprimirPeca());
     }
+
 }

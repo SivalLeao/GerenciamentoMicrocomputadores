@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DataTest {
 
     @Test
-    void imprimirDatas () {
+    void imprimirDatas() {
 
         LocalDateTime dataInicial = LocalDateTime.parse("2023-04-09 12:00:00",
                 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));

@@ -62,6 +62,7 @@ public abstract class Pessoa {
      * @param telefone String - telefone da pessoa.*/
 
     public void setTelefone(String telefone) {
+
         String Telefone = telefone.replaceAll("\\s+|\\(+|\\)+|-+", "");
         String telefoneFormatado = "(" + Telefone.substring(0, 2) + ") " + Telefone.substring(2, 7) + "-" + Telefone.substring(7);
         this.telefone = telefoneFormatado;
@@ -79,6 +80,7 @@ public abstract class Pessoa {
      * @param cpf String - CPF da pessoa.*/
 
     public void setCpf(String cpf) {
+
         String Cpf = cpf.replaceAll("\\s+|\\.|-+", "");
         String CpfFormatado = Cpf.substring(0,3) + "." + Cpf.substring(3,6) + "." + Cpf.substring(6,9) + "-" + Cpf.substring(9);
         this.cpf = CpfFormatado;
@@ -176,6 +178,7 @@ public abstract class Pessoa {
      * @return String - texto formatado contendo dados de cadastro de uma pessoa*/
 
     public String imprimirPessoa() {
+
         return String.format(
                 """
                  NOME: %s  
