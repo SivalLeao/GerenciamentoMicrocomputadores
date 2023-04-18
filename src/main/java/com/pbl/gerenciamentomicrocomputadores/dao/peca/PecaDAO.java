@@ -35,7 +35,7 @@ public interface PecaDAO extends CRUD<Peca> {
      * uma estrutura do tipo HashMap que tem o nome da peça como chave e o objeto do tipo Peca como
      * conteúdo.
      *
-     * @return Map<String, Peca> - estrutura com todas as peças do sistema armazenadas.*/
+     * @return Map - estrutura com todas as peças do sistema armazenadas.*/
 
     public Map<String, Peca> encontrarTodoMap();
 
@@ -66,7 +66,7 @@ public interface PecaDAO extends CRUD<Peca> {
     /** Método para encontrar as peças do sistema que estão com uma baixa quantidade. Com o objetivo
      * de alertar o usuário.
      *
-     * @return List<Peca> - lista de peças com baixa quantidade.*/
+     * @return List - lista de peças com baixa quantidade.*/
 
     public List<Peca> alertaDeQuantidade();
 
@@ -75,9 +75,9 @@ public interface PecaDAO extends CRUD<Peca> {
      * adicionadas novamente. Caso algumas peças não possam ser retornadas ao sistema, uma estrutura
      * listando elas é retornada pelo método.
      *
-     * @param mapItens Map<String,Integer> - estrutura com o nome das peças e suas quantidades
+     * @param mapItens Map - estrutura com o nome das peças e suas quantidades
      *                 que devem ser devolvidas.
-     * @return Map<String,Integer> - estrutura com os nomes as peças que não puderam ser devolvidas
+     * @return Map - estrutura com os nomes as peças que não puderam ser devolvidas
      * e suas quantidade.*/
 
     public Map<String, Integer> devolverQuantidade(Map<String, Integer> mapItens);

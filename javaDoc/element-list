@@ -1,0 +1,8 @@
+module:com.pbl.gerenciamentomicrocomputadores
+com.pbl.gerenciamentomicrocomputadores
+com.pbl.gerenciamentomicrocomputadores.dao
+com.pbl.gerenciamentomicrocomputadores.dao.cliente
+com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico
+com.pbl.gerenciamentomicrocomputadores.dao.peca
+com.pbl.gerenciamentomicrocomputadores.dao.tecnico
+com.pbl.gerenciamentomicrocomputadores.model

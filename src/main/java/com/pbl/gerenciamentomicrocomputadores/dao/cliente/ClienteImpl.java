@@ -116,7 +116,7 @@ public class ClienteImpl implements ClienteDAO {
 
     /** Método de retorno de toda a lista de clientes armazenada no sistema.
      *
-     * @return List<Cliente> - lista de clientes do sistema.*/
+     * @return List - lista de clientes do sistema.*/
 
     @Override
     public List<Cliente> encontrarTodos() {

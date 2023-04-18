@@ -26,7 +26,10 @@ public class OrdemDeServico {
 
     /** Construtor responsável por definir a hora atual da criação da ordem de serviço e criar um objeto vazio
      * para armazenar as informações da descrição do tipo de serviço solicitado pelo cliente. Os atributos da
-     * forma de pagamento e da satisfação do cliente são inicializados com textos vazios.*/
+     * forma de pagamento e da satisfação do cliente são inicializados com textos vazios.
+     *
+     * @param idTecnico int - ID do técnico responsável por executar a ordem de serviço
+     * @param idCliente int - ID do cliente que solicitou a ordem de serviço*/
 
     public OrdemDeServico ( int idTecnico, int idCliente) {
 
@@ -251,7 +254,7 @@ public class OrdemDeServico {
     /** Método de retorno das informações da fatura. Incluindo o tipo de serviço; as peças utilizadas,
      * juntamente com os seus preços e quantidades; e o valor total do serviço.
      *
-     * @param informacoesEstoque Map<String,Peca> - estrutura com as informações das peças armazenadas
+     * @param informacoesEstoque Map - estrutura com as informações das peças armazenadas
      *                           em estoque.
      * @return String - informações da fatura.*/
 
@@ -295,7 +298,7 @@ public class OrdemDeServico {
     /** Método de retorno das informações do relatório. Incluindo tempo médio de espera; as peças utilizadas,
      * juntamente com os seus custos para a assistência técnica e suas quantidades; e a satisfação do cliente.
      *
-     * @param informacoesEstoque Map<String,Peca> - estrutura com as informações das peças armazenadas
+     * @param informacoesEstoque Map - estrutura com as informações das peças armazenadas
      *                           em estoque.
      * @return String - informações do relatório.*/
 

@@ -19,7 +19,7 @@ public interface OrdemDeServicoDAO extends CRUD<OrdemDeServico> {
      * A busca pelas ordens é feita através do ID do técnico.
      *
      * @param idTecnico int - ID do técnico
-     * @return List<OrdemDeServico> - lista de ordens de serviço atribuídas a um técnico específico*/
+     * @return List - lista de ordens de serviço atribuídas a um técnico específico*/
 
     public List<OrdemDeServico> encontrarPorIdTecnico(int idTecnico);
 
@@ -27,7 +27,7 @@ public interface OrdemDeServicoDAO extends CRUD<OrdemDeServico> {
      * ordens é feita através do ID do técnico.
      *
      * @param idTecnico int - ID do técnico
-     * @return List<OrdemDeServico> - lista de ordens de serviço em aberto atribuídas a um técnico específico*/
+     * @return List - lista de ordens de serviço em aberto atribuídas a um técnico específico*/
 
     public List<OrdemDeServico> listaEmAbertoTecnico(int idTecnico);
 
@@ -35,7 +35,7 @@ public interface OrdemDeServicoDAO extends CRUD<OrdemDeServico> {
      *
      * @param idOrdem int - ID da ordem de serviço
      * @param status String - novo status da ordem de serviço
-     * @return Map<String, Integer> - estrutura HashMap contendo as peças utilizadas no serviço que devem
+     * @return Map - estrutura HashMap contendo as peças utilizadas no serviço que devem
      * ser devolvidas ao estoque, caso a ordem de serviço seja cancelada*/
 
     public Map<String, Integer> atualizarStatus(int idOrdem, String status);

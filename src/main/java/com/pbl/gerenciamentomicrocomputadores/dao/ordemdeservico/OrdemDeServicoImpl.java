@@ -88,7 +88,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
      *
      * @param idOrdem int - número de ID da ordem de serviço.
      * @param status String - novo status da ordem de serviço
-     * @return Map<String, Integer> - estrutura HashMap contendo as peças utilizadas no serviço que devem
+     * @return Map - estrutura HashMap contendo as peças utilizadas no serviço que devem
      * ser devolvidas ao estoque, caso a ordem de serviço seja cancelada*/
 
     public Map<String, Integer> atualizarStatus(int idOrdem, String status) {
@@ -135,7 +135,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
 
     /** Método de retorno de todas as ordens de serviço armazenadas no sistema.
      *
-     * @return List<OrdemDeServico> - lista de ordens de serviço do sistema*/
+     * @return List - lista de ordens de serviço do sistema*/
 
     @Override
     public List<OrdemDeServico> encontrarTodos() {
@@ -154,7 +154,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
      * A busca pelas ordens é feita através do ID do técnico.
      *
      * @param idTecnico int - ID do técnico
-     * @return List<OrdemDeServico> - lista de ordens de serviço atribuídas a um técnico específico*/
+     * @return List - lista de ordens de serviço atribuídas a um técnico específico*/
 
     @Override
     public List<OrdemDeServico> encontrarPorIdTecnico(int idTecnico) {
@@ -177,7 +177,7 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
      * status "Em andamento" ou "Em espera".
      *
      * @param idTecnico int - ID do técnico
-     * @return List<OrdemDeServico> - lista de ordens de serviço em aberto atribuídas a um técnico específico*/
+     * @return List - lista de ordens de serviço em aberto atribuídas a um técnico específico*/
 
     @Override
     public List<OrdemDeServico> listaEmAbertoTecnico(int idTecnico) {

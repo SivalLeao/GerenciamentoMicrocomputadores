@@ -116,7 +116,7 @@ public class TecnicoImpl implements TecnicoDAO {
 
     /** Método de retorno de toda a lista de técnicos armazenada no sistema.
      *
-     * @return List<Tecnico> - lista de técnicos do sistema.*/
+     * @return List - lista de técnicos do sistema.*/
 
     @Override
     public List<Tecnico> encontrarTodos() {
