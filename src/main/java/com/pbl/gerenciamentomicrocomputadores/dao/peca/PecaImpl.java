@@ -17,47 +17,46 @@ import java.util.List;
 
 public class PecaImpl implements PecaDAO {
 
-    private Map<String, Peca> map;
+    private List<Peca> lista;
 
-    /** Construtor que inicializa a estrutura de armazenamento de peças. A peças básicas já são inseridas
+    /** Construtor que inicializa a lista de armazenamento de peças. A peças básicas já são inseridas
      * com 10 de quantidade e seus valores padrões. Todos os nomes das peças são colocados na estrutura com
      * letras minúsculas e sem acentos.*/
 
     public PecaImpl () {
 
-        this.map = new HashMap<String, Peca>();
+        this.lista = new ArrayList<Peca>();
 
         Peca peca0 = new Peca("ram", 10, 20, 20);
-        this.map.put(peca0.getNome(), peca0);
+        this.lista.add(peca0);
 
         Peca peca1 = new Peca("placa mae", 10, 100, 100);
-        this.map.put(peca1.getNome(), peca1);
+        this.lista.add(peca1);
 
         Peca peca2 = new Peca("fonte", 10, 30, 30);
-        this.map.put(peca2.getNome(), peca2);
+        this.lista.add(peca2);
 
         Peca peca3 = new Peca("placa de video", 10, 100, 100);
-        this.map.put(peca3.getNome(), peca3);
+        this.lista.add(peca3);
 
         Peca peca4 = new Peca("hd", 10, 30, 30);
-        this.map.put(peca4.getNome(), peca4);
+        this.lista.add(peca4);
 
         Peca peca5 = new Peca("ssd", 10, 30, 30);
-        this.map.put(peca5.getNome(), peca5);
+        this.lista.add(peca5);
     }
 
-    /** Método para inserir um objeto do tipo Peca na estrutura HashMap de armazenamento.
-     * O nome da peça é usado como chave e o objeto é o conteúdo.
+    /** Método para adicionar um objeto do tipo Peca na lista de armazenamento.
      *
      * @param peca Peca - peça que deve ser inserida.*/
 
     @Override
     public void criar(Peca peca) {
 
-        map.put(peca.getNome(), peca);
+        lista.add(peca);
     }
 
-    /** Método para atualizar as informações de uma peça na estrutura. O nome é utilizado para encontrar
+    /** Método para atualizar as informações de uma peça na lista. O nome é utilizado para encontrar
      * o objeto antigo que representava a peça, substituindo-o pelo novo objeto com as informações atualizadas.
      *
      * @param peca Peca - peça que deve ser atualizada.*/
@@ -65,7 +64,14 @@ public class PecaImpl implements PecaDAO {
     @Override
     public void atualizar(Peca peca) {
 
-        map.put(peca.getNome(), peca);
+        for (int i = 0; i < this.lista.size(); i++) {
+
+            if (lista.get(i).getNome().equals(peca.getNome())) {
+
+                this.lista.set(i, peca);
+                return;
+            }
+        }
     }
 
     /** Método para remover determinada quantidade de uma peça específica. A peça é identificada
@@ -85,9 +91,15 @@ public class PecaImpl implements PecaDAO {
         String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD)
                 .replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
 
-        novaQuantidade = this.map.get(nomeFormatado).getQuantidade() - quantidade;
+        for (int i = 0; i < this.lista.size(); i++) {
 
-        this.map.get(nomeFormatado).setQuantidade(novaQuantidade);
+            if (lista.get(i).getNome().equals(nomeFormatado)) {
+
+                novaQuantidade = this.lista.get(i).getQuantidade() - quantidade;
+                this.lista.get(i).setQuantidade(novaQuantidade);
+                return;
+            }
+        }
     }
 
     /** Método para adicionar determinada quantidade de uma peça específica. A peça é identificada
@@ -105,28 +117,32 @@ public class PecaImpl implements PecaDAO {
         String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD)
                 .replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
 
-        novaQuantidade = this.map.get(nomeFormatado).getQuantidade() + quantidade;
+        for (int i = 0; i < this.lista.size(); i++) {
 
-        this.map.get(nomeFormatado).setQuantidade(novaQuantidade);
+            if (lista.get(i).getNome().equals(nomeFormatado)) {
+
+                novaQuantidade = this.lista.get(i).getQuantidade() + quantidade;
+                this.lista.get(i).setQuantidade(novaQuantidade);
+                return;
+            }
+        }
     }
 
-    /** Método de retorno de todo o armazenamento de peças do sistema. Os dados são compactados em
-     * uma estrutura do tipo HashMap, que tem o nome da peça como chave e o objeto do tipo Peca como
-     * conteúdo.
+    /** Método de retorno de todas as peças armazenadas no sistema.
      *
-     * @return Map - estrutura com todas as peças do sistema armazenadas.*/
+     * @return List - lista de peças do sistema*/
 
     @Override
-    public Map<String, Peca> encontrarTodoMap() {
+    public List<Peca> encontrarTodos() {
 
-        Map<String, Peca> mapPeca = new HashMap<String, Peca>();
+        List<Peca> listPeca = new ArrayList<Peca>();
 
-        for (String nomePeca: this.map.keySet()) {
+        for (Peca peca: this.lista) {
 
-            mapPeca.put(nomePeca, this.map.get(nomePeca));
+            listPeca.add(peca);
         }
 
-        return mapPeca;
+        return listPeca;
     }
 
     /** Método de retorno de uma peça através da busca por nome. Antes de realizar a busca, as letras do
@@ -141,8 +157,17 @@ public class PecaImpl implements PecaDAO {
         String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD)
                 .replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
 
-        return this.map.get(nomeFormatado);
+        for (Peca peca: this.lista) {
+
+            if ( peca.getNome().equals(nomeFormatado)) {
+
+                return peca;
+            }
+        }
+
+        return null;
     }
+
 
     /** Método para checar se uma peça está armazenada no sistema através da busca por nome. Antes de
      * realizar a busca, as letras do nome são convertidas para minúsculo e seus acentos são retirados.
@@ -156,9 +181,10 @@ public class PecaImpl implements PecaDAO {
         String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD)
                 .replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
 
-        for (String key: this.map.keySet()) {
+        for (Peca peca: this.lista) {
 
-            if (nomeFormatado.equals(key)){
+            if ( peca.getNome().equals(nomeFormatado)) {
+
                 return true;
             }
         }
@@ -181,14 +207,21 @@ public class PecaImpl implements PecaDAO {
         String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD)
                 .replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
 
-        if (this.map.get(nomeFormatado).getQuantidade() >= quantidade) {
+        for (Peca peca: this.lista) {
 
-            return true;
-        }
-        else {
+            if ( peca.getNome().equals(nomeFormatado)) {
 
-            return false;
+                if ( peca.getQuantidade() >= quantidade) {
+
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
         }
+
+        return false;
     }
 
     /** Método para encontrar as peças do sistema que estão com uma baixa quantidade. O valor de alerta é 5.
@@ -200,11 +233,11 @@ public class PecaImpl implements PecaDAO {
 
         List<Peca> listPeca = new ArrayList<Peca>();
 
-        for (String nomePeca: this.map.keySet()) {
+        for (Peca peca: this.lista) {
 
-            if (this.map.get(nomePeca).getQuantidade() <= 5) {
+            if ( peca.getQuantidade() <= 5) {
 
-                listPeca.add(this.map.get(nomePeca));
+                listPeca.add(peca);
             }
         }
 
@@ -213,35 +246,30 @@ public class PecaImpl implements PecaDAO {
 
     /** Método para devolver a quantidade retirada das peças para a realização de uma
      * ordem de serviço. Utilizado quando uma ordem de serviço é cancelada e as peças precisam ser
-     * adicionadas novamente. Caso algumas peças não possam ser retornadas ao sistema, uma estrutura
-     * listando elas é retornada pelo método.
+     * adicionadas novamente. Caso algumas peças não possam ser retornadas ao sistema, uma lista
+     * contendo elas é retornada.
      *
      * @param mapItens Map - estrutura com o nome das peças e suas quantidades
      *                 que devem ser devolvidas.
      * @return Map - estrutura com os nomes as peças que não puderam ser devolvidas
-     * e suas quantidade.*/
+     * e suas quantidades.*/
 
     public Map<String, Integer> devolverQuantidade(Map<String, Integer> mapItens) {
 
         int novaQuantidade;
 
-        Map<String, Integer> mapItensNaoDevolvidos = new HashMap<String, Integer>();
+        for (Peca peca: this.lista) {
 
-        for (String nomePeca: mapItens.keySet()) {
+            if ( mapItens.containsKey(peca.getNome())) {
 
-            if (this.map.containsKey(nomePeca)) {
+                novaQuantidade = peca.getQuantidade() + mapItens.get(peca.getNome());
+                mapItens.remove(peca.getNome());
 
-                novaQuantidade = this.map.get(nomePeca).getQuantidade() + mapItens.get(nomePeca);
-
-                this.map.get(nomePeca).setQuantidade(novaQuantidade);
-            }
-            else {
-
-                mapItensNaoDevolvidos.put(nomePeca, mapItens.get(nomePeca));
+                peca.setQuantidade(novaQuantidade);
             }
         }
 
-        return mapItensNaoDevolvidos;
+        return new HashMap<>(mapItens);
     }
 
     /** Método para remover uma peça do armazenamento. A peça é encontrada através do nome. Antes de
@@ -254,39 +282,42 @@ public class PecaImpl implements PecaDAO {
         String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD)
                 .replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
 
-        this.map.remove(nomeFormatado);
+        for (Peca peca: this.lista) {
+
+            if ( peca.getNome().equals(nomeFormatado)) {
+
+                this.lista.remove(peca);
+            }
+        }
     }
 
-    /** Método para esvaziar todo o armazenamento de peças. A função clear é usada para limpar toda
-     * a estrutura HashMap. As peças básicas são adicionadas novamente, porém com suas quantidades
+    /** Método para esvaziar toda a lista de peças. A função clear é usada para limpar toda
+     * a lista. As peças básicas são adicionadas novamente, porém com suas quantidades
      * zeradas.*/
 
     @Override
     public void removerTodos() {
 
-        this.map.clear();
+        this.lista.clear();
 
         Peca peca0 = new Peca("ram", 0, 20, 20);
-        this.map.put(peca0.getNome(), peca0);
+        this.lista.add(peca0);
 
         Peca peca1 = new Peca("placa mae", 0, 100, 100);
-        this.map.put(peca1.getNome(), peca1);
+        this.lista.add(peca1);
 
         Peca peca2 = new Peca("fonte", 0, 30, 30);
-        this.map.put(peca2.getNome(), peca2);
+        this.lista.add(peca2);
 
         Peca peca3 = new Peca("placa de video", 0, 100, 100);
-        this.map.put(peca3.getNome(), peca3);
+        this.lista.add(peca3);
 
         Peca peca4 = new Peca("hd", 0, 30, 30);
-        this.map.put(peca4.getNome(), peca4);
+        this.lista.add(peca4);
 
         Peca peca5 = new Peca("ssd", 0, 30, 30);
-        this.map.put(peca5.getNome(), peca5);
+        this.lista.add(peca5);
     }
-
-    @Override
-    public List<Peca> encontrarTodos() { return null;};
 
     @Override
     public Peca encontrarPorId(int id) { return null;}
