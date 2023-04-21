@@ -1,7 +1,6 @@
 package com.pbl.gerenciamentomicrocomputadores.model;
 
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
-import com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico.OrdemDeServicoDAO;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class OrdemDeServicoTest {
 
-    private OrdemDeServicoDAO dao;
     private OrdemDeServico ordem0;
     private OrdemDeServico ordem1;
     private Peca peca0;
@@ -26,13 +24,11 @@ public class OrdemDeServicoTest {
     @BeforeEach
     void setUp() {
 
-        dao = DAO.getOrdemDeServico();
-
         ordem0 = new OrdemDeServico( 1111, 1112);
         ordem1 = new OrdemDeServico( 1121, 1122);
 
-        dao.criar(ordem0);
-        dao.criar(ordem1);
+        DAO.getOrdemDeServico().criar(ordem0);
+        DAO.getOrdemDeServico().criar(ordem1);
 
         peca0 = new Peca("ram", 3, 20, 20);
         peca1 = new Peca("hd", 3, 30, 30);
@@ -46,7 +42,7 @@ public class OrdemDeServicoTest {
     @AfterEach
     void reset() {
 
-        dao.removerTodos();
+        DAO.getOrdemDeServico().removerTodos();
     }
 
     @Test
