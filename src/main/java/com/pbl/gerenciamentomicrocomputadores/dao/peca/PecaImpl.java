@@ -300,11 +300,11 @@ public class PecaImpl implements PecaDAO {
         String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD)
                 .replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
 
-        for (Peca peca: this.lista) {
+        for (int i = 0; i < this.lista.size(); i++) {
 
-            if ( peca.getNome().equals(nomeFormatado)) {
+            if (lista.get(i).getNome().equals(nomeFormatado)) {
 
-                this.lista.remove(peca);
+                this.lista.remove(i);
             }
         }
     }
