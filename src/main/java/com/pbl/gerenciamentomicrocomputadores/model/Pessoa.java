@@ -1,5 +1,7 @@
 package com.pbl.gerenciamentomicrocomputadores.model;
 
+import java.io.Serializable;
+
 /** Classe abstrata para as classes Cliente e Tecnico. Inclui a declaração de atributos, métodos de inserção
  * e retorno, e métodos de validação de dados.
  *
@@ -7,7 +9,7 @@ package com.pbl.gerenciamentomicrocomputadores.model;
  * @version 1.0.
  */
 
-public abstract class Pessoa {
+public abstract class Pessoa implements Serializable {
 
     private String nome;
     private String endereco;
