@@ -145,6 +145,24 @@ public class PecaImpl implements PecaDAO {
         return listPeca;
     }
 
+    /** Método de retorno das peças do sistema na forma de HashMap. O nome da peça é a chave e o objeto
+     * do tipo Peca é o conteúdo.
+     * conteúdo.
+     *
+     * @return Map - estrutura HashMap com todas as peças do sistema armazenadas.*/
+
+    public Map<String,Peca> encontrarTodosMap() {
+
+        Map<String,Peca> mapPeca = new HashMap<String,Peca>();
+
+        for (Peca peca: this.lista) {
+
+            mapPeca.put(peca.getNome(), peca);
+        }
+
+        return mapPeca;
+    }
+
     /** Método de retorno de uma peça através da busca por nome. Antes de realizar a busca, as letras do
      * nome são convertidas para minúsculo e seus acentos são retirados.
      *

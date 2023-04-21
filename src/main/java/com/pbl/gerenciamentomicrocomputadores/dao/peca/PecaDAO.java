@@ -31,6 +31,14 @@ public interface PecaDAO extends CRUD<Peca> {
 
     public void adicionarQuantidade(String nome, int quantidade);
 
+    /** Método de retorno das peças do sistema na forma de HashMap. O nome da peça é a chave e o objeto
+     * do tipo Peca é o conteúdo.
+     * conteúdo.
+     *
+     * @return Map - estrutura com todas as peças do sistema armazenadas.*/
+
+    public Map<String, Peca> encontrarTodosMap();
+
     /** Método de retorno de uma peça através da busca por nome.
      *
      * @param nome String - nome da peça.
