@@ -1,5 +1,7 @@
 package com.pbl.gerenciamentomicrocomputadores.model;
 
+import java.io.Serializable;
+
 /**  Classe para objetos do tipo Técnico. É uma extensão da classe abstrata Pessoa, herdando
  *  seus atributos, juntamente com os setters e getters.
  *
@@ -7,7 +9,7 @@ package com.pbl.gerenciamentomicrocomputadores.model;
  * @version 1.0.
  */
 
-public class Tecnico extends Pessoa {
+public class Tecnico extends Pessoa implements Serializable {
 
     /** Construtor que recebe como parâmetros a maioria dos atributos da classe para inseri-las
      * diretamente. A inserção é feita chamando o construtor da classe pai através da função super().
