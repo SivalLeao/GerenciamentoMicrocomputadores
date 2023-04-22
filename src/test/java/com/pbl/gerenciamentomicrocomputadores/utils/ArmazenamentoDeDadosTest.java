@@ -48,12 +48,16 @@ public class ArmazenamentoDeDadosTest {
             List<Cliente> cliente =  DAO.getCliente().encontrarTodos();
             List<Tecnico> tecnico =  DAO.getTecnico().encontrarTodos();
 
-            ArmazenamentoDeDados.guardarDados(cliente, "clientetest.bin");
-            ArmazenamentoDeDados.guardarDados(tecnico, "tecnicotest.bin");
-            File direttorio = new File("dados salvo");
+            ArmazenamentoDeDados.guardarDados(cliente, "clientetest.bin", "ClienteTest");
+            ArmazenamentoDeDados.guardarDados(tecnico, "tecnicotest.bin", "TecnicoTest");
 
-            File arquivoCliente = new File(direttorio,"clientetest.bin");
-            File arquivoTecnico = new File(direttorio,"tecnicotest.bin");
+            File diretorio = new File("dados salvo");
+            File pasta1 = new File(diretorio +"/"+ "ClienteTest");
+            File pasta2 = new File(diretorio +"/"+ "TecnicoTest");
+
+
+            File arquivoCliente = new File(pasta1,"clientetest.bin");
+            File arquivoTecnico = new File(pasta2,"tecnicotest.bin");
 
             assertTrue(arquivoCliente.exists());
             assertTrue(arquivoTecnico.exists());
@@ -64,8 +68,8 @@ public class ArmazenamentoDeDadosTest {
             List<Cliente> clientes = new ArrayList<>();
             List<Tecnico> tecnico = new ArrayList<>();
 
-            clientes = ArmazenamentoDeDados.resgatarDados("clientetest.bin");
-            tecnico = ArmazenamentoDeDados.resgatarDados("tecnicotest.bin");
+            clientes = ArmazenamentoDeDados.resgatarDados("clientetest.bin","ClienteTest");
+            tecnico = ArmazenamentoDeDados.resgatarDados("tecnicotest.bin", "TecnicoTest");
 
             assertEquals("Steve", clientes.get(0).getNome());
             assertEquals("Penny", tecnico.get(2).getNome());
