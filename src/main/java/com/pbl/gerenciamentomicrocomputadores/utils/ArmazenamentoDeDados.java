@@ -5,11 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArmazenamentoDeDados {
-    public static <T> void guardarDados (List<T> lista, String nomeArquivo) throws IOException {
+    public static <T> void guardarDados (List<T> lista, String nomeArquivo, String nomePasta) throws IOException {
         File diretorio = new File("dados salvo");
         diretorio.mkdir();
 
-        File arquivo = new File(diretorio, nomeArquivo);
+        String localDiretorio = diretorio.getAbsolutePath();
+
+        File pasta = new File(localDiretorio +"/"+ nomePasta);
+        pasta.mkdir();
+
+        File arquivo = new File(pasta, nomeArquivo);
         FileOutputStream fos = new FileOutputStream(arquivo);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
 
@@ -18,9 +23,11 @@ public class ArmazenamentoDeDados {
         fos.close();
         oos.close();
     }
-    public static <T> List resgatarDados(String nomeArquivo) throws IOException, ClassNotFoundException {
-        File direttorio = new File("dados salvo");
-        File arquivo = new File(direttorio, nomeArquivo);
+    public static <T> List resgatarDados(String nomeArquivo, String nomePasta) throws IOException, ClassNotFoundException {
+        File diretorio = new File("dados salvo");
+        String localDiretorio = diretorio.getAbsolutePath();
+        File pasta = new File(localDiretorio +"/"+ nomePasta);
+        File arquivo = new File(pasta, nomeArquivo);
 
         if (!arquivo.exists()){
             return new ArrayList<T>();
