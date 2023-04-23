@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ArmazenamentoDeDados {
 
-    public static <T> void guardarDados (List<T> lista, String nomeArquivo, String nomePasta) {
+    public static <T> void guardarDados(List<T> lista, String nomeArquivo, String nomePasta) {
 
         try {
 
@@ -59,10 +59,11 @@ public class ArmazenamentoDeDados {
             ois.close();
 
             return (ArrayList<T>) lista;
+
         }
         catch ( java.io.IOException e) {
 
-            throw new RuntimeException("Arquivo não encontrado");
+            return new ArrayList<T>();
         }
         catch ( java.lang.ClassNotFoundException e) {
 
