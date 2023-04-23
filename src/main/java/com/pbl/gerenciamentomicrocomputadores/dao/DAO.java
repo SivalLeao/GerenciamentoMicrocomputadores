@@ -1,5 +1,6 @@
 package com.pbl.gerenciamentomicrocomputadores.dao;
 
+import com.pbl.gerenciamentomicrocomputadores.dao.cliente.ClienteArquivoImpl;
 import com.pbl.gerenciamentomicrocomputadores.dao.cliente.ClienteDAO;
 import com.pbl.gerenciamentomicrocomputadores.dao.cliente.ClienteImpl;
 import com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico.OrdemDeServicoDAO;
@@ -33,7 +34,7 @@ public class DAO {
     public static ClienteDAO getCliente() {
 
         if (clienteDAO == null) {
-            clienteDAO = new ClienteImpl();
+            clienteDAO = new ClienteArquivoImpl();
         }
 
         return clienteDAO;
