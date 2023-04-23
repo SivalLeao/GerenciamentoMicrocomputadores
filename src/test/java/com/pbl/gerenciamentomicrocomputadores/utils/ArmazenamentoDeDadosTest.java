@@ -31,48 +31,48 @@ public class ArmazenamentoDeDadosTest {
             DAO.getTecnico().criar(t4);
             DAO.getTecnico().criar(t5);
 
-            Cliente c0 = new Cliente("Steve", "Rua Capricornio num 1", "66666666666", "11111111111");
-            Cliente c1 = new Cliente("Dayana", "Rua Aquario num 2", "77777777777", "22222222222");
-            Cliente c2 = new Cliente("Camilla", "Rua Libra num 3", "88888888888", "33333333333");
-            Cliente c3 = new Cliente("Bernardo", "Rua Virgem num 4", "99999999999", "44444444444");
-            Cliente c4 = new Cliente("Morgana", "Rua Leao num 5", "00000000000", "55555555555");
+            Cliente c1 = new Cliente("Steve", "Rua Capricornio num 1", "66666666666", "11111111111");
+            Cliente c2 = new Cliente("Dayana", "Rua Aquario num 2", "77777777777", "22222222222");
+            Cliente c3 = new Cliente("Camilla", "Rua Libra num 3", "88888888888", "33333333333");
+            Cliente c4 = new Cliente("Bernardo", "Rua Virgem num 4", "99999999999", "44444444444");
+            Cliente c5 = new Cliente("Morgana", "Rua Leao num 5", "00000000000", "55555555555");
 
-            DAO.getCliente().criar(c0);
             DAO.getCliente().criar(c1);
             DAO.getCliente().criar(c2);
             DAO.getCliente().criar(c3);
             DAO.getCliente().criar(c4);
+            DAO.getCliente().criar(c5);
         }
         @Test
-        void guardarDados() throws IOException {
-            List<Cliente> cliente =  DAO.getCliente().encontrarTodos();
-            List<Tecnico> tecnico =  DAO.getTecnico().encontrarTodos();
+        void guardarDados() {
+            List<Cliente> listCliente =  DAO.getCliente().encontrarTodos();
+            List<Tecnico> listTecnico =  DAO.getTecnico().encontrarTodos();
 
-            ArmazenamentoDeDados.guardarDados(cliente, "clientetest.bin", "ClienteTest");
-            ArmazenamentoDeDados.guardarDados(tecnico, "tecnicotest.bin", "TecnicoTest");
+            ArmazenamentoDeDados.guardarDados(listCliente, "clientetest.dat", "ClienteTest");
+            ArmazenamentoDeDados.guardarDados(listTecnico, "tecnicotest.dat", "TecnicoTest");
 
-            File diretorio = new File("dados salvo");
+            File diretorio = new File("dados salvos");
             File pasta1 = new File(diretorio +"/"+ "ClienteTest");
             File pasta2 = new File(diretorio +"/"+ "TecnicoTest");
 
 
-            File arquivoCliente = new File(pasta1,"clientetest.bin");
-            File arquivoTecnico = new File(pasta2,"tecnicotest.bin");
+            File arquivoCliente = new File(pasta1,"clientetest.dat");
+            File arquivoTecnico = new File(pasta2,"tecnicotest.dat");
 
             assertTrue(arquivoCliente.exists());
             assertTrue(arquivoTecnico.exists());
 
         }
         @Test
-        void resgatarDados() throws IOException, ClassNotFoundException {
-            List<Cliente> clientes = new ArrayList<>();
-            List<Tecnico> tecnico = new ArrayList<>();
+        void resgatarDados() {
+            List<Cliente> listCliente;
+            List<Tecnico> listTecnico;
 
-            clientes = ArmazenamentoDeDados.resgatarDados("clientetest.bin","ClienteTest");
-            tecnico = ArmazenamentoDeDados.resgatarDados("tecnicotest.bin", "TecnicoTest");
+            listCliente = ArmazenamentoDeDados.resgatarDados("clientetest.dat","ClienteTest");
+            listTecnico = ArmazenamentoDeDados.resgatarDados("tecnicotest.dat", "TecnicoTest");
 
-            assertEquals("Steve", clientes.get(0).getNome());
-            assertEquals("Penny", tecnico.get(2).getNome());
+            assertEquals("Steve", listCliente.get(0).getNome());
+            assertEquals("Penny", listTecnico.get(2).getNome());
         }
 }
 
