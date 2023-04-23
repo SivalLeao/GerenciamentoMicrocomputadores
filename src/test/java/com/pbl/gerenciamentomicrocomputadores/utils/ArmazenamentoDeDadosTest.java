@@ -48,16 +48,16 @@ public class ArmazenamentoDeDadosTest {
             List<Cliente> listCliente =  DAO.getCliente().encontrarTodos();
             List<Tecnico> listTecnico =  DAO.getTecnico().encontrarTodos();
 
-            ArmazenamentoDeDados.guardarDados(listCliente, "clientetest.dat", "ClienteTest");
-            ArmazenamentoDeDados.guardarDados(listTecnico, "tecnicotest.dat", "TecnicoTest");
+            ArmazenamentoDeDados.guardarDados(listCliente, "clienteArmazenamentoTest.dat", "ArmazenamentoTest");
+            ArmazenamentoDeDados.guardarDados(listTecnico, "tecnicoArmazenamentoTest.dat", "ArmazenamentoTest");
 
             File diretorio = new File("dados salvos");
-            File pasta1 = new File(diretorio +"/"+ "ClienteTest");
-            File pasta2 = new File(diretorio +"/"+ "TecnicoTest");
+            File pasta1 = new File(diretorio +"/"+ "ArmazenamentoTest");
+            File pasta2 = new File(diretorio +"/"+ "ArmazenamentoTest");
 
 
-            File arquivoCliente = new File(pasta1,"clientetest.dat");
-            File arquivoTecnico = new File(pasta2,"tecnicotest.dat");
+            File arquivoCliente = new File(pasta1,"clienteArmazenamentoTest.dat");
+            File arquivoTecnico = new File(pasta2,"tecnicoArmazenamentoTest.dat");
 
             assertTrue(arquivoCliente.exists());
             assertTrue(arquivoTecnico.exists());
@@ -68,8 +68,8 @@ public class ArmazenamentoDeDadosTest {
             List<Cliente> listCliente;
             List<Tecnico> listTecnico;
 
-            listCliente = ArmazenamentoDeDados.resgatarDados("clientetest.dat","ClienteTest");
-            listTecnico = ArmazenamentoDeDados.resgatarDados("tecnicotest.dat", "TecnicoTest");
+            listCliente = ArmazenamentoDeDados.resgatarDados("clienteArmazenamentoTest.dat","ArmazenamentoTest");
+            listTecnico = ArmazenamentoDeDados.resgatarDados("tecnicoArmazenamentoTest.dat", "ArmazenamentoTest");
 
             assertEquals("Steve", listCliente.get(0).getNome());
             assertEquals("Penny", listTecnico.get(2).getNome());
