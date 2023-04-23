@@ -3,6 +3,7 @@ package com.pbl.gerenciamentomicrocomputadores.dao;
 import com.pbl.gerenciamentomicrocomputadores.dao.cliente.ClienteArquivoImpl;
 import com.pbl.gerenciamentomicrocomputadores.dao.cliente.ClienteDAO;
 import com.pbl.gerenciamentomicrocomputadores.dao.cliente.ClienteImpl;
+import com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico.OrdemDeServicoArquivoImpl;
 import com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico.OrdemDeServicoDAO;
 import com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico.OrdemDeServicoImpl;
 import com.pbl.gerenciamentomicrocomputadores.dao.tecnico.TecnicoDAO;
@@ -64,7 +65,7 @@ public class DAO {
     public static OrdemDeServicoDAO getOrdemDeServico () {
 
         if (ordemDeServicoDAO == null) {
-            ordemDeServicoDAO = new OrdemDeServicoImpl();
+            ordemDeServicoDAO = new OrdemDeServicoArquivoImpl();
         }
 
         return ordemDeServicoDAO;
