@@ -6,6 +6,7 @@ import com.pbl.gerenciamentomicrocomputadores.dao.cliente.ClienteImpl;
 import com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico.OrdemDeServicoArquivoImpl;
 import com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico.OrdemDeServicoDAO;
 import com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico.OrdemDeServicoImpl;
+import com.pbl.gerenciamentomicrocomputadores.dao.tecnico.TecnicoArquivoImpl;
 import com.pbl.gerenciamentomicrocomputadores.dao.tecnico.TecnicoDAO;
 import com.pbl.gerenciamentomicrocomputadores.dao.tecnico.TecnicoImpl;
 import com.pbl.gerenciamentomicrocomputadores.dao.peca.PecaDAO;
@@ -50,7 +51,7 @@ public class DAO {
     public static TecnicoDAO getTecnico() {
 
         if (tecnicoDAO == null) {
-            tecnicoDAO = new TecnicoImpl();
+            tecnicoDAO = new TecnicoArquivoImpl();
         }
 
         return tecnicoDAO;
