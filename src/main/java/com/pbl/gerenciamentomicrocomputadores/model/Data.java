@@ -1,5 +1,6 @@
 package com.pbl.gerenciamentomicrocomputadores.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -9,7 +10,7 @@ import java.time.format.DateTimeFormatter;
  * @version 1.0.
  */
 
-public class Data {
+public class Data implements Serializable {
 
     private LocalDateTime dataInicio;
     private LocalDateTime dataFim;

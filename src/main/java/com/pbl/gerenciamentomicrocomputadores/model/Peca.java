@@ -1,5 +1,6 @@
 package com.pbl.gerenciamentomicrocomputadores.model;
 
+import java.io.Serializable;
 import java.text.Normalizer;
 
 /** Classe para objetos do tipo Peca. É responsável por armazenar as informações de
@@ -9,7 +10,7 @@ import java.text.Normalizer;
  * @version 1.0
  */
 
-public class Peca {
+public class Peca implements Serializable {
 
     private String nome;
     private int quantidade;

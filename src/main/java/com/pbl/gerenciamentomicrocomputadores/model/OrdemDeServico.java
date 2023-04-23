@@ -1,5 +1,6 @@
 package com.pbl.gerenciamentomicrocomputadores.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Map;
@@ -12,7 +13,7 @@ import java.util.Map;
  * @version 1.0.
  */
 
-public class OrdemDeServico {
+public class OrdemDeServico implements Serializable {
 
     private int idOrdem;
     private int idCliente;

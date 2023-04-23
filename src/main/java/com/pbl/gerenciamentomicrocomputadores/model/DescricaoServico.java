@@ -1,5 +1,6 @@
 package com.pbl.gerenciamentomicrocomputadores.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +11,7 @@ import java.util.Map;
  * @version 1.0
  */
 
-public class DescricaoServico {
+public class DescricaoServico implements Serializable {
 
     private String tipoDeServico;
     private Map<String, Integer> mapItens;
