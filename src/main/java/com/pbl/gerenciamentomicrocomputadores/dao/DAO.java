@@ -6,6 +6,7 @@ import com.pbl.gerenciamentomicrocomputadores.dao.cliente.ClienteImpl;
 import com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico.OrdemDeServicoArquivoImpl;
 import com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico.OrdemDeServicoDAO;
 import com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico.OrdemDeServicoImpl;
+import com.pbl.gerenciamentomicrocomputadores.dao.peca.PecaArquivoImpl;
 import com.pbl.gerenciamentomicrocomputadores.dao.tecnico.TecnicoArquivoImpl;
 import com.pbl.gerenciamentomicrocomputadores.dao.tecnico.TecnicoDAO;
 import com.pbl.gerenciamentomicrocomputadores.dao.tecnico.TecnicoImpl;
@@ -81,7 +82,7 @@ public class DAO {
     public static PecaDAO getPeca () {
 
         if (pecaDAO == null) {
-            pecaDAO = new PecaImpl();
+            pecaDAO = new PecaArquivoImpl();
         }
 
         return pecaDAO;
