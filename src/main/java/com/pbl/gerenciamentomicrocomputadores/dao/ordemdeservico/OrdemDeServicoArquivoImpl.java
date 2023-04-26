@@ -11,10 +11,12 @@ import java.util.Map;
 public class OrdemDeServicoArquivoImpl implements OrdemDeServicoDAO {
 
     private List<OrdemDeServico> lista;
+    private String nomeArquivo = "ordemdeservico.dat";
+    private String nomePasta = "Ordem De Servico";
 
     public OrdemDeServicoArquivoImpl () {
 
-        this.lista =  ArmazenamentoDeDados.resgatarDados("ordemdeservico.dat","Ordem De Servico");
+        this.lista =  ArmazenamentoDeDados.resgatarDados(nomeArquivo,nomePasta);
     }
 
     @Override
@@ -26,7 +28,7 @@ public class OrdemDeServicoArquivoImpl implements OrdemDeServicoDAO {
 
         this.lista.add(ordemDeServico);
 
-        ArmazenamentoDeDados.guardarDados(lista, "ordemdeservico.dat","Ordem De Servico");
+        ArmazenamentoDeDados.guardarDados(lista, nomeArquivo,nomePasta);
     }
 
     @Override
@@ -52,7 +54,7 @@ public class OrdemDeServicoArquivoImpl implements OrdemDeServicoDAO {
 
                 this.lista.set(i, ordemDeServico);
 
-                ArmazenamentoDeDados.guardarDados(lista, "ordemdeservico.dat","Ordem De Servico");
+                ArmazenamentoDeDados.guardarDados(lista, nomeArquivo,nomePasta);
 
                 return;
             }
@@ -67,13 +69,13 @@ public class OrdemDeServicoArquivoImpl implements OrdemDeServicoDAO {
 
                 this.lista.get(i).setStatusAtual(status);
 
-                ArmazenamentoDeDados.guardarDados(lista, "ordemdeservico.dat","Ordem De Servico");
+                ArmazenamentoDeDados.guardarDados(lista, nomeArquivo,nomePasta);
 
                 if (status.equals("Finalizado")) {
 
                     this.lista.get(i).getData().setDataFim(LocalDateTime.now());
 
-                    ArmazenamentoDeDados.guardarDados(lista, "ordemdeservico.dat","Ordem De Servico");
+                    ArmazenamentoDeDados.guardarDados(lista, nomeArquivo,nomePasta);
 
                     return null;
                 }
@@ -98,7 +100,7 @@ public class OrdemDeServicoArquivoImpl implements OrdemDeServicoDAO {
 
                 this.lista.remove(i);
 
-                ArmazenamentoDeDados.guardarDados(lista, "ordemdeservico.dat","Ordem De Servico");
+                ArmazenamentoDeDados.guardarDados(lista, nomeArquivo,nomePasta);
 
                 return;
             }
@@ -186,7 +188,17 @@ public class OrdemDeServicoArquivoImpl implements OrdemDeServicoDAO {
 
         this.lista.clear();
 
-        ArmazenamentoDeDados.guardarDados(lista, "ordemdeservico.dat","Ordem De Servico");
+        ArmazenamentoDeDados.guardarDados(lista, nomeArquivo,nomePasta);
+    }
+    public void diretorioTest() {
+        this.nomeArquivo = "ordemdeservicoTest.dat";
+        this.nomePasta = "Test Ordem De Servico";
+    }
+
+    @Override
+    public void diretorioPadrao() {
+        this.nomeArquivo = "ordemdeservico.dat";
+        this.nomePasta = "Ordem De Servico";
     }
 
 }

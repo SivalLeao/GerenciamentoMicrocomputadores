@@ -248,5 +248,9 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
         this.lista.clear();
         this.id = 1113;
     }
+    @Override
+    public void diretorioTest() {}
+    @Override
+    public void diretorioPadrao() {}
 
 }
