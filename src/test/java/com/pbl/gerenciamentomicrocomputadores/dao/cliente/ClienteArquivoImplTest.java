@@ -23,6 +23,8 @@ public class ClienteArquivoImplTest {
     @BeforeEach
     void setUp() {
 
+        DAO.getCliente().diretorioTest();
+
         c0 = new Cliente("Steve", "Rua Capricórnio num 1", "66666666666", "11111111111");
         c1 = new Cliente("Dayana", "Rua Aquário num 2", "77777777777", "22222222222");
         c2 = new Cliente("Camilla", "Rua Libra num 3", "88888888888", "33333333333");
@@ -40,14 +42,16 @@ public class ClienteArquivoImplTest {
     void reset() {
 
         DAO.getCliente().removerTodos();
+        
+        DAO.getCliente().diretorioPadrao();
     }
 
     @Test
     void criar() {
 
         File diretorio = new File("dados salvos");
-        File pasta1 = new File(diretorio +"/"+ "Cliente");
-        File arquivoCliente = new File(pasta1,"cliente.dat");
+        File pasta1 = new File(diretorio +"/"+ "Test Cliente");
+        File arquivoCliente = new File(pasta1,"clienteTest.dat");
 
         assertTrue(arquivoCliente.exists());
 
