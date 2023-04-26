@@ -25,6 +25,8 @@ public class OrdemDeServicoArquivoImplTest {
     @BeforeEach
     void setUp() {
 
+        DAO.getOrdemDeServico().diretorioTest();
+
         ordem0 = new OrdemDeServico( 1111, 1112);
         ordem1 = new OrdemDeServico( 1121, 1122);
         ordem2 = new OrdemDeServico( 1131, 1132);
@@ -42,14 +44,16 @@ public class OrdemDeServicoArquivoImplTest {
     void reset() {
 
         DAO.getOrdemDeServico().removerTodos();
+
+        DAO.getOrdemDeServico().diretorioPadrao();
     }
 
     @Test
     void criar() {
 
         File diretorio = new File("dados salvos");
-        File pasta1 = new File(diretorio +"/"+ "Ordem De Servico");
-        File arquivoOrdemDeServico = new File(pasta1,"ordemdeservico.dat");
+        File pasta1 = new File(diretorio +"/"+ "Test Ordem De Servico");
+        File arquivoOrdemDeServico = new File(pasta1,"ordemdeservicoTest.dat");
 
         assertTrue(arquivoOrdemDeServico.exists());
 
