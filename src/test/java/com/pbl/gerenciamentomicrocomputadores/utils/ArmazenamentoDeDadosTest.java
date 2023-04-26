@@ -3,6 +3,7 @@ package com.pbl.gerenciamentomicrocomputadores.utils;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,6 +19,9 @@ public class ArmazenamentoDeDadosTest {
 
         @BeforeEach
         void setUp() {
+
+            DAO.getCliente().diretorioTest();
+            DAO.getTecnico().diretorioTest();
 
             Tecnico t1 = new Tecnico("Leonard", "Nova Jersei", "44444444444", "55555555555");
             Tecnico t2 = new Tecnico("Sheldon", "Galveston, Texas", "77777777777", "33333333333");
@@ -43,6 +47,13 @@ public class ArmazenamentoDeDadosTest {
             DAO.getCliente().criar(c4);
             DAO.getCliente().criar(c5);
         }
+
+    @AfterEach
+    void reset() {
+            DAO.getCliente().diretorioPadrao();
+            DAO.getTecnico().diretorioPadrao();
+    }
+
         @Test
         void guardarDados() {
             List<Cliente> listCliente =  DAO.getCliente().encontrarTodos();
