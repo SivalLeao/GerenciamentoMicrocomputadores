@@ -22,10 +22,16 @@ public class OrdemDeServicoArquivoImpl implements OrdemDeServicoDAO {
     @Override
     public void criar(OrdemDeServico ordemDeServico) {
 
-        int id = 1113 + (lista.size() * 10);
+        int id;
+        if (lista.isEmpty()) {
+            id = 1113;
+        }
+        else {
+            id = lista.get(lista.size() - 1).getIdOrdem() + 10;
+        }
+
         ordemDeServico.setIdOrdem(id);
         ordemDeServico.setStatusAtual("Em espera");
-
         this.lista.add(ordemDeServico);
 
         ArmazenamentoDeDados.guardarDados(lista, nomeArquivo,nomePasta);
