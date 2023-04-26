@@ -8,22 +8,31 @@ import java.util.List;
 
 public class TecnicoArquivoImpl implements TecnicoDAO{
     private List<Tecnico> lista;
+    private String nomeArquivo = "tecnico.dat";
+    private String nomePasta = "Tecnico";
 
     public TecnicoArquivoImpl() {
 
-        this.lista = ArmazenamentoDeDados.resgatarDados("tecnico.dat","Tecnico");
+        this.lista = ArmazenamentoDeDados.resgatarDados(nomeArquivo,nomePasta);
 
     }
 
     @Override
     public void criar(Tecnico tecnico) {
+        int id;
 
-        int id = 1111 + (lista.size() * 10);
+        if (lista.isEmpty()) {
+            id = 1111;
+        }
+        else {
+            id = lista.get(lista.size() - 1).getId() + 10;
+        }
+
         tecnico.setId(id);
 
         this.lista.add(tecnico);
 
-        ArmazenamentoDeDados.guardarDados(lista, "tecnico.dat", "Tecnico");
+        ArmazenamentoDeDados.guardarDados(lista, nomeArquivo, nomePasta);
 
     }
 
@@ -64,7 +73,7 @@ public class TecnicoArquivoImpl implements TecnicoDAO{
 
                 this.lista.set(i, tecnico);
 
-                ArmazenamentoDeDados.guardarDados(lista, "tecnico.dat", "Tecnico");
+                ArmazenamentoDeDados.guardarDados(lista, nomeArquivo, nomePasta);
 
                 return;
             }
@@ -80,7 +89,7 @@ public class TecnicoArquivoImpl implements TecnicoDAO{
 
                 this.lista.remove(i);
 
-                ArmazenamentoDeDados.guardarDados(lista, "tecnico.dat", "Tecnico");
+                ArmazenamentoDeDados.guardarDados(lista, nomeArquivo, nomePasta);
 
                 return;
             }
@@ -132,7 +141,18 @@ public class TecnicoArquivoImpl implements TecnicoDAO{
     public void removerTodos() {
 
         this.lista.clear();
-        ArmazenamentoDeDados.guardarDados(lista, "tecnico.dat", "Tecnico");
+        ArmazenamentoDeDados.guardarDados(lista, nomeArquivo, nomePasta);
     }
 
+    @Override
+    public void diretorioTest() {
+        this.nomeArquivo = "tecnicoTest.dat";
+        this.nomePasta = "Test Tecnico";
+    }
+
+    @Override
+    public void diretorioPadrao() {
+        this.nomeArquivo = "tecnico.dat";
+        this.nomePasta = "Tecnico";
+    }
 }

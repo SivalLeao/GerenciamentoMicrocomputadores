@@ -178,5 +178,9 @@ public class TecnicoImpl implements TecnicoDAO {
         this.lista.clear();
         this.id = 1111;
     }
+    @Override
+    public void diretorioTest() {}
+    @Override
+    public void diretorioPadrao() {}
 
 }
