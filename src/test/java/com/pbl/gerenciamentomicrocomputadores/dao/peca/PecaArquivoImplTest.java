@@ -22,6 +22,8 @@ public class PecaArquivoImplTest {
     @BeforeEach
     void setUp() {
 
+        DAO.getPeca().diretorioTest();
+
         peca0 = new Peca("Processador", 5, 50, 40);
         peca1 = new Peca("Cooler", 4, 40, 35);
         peca2 = new Peca("Teclado", 6, 20, 15);
@@ -53,6 +55,8 @@ public class PecaArquivoImplTest {
 
         Peca pecaBasica5 = new Peca("ssd", 10, 30, 30);
         DAO.getPeca().atualizar(pecaBasica5);
+
+        DAO.getPeca().diretorioPadrao();
     }
 
     @Test
