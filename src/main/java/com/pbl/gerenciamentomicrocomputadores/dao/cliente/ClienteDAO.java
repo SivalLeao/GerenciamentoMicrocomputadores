@@ -26,4 +26,7 @@ public interface ClienteDAO extends CRUD<Cliente> {
 
     public boolean checarPorCpf(String cpf);
 
+    public void diretorioTest();
+    public void diretorioPadrao();
+
 }

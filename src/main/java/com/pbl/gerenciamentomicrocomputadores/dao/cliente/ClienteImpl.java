@@ -179,4 +179,9 @@ public class ClienteImpl implements ClienteDAO {
         this.id = 1112;
     }
 
+    @Override
+    public void diretorioTest() {}
+    @Override
+    public void diretorioPadrao() {}
+
 }

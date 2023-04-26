@@ -9,22 +9,31 @@ import java.util.List;
 public class ClienteArquivoImpl implements ClienteDAO {
 
     private List<Cliente> lista;
+    private String nomeArquivo = "cliente.dat";
+    private String nomePasta = "Cliente";
 
     public ClienteArquivoImpl() {
 
-        this.lista = ArmazenamentoDeDados.resgatarDados("cliente.dat","Cliente");
+        this.lista = ArmazenamentoDeDados.resgatarDados(nomeArquivo,nomePasta);
 
     }
 
     @Override
     public void criar(Cliente cliente) {
 
-        int id = 1112 + (lista.size() * 10);
+        int id;
+        if (lista.isEmpty()) {
+            id = 1112;
+        }
+        else {
+            id = lista.get(lista.size() - 1).getId() + 10;
+        }
+
         cliente.setId(id);
 
         this.lista.add(cliente);
 
-        ArmazenamentoDeDados.guardarDados(lista, "cliente.dat", "Cliente");
+        ArmazenamentoDeDados.guardarDados(lista, nomeArquivo, nomePasta);
 
     }
 
@@ -65,7 +74,7 @@ public class ClienteArquivoImpl implements ClienteDAO {
 
                 this.lista.set(i, cliente);
 
-                ArmazenamentoDeDados.guardarDados(lista, "cliente.dat", "Cliente");
+                ArmazenamentoDeDados.guardarDados(lista, nomeArquivo, nomePasta);
 
                 return;
             }
@@ -81,7 +90,7 @@ public class ClienteArquivoImpl implements ClienteDAO {
 
                 this.lista.remove(i);
 
-                ArmazenamentoDeDados.guardarDados(lista, "cliente.dat", "Cliente");
+                ArmazenamentoDeDados.guardarDados(lista, nomeArquivo, nomePasta);
 
                 return;
             }
@@ -133,7 +142,18 @@ public class ClienteArquivoImpl implements ClienteDAO {
     public void removerTodos() {
 
         this.lista.clear();
-        ArmazenamentoDeDados.guardarDados(lista, "cliente.dat", "Cliente");
+        ArmazenamentoDeDados.guardarDados(lista, nomeArquivo, nomePasta);
     }
 
+    @Override
+    public void diretorioTest() {
+        this.nomeArquivo = "clienteTest.dat";
+        this.nomePasta = "Test Cliente";
+    }
+
+    @Override
+    public void diretorioPadrao() {
+        this.nomeArquivo = "cliente.dat";
+        this.nomePasta = "Cliente";
+    }
 }
