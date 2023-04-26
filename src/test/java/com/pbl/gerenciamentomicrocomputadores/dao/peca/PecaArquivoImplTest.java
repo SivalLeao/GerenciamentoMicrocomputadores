@@ -63,8 +63,8 @@ public class PecaArquivoImplTest {
     void criar() {
 
         File diretorio = new File("dados salvos");
-        File pasta1 = new File(diretorio +"/"+ "Peca");
-        File arquivoPeca = new File(pasta1,"peca.dat");
+        File pasta1 = new File(diretorio +"/"+ "Test Peca");
+        File arquivoPeca = new File(pasta1,"pecaTest.dat");
 
         assertTrue(arquivoPeca.exists());
 
