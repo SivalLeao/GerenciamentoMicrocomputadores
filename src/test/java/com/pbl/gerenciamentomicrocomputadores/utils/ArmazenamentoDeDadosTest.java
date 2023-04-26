@@ -48,12 +48,12 @@ public class ArmazenamentoDeDadosTest {
             List<Cliente> listCliente =  DAO.getCliente().encontrarTodos();
             List<Tecnico> listTecnico =  DAO.getTecnico().encontrarTodos();
 
-            ArmazenamentoDeDados.guardarDados(listCliente, "clienteArmazenamentoTest.dat", "ArmazenamentoTest");
-            ArmazenamentoDeDados.guardarDados(listTecnico, "tecnicoArmazenamentoTest.dat", "ArmazenamentoTest");
+            ArmazenamentoDeDados.guardarDados(listCliente, "clienteArmazenamentoTest.dat", "Test Armazenamento");
+            ArmazenamentoDeDados.guardarDados(listTecnico, "tecnicoArmazenamentoTest.dat", "Test Armazenamento");
 
             File diretorio = new File("dados salvos");
-            File pasta1 = new File(diretorio +"/"+ "ArmazenamentoTest");
-            File pasta2 = new File(diretorio +"/"+ "ArmazenamentoTest");
+            File pasta1 = new File(diretorio +"/"+ "Test Armazenamento");
+            File pasta2 = new File(diretorio +"/"+ "Test Armazenamento");
 
 
             File arquivoCliente = new File(pasta1,"clienteArmazenamentoTest.dat");
@@ -68,8 +68,8 @@ public class ArmazenamentoDeDadosTest {
             List<Cliente> listCliente;
             List<Tecnico> listTecnico;
 
-            listCliente = ArmazenamentoDeDados.resgatarDados("clienteArmazenamentoTest.dat","ArmazenamentoTest");
-            listTecnico = ArmazenamentoDeDados.resgatarDados("tecnicoArmazenamentoTest.dat", "ArmazenamentoTest");
+            listCliente = ArmazenamentoDeDados.resgatarDados("clienteArmazenamentoTest.dat","Test Armazenamento");
+            listTecnico = ArmazenamentoDeDados.resgatarDados("tecnicoArmazenamentoTest.dat", "Test Armazenamento");
 
             assertEquals("Steve", listCliente.get(0).getNome());
             assertEquals("Penny", listTecnico.get(2).getNome());
