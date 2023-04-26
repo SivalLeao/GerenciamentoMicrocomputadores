@@ -309,6 +309,8 @@ public class PecaImpl implements PecaDAO {
         }
     }
 
+
+
     /** Método para esvaziar toda a lista de peças. A função clear é usada para limpar toda
      * a lista. As peças básicas são adicionadas novamente, porém com suas quantidades
      * zeradas.*/
@@ -345,5 +347,8 @@ public class PecaImpl implements PecaDAO {
 
     @Override
     public boolean checarPorId(int id) { return false; }
-
+    @Override
+    public void diretorioTest() {}
+    @Override
+    public void diretorioPadrao() {}
 }

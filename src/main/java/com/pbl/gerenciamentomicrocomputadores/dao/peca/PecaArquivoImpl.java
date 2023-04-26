@@ -11,10 +11,12 @@ import java.util.Map;
 
 public class PecaArquivoImpl implements PecaDAO {
     private List<Peca> lista;
+    private String nomeArquivo = "peca.dat";
+    private String nomePasta = "Peca";
 
     public PecaArquivoImpl () {
         this.lista = new ArrayList<Peca>();
-        this.lista = ArmazenamentoDeDados.resgatarDados("peca.dat","Peca");
+        this.lista = ArmazenamentoDeDados.resgatarDados(nomeArquivo,nomePasta);
 
         if (lista.isEmpty()){
             Peca peca0 = new Peca("ram", 10, 20, 20);
@@ -43,7 +45,7 @@ public class PecaArquivoImpl implements PecaDAO {
 
         lista.add(peca);
 
-        ArmazenamentoDeDados.guardarDados(lista, "peca.dat","Peca");
+        ArmazenamentoDeDados.guardarDados(lista, nomeArquivo,nomePasta);
 
     }
 
@@ -56,7 +58,7 @@ public class PecaArquivoImpl implements PecaDAO {
 
                 this.lista.set(i, peca);
 
-                ArmazenamentoDeDados.guardarDados(lista, "peca.dat","Peca");
+                ArmazenamentoDeDados.guardarDados(lista, nomeArquivo, nomePasta);
 
                 return;
             }
@@ -79,7 +81,7 @@ public class PecaArquivoImpl implements PecaDAO {
                 novaQuantidade = this.lista.get(i).getQuantidade() - quantidade;
                 this.lista.get(i).setQuantidade(novaQuantidade);
 
-                ArmazenamentoDeDados.guardarDados(lista, "peca.dat","Peca");
+                ArmazenamentoDeDados.guardarDados(lista, nomeArquivo,nomePasta);
 
                 return;
             }
@@ -101,7 +103,7 @@ public class PecaArquivoImpl implements PecaDAO {
                 novaQuantidade = this.lista.get(i).getQuantidade() + quantidade;
                 this.lista.get(i).setQuantidade(novaQuantidade);
 
-                ArmazenamentoDeDados.guardarDados(lista, "peca.dat","Peca");
+                ArmazenamentoDeDados.guardarDados(lista, nomeArquivo,nomePasta);
 
                 return;
             }
@@ -223,7 +225,7 @@ public class PecaArquivoImpl implements PecaDAO {
             }
         }
 
-        ArmazenamentoDeDados.guardarDados(lista, "peca.dat","Peca");
+        ArmazenamentoDeDados.guardarDados(lista, nomeArquivo,nomePasta);
 
         return new HashMap<>(mapItens);
     }
@@ -240,7 +242,7 @@ public class PecaArquivoImpl implements PecaDAO {
                 this.lista.remove(i);
             }
         }
-        ArmazenamentoDeDados.guardarDados(lista, "peca.dat","Peca");
+        ArmazenamentoDeDados.guardarDados(lista, nomeArquivo, nomePasta);
 
     }
 
@@ -267,8 +269,20 @@ public class PecaArquivoImpl implements PecaDAO {
         Peca peca5 = new Peca("ssd", 0, 30, 30);
         this.lista.add(peca5);
 
-        ArmazenamentoDeDados.guardarDados(lista, "peca.dat","Peca");
+        ArmazenamentoDeDados.guardarDados(lista, nomeArquivo,nomePasta);
 
+    }
+
+    @Override
+    public void diretorioTest() {
+        this.nomeArquivo = "pecaTest.dat";
+        this.nomePasta = "Test Peca";
+    }
+
+    @Override
+    public void diretorioPadrao() {
+        this.nomeArquivo = "peca.dat";
+        this.nomePasta = "Peca";
     }
 
     @Override
