@@ -49,5 +49,4 @@ public interface OrdemDeServicoDAO extends CRUD<OrdemDeServico> {
 
     public boolean checarStatusEmAndamento(int idTecnico);
 
-
 }

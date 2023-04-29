@@ -23,10 +23,13 @@ public class OrdemDeServicoArquivoImpl implements OrdemDeServicoDAO {
     public void criar(OrdemDeServico ordemDeServico) {
 
         int id;
+
         if (lista.isEmpty()) {
+
             id = 1113;
         }
         else {
+
             id = lista.get(lista.size() - 1).getIdOrdem() + 10;
         }
 
@@ -196,13 +199,16 @@ public class OrdemDeServicoArquivoImpl implements OrdemDeServicoDAO {
 
         ArmazenamentoDeDados.guardarDados(lista, nomeArquivo,nomePasta);
     }
+
     public void diretorioTest() {
+
         this.nomeArquivo = "ordemdeservicoTest.dat";
         this.nomePasta = "Test Ordem De Servico";
     }
 
     @Override
     public void diretorioPadrao() {
+
         this.nomeArquivo = "ordemdeservico.dat";
         this.nomePasta = "Ordem De Servico";
     }
