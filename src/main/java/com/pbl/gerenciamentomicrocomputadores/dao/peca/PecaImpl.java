@@ -347,8 +347,11 @@ public class PecaImpl implements PecaDAO {
 
     @Override
     public boolean checarPorId(int id) { return false; }
+
     @Override
     public void diretorioTest() {}
+
     @Override
     public void diretorioPadrao() {}
+
 }

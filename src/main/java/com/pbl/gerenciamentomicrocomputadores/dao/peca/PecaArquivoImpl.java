@@ -10,11 +10,13 @@ import java.util.List;
 import java.util.Map;
 
 public class PecaArquivoImpl implements PecaDAO {
+
     private List<Peca> lista;
     private String nomeArquivo = "peca.dat";
     private String nomePasta = "Peca";
 
     public PecaArquivoImpl () {
+
         this.lista = new ArrayList<Peca>();
         this.lista = ArmazenamentoDeDados.resgatarDados(nomeArquivo,nomePasta);
 
@@ -275,8 +277,8 @@ public class PecaArquivoImpl implements PecaDAO {
 
     @Override
     public void diretorioTest() {
-        this.nomeArquivo = "pecaTest.dat";
-        this.nomePasta = "Test Peca";
+        this.nomeArquivo = "pecatest.dat";
+        this.nomePasta = "Teste Peca";
     }
 
     @Override
@@ -287,8 +289,11 @@ public class PecaArquivoImpl implements PecaDAO {
 
     @Override
     public Peca encontrarPorId(int id) { return null;}
+
     @Override
     public void remover(int id) { }
+
     @Override
     public boolean checarPorId(int id) { return false; }
+
 }

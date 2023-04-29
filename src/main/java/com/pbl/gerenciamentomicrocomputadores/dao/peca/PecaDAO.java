@@ -88,5 +88,4 @@ public interface PecaDAO extends CRUD<Peca> {
 
     public void removerPeca(String nome);
 
-
 }
