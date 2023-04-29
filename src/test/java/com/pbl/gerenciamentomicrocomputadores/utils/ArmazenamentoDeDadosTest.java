@@ -50,12 +50,14 @@ public class ArmazenamentoDeDadosTest {
 
     @AfterEach
     void reset() {
-            DAO.getCliente().diretorioPadrao();
-            DAO.getTecnico().diretorioPadrao();
+
+        DAO.getCliente().diretorioPadrao();
+        DAO.getTecnico().diretorioPadrao();
     }
 
     @Test
     void guardarDados() {
+
         List<Cliente> listCliente =  DAO.getCliente().encontrarTodos();
         List<Tecnico> listTecnico =  DAO.getTecnico().encontrarTodos();
 
@@ -72,8 +74,10 @@ public class ArmazenamentoDeDadosTest {
         assertTrue(arquivoCliente.exists());
         assertTrue(arquivoTecnico.exists());
     }
+    
     @Test
     void resgatarDados() {
+
         List<Cliente> listCliente;
         List<Tecnico> listTecnico;
 
@@ -83,6 +87,6 @@ public class ArmazenamentoDeDadosTest {
         assertEquals("Steve", listCliente.get(0).getNome());
         assertEquals("Penny", listTecnico.get(2).getNome());
     }
-    
+
 }
 
