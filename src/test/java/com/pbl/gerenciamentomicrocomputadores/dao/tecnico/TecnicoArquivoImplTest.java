@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TecnicoArquivoImplTest {
+
     private Tecnico t1;
     private Tecnico t2;
     private Tecnico t3;
@@ -21,6 +22,8 @@ public class TecnicoArquivoImplTest {
 
     @BeforeEach
     void setUp() {
+
+        DAO.getTecnico().diretorioTest();
 
         t1 = new Tecnico("Leonard","Nova Jérsei","44444444444","55555555555");
         t2 = new Tecnico("Sheldon","Galveston, Texas","77777777777","33333333333");
@@ -39,13 +42,15 @@ public class TecnicoArquivoImplTest {
     void reset() {
 
         DAO.getTecnico().removerTodos();
+
+        DAO.getTecnico().diretorioPadrao();
     }
 
     @Test
     void criar() {
         File diretorio = new File("dados salvos");
-        File pasta1 = new File(diretorio +"/"+ "Tecnico");
-        File arquivoTecnico = new File(pasta1,"tecnico.dat");
+        File pasta1 = new File(diretorio +"/"+ "Teste Tecnico");
+        File arquivoTecnico = new File(pasta1,"tecnicotest.dat");
 
         assertTrue(arquivoTecnico.exists());
 
