@@ -22,10 +22,13 @@ public class ClienteArquivoImpl implements ClienteDAO {
     public void criar(Cliente cliente) {
 
         int id;
+
         if (lista.isEmpty()) {
+
             id = 1112;
         }
         else {
+
             id = lista.get(lista.size() - 1).getId() + 10;
         }
 
@@ -34,7 +37,6 @@ public class ClienteArquivoImpl implements ClienteDAO {
         this.lista.add(cliente);
 
         ArmazenamentoDeDados.guardarDados(lista, nomeArquivo, nomePasta);
-
     }
 
     @Override
@@ -147,13 +149,16 @@ public class ClienteArquivoImpl implements ClienteDAO {
 
     @Override
     public void diretorioTest() {
+
         this.nomeArquivo = "clienteTest.dat";
         this.nomePasta = "Test Cliente";
     }
 
     @Override
     public void diretorioPadrao() {
+
         this.nomeArquivo = "cliente.dat";
         this.nomePasta = "Cliente";
     }
+
 }

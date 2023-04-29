@@ -54,7 +54,7 @@ public interface CRUD<T>  {
     public void removerTodos();
 
     public void diretorioTest();
-    public void diretorioPadrao();
 
+    public void diretorioPadrao();
 
 }
