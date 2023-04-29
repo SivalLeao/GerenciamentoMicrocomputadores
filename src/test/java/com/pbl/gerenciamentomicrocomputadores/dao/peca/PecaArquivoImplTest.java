@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PecaArquivoImplTest {
+
     private Peca peca0;
     private Peca peca1;
     private Peca peca2;
@@ -63,8 +64,8 @@ public class PecaArquivoImplTest {
     void criar() {
 
         File diretorio = new File("dados salvos");
-        File pasta1 = new File(diretorio +"/"+ "Test Peca");
-        File arquivoPeca = new File(pasta1,"pecaTest.dat");
+        File pasta1 = new File(diretorio +"/"+ "Teste Peca");
+        File arquivoPeca = new File(pasta1,"pecatest.dat");
 
         assertTrue(arquivoPeca.exists());
 

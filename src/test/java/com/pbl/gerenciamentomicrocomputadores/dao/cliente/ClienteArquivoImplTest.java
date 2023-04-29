@@ -50,8 +50,8 @@ public class ClienteArquivoImplTest {
     void criar() {
 
         File diretorio = new File("dados salvos");
-        File pasta1 = new File(diretorio +"/"+ "Test Cliente");
-        File arquivoCliente = new File(pasta1,"clienteTest.dat");
+        File pasta1 = new File(diretorio +"/"+ "Teste Cliente");
+        File arquivoCliente = new File(pasta1,"clientetest.dat");
 
         assertTrue(arquivoCliente.exists());
 

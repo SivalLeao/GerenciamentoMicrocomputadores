@@ -52,8 +52,8 @@ public class OrdemDeServicoArquivoImplTest {
     void criar() {
 
         File diretorio = new File("dados salvos");
-        File pasta1 = new File(diretorio +"/"+ "Test Ordem De Servico");
-        File arquivoOrdemDeServico = new File(pasta1,"ordemdeservicoTest.dat");
+        File pasta1 = new File(diretorio +"/"+ "Teste Ordem De Servico");
+        File arquivoOrdemDeServico = new File(pasta1,"ordemdeservicotest.dat");
 
         assertTrue(arquivoOrdemDeServico.exists());
 
