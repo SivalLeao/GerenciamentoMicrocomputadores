@@ -150,7 +150,7 @@ public class ClienteArquivoImpl implements ClienteDAO {
     @Override
     public void diretorioTest() {
 
-        this.nomeArquivo = "clienteTest.dat";
+        this.nomeArquivo = "clientetest.dat";
         this.nomePasta = "Test Cliente";
     }
 
