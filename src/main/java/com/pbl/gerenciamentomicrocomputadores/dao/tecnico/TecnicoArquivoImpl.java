@@ -6,7 +6,8 @@ import com.pbl.gerenciamentomicrocomputadores.utils.ArmazenamentoDeDados;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TecnicoArquivoImpl implements TecnicoDAO{
+public class TecnicoArquivoImpl implements TecnicoDAO {
+
     private List<Tecnico> lista;
     private String nomeArquivo = "tecnico.dat";
     private String nomePasta = "Tecnico";
@@ -19,12 +20,15 @@ public class TecnicoArquivoImpl implements TecnicoDAO{
 
     @Override
     public void criar(Tecnico tecnico) {
+
         int id;
 
         if (lista.isEmpty()) {
+
             id = 1111;
         }
         else {
+
             id = lista.get(lista.size() - 1).getId() + 10;
         }
 
@@ -146,12 +150,14 @@ public class TecnicoArquivoImpl implements TecnicoDAO{
 
     @Override
     public void diretorioTest() {
-        this.nomeArquivo = "tecnicoTest.dat";
-        this.nomePasta = "Test Tecnico";
+
+        this.nomeArquivo = "tecnicotest.dat";
+        this.nomePasta = "Teste Tecnico";
     }
 
     @Override
     public void diretorioPadrao() {
+
         this.nomeArquivo = "tecnico.dat";
         this.nomePasta = "Tecnico";
     }
