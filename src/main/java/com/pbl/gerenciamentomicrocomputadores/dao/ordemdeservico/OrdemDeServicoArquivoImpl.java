@@ -202,8 +202,8 @@ public class OrdemDeServicoArquivoImpl implements OrdemDeServicoDAO {
 
     public void diretorioTest() {
 
-        this.nomeArquivo = "ordemdeservicoTest.dat";
-        this.nomePasta = "Test Ordem De Servico";
+        this.nomeArquivo = "ordemdeservicotest.dat";
+        this.nomePasta = "Teste Ordem De Servico";
     }
 
     @Override
