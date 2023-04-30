@@ -20,7 +20,7 @@ public class TecnicoArquivoImpl implements TecnicoDAO {
     private String nomePasta = "Tecnico";
 
     /** Construtor responsável por resgatar uma lista contendo os dados dos técnicos cadastrados no sistema
-     * que foram que foram previamente salvos em um arquivo binário. Caso não haja nenhum cadastro, o construtor
+     * que foram previamente salvos em um arquivo binário. Caso não haja nenhum cadastro, o construtor
      * retorna uma lista vazia.*/
     public TecnicoArquivoImpl() {
 

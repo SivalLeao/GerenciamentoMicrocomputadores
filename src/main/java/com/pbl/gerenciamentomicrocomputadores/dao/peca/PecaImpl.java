@@ -77,7 +77,7 @@ public class PecaImpl implements PecaDAO {
     /** Método para remover determinada quantidade de uma peça específica. A peça é identificada
      * pelo nome. Antes de fazer as alterações na quantidade, as letras do nome são convertidas para
      * minúsculo e os acentos são retirados, para que a busca possa ser feita. O método checarQuantidade
-     * deve ser usado antes de chamar removeQuantity para conferir se a quantidade pode ser retirada sem
+     * deve ser usado antes de chamar removerQuantidade para conferir se a quantidade pode ser retirada sem
      * ultrapassar o limite.
      *
      * @param nome String - nome da peça.
@@ -267,10 +267,8 @@ public class PecaImpl implements PecaDAO {
      * adicionadas novamente. Caso algumas peças não possam ser retornadas ao sistema, uma lista
      * contendo elas é retornada.
      *
-     * @param mapItens Map - estrutura com o nome das peças e suas quantidades
-     *                 que devem ser devolvidas.
-     * @return Map - estrutura com os nomes as peças que não puderam ser devolvidas
-     * e suas quantidades.*/
+     * @param mapItens Map - estrutura com o nome das peças e suas quantidades que devem ser devolvidas.
+     * @return Map - estrutura com os nomes as peças que não puderam ser devolvidas e suas quantidades.*/
 
     public Map<String, Integer> devolverQuantidade(Map<String, Integer> mapItens) {
 
