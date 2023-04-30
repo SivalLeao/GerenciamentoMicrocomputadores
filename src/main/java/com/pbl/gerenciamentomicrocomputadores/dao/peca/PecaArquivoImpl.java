@@ -9,12 +9,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/** É responsável por armazenar todos as peças do sistema em um arquivo binário com extensão ".dat", e estruturar
+ * os métodos necessários para inserir, consultar, alterar ou remover. Implementa a interface PecaDAO.
+ *
+ * @author Silvio Oliveira,  Sival Leão.
+ * @version 3.0.
+ */
 public class PecaArquivoImpl implements PecaDAO {
 
     private List<Peca> lista;
     private String nomeArquivo = "peca.dat";
     private String nomePasta = "Peca";
 
+    /** Resgata uma lista contendo os dados das peças cadastradas no sistema que foram previamente salvos
+     * em um arquivo binário. Caso não haja nenhum cadastro, o construtor retorna uma lista vazia e as peças
+     * básicas são inseridas. Todos os nomes das peças são colocados na estrutura com letras minúsculas e sem
+     * acentos.*/
     public PecaArquivoImpl () {
 
         this.lista = new ArrayList<Peca>();
@@ -42,6 +52,10 @@ public class PecaArquivoImpl implements PecaDAO {
 
     }
 
+    /** Método para adicionar um objeto do tipo Peca na lista de armazenamento e em seguida é salvo em um arquivo
+     * binário.
+     *
+     * @param peca Peca - peça que deve ser inserida.*/
     @Override
     public void criar(Peca peca) {
 
@@ -51,6 +65,10 @@ public class PecaArquivoImpl implements PecaDAO {
 
     }
 
+    /** Método para atualizar as informações de uma peça na lista e no arquivo. O nome é utilizado para encontrar
+     * o objeto antigo que representava a peça, substituindo-o pelo novo objeto com as informações atualizadas.
+     *
+     * @param peca Peca - peça que deve ser atualizada.*/
     @Override
     public void atualizar(Peca peca) {
 
@@ -67,7 +85,14 @@ public class PecaArquivoImpl implements PecaDAO {
         }
     }
 
-
+    /** Método para remover determinada quantidade de uma peça específica. A peça é identificada
+     * pelo nome. Antes de fazer as alterações na quantidade, as letras do nome são convertidas para
+     * minúsculo e os acentos são retirados, para que a busca possa ser feita. O método checarQuantidade
+     * deve ser usado antes de chamar removerQuantidade para conferir se a quantidade pode ser retirada sem
+     * ultrapassar o limite.
+     *
+     * @param nome String - nome da peça.
+     * @param quantidade int - quantidade que deve ser retirada da peça.*/
     @Override
     public void removerQuantidade(String nome, int quantidade) {
 
@@ -90,6 +115,12 @@ public class PecaArquivoImpl implements PecaDAO {
         }
     }
 
+    /** Método para adicionar determinada quantidade de uma peça específica. A peça é identificada
+     * pelo nome. Antes de fazer as alterações na quantidade,  as letras do nome são convertidas
+     * para minúsculo e seus acentos são retirados, para que a busca possa ser feita.
+     *
+     * @param nome String - nome da peça.
+     * @param quantidade int - quantidade que deve ser adicionada da peça.*/
     @Override
     public void adicionarQuantidade(String nome, int quantidade){
 
@@ -112,6 +143,10 @@ public class PecaArquivoImpl implements PecaDAO {
         }
     }
 
+    /** Método de retorno de todas as peças armazenadas no sistema.
+     *
+     * @return List - lista de peças do sistema
+     */
     @Override
     public List<Peca> encontrarTodos() {
 
@@ -125,7 +160,11 @@ public class PecaArquivoImpl implements PecaDAO {
         return listPeca;
     }
 
-
+    /** Método de retorno das peças do sistema na forma de HashMap. O nome da peça é a chave e o objeto
+     * do tipo Peca é o conteúdo.
+     * conteúdo.
+     *
+     * @return Map - estrutura HashMap com todas as peças do sistema armazenadas.*/
     public Map<String,Peca> encontrarTodosMap() {
 
         Map<String,Peca> mapPeca = new HashMap<String,Peca>();
@@ -138,6 +177,11 @@ public class PecaArquivoImpl implements PecaDAO {
         return mapPeca;
     }
 
+    /** Método de retorno de uma peça através da busca por nome. Antes de realizar a busca, as letras do
+     * nome são convertidas para minúsculo e seus acentos são retirados.
+     *
+     * @param nome String - nome da peça.
+     * @return Peca - peça encontrada após a busca por nome.*/
     @Override
     public Peca encontrarPorNome(String nome) {
 
@@ -155,6 +199,11 @@ public class PecaArquivoImpl implements PecaDAO {
         return null;
     }
 
+    /** Método para checar se uma peça está armazenada no sistema através da busca por nome. Antes de
+     * realizar a busca, as letras do nome são convertidas para minúsculo e seus acentos são retirados.
+     *
+     * @param nome String - nome da peça.
+     * @return boolean - resultado da busca pela peça. Se foi achada ou não.*/
     @Override
     public boolean checarPorNome(String nome){
 
@@ -172,7 +221,15 @@ public class PecaArquivoImpl implements PecaDAO {
         return false;
     }
 
-
+    /** Método para checar se um tipo de peça tem quantidade suficiente para realizar
+     * determinada ordem de serviço de montagem. Antes de fazer a checagem, as letras do nome
+     * são convertidas para minúsculo e seus acentos são retirados, para que as informações
+     * possam ser encontradas.
+     *
+     * @param nome String - nome da peça.
+     * @param quantidade int - quantidade que o serviço precisa utilizar da peça.
+     * @return boolean - resultado da checagem de quantidade. Se a peça possui a quantidade suficiente
+     * ou não.*/
     public boolean checarQuantidade(String nome, int quantidade) {
 
         String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD)
@@ -195,7 +252,10 @@ public class PecaArquivoImpl implements PecaDAO {
         return false;
     }
 
-
+    /** Método para encontrar as peças do sistema que estão com uma baixa quantidade. O valor de alerta é 5.
+     * Se uma peça tiver quantidade igual ou menor ao valor de alerta, ela é adicionada na lista de retorno.
+     *
+     * @return List - lista de peças com baixa quantidade.*/
     public List<Peca> alertaDeQuantidade() {
 
         List<Peca> listPeca = new ArrayList<Peca>();
@@ -211,7 +271,13 @@ public class PecaArquivoImpl implements PecaDAO {
         return listPeca;
     }
 
-
+    /** Método para devolver a quantidade retirada das peças para a realização de uma
+     * ordem de serviço. Utilizado quando uma ordem de serviço é cancelada e as peças precisam ser
+     * adicionadas novamente. Caso algumas peças não possam ser retornadas ao sistema, uma lista
+     * contendo elas é retornada.
+     *
+     * @param mapItens Map - estrutura com o nome das peças e suas quantidades que devem ser devolvidas.
+     * @return Map - estrutura com os nomes as peças que não puderam ser devolvidas e suas quantidades.*/
     public Map<String, Integer> devolverQuantidade(Map<String, Integer> mapItens) {
 
         int novaQuantidade;
@@ -232,6 +298,10 @@ public class PecaArquivoImpl implements PecaDAO {
         return new HashMap<>(mapItens);
     }
 
+    /** Método para remover uma peça do armazenamento. A peça é encontrada através do nome. Antes de
+     * fazer a procura da localização, as letras do nome são convertidas para minúsculo e os acentos são retirados.
+     *
+     * @param nome String - nome da peça que deve ser removida.*/
     public void removerPeca(String nome) {
 
         String nomeFormatado = Normalizer.normalize(nome, Normalizer.Form.NFD)
@@ -248,6 +318,9 @@ public class PecaArquivoImpl implements PecaDAO {
 
     }
 
+    /** Método para esvaziar toda a lista de peças. A função clear é usada para limpar toda
+     * a lista. As peças básicas são adicionadas novamente, porém com suas quantidades
+     * zeradas.*/
     @Override
     public void removerTodos() {
 
@@ -275,12 +348,14 @@ public class PecaArquivoImpl implements PecaDAO {
 
     }
 
+    /** Método responsável por mudar o endereço do arquivo quando for necessário realizar testes de unidade.*/
     @Override
     public void diretorioTest() {
         this.nomeArquivo = "pecatest.dat";
         this.nomePasta = "Teste Peca";
     }
 
+    /** Método responsável por mudar para o endereço padrão do arquivo após a conclusão dos testes de unidade.*/
     @Override
     public void diretorioPadrao() {
         this.nomeArquivo = "peca.dat";
