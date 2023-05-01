@@ -116,7 +116,8 @@ public class ClienteArquivoImpl implements ClienteDAO {
         }
     }
 
-    /** Método para remover um cliente através da busca por ID.
+    /** Método para remover um cliente através da busca por ID. Após a remoção, o arquivo binário de
+     * armazenamento é reescrito com os novos dados
      *
      * @param id int - ID do cliente que deve ser removido.*/
 
@@ -191,8 +192,8 @@ public class ClienteArquivoImpl implements ClienteDAO {
         return false;
     }
 
-    /** Método para esvaziar todo o armazenamento de clientes. A função clear é usada para
-     * limpar a lista.*/
+    /** Método para esvaziar toda a lista de clientes, usando a função clear. O arquivo binário de
+     * armazenamento é reescrito com a lista vazia.*/
 
     @Override
     public void removerTodos() {
