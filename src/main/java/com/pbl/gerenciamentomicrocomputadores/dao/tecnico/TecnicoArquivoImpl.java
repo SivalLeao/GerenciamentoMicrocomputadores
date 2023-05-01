@@ -22,6 +22,7 @@ public class TecnicoArquivoImpl implements TecnicoDAO {
     /** Construtor responsável por resgatar uma lista contendo os dados dos técnicos cadastrados no sistema
      * que foram previamente salvos em um arquivo binário. Caso não haja nenhum cadastro, o construtor
      * retorna uma lista vazia.*/
+
     public TecnicoArquivoImpl() {
 
         this.lista = ArmazenamentoDeDados.resgatarDados(nomeArquivo,nomePasta);
@@ -33,6 +34,7 @@ public class TecnicoArquivoImpl implements TecnicoDAO {
      * 10 é somado  no atributo id para o próximo técnico.
      *
      * @param tecnico Tecnico - técnico que deve ser armazenado.*/
+
     @Override
     public void criar(Tecnico tecnico) {
 
@@ -59,6 +61,7 @@ public class TecnicoArquivoImpl implements TecnicoDAO {
      *
      * @param id int - número de ID do técnico.
      * @return Tecnico - técnico encontrado após a busca.*/
+
     @Override
     public Tecnico encontrarPorId(int id) {
 
@@ -77,6 +80,7 @@ public class TecnicoArquivoImpl implements TecnicoDAO {
      *
      * @param cpf String - CPF do técnico.
      * @return Tecnico - técnico encontrado após a busca.*/
+
     @Override
     public Tecnico encontrarPorCpf(String cpf) {
 
@@ -95,8 +99,8 @@ public class TecnicoArquivoImpl implements TecnicoDAO {
      * utilizado para encontrar seu equivalente na lista. Quando achado, o objeto antigo do técnico
      * é substituido pelo novo.
      *
-     * @param tecnico Tecnico - técnico que deve ser atualizado.
-     */
+     * @param tecnico Tecnico - técnico que deve ser atualizado.*/
+
     @Override
     public void atualizar(Tecnico tecnico) {
 
@@ -116,6 +120,7 @@ public class TecnicoArquivoImpl implements TecnicoDAO {
     /** Método para remover um técnico através da busca por ID.
      *
      * @param id int - ID do técnico que deve ser removido.*/
+
     @Override
     public void remover(int id) {
 
@@ -135,6 +140,7 @@ public class TecnicoArquivoImpl implements TecnicoDAO {
     /** Método de retorno de toda a lista de técnicos armazenada no sistema.
      *
      * @return List - lista de técnicos do sistema.*/
+
     @Override
     public List<Tecnico> encontrarTodos() {
 
@@ -152,6 +158,7 @@ public class TecnicoArquivoImpl implements TecnicoDAO {
      *
      * @param id int - número de ID do técnico.
      * @return boolean - resultado da busca pelo técnico. Se foi achado ou não.*/
+
     @Override
     public boolean checarPorId(int id) {
 
@@ -170,6 +177,7 @@ public class TecnicoArquivoImpl implements TecnicoDAO {
      *
      * @param cpf String - CPF do técnico.
      * @return boolean - resultado da busca pelo técnico. Se foi achado ou não.*/
+
     @Override
     public boolean checarPorCpf(String cpf) {
 
@@ -186,6 +194,7 @@ public class TecnicoArquivoImpl implements TecnicoDAO {
 
     /** Método para esvaziar todo o armazenamento de técnicos. A função clear é usada para
      * limpar a lista.*/
+
     @Override
     public void removerTodos() {
 
@@ -194,6 +203,7 @@ public class TecnicoArquivoImpl implements TecnicoDAO {
     }
 
     /** Método responsável por mudar o endereço do arquivo quando for necessário realizar testes de unidade.*/
+
     @Override
     public void diretorioTest() {
 
@@ -202,6 +212,7 @@ public class TecnicoArquivoImpl implements TecnicoDAO {
     }
 
     /** Método responsável por mudar para o endereço padrão do arquivo após a conclusão dos testes de unidade.*/
+
     @Override
     public void diretorioPadrao() {
 
