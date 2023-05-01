@@ -10,14 +10,12 @@ public class ArmazenamentoDeDados {
 
         try {
 
-            File diretorio = new File("dados salvos");
-            diretorio.mkdir();
-            String localDiretorio = diretorio.getAbsolutePath();
-            File pasta = new File(localDiretorio +"/"+ nomePasta);
-            pasta.mkdir();
+            File diretorio = new File("dados salvos/" + nomePasta);
+            diretorio.mkdirs();
 
-            File arquivo = new File(pasta, nomeArquivo);
-            FileOutputStream fos = new FileOutputStream(arquivo);
+            File arquivo = new File(diretorio.getAbsolutePath(), nomeArquivo);
+
+            FileOutputStream fos = new FileOutputStream(arquivo, false);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
             oos.writeObject(lista);
@@ -40,10 +38,8 @@ public class ArmazenamentoDeDados {
 
         try {
 
-            File diretorio = new File("dados salvos");
-            String localDiretorio = diretorio.getAbsolutePath();
-            File pasta = new File(localDiretorio + "/" + nomePasta);
-            File arquivo = new File(pasta, nomeArquivo);
+            File diretorio = new File("dados salvos/" + nomePasta);
+            File arquivo = new File(diretorio.getAbsolutePath(), nomeArquivo);
 
             if (!arquivo.exists()) {
 
