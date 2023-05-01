@@ -10,15 +10,15 @@ import java.util.List;
  * @author Silvio Oliveira,  Sival Leão.
  * @version 3.0.
  */
+
 public class ArmazenamentoDeDados {
 
     /** Método responsável por guardar as informações do sistema em um arquivo binário.
      *
-     * @param lista List - lista de objeto.
+     * @param lista List - lista de objetos.
      * @param nomeArquivo String - nome do arquivo.
-     * @param nomePasta String - nome da pasta.
-     * @param <T> Especificação do tipo de objeto.
-     */
+     * @param nomePasta String - nome da pasta.*/
+
     public static <T> void guardarDados(List<T> lista, String nomeArquivo, String nomePasta) {
 
         try {
@@ -51,9 +51,8 @@ public class ArmazenamentoDeDados {
      *
      * @param nomeArquivo String - nome do arquivo.
      * @param nomePasta String - nome da pasta.
-     * @return List - lista de objeto.
-     * @param <T> Especificação do tipo de objeto.
-     */
+     * @return List - lista de objetos.*/
+
     public static <T> ArrayList<T> resgatarDados(String nomeArquivo, String nomePasta) {
 
         try {
