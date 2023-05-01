@@ -39,7 +39,7 @@ aceitar diversos tipos de pagamentos;
 Classes.
 - :heavy_check_mark: Fase 2: Montagem do CRUD com o padrão de projeto DAO. Criação do Model e 
 desenvolvimento dos testes de unidade.
-- :x: Fase 3: Persistência de dados. Garantir que as informações sejam armazenadas e 
+- :heavy_check_mark: Fase 3: Persistência de dados. Garantir que as informações sejam armazenadas e 
 recuperadas de forma consistente.
 - :x: Fase 4: Implementação da interface gráfica.
 
