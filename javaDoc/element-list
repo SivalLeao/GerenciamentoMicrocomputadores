@@ -6,3 +6,4 @@ com.pbl.gerenciamentomicrocomputadores.dao.ordemdeservico
 com.pbl.gerenciamentomicrocomputadores.dao.peca
 com.pbl.gerenciamentomicrocomputadores.dao.tecnico
 com.pbl.gerenciamentomicrocomputadores.model
+com.pbl.gerenciamentomicrocomputadores.utils

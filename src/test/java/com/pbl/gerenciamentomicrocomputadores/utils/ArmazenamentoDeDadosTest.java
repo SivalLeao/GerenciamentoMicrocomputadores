@@ -74,7 +74,7 @@ public class ArmazenamentoDeDadosTest {
         assertTrue(arquivoCliente.exists());
         assertTrue(arquivoTecnico.exists());
     }
-    
+
     @Test
     void resgatarDados() {
 
