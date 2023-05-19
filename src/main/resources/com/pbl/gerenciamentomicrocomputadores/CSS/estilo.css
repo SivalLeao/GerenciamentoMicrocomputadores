@@ -1,0 +1,17 @@
+/*fundo*/
+.fundo{
+    -fx-background-color: #282828;
+}
+.fundo-opcoes{
+    -fx-background-color: #3A3A3A;
+}
+.barra-superior{
+    -fx-background-color: #0097B2;
+}
+.barra-superior-secudaria{
+    -fx-background-color: #000000;
+}
+.botao-home{
+    -fx-background-color: #0097b2;
+    -fx-background-radius: 30;
+}
