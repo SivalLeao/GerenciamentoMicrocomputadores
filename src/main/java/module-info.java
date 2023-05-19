@@ -1,6 +1,7 @@
 module com.pbl.gerenciamentomicrocomputadores {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
 
     opens com.pbl.gerenciamentomicrocomputadores to javafx.fxml;

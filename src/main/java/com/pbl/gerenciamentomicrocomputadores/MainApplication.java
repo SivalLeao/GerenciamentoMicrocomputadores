@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
 
 import java.io.IOException;
 
@@ -12,9 +13,13 @@ public class MainApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
 
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MenuView.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 950, 534);
+
+        stage.setResizable(false);
+
         stage.setScene(scene);
         MainController.setStage(stage);
         stage.show();
