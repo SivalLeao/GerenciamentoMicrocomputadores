@@ -28,7 +28,7 @@ public class MenuController {
         try {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("ClienteView.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+            Scene scene = new Scene(fxmlLoader.load(), 950, 534);
             Stage stage = MainController.getStage();
             stage.setScene(scene);
             MainController.setStage(stage);
@@ -46,7 +46,7 @@ public class MenuController {
         try {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("TecnicoView.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+            Scene scene = new Scene(fxmlLoader.load(), 950, 534);
             Stage stage = MainController.getStage();
             stage.setScene(scene);
             MainController.setStage(stage);
@@ -64,7 +64,7 @@ public class MenuController {
         try {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("OrdemView.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+            Scene scene = new Scene(fxmlLoader.load(), 950, 534);
             Stage stage = MainController.getStage();
             stage.setScene(scene);
             MainController.setStage(stage);
@@ -82,7 +82,7 @@ public class MenuController {
         try {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("EstoqueView.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+            Scene scene = new Scene(fxmlLoader.load(), 950, 534);
             Stage stage = MainController.getStage();
             stage.setScene(scene);
             MainController.setStage(stage);
