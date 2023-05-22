@@ -1,14 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.EstoqueController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.MenuController">
+    <children>
+        <VBox layoutX="-17.0" prefHeight="682.0" prefWidth="288.0" style="-fx-background-color: #0097b2;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Pane prefHeight="196.0" prefWidth="288.0">
+                    <children>
+                        <Label alignment="CENTER" layoutX="9.0" layoutY="105.0" prefHeight="49.0" prefWidth="271.0" text="Technical Assistance" textFill="WHITE">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                        <ImageView fitHeight="79.0" fitWidth="80.0" layoutX="107.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Icones/LogoIcon.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+                <Separator prefHeight="2.0" prefWidth="243.0" />
+                <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="291.0" stylesheets="@CSS/custumizacao.css" text="Inicio" textFill="WHITE">
+                    <padding>
+                        <Insets left="25.0" />
+                    </padding>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="61.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Icones/CasaIcon.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="tecnicoBotao" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#abaTecnico" prefHeight="72.0" prefWidth="290.0" stylesheets="@CSS/custumizacao.css" text="Técnico" textFill="WHITE">
+                    <padding>
+                        <Insets left="25.0" />
+                    </padding>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="61.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Icones/TecnicoIcon.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="clienteBotao" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="82.0" mnemonicParsing="false" onAction="#abaCliente" prefHeight="72.0" prefWidth="296.0" stylesheets="@CSS/custumizacao.css" text="Cliente" textFill="WHITE">
+                    <padding>
+                        <Insets left="25.0" />
+                    </padding>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="61.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Icones/ClienteIcon.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="estoqueBotao" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="226.0" mnemonicParsing="false" onAction="#abaEstoque" prefHeight="72.0" prefWidth="300.0" stylesheets="@CSS/custumizacao.css" text="Estoque" textFill="WHITE">
+                    <padding>
+                        <Insets left="25.0" />
+                    </padding>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="61.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Icones/EstoquePress.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="ordemBotao" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="154.0" mnemonicParsing="false" onAction="#abaOrdem" prefHeight="72.0" prefWidth="304.0" stylesheets="@CSS/custumizacao.css" text="Ordem de Serviços" textFill="WHITE">
+                    <padding>
+                        <Insets left="25.0" />
+                    </padding>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="61.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Icones/OrdemServicoIcon.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>
