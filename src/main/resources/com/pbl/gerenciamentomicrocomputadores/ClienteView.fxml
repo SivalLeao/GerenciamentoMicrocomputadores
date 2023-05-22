@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.ClienteController">
     <children>
         <VBox layoutX="-17.0" prefHeight="682.0" prefWidth="288.0" style="-fx-background-color: #0097b2;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -45,7 +45,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="tecnicoBotao" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#abaTecnico" prefHeight="72.0" prefWidth="290.0" stylesheets="@CSS/custumizacao.css" text="Técnico" textFill="WHITE">
+                <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="290.0" stylesheets="@CSS/custumizacao.css" text="Técnico" textFill="WHITE">
                     <padding>
                         <Insets left="25.0" />
                     </padding>
@@ -60,7 +60,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="clienteBotao" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="82.0" mnemonicParsing="false" onAction="#abaCliente" prefHeight="72.0" prefWidth="296.0" stylesheets="@CSS/custumizacao.css" text="Cliente" textFill="WHITE">
+                <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="82.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="296.0" stylesheets="@CSS/custumizacao.css" text="Cliente" textFill="WHITE">
                     <padding>
                         <Insets left="25.0" />
                     </padding>
@@ -75,7 +75,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="estoqueBotao" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="226.0" mnemonicParsing="false" onAction="#abaEstoque" prefHeight="72.0" prefWidth="300.0" stylesheets="@CSS/custumizacao.css" text="Estoque" textFill="WHITE">
+                <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="226.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="300.0" stylesheets="@CSS/custumizacao.css" text="Estoque" textFill="WHITE">
                     <padding>
                         <Insets left="25.0" />
                     </padding>
@@ -90,7 +90,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="ordemBotao" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="154.0" mnemonicParsing="false" onAction="#abaOrdem" prefHeight="72.0" prefWidth="304.0" stylesheets="@CSS/custumizacao.css" text="Ordem de Serviços" textFill="WHITE">
+                <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="154.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="304.0" stylesheets="@CSS/custumizacao.css" text="Ordem de Serviços" textFill="WHITE">
                     <padding>
                         <Insets left="25.0" />
                     </padding>
