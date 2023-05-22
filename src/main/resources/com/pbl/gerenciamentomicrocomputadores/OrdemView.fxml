@@ -30,7 +30,7 @@
                     </children>
                 </Pane>
                 <Separator prefHeight="2.0" prefWidth="243.0" />
-                <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="291.0" stylesheets="@CSS/custumizacao.css" text="Inicio" textFill="WHITE">
+                <Button fx:id="inicioBotao" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" onAction="#abaInicio" prefHeight="72.0" prefWidth="291.0" stylesheets="@CSS/custumizacao.css" text="Inicio" textFill="WHITE">
                     <padding>
                         <Insets left="25.0" />
                     </padding>
@@ -45,7 +45,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="290.0" stylesheets="@CSS/custumizacao.css" text="Técnico" textFill="WHITE">
+                <Button fx:id="tecnicoBotao" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#abaTecnico" prefHeight="72.0" prefWidth="290.0" stylesheets="@CSS/custumizacao.css" text="Técnico" textFill="WHITE">
                     <padding>
                         <Insets left="25.0" />
                     </padding>
@@ -60,7 +60,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="82.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="296.0" stylesheets="@CSS/custumizacao.css" text="Cliente" textFill="WHITE">
+                <Button fx:id="clienteBotao" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="82.0" mnemonicParsing="false" onAction="#abaCliente" prefHeight="72.0" prefWidth="296.0" stylesheets="@CSS/custumizacao.css" text="Cliente" textFill="WHITE">
                     <padding>
                         <Insets left="25.0" />
                     </padding>
@@ -75,7 +75,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="226.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="300.0" stylesheets="@CSS/custumizacao.css" text="Estoque" textFill="WHITE">
+                <Button fx:id="estoqueBotao" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="226.0" mnemonicParsing="false" onAction="#abaEstoque" prefHeight="72.0" prefWidth="300.0" stylesheets="@CSS/custumizacao.css" text="Estoque" textFill="WHITE">
                     <padding>
                         <Insets left="25.0" />
                     </padding>
