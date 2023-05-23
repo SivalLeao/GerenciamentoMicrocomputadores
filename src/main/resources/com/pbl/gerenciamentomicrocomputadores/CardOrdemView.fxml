@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="203.0" maxWidth="292.0" prefHeight="203.0" prefWidth="292.0" style="-fx-background-color: #add8e6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.CardOrdemController">
+   <children>
+      <Label layoutX="16.0" layoutY="14.0" text="ID: " />
+      <Label layoutX="16.0" layoutY="39.0" text="Serviço: " />
+      <Label layoutX="15.0" layoutY="64.0" text="Status: " />
+      <Label layoutX="16.0" layoutY="93.0" text="Data do pedido: " />
+      <Label layoutX="20.0" layoutY="119.0" text="Horário do pedido: " />
+      <Label layoutX="25.0" layoutY="147.0" text="ID técnico: " />
+      <Label layoutX="27.0" layoutY="172.0" text="ID cliente: " />
+   </children>
+</AnchorPane>
