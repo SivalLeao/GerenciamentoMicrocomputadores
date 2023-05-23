@@ -1,15 +1,28 @@
 package com.pbl.gerenciamentomicrocomputadores.controller;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
+import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
+import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import javax.swing.*;
+
+import static com.pbl.gerenciamentomicrocomputadores.dao.DAO.getOrdemDeServico;
 
 public class OrdemController {
 
@@ -30,6 +43,46 @@ public class OrdemController {
 
     @FXML
     private Button tecnicoBotao;
+
+    @FXML
+    private GridPane gridContainer;
+
+    @FXML
+    void initialize() {
+
+        try {
+
+            int linhaAtual = 0;
+            int colunaAtual = 0;
+
+            for (int i = 0; i < 10; i++) {
+
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("CardOrdemView.fxml"));
+                AnchorPane novoCard = fxmlLoader.load();
+
+                if ( colunaAtual == 3) {
+                    colunaAtual = 0;
+                    linhaAtual++;
+                }
+
+                gridContainer.add(novoCard, colunaAtual++, linhaAtual);
+
+                gridContainer.setMinWidth(Region.USE_COMPUTED_SIZE);
+                gridContainer.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                gridContainer.setMaxWidth(Region.USE_COMPUTED_SIZE);
+
+                gridContainer.setMinHeight(Region.USE_COMPUTED_SIZE);
+                gridContainer.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                gridContainer.setMaxHeight(Region.USE_COMPUTED_SIZE);
+
+            }
+
+        }
+        catch ( java.io.IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     @FXML
     void abaCliente(ActionEvent event) {
@@ -94,15 +147,6 @@ public class OrdemController {
         catch (java.io.IOException e) {
 
         }
-    }
-
-    @FXML
-    void initialize() {
-        assert clienteBotao != null : "fx:id=\"clienteBotao\" was not injected: check your FXML file 'OrdemView.fxml'.";
-        assert estoqueBotao != null : "fx:id=\"estoqueBotao\" was not injected: check your FXML file 'OrdemView.fxml'.";
-        assert inicioBotao != null : "fx:id=\"inicioBotao\" was not injected: check your FXML file 'OrdemView.fxml'.";
-        assert tecnicoBotao != null : "fx:id=\"tecnicoBotao\" was not injected: check your FXML file 'OrdemView.fxml'.";
-
     }
 
 }
