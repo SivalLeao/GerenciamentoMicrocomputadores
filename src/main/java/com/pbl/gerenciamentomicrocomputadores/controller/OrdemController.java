@@ -75,6 +75,8 @@ public class OrdemController {
                 gridContainer.setPrefHeight(Region.USE_COMPUTED_SIZE);
                 gridContainer.setMaxHeight(Region.USE_COMPUTED_SIZE);
 
+                GridPane.setMargin(novoCard, new Insets(20));
+
             }
 
         }
