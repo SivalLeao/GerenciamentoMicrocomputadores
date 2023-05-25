@@ -145,6 +145,7 @@
                               <Image url="@Icones/OrdemServicoIcon.png" />
                            </image>
                         </ImageView>
+                        <Separator layoutX="16.0" layoutY="191.0" prefHeight="11.0" prefWidth="82.0" />
                      </children>
                   </Pane>
                </children>
