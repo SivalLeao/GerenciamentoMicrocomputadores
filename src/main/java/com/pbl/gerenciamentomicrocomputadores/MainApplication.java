@@ -15,7 +15,7 @@ public class MainApplication extends Application {
     public void start(Stage stage) throws IOException {
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
 
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MenuView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("InicioView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
 
         stage.setResizable(false);

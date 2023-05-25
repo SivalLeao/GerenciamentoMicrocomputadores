@@ -11,7 +11,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class MenuController {
+public class InicioController {
 
     @FXML
     private Button clienteBotao;

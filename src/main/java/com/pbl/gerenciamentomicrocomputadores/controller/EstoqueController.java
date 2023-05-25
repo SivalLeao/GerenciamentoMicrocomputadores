@@ -78,7 +78,7 @@ public class EstoqueController {
     void abaInicio(ActionEvent event) {
         try {
 
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MenuView.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("InicioView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
             Stage stage = MainController.getStage();
             stage.setScene(scene);
