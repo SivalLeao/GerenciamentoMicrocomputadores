@@ -45,19 +45,17 @@ public class ClienteController {
 
     @FXML
     void initialize() {
-        assert estoqueBotao != null : "fx:id=\"estoqueBotao\" was not injected: check your FXML file 'ClienteView.fxml'.";
-        assert inicioBotao != null : "fx:id=\"inicioBotao\" was not injected: check your FXML file 'ClienteView.fxml'.";
-        assert ordemBotao != null : "fx:id=\"ordemBotao\" was not injected: check your FXML file 'ClienteView.fxml'.";
-        assert tecnicoBotao != null : "fx:id=\"tecnicoBotao\" was not injected: check your FXML file 'ClienteView.fxml'.";
+
+        barraInteira.setVisible(true);
+        containerBarraRetraida.setVisible(false);
 
         barraInteira.setOnMouseExited(event -> {barraInteira.setVisible(false);
-            barraRetraida.setVisible(true);
             containerBarraRetraida.setVisible(true);
         });
         barraRetraida.setOnMouseEntered(event -> {barraInteira.setVisible(true);
-            barraRetraida.setVisible(false);
             containerBarraRetraida.setVisible(false);
         });
+
     }
     @FXML
     void abaEstoque(ActionEvent event) {

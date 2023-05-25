@@ -14,10 +14,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -48,7 +45,27 @@ public class OrdemController {
     private GridPane gridContainer;
 
     @FXML
+    private VBox barraInteira;
+
+    @FXML
+    private HBox containerBarraRetraida;
+
+    @FXML
+    private Pane barraRetraida;
+
+    @FXML
     void initialize() {
+
+        barraInteira.setVisible(true);
+        containerBarraRetraida.setVisible(false);
+
+        barraInteira.setOnMouseExited(event -> {barraInteira.setVisible(false);
+            containerBarraRetraida.setVisible(true);
+        });
+        barraRetraida.setOnMouseEntered(event -> {
+            barraInteira.setVisible(true);
+            containerBarraRetraida.setVisible(false);
+        });
 
         try {
 

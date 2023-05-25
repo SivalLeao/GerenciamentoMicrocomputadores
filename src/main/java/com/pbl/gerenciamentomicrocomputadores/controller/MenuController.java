@@ -37,12 +37,13 @@ public class MenuController {
     @FXML
     void initialize () {
 
+        barraInteira.setVisible(true);
+        containerBarraRetraida.setVisible(false);
+
         barraInteira.setOnMouseExited(event -> {barraInteira.setVisible(false);
-            barraRetraida.setVisible(true);
             containerBarraRetraida.setVisible(true);
         });
         barraRetraida.setOnMouseEntered(event -> {barraInteira.setVisible(true);
-            barraRetraida.setVisible(false);
             containerBarraRetraida.setVisible(false);
         });
 

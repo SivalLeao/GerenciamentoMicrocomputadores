@@ -9,6 +9,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class EstoqueController {
@@ -30,6 +33,30 @@ public class EstoqueController {
 
     @FXML
     private Button tecnicoBotao;
+
+    @FXML
+    private VBox barraInteira;
+
+    @FXML
+    private HBox containerBarraRetraida;
+
+    @FXML
+    private Pane barraRetraida;
+
+    @FXML
+    void initialize() {
+
+        barraInteira.setVisible(true);
+        containerBarraRetraida.setVisible(false);
+
+        barraInteira.setOnMouseExited(event -> {barraInteira.setVisible(false);
+            containerBarraRetraida.setVisible(true);
+        });
+        barraRetraida.setOnMouseEntered(event -> {barraInteira.setVisible(true);
+            containerBarraRetraida.setVisible(false);
+        });
+
+    }
 
     @FXML
     void abaCliente(ActionEvent event) {
@@ -93,15 +120,6 @@ public class EstoqueController {
         catch (java.io.IOException e) {
 
         }
-    }
-
-    @FXML
-    void initialize() {
-        assert clienteBotao != null : "fx:id=\"clienteBotao\" was not injected: check your FXML file 'EstoqueView.fxml'.";
-        assert inicioBotao != null : "fx:id=\"inicioBotao\" was not injected: check your FXML file 'EstoqueView.fxml'.";
-        assert ordemBotao != null : "fx:id=\"ordemBotao\" was not injected: check your FXML file 'EstoqueView.fxml'.";
-        assert tecnicoBotao != null : "fx:id=\"tecnicoBotao\" was not injected: check your FXML file 'EstoqueView.fxml'.";
-
     }
 
 }
