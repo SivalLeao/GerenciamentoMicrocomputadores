@@ -46,8 +46,8 @@ public class ClienteController {
     @FXML
     void initialize() {
 
-        barraInteira.setVisible(true);
-        containerBarraRetraida.setVisible(false);
+        barraInteira.setVisible(false);
+        containerBarraRetraida.setVisible(true);
 
         barraInteira.setOnMouseExited(event -> {barraInteira.setVisible(false);
             containerBarraRetraida.setVisible(true);
