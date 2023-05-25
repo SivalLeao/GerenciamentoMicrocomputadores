@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="269.0" style="-fx-background-color: #0063AB;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutY="24.0" prefHeight="353.0" prefWidth="269.0" style="-fx-background-color: #0094FF;">
+         <children>
+            <HBox alignment="CENTER" layoutX="17.0" layoutY="14.0" prefHeight="100.0" prefWidth="238.0" style="-fx-background-color: #0063AB; -fx-background-radius: 10;">
+               <children>
+                  <ImageView fitHeight="100.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label text="1234">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Label layoutX="17.0" layoutY="126.0" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="Label" />
+            <Label alignment="CENTER" layoutX="124.0" layoutY="126.0" prefHeight="37.0" prefWidth="128.0" style="-fx-background-color: #0063AB; -fx-background-radius: 10;" text="Label" />
+            <Pane layoutX="109.0" layoutY="126.0" prefHeight="45.0" prefWidth="30.0" style="-fx-background-color: #0094FF;" />
+            <Label alignment="CENTER" layoutX="16.0" layoutY="177.0" prefHeight="45.0" prefWidth="238.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="Label" />
+            <Pane layoutX="27.0" layoutY="180.0" prefHeight="22.0" prefWidth="21.0" style="-fx-background-color: #0063AB; -fx-background-radius: 5;" />
+            <Label alignment="CENTER" layoutX="16.0" layoutY="233.0" prefHeight="45.0" prefWidth="238.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="Label" />
+            <Pane layoutX="27.0" layoutY="236.0" prefHeight="22.0" prefWidth="21.0" style="-fx-background-color: #0063AB; -fx-background-radius: 5;" />
+            <Label alignment="CENTER" layoutX="16.0" layoutY="287.0" prefHeight="45.0" prefWidth="238.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="Label" />
+            <Pane layoutX="27.0" layoutY="290.0" prefHeight="22.0" prefWidth="21.0" style="-fx-background-color: #0063AB; -fx-background-radius: 5;" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
