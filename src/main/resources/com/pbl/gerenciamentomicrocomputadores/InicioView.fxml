@@ -7,6 +7,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
@@ -17,7 +18,7 @@
    <children>
       <StackPane layoutX="-17.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox fx:id="barraInteira" prefHeight="682.0" prefWidth="288.0" style="-fx-background-color: #0097b2;" visible="false">
+            <VBox fx:id="barraInteira" prefHeight="682.0" prefWidth="288.0" style="-fx-background-color: #0097b2;">
                <children>
                   <Pane prefHeight="196.0" prefWidth="288.0">
                      <children>
@@ -111,7 +112,7 @@
                   </Button>
                </children>
             </VBox>
-            <HBox fx:id="containerBarraRetraida" prefHeight="100.0" prefWidth="200.0">
+            <HBox fx:id="containerBarraRetraida" prefHeight="100.0" prefWidth="200.0" visible="false">
                <children>
                   <Pane fx:id="barraRetraida" prefHeight="650.0" prefWidth="98.0" style="-fx-background-color: #0097b2;">
                      <children>
@@ -152,5 +153,31 @@
             </HBox>
          </children>
       </StackPane>
+      <BorderPane layoutX="275.0" layoutY="-1.0" prefHeight="650.0" prefWidth="1005.0">
+         <top>
+            <Pane prefHeight="84.0" prefWidth="1005.0" BorderPane.alignment="CENTER">
+               <children>
+                  <StackPane layoutX="570.0" layoutY="7.0" prefHeight="72.0" prefWidth="428.0">
+                     <children>
+                        <Pane fx:id="paneCantoInicio" prefHeight="72.0" prefWidth="409.0" visible="false">
+                           <children>
+                              <Button fx:id="loginBotao" layoutX="280.0" layoutY="24.0" mnemonicParsing="false" onAction="#abaLogin" text="login" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="paneTecnicoLogado" prefHeight="72.0" prefWidth="409.0">
+                           <children>
+                              <ImageView fitHeight="49.0" fitWidth="58.0" layoutX="28.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label layoutX="102.0" layoutY="14.0" text="Nome: " />
+                              <Label fx:id="nomeTecnico" layoutX="141.0" layoutY="14.0" />
+                              <Label layoutX="102.0" layoutY="36.0" text="ID: " />
+                              <Label fx:id="idTecnico" layoutX="119.0" layoutY="36.0" prefHeight="17.0" prefWidth="0.0" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </StackPane>
+               </children>
+            </Pane>
+         </top>
+      </BorderPane>
    </children>
 </AnchorPane>
