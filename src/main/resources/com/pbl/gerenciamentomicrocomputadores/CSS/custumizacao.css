@@ -2,17 +2,14 @@
 .button
 {
 -fx-background-color :#0097b2
-/*-fx-background-color : #F3F3F3;*/
 }
 .button:hover
 {
 -fx-background-color : #00BFE1 ;
-/*-fx-background-color : #A1C1F4 ;*/
 }
 .button:pressed
 {
 -fx-background-color : #00768B ;
-/*-fx-background-color : #73A3EF ;*/
 }
 
 .table-view .column-header,
@@ -81,4 +78,8 @@
 .chart-pie {
     -fx-border-color: derive(-fx-pie-color, 1%);
     -fx-border-width: 0px;
+}
+
+.label-with-shadow {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.5, 2, 2);
 }
