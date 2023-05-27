@@ -18,9 +18,6 @@ public class LoginController {
 
     private static Stage stage;
 
-
-    @FXML
-    private Button Cadastrar;
     @FXML
     private TextField cpfTecnico;
 
@@ -42,7 +39,11 @@ public class LoginController {
         }
         else if (DAO.getTecnico().checarPorCpf(cpfTecnico.getText())) {
 
-
+            FXMLLoader fxmlLoader = MainController.getFXMLLoader();
+            InicioController inicioController = fxmlLoader.getController();
+            inicioController.fazendoMudancaLogin(DAO.getTecnico().encontrarPorCpf(cpfTecnico.getText()));
+            Stage stage = (Stage) voltarBotao.getScene().getWindow();
+            stage.close();
         }
         else {
 
@@ -55,29 +56,6 @@ public class LoginController {
     void fecharAbaLogin (ActionEvent event) {
         Stage stage = (Stage) voltarBotao.getScene().getWindow();
         stage.close();
-    }
-    @FXML
-    void novoCadastro(ActionEvent event) {
-        Stage stage = (Stage) voltarBotao.getScene().getWindow();
-        stage.close();
-        try {
-
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("CadastrarTecnicoView.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setResizable(false);
-            stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
-            stage.setScene(scene);
-
-            LoginController.setStage(stage);
-
-            stage.show();
-        }
-        catch (java.io.IOException e) {
-
-        }
-
     }
 
     public static Stage getStage () { return stage; }
