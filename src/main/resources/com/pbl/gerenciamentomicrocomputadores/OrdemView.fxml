@@ -8,6 +8,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -114,7 +115,7 @@
                       </Button>
                   </children>
               </VBox>
-            <HBox fx:id="containerBarraRetraida" prefHeight="100.0" prefWidth="200.0">
+            <HBox fx:id="containerBarraRetraida" prefHeight="100.0" prefWidth="200.0" visible="false">
                <children>
                   <Pane fx:id="barraRetraida" prefHeight="650.0" prefWidth="98.0" style="-fx-background-color: #0097b2;">
                      <children>
@@ -155,14 +156,50 @@
             </HBox>
          </children>
       </StackPane>
-      <ScrollPane layoutX="272.0" layoutY="86.0" prefHeight="566.0" prefWidth="1007.0">
-         <content>
-            <GridPane fx:id="gridContainer" prefHeight="10.0" prefWidth="0.0">
-              <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-            </GridPane>
-         </content>
-      </ScrollPane>
+      <BorderPane layoutX="272.0" layoutY="86.0">
+         <right>
+            <ScrollPane prefHeight="562.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+               <content>
+                  <GridPane fx:id="gridContainer" prefHeight="10.0" prefWidth="0.0">
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+         </right>
+         <left>
+            <AnchorPane prefHeight="562.0" prefWidth="304.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane layoutX="14.0" layoutY="66.0" prefHeight="400.0" prefWidth="269.0" style="-fx-background-color: #00768B;">
+                     <children>
+                        <Pane layoutY="24.0" prefHeight="353.0" prefWidth="269.0" style="-fx-background-color: #00BFE1;">
+                           <children>
+                              <HBox alignment="CENTER" layoutX="16.0" layoutY="14.0" prefHeight="100.0" prefWidth="238.0" style="-fx-background-color: #00768B; -fx-background-radius: 10;">
+                                 <children>
+                                    <ImageView fitHeight="100.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label fx:id="idOrdemEscolhida" text="1234">
+                                       <font>
+                                          <Font name="System Bold" size="36.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Label fx:id="idCliente" layoutX="14.0" layoutY="130.0" prefHeight="37.0" prefWidth="106.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10 0 0 10;" text="Label" />
+                              <Label fx:id="idTecnico" layoutX="149.0" layoutY="130.0" prefHeight="37.0" prefWidth="106.0" style="-fx-background-color: #00768B; -fx-background-radius: 0 10 10 0;" text="Label" />
+                              <Label fx:id="tipoServico" alignment="CENTER" layoutX="16.0" layoutY="177.0" prefHeight="45.0" prefWidth="238.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="Label" />
+                              <Label fx:id="statusServico" alignment="CENTER" layoutX="16.0" layoutY="229.0" prefHeight="45.0" prefWidth="238.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="Label" />
+                              <Label fx:id="dataPedido" alignment="CENTER" layoutX="16.0" layoutY="284.0" prefHeight="45.0" prefWidth="238.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="Label" />
+                              <Pane layoutX="26.0" layoutY="189.0" prefHeight="22.0" prefWidth="21.0" style="-fx-background-color: #00768B; -fx-background-radius: 5;" />
+                              <Pane layoutX="26.0" layoutY="241.0" prefHeight="22.0" prefWidth="21.0" style="-fx-background-color: #00768B; -fx-background-radius: 5;" />
+                              <Pane layoutX="26.0" layoutY="296.0" prefHeight="22.0" prefWidth="21.0" style="-fx-background-color: #00768B; -fx-background-radius: 5;" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </left>
+      </BorderPane>
     </children>
 </AnchorPane>

@@ -1,9 +1,13 @@
 package com.pbl.gerenciamentomicrocomputadores.controller;
 
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
+import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
+import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.scene.control.Label;
 
 public class OrdemController {
 
@@ -45,6 +50,26 @@ public class OrdemController {
     @FXML
     private Pane barraRetraida;
 
+    private MyListener myListener;
+
+    @FXML
+    private Label idOrdemEscolhida;
+
+    @FXML
+    private Label idCliente;
+
+    @FXML
+    private Label idTecnico;
+
+    @FXML
+    private Label tipoServico;
+
+    @FXML
+    private Label statusServico;
+
+    @FXML
+    private Label dataPedido;
+
     @FXML
     void initialize() {
 
@@ -59,15 +84,35 @@ public class OrdemController {
             containerBarraRetraida.setVisible(false);
         });
 
+        List<OrdemDeServico> lista = DAO.getOrdemDeServico().encontrarTodos();
+
+        if (lista.size() > 0) {
+
+            setOrdemEscolhida(lista.get(0));
+
+            myListener = new MyListener() {
+                @Override
+                public void onClickListener(OrdemDeServico ordemDeServico) {
+
+                    setOrdemEscolhida(ordemDeServico);
+                }
+            };
+
+        }
+
         try {
 
             int linhaAtual = 1;
             int colunaAtual = 0;
 
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < lista.size(); i++) {
 
                 FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("CardOrdemView.fxml"));
                 AnchorPane novoCard = fxmlLoader.load();
+
+                CardOrdemController cardOrdemController = fxmlLoader.getController();
+                cardOrdemController.setInfo(lista.get(i), myListener);
+
 
                 if ( colunaAtual == 3) {
                     colunaAtual = 0;
@@ -158,6 +203,19 @@ public class OrdemController {
         catch (java.io.IOException e) {
 
         }
+    }
+
+    private void setOrdemEscolhida (OrdemDeServico ordemDeServico) {
+
+        idOrdemEscolhida.setText(Integer.toString(ordemDeServico.getIdOrdem()));
+        idCliente.setText(Integer.toString(ordemDeServico.getIdCliente()));
+        idTecnico.setText(Integer.toString(ordemDeServico.getIdTecnico()));
+        tipoServico.setText(ordemDeServico.getDescricaoServico().getTipoDeServico());
+        statusServico.setText(ordemDeServico.getStatusAtual());
+
+        DateTimeFormatter formatadorData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        dataPedido.setText(ordemDeServico.getData().getDataInicio().format(formatadorData));
+
     }
 
 }
