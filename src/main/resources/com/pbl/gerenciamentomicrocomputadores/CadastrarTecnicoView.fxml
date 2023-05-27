@@ -44,7 +44,7 @@
       </Label>
         <Label fx:id="mensagemDeErroEndereco" layoutX="18.0" layoutY="195.0" prefHeight="17.0" prefWidth="272.0" textFill="RED" />
         <TextField fx:id="enderecoTecnico" layoutX="18.0" layoutY="168.0" prefHeight="27.0" prefWidth="272.0" promptText="Digite seu Endereço" styleClass="text-box" stylesheets="@CSS/custumizacao.css" />
-        <Button fx:id="Cadastrar" layoutX="97.0" layoutY="396.0" mnemonicParsing="false" onAction="#Cadastrar" prefHeight="32.0" prefWidth="123.0" style="-fx-background-radius: 10;" stylesheets="@CSS/custumizacao.css" text="Cadastrar" />
+        <Button fx:id="cadastrarBotao" layoutX="97.0" layoutY="396.0" mnemonicParsing="false" onAction="#cadastrarAcao" prefHeight="32.0" prefWidth="123.0" style="-fx-background-radius: 10;" stylesheets="@CSS/custumizacao.css" text="Cadastrar" />
       <TextField fx:id="cpfTecnico" layoutX="20.0" layoutY="245.0" prefHeight="27.0" prefWidth="272.0" promptText="Digite seu CPF" styleClass="text-box" stylesheets="@CSS/custumizacao.css" />
       <Label alignment="CENTER" layoutX="18.0" layoutY="149.0" prefHeight="19.0" prefWidth="266.0" text="ENDEREÇO">
          <font>

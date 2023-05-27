@@ -2,6 +2,9 @@ package com.pbl.gerenciamentomicrocomputadores.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
+import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,6 +15,7 @@ import javafx.stage.Stage;
 public class CadastrarTecnicoController {
 
     private static Stage stage;
+
     @FXML
     private ResourceBundle resources;
 
@@ -19,7 +23,7 @@ public class CadastrarTecnicoController {
     private URL location;
 
     @FXML
-    private Button Cadastrar;
+    private Button cadastrarBotao;
 
     @FXML
     private TextField cpfTecnico;
@@ -49,14 +53,69 @@ public class CadastrarTecnicoController {
     private Button voltarBotao;
 
     @FXML
-    void Cadastrar(ActionEvent event) {
+    void cadastrarAcao (ActionEvent event) {
+
+        int qtdErros = 0;
+
+        if (! ((nomeTecnico.getText().matches("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"))
+                && (nomeTecnico.getText().replaceAll("\\s+", "").length() >= 3))) {
+
+            mensagemDeErroNome.setText("Entrada inválida");
+            qtdErros++;
+        }
+        else {
+            mensagemDeErroNome.setText("");
+        }
+
+        if (! ((enderecoTecnico.getText().replaceAll("\\s+", "").length() >= 3))) {
+
+            mensagemDeErroEndereco.setText("Entrada inválida");
+            qtdErros++;
+        }
+        else {
+            mensagemDeErroEndereco.setText("");
+        }
+
+        if (! ((telefoneTecnico.getText().matches("^[0-9() -]+$")) &&
+        (telefoneTecnico.getText().replaceAll("\\s+|\\(+|\\)+|-+", "").length() == 11)))  {
+
+            mensagemDeErroTelefone.setText("Entrada inválida");
+            qtdErros++;
+        }
+        else {
+            mensagemDeErroTelefone.setText("");
+        }
+
+        if (! ((cpfTecnico.getText().matches("^[0-9 .-]+$")) &&
+                (cpfTecnico.getText().replaceAll("\\s+|\\.+|-+", "").length() == 11)))  {
+
+            mensagemDeErroCpf.setText("Entrada inválida");
+            qtdErros++;
+        }
+        else {
+            mensagemDeErroCpf.setText("");
+        }
+
+        if (qtdErros == 0) {
+
+            Tecnico tecnico = new Tecnico(nomeTecnico.getText(), enderecoTecnico.getText(), telefoneTecnico.getText(),
+                    cpfTecnico.getText());
+
+            DAO.getTecnico().criar(tecnico);
+
+            Stage stage = (Stage) voltarBotao.getScene().getWindow();
+            stage.close();
+        }
 
     }
+
     public static Stage getStage () { return stage; }
 
     public static void setStage (Stage stage) { CadastrarTecnicoController.stage = stage; }
+
     @FXML
     void fecharAbaCadastrar(ActionEvent event) {
+
         Stage stage = (Stage) voltarBotao.getScene().getWindow();
         stage.close();
     }
