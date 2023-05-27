@@ -63,9 +63,9 @@ public class ClienteController {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("EstoqueView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
-            Stage stage = MainController.getStage();
+            Stage stage = MainController.getStageInicio();
             stage.setScene(scene);
-            MainController.setStage(stage);
+            MainController.setStageInicio(stage);
             stage.show();
         }
         catch (java.io.IOException e) {
@@ -79,9 +79,9 @@ public class ClienteController {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("InicioView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
-            Stage stage = MainController.getStage();
+            Stage stage = MainController.getStageInicio();
             stage.setScene(scene);
-            MainController.setStage(stage);
+            MainController.setStageInicio(stage);
             stage.show();
         }
         catch (java.io.IOException e) {
@@ -95,9 +95,9 @@ public class ClienteController {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("OrdemView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
-            Stage stage = MainController.getStage();
+            Stage stage = MainController.getStageInicio();
             stage.setScene(scene);
-            MainController.setStage(stage);
+            MainController.setStageInicio(stage);
             stage.show();
         }
         catch (java.io.IOException e) {
@@ -111,9 +111,9 @@ public class ClienteController {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("TecnicoView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
-            Stage stage = MainController.getStage();
+            Stage stage = MainController.getStageInicio();
             stage.setScene(scene);
-            MainController.setStage(stage);
+            MainController.setStageInicio(stage);
             stage.show();
         }
         catch (java.io.IOException e) {

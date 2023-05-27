@@ -14,8 +14,6 @@ import javafx.stage.Stage;
 
 public class CadastrarTecnicoController {
 
-    private static Stage stage;
-
     @FXML
     private ResourceBundle resources;
 
@@ -108,10 +106,6 @@ public class CadastrarTecnicoController {
         }
 
     }
-
-    public static Stage getStage () { return stage; }
-
-    public static void setStage (Stage stage) { CadastrarTecnicoController.stage = stage; }
 
     @FXML
     void fecharAbaCadastrar(ActionEvent event) {

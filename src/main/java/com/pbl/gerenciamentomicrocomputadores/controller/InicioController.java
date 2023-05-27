@@ -1,7 +1,6 @@
 package com.pbl.gerenciamentomicrocomputadores.controller;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
-import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +13,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class InicioController {
 
@@ -87,9 +85,9 @@ public class InicioController {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("ClienteView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
-            Stage stage = MainController.getStage();
+            Stage stage = MainController.getStageInicio();
             stage.setScene(scene);
-            MainController.setStage(stage);
+            MainController.setStageInicio(stage);
             stage.show();
         }
         catch (java.io.IOException e) {
@@ -105,9 +103,9 @@ public class InicioController {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("TecnicoView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
-            Stage stage = MainController.getStage();
+            Stage stage = MainController.getStageInicio();
             stage.setScene(scene);
-            MainController.setStage(stage);
+            MainController.setStageInicio(stage);
             stage.show();
         }
         catch (java.io.IOException e) {
@@ -123,9 +121,9 @@ public class InicioController {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("OrdemView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
-            Stage stage = MainController.getStage();
+            Stage stage = MainController.getStageInicio();
             stage.setScene(scene);
-            MainController.setStage(stage);
+            MainController.setStageInicio(stage);
             stage.show();
         }
         catch (java.io.IOException e) {
@@ -141,9 +139,9 @@ public class InicioController {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("EstoqueView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
-            Stage stage = MainController.getStage();
+            Stage stage = MainController.getStageInicio();
             stage.setScene(scene);
-            MainController.setStage(stage);
+            MainController.setStageInicio(stage);
             stage.show();
         }
         catch (java.io.IOException e) {
@@ -158,16 +156,25 @@ public class InicioController {
 
         try {
 
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("LoginView.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = new Stage();
-            stage.setResizable(false);
-            stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
-            stage.setScene(scene);
+            if (MainController.getStageLogin() == null) {
 
-            LoginController.setStage(stage);
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("LoginView.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+                stage.setScene(scene);
 
-            stage.show();
+                MainController.setStageLogin(stage);
+
+                stage.show();
+            }
+            else {
+
+                Stage stage = MainController.getStageLogin();
+                stage.show();
+                stage.toFront();
+            }
         }
         catch (java.io.IOException e) {
 
@@ -191,16 +198,25 @@ public class InicioController {
     void abaCadastrar(ActionEvent event) {
         try {
 
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("CadastrarTecnicoView.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = new Stage();
-            stage.setResizable(false);
-            stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
-            stage.setScene(scene);
+            if (MainController.getStageCadastroTecnico() == null) {
 
-            CadastrarTecnicoController.setStage(stage);
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("CadastrarTecnicoView.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+                stage.setScene(scene);
 
-            stage.show();
+                MainController.setStageCadastroTecnico(stage);
+
+                stage.show();
+            }
+            else {
+
+                Stage stage = MainController.getStageCadastroTecnico();
+                stage.show();
+                stage.toFront();
+            }
         }
         catch (java.io.IOException e) {
 
