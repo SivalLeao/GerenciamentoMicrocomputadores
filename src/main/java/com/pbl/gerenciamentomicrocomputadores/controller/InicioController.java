@@ -2,6 +2,7 @@ package com.pbl.gerenciamentomicrocomputadores.controller;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
+import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -56,6 +57,10 @@ public class InicioController {
 
     @FXML
     private Label idTecnico;
+
+    @FXML
+    private Button deslogarBotao;
+
 
     @FXML
     void initialize () {
@@ -156,7 +161,6 @@ public class InicioController {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("LoginView.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
             stage.setResizable(false);
             stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
             stage.setScene(scene);
@@ -168,8 +172,21 @@ public class InicioController {
         catch (java.io.IOException e) {
 
         }
+    }
+
+    public void fazendoMudancaLogin (Tecnico tecnico) {
+
+        paneCantoInicio.setVisible(false);
+        paneTecnicoLogado.setVisible(true);
+
+        nomeTecnico.setText(tecnico.getNome());
+        int id = tecnico.getId();
+        System.out.println(id);
+        idTecnico.setText(Integer.toString(id));
 
     }
+
+
     @FXML
     void abaCadastrar(ActionEvent event) {
         try {
@@ -177,7 +194,6 @@ public class InicioController {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("CadastrarTecnicoView.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
             stage.setResizable(false);
             stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
             stage.setScene(scene);
@@ -190,6 +206,13 @@ public class InicioController {
 
         }
 
+    }
+
+    @FXML
+    void deslogarAcao(ActionEvent event) {
+
+        paneCantoInicio.setVisible(true);
+        paneTecnicoLogado.setVisible(false);
     }
 
 }
