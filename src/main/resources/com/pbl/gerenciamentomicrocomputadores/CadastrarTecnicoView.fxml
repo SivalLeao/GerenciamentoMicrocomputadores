@@ -22,7 +22,7 @@
                             <graphic>
                                 <ImageView fitHeight="16.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../../../../../../../../../Users/User/Downloads/Webp.net-resizeimage%20(2).png" />
+                                        <Image url="@Icones/Voltar.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
