@@ -22,6 +22,7 @@ public class MainApplication extends Application {
 
         stage.setScene(scene);
         MainController.setStage(stage);
+        MainController.setFXMLLoader(fxmlLoader);
         stage.show();
     }
 
