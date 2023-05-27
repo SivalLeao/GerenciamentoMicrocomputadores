@@ -79,7 +79,28 @@
     -fx-border-color: derive(-fx-pie-color, 1%);
     -fx-border-width: 0px;
 }
-/*sobra*/
-.label-with-shadow {
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.5, 2, 2);
+/*sombra*/
+.label-with-shadow:hover {
+    -fx-effect: dropshadow(gaussian, rgba(80, 80, 80, 0.5), 0, 0, 3.5, 3.5);
+}
+
+.text-box {
+    -fx-background-color: transparent;
+    -fx-border-color: #00768B;
+    -fx-border-width: 0 0 2px 0; /* Largura da borda (topo direito inferior esquerdo) */
+}
+.text-box:focused {
+    -fx-border-color: #00FFFF; /* Cor da borda ao digitar */
+}
+
+
+.button-volta {
+-fx-background-color :  #00768B;
+}
+.button-volta:hover
+{
+    -fx-background-color : #00BFE1;
+}
+.gradiente{
+    -fx-background: linear-gradient(#00768B, #00FA9A);
 }
