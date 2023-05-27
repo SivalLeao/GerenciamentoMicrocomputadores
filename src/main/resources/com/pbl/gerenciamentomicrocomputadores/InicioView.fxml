@@ -18,6 +18,45 @@
    <children>
       <StackPane layoutX="-17.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+            <HBox fx:id="containerBarraRetraida" prefHeight="100.0" prefWidth="200.0" visible="false">
+               <children>
+                  <Pane fx:id="barraRetraida" prefHeight="650.0" prefWidth="98.0" style="-fx-background-color: #0097b2;">
+                     <children>
+                        <ImageView fitHeight="79.0" fitWidth="80.0" layoutX="22.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icones/LogoIcon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="61.0" fitWidth="58.0" layoutX="26.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icones/CasaPressIcon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="61.0" fitWidth="58.0" layoutX="27.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icones/TecnicoIcon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="61.0" fitWidth="58.0" layoutX="26.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icones/ClienteIcon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="61.0" fitWidth="58.0" layoutX="27.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icones/EstoqueIcon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="61.0" fitWidth="58.0" layoutX="24.0" layoutY="492.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icones/OrdemServicoIcon.png" />
+                           </image>
+                        </ImageView>
+                        <Separator layoutX="18.0" layoutY="190.0" prefHeight="11.0" prefWidth="84.0" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
             <VBox fx:id="barraInteira" prefHeight="682.0" prefWidth="288.0" style="-fx-background-color: #0097b2;">
                <children>
                   <Pane prefHeight="196.0" prefWidth="288.0">
@@ -112,56 +151,18 @@
                   </Button>
                </children>
             </VBox>
-            <HBox fx:id="containerBarraRetraida" prefHeight="100.0" prefWidth="200.0" visible="false">
-               <children>
-                  <Pane fx:id="barraRetraida" prefHeight="650.0" prefWidth="98.0" style="-fx-background-color: #0097b2;">
-                     <children>
-                        <ImageView fitHeight="79.0" fitWidth="80.0" layoutX="22.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Icones/LogoIcon.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="61.0" fitWidth="58.0" layoutX="26.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Icones/CasaPressIcon.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="61.0" fitWidth="58.0" layoutX="27.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Icones/TecnicoIcon.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="61.0" fitWidth="58.0" layoutX="26.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Icones/ClienteIcon.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="61.0" fitWidth="58.0" layoutX="27.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Icones/EstoqueIcon.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="61.0" fitWidth="58.0" layoutX="24.0" layoutY="492.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Icones/OrdemServicoIcon.png" />
-                           </image>
-                        </ImageView>
-                        <Separator layoutX="18.0" layoutY="190.0" prefHeight="11.0" prefWidth="84.0" />
-                     </children>
-                  </Pane>
-               </children>
-            </HBox>
          </children>
       </StackPane>
-      <BorderPane layoutX="275.0" layoutY="-1.0" prefHeight="650.0" prefWidth="1005.0">
+      <BorderPane layoutX="284.0" prefHeight="650.0" prefWidth="1005.0">
          <top>
-            <Pane prefHeight="84.0" prefWidth="1005.0" BorderPane.alignment="CENTER">
+            <Pane prefHeight="78.0" prefWidth="1005.0" BorderPane.alignment="CENTER">
                <children>
                   <StackPane layoutX="570.0" layoutY="7.0" prefHeight="72.0" prefWidth="428.0">
                      <children>
                         <Pane fx:id="paneCantoInicio" prefHeight="72.0" prefWidth="409.0" visible="false">
                            <children>
-                              <Button fx:id="loginBotao" layoutX="280.0" layoutY="24.0" mnemonicParsing="false" onAction="#abaLogin" text="login" />
+                              <Button fx:id="loginBotao" layoutX="262.0" layoutY="18.0" mnemonicParsing="false" onAction="#abaLogin" prefHeight="37.0" prefWidth="76.0" style="-fx-background-radius: 10 0 0 10;" stylesheets="@CSS/custumizacao.css" text="login" />
+                              <Button fx:id="cadastrar" layoutX="338.0" layoutY="18.0" mnemonicParsing="false" onAction="#abaCadastrar" prefHeight="37.0" prefWidth="76.0" style="-fx-background-radius: 0 10 10 0;" stylesheets="@CSS/custumizacao.css" text="Cadastrar" />
                            </children>
                         </Pane>
                         <Pane fx:id="paneTecnicoLogado" prefHeight="72.0" prefWidth="409.0">

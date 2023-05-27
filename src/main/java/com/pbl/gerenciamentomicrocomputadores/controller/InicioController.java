@@ -13,12 +13,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class InicioController {
 
     @FXML
     private Button clienteBotao;
-
+    @FXML
+    private Button cadastrar;
     @FXML
     private Button tecnicoBotao;
 
@@ -152,13 +154,35 @@ public class InicioController {
         try {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("LoginView.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 400, 200);
+            Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setResizable(false);
             stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
             stage.setScene(scene);
 
             LoginController.setStage(stage);
+
+            stage.show();
+        }
+        catch (java.io.IOException e) {
+
+        }
+
+    }
+    @FXML
+    void abaCadastrar(ActionEvent event) {
+        try {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("CadastrarTecnicoView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setResizable(false);
+            stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+            stage.setScene(scene);
+
+            CadastrarTecnicoController.setStage(stage);
 
             stage.show();
         }
