@@ -9,15 +9,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="345.0" prefWidth="238.0" styleClass="gradiente" stylesheets="@CSS/custumizacao.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.LoginController">
+<AnchorPane prefHeight="345.0" prefWidth="238.0" stylesheets="@CSS/custumizacao.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.LoginController">
    <children>
-      <TextField fx:id="cpfTecnico" layoutX="65.0" layoutY="159.0" prefHeight="27.0" prefWidth="136.0" promptText="Digite seu CPF" styleClass="text-box" stylesheets="@CSS/custumizacao.css" />
+      <Button fx:id="entrarBotao" layoutX="93.0" layoutY="239.0" mnemonicParsing="false" onAction="#acessoTecnico" prefHeight="32.0" prefWidth="73.0" style="-fx-background-radius: 10;" text="Entrar" />
+      <TextField fx:id="cpfTecnico" layoutX="65.0" layoutY="159.0" prefHeight="27.0" prefWidth="136.0" promptText="Digite seu CPF" styleClass="text-box" />
       <Label layoutX="118.0" layoutY="131.0" text="CPF">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Button fx:id="entrarBotao" layoutX="93.0" layoutY="239.0" mnemonicParsing="false" onAction="#acessoTecnico" prefHeight="32.0" prefWidth="73.0" style="-fx-background-radius: 10;" stylesheets="@CSS/custumizacao.css" text="Entrar" />
       <Label fx:id="mensagemDeErro" layoutX="66.0" layoutY="186.0" prefHeight="17.0" prefWidth="136.0" textFill="RED" />
       <HBox prefHeight="49.0" prefWidth="266.0">
          <children>
