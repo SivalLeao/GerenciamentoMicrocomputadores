@@ -153,9 +153,12 @@
             </VBox>
          </children>
       </StackPane>
-      <BorderPane layoutX="270.0" prefHeight="650.0" prefWidth="1022.0">
+      <BorderPane layoutX="270.0" prefHeight="650.0" prefWidth="1012.0">
+         <left>
+            <Pane prefHeight="576.0" prefWidth="10.0" style="-fx-background-color: #00768B;" BorderPane.alignment="CENTER" />
+         </left>
          <top>
-            <Pane prefHeight="76.0" prefWidth="1017.0" style="-fx-background-color: #00768B;" BorderPane.alignment="CENTER">
+            <Pane prefHeight="76.0" prefWidth="1010.0" style="-fx-background-color: #014A57;" BorderPane.alignment="CENTER">
                <children>
                   <StackPane layoutX="570.0" prefHeight="86.0" prefWidth="441.0">
                      <children>
@@ -168,27 +171,26 @@
                         <Pane fx:id="paneTecnicoLogado" prefHeight="72.0" prefWidth="441.0">
                            <children>
                               <ImageView fitHeight="49.0" fitWidth="58.0" layoutX="28.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label fx:id="nomeTecnico" alignment="CENTER" layoutX="279.0" layoutY="10.0" prefHeight="23.0" prefWidth="66.0" style="-fx-background-color: #014A57; -fx-background-radius: 0 5 5 0;" textFill="WHITE" />
-                              <ImageView fitHeight="45.0" fitWidth="51.0" layoutX="357.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@Icones/deslogar.png" />
-                                 </image>
-                              </ImageView>
-                              <Button fx:id="deslogarBotao" alignment="BOTTOM_RIGHT" layoutX="345.0" layoutY="-3.0" mnemonicParsing="false" onAction="#deslogarAcao" prefHeight="72.0" prefWidth="69.0" style="-fx-background-color: tras;" styleClass="my-button" stylesheets="@CSS/custumizacao.css" text="Deslogar" textFill="WHITE" />
-                              <Label alignment="CENTER" layoutX="216.0" layoutY="10.0" prefHeight="23.0" prefWidth="66.0" style="-fx-background-color: #014A57; -fx-background-radius: 5 0 0 5;" text="NOME:" textFill="WHITE" />
-                              <Label fx:id="idTecnico" alignment="CENTER" layoutX="279.0" layoutY="40.0" prefHeight="23.0" prefWidth="66.0" style="-fx-background-color: #014A57; -fx-background-radius: 0 5 5 0;" textFill="WHITE" />
-                              <Label fx:id="idTecnico1" alignment="CENTER" layoutX="216.0" layoutY="40.0" prefHeight="23.0" prefWidth="66.0" style="-fx-background-color: #014A57; -fx-background-radius: 5 0 0 5;" text="ID:" textFill="WHITE" />
+                              <Label fx:id="nomeTecnico" alignment="CENTER" layoutX="279.0" layoutY="10.0" prefHeight="23.0" prefWidth="66.0" style="-fx-background-color: #00768B; -fx-background-radius: 0 5 5 0;" textFill="WHITE" />
+                              <Button fx:id="deslogarBotao" alignment="BOTTOM_RIGHT" layoutX="361.0" layoutY="5.0" mnemonicParsing="false" onAction="#deslogarAcao" prefHeight="57.0" prefWidth="52.0" styleClass="my-button" stylesheets="@CSS/custumizacao.css" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="45.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icones/deslogar.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
+                              <Label alignment="CENTER" layoutX="216.0" layoutY="10.0" prefHeight="23.0" prefWidth="66.0" style="-fx-background-color: #00768B; -fx-background-radius: 5 0 0 5;" text="NOME:" textFill="WHITE" />
+                              <Label fx:id="idTecnico" alignment="CENTER" layoutX="279.0" layoutY="40.0" prefHeight="23.0" prefWidth="66.0" style="-fx-background-color: #00768B; -fx-background-radius: 0 5 5 0;" textFill="WHITE" />
+                              <Label fx:id="idTecnico1" alignment="CENTER" layoutX="216.0" layoutY="40.0" prefHeight="23.0" prefWidth="66.0" style="-fx-background-color: #00768B; -fx-background-radius: 5 0 0 5;" text="ID:" textFill="WHITE" />
                            </children>
                         </Pane>
                      </children>
                   </StackPane>
-                  <Pane layoutY="67.0" prefHeight="10.0" prefWidth="1010.0" style="-fx-background-color: #014A57;" />
+                  <Pane layoutY="67.0" prefHeight="10.0" prefWidth="1010.0" style="-fx-background-color: #00768B;" />
                </children>
             </Pane>
          </top>
-         <left>
-            <Pane prefHeight="576.0" prefWidth="10.0" style="-fx-background-color: #014A57;" BorderPane.alignment="CENTER" />
-         </left>
       </BorderPane>
    </children>
 </AnchorPane>
