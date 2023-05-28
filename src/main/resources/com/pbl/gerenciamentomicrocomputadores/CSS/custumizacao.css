@@ -104,3 +104,12 @@
 .gradiente{
     -fx-background: linear-gradient(#00768B, #00FA9A);
 }
+
+.my-button {
+  -fx-background-color: #00768B;
+  -fx-text-fill: #00768B; /* cor do texto padrão */
+}
+
+.my-button:hover {
+  -fx-text-fill: white; /* cor do texto quando hover */
+}
