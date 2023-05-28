@@ -4,5 +4,5 @@ import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
 
 public interface MyListener {
 
-    public void onClickListener (OrdemDeServico ordemDeServico);
+    void onClickListener (OrdemDeServico ordemDeServico);
 }

@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
 import javafx.scene.control.Label;
 
-import java.awt.event.MouseEvent;
+import javafx.scene.input.MouseEvent;
 
 public class CardOrdemController {
 
@@ -15,15 +15,15 @@ public class CardOrdemController {
     @FXML
     private Label status;
 
-    @FXML
-    public void click (MouseEvent event) {
-
-        myListener.onClickListener(ordemDeServico);
-    }
-
     private OrdemDeServico ordemDeServico;
 
     private MyListener myListener;
+
+    @FXML
+    public void click (MouseEvent mouseEvent) {
+
+        this.myListener.onClickListener(this.ordemDeServico);
+    }
 
     public void setInfo (OrdemDeServico ordemDeServico, MyListener myListener) {
 

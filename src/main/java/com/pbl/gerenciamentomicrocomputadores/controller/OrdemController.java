@@ -50,8 +50,6 @@ public class OrdemController {
     @FXML
     private Pane barraRetraida;
 
-    private MyListener myListener;
-
     @FXML
     private Label idOrdemEscolhida;
 
@@ -70,6 +68,10 @@ public class OrdemController {
     @FXML
     private Label dataPedido;
 
+    private MyListener myListener;
+
+    private List<OrdemDeServico> ordensData;
+
     @FXML
     void initialize() {
 
@@ -84,13 +86,13 @@ public class OrdemController {
             containerBarraRetraida.setVisible(false);
         });
 
-        List<OrdemDeServico> lista = DAO.getOrdemDeServico().encontrarTodos();
+        this.ordensData = DAO.getOrdemDeServico().encontrarTodos();
 
-        if (lista.size() > 0) {
+        if (this.ordensData.size() > 0) {
 
-            setOrdemEscolhida(lista.get(0));
+            setOrdemEscolhida(this.ordensData.get(0));
 
-            myListener = new MyListener() {
+            this.myListener = new MyListener() {
                 @Override
                 public void onClickListener(OrdemDeServico ordemDeServico) {
 
@@ -105,13 +107,13 @@ public class OrdemController {
             int linhaAtual = 1;
             int colunaAtual = 0;
 
-            for (int i = 0; i < lista.size(); i++) {
+            for (int i = 0; i < this.ordensData.size(); i++) {
 
                 FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("CardOrdemView.fxml"));
                 AnchorPane novoCard = fxmlLoader.load();
 
                 CardOrdemController cardOrdemController = fxmlLoader.getController();
-                cardOrdemController.setInfo(lista.get(i), myListener);
+                cardOrdemController.setInfo(this.ordensData.get(i), this.myListener);
 
 
                 if ( colunaAtual == 3) {
@@ -119,15 +121,15 @@ public class OrdemController {
                     linhaAtual++;
                 }
 
-                gridContainer.add(novoCard, colunaAtual++, linhaAtual);
+                this.gridContainer.add(novoCard, colunaAtual++, linhaAtual);
 
-                gridContainer.setMinWidth(Region.USE_COMPUTED_SIZE);
-                gridContainer.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                gridContainer.setMaxWidth(Region.USE_COMPUTED_SIZE);
+                this.gridContainer.setMinWidth(Region.USE_COMPUTED_SIZE);
+                this.gridContainer.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                this.gridContainer.setMaxWidth(Region.USE_COMPUTED_SIZE);
 
-                gridContainer.setMinHeight(Region.USE_COMPUTED_SIZE);
-                gridContainer.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                gridContainer.setMaxHeight(Region.USE_COMPUTED_SIZE);
+                this.gridContainer.setMinHeight(Region.USE_COMPUTED_SIZE);
+                this.gridContainer.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                this.gridContainer.setMaxHeight(Region.USE_COMPUTED_SIZE);
 
                 GridPane.setMargin(novoCard, new Insets(20));
 
