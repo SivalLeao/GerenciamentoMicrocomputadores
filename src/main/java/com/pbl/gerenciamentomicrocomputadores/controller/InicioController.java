@@ -167,7 +167,6 @@ public class InicioController {
 
         nomeTecnico.setText(tecnico.getNome());
         int id = tecnico.getId();
-        System.out.println(id);
         idTecnico.setText(Integer.toString(id));
 
     }
