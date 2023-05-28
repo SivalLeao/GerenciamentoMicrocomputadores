@@ -42,15 +42,6 @@ public class OrdemController {
     private GridPane gridContainer;
 
     @FXML
-    private VBox barraInteira;
-
-    @FXML
-    private HBox containerBarraRetraida;
-
-    @FXML
-    private Pane barraRetraida;
-
-    @FXML
     private Label idOrdemEscolhida;
 
     @FXML
@@ -74,17 +65,6 @@ public class OrdemController {
 
     @FXML
     void initialize() {
-
-        barraInteira.setVisible(false);
-        containerBarraRetraida.setVisible(true);
-
-        barraInteira.setOnMouseExited(event -> {barraInteira.setVisible(false);
-            containerBarraRetraida.setVisible(true);
-        });
-        barraRetraida.setOnMouseEntered(event -> {
-            barraInteira.setVisible(true);
-            containerBarraRetraida.setVisible(false);
-        });
 
         this.ordensData = DAO.getOrdemDeServico().encontrarTodos();
 

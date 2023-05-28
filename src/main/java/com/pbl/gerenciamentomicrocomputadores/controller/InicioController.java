@@ -9,9 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class InicioController {
@@ -28,15 +26,6 @@ public class InicioController {
 
     @FXML
     private Button estoqueBotao;
-
-    @FXML
-    private VBox barraInteira;
-
-    @FXML
-    private HBox containerBarraRetraida;
-
-    @FXML
-    private Pane barraRetraida;
 
     @FXML
     private Pane paneCantoInicio;
@@ -62,16 +51,6 @@ public class InicioController {
 
     @FXML
     void initialize () {
-
-        barraInteira.setVisible(false);
-        containerBarraRetraida.setVisible(true);
-
-        barraInteira.setOnMouseExited(event -> {barraInteira.setVisible(false);
-            containerBarraRetraida.setVisible(true);
-        });
-        barraRetraida.setOnMouseEntered(event -> {barraInteira.setVisible(true);
-            containerBarraRetraida.setVisible(false);
-        });
 
         paneCantoInicio.setVisible(true);
         paneTecnicoLogado.setVisible(false);
