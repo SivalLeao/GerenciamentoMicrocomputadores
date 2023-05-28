@@ -11,7 +11,7 @@
 {
 -fx-background-color : #00768B ;
 }
-
+/*
 .table-view .column-header,
 .table-view .column-header-background .filler {
     -fx-cell-size : 20;
@@ -23,6 +23,7 @@
    -fx-font-weight: bold;
    -fx-alignment: CENTER_LEFT;
 }
+
 .table-view .cell{
    -fx-cell-size: 30;
   -fx-alignment: center-left;
@@ -36,7 +37,7 @@
  .table-row-cell:selected .text {
         -fx-fill : white ;
 
- }
+ }*/
 /* scroll bar starts here */
 
 /* The increment and decrement button CSS class of scrollbar */
@@ -84,6 +85,8 @@
     -fx-effect: dropshadow(gaussian, rgba(80, 80, 80, 0.5), 0, 0, 3.5, 3.5);
 }
 
+
+
 .text-box {
     -fx-background-color: transparent;
     -fx-border-color: #00768B;
@@ -97,6 +100,8 @@
 .button-volta {
 -fx-background-color :  #00768B;
 }
+
+
 .button-volta:hover
 {
     -fx-background-color : #00BFE1;
@@ -105,11 +110,15 @@
     -fx-background: linear-gradient(#00768B, #00FA9A);
 }
 
+
+
 .my-button {
-  -fx-background-color: #00768B;
-  -fx-text-fill: #00768B; /* cor do texto padrão */
+  -fx-background-color:   #014A57;
+
+  /*-fx-text-fill: #00768B; /* cor do texto padrão */
 }
 
 .my-button:hover {
-  -fx-text-fill: white; /* cor do texto quando hover */
+  -fx-text-fill: #00BFE1; /* cor do texto quando hover */
 }
+*/
