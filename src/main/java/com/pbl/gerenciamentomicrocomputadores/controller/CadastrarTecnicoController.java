@@ -99,6 +99,11 @@ public class CadastrarTecnicoController {
             Tecnico tecnico = new Tecnico(nomeTecnico.getText(), enderecoTecnico.getText(), telefoneTecnico.getText(),
                     cpfTecnico.getText());
 
+            nomeTecnico.setText("");
+            enderecoTecnico.setText("");
+            telefoneTecnico.setText("");
+            cpfTecnico.setText("");
+
             DAO.getTecnico().criar(tecnico);
 
             Stage stage = (Stage) voltarBotao.getScene().getWindow();

@@ -164,6 +164,7 @@ public class OrdemController {
             Stage stage = MainController.getStageInicio();
             stage.setScene(scene);
             MainController.setStageInicio(stage);
+            MainController.setFXMLLoaderInicio(fxmlLoader);
             stage.show();
         }
         catch (java.io.IOException e) {

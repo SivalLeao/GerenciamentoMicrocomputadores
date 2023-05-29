@@ -36,6 +36,7 @@ public class LoginController {
             FXMLLoader fxmlLoader = MainController.getFXMLLoaderInicio();
             InicioController inicioController = fxmlLoader.getController();
             inicioController.fazendoMudancaLogin(DAO.getTecnico().encontrarPorCpf(cpfTecnico.getText()));
+            cpfTecnico.setText("");
             Stage stage = (Stage) voltarBotao.getScene().getWindow();
             stage.close();
         }
