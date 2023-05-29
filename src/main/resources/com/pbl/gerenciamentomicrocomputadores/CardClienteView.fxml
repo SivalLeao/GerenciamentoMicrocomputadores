@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="428.0" style="-fx-background-radius: 100 0 0 100; -fx-background-color: #B5714A;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="106.0" fitWidth="105.0" layoutX="-3.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../Users/User/Downloads/Webp.net-resizeimage%20(3).png" />
+         </image>
+      </ImageView>
+      <Label layoutX="67.0" layoutY="-6.0" prefHeight="31.0" prefWidth="361.0" text="    -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -" textFill="#f3d0ac">
+         <font>
+            <Font name="Gill Sans MT Ext Condensed Bold" size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="67.0" layoutY="66.0" prefHeight="31.0" prefWidth="361.0" text="    -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -" textFill="#f3d0ac">
+         <font>
+            <Font name="Gill Sans MT Ext Condensed Bold" size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="370.0" layoutY="38.0" prefHeight="40.0" prefWidth="88.0" rotate="90.0" text="  -  -  -  -  " textFill="#f3d0ac">
+         <font>
+            <Font name="Gill Sans MT Ext Condensed Bold" size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="111.0" layoutY="26.0" prefHeight="29.0" prefWidth="289.0" text="Nome:" textFill="#f3d0ac" underline="true" wrapText="true">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="111.0" layoutY="52.0" prefHeight="29.0" prefWidth="289.0" text="Telefone:" textFill="#f3d0ac" underline="true" wrapText="true">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
