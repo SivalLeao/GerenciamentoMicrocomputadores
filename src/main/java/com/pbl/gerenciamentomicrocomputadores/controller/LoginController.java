@@ -33,7 +33,7 @@ public class LoginController {
         }
         else if (DAO.getTecnico().checarPorCpf(cpfTecnico.getText())) {
 
-            FXMLLoader fxmlLoader = MainController.getFXMLLoaderInicio();
+            FXMLLoader fxmlLoader = MainController.getFXMLLoaderPrincipal();
             String classeController = fxmlLoader.getController().getClass().getSimpleName();
 
             if (classeController.equals("InicioController")) {

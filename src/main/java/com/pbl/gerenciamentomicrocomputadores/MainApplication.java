@@ -22,7 +22,7 @@ public class MainApplication extends Application {
 
         stage.setScene(scene);
         MainController.setStageInicio(stage);
-        MainController.setFXMLLoaderInicio(fxmlLoader);
+        MainController.setFXMLLoaderPrincipal(fxmlLoader);
         stage.show();
     }
 

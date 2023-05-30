@@ -7,19 +7,21 @@ public class MainController {
 
     private static Stage stageInicio;
 
-    private static FXMLLoader fxmlLoaderInicio;
+    private static FXMLLoader fxmlLoaderPrincipal;
 
     private static Stage stageLogin;
 
     private static Stage stageCadastroTecnico;
 
+    private static Stage stageCadastroCliente;
+
     public static Stage getStageInicio () { return stageInicio; }
 
     public static void setStageInicio (Stage stageInicio) { MainController.stageInicio = stageInicio; }
 
-    public static FXMLLoader getFXMLLoaderInicio () { return fxmlLoaderInicio; }
+    public static FXMLLoader getFXMLLoaderPrincipal() { return fxmlLoaderPrincipal; }
 
-    public static void setFXMLLoaderInicio (FXMLLoader fxmlLoaderInicio) { MainController.fxmlLoaderInicio = fxmlLoaderInicio; }
+    public static void setFXMLLoaderPrincipal(FXMLLoader fxmlLoaderPrincipal) { MainController.fxmlLoaderPrincipal = fxmlLoaderPrincipal; }
 
     public static Stage getStageLogin () { return stageLogin; }
 
@@ -28,5 +30,9 @@ public class MainController {
     public static Stage getStageCadastroTecnico () { return stageCadastroTecnico; }
 
     public static void setStageCadastroTecnico (Stage stageCadastroTecnico) { MainController.stageCadastroTecnico = stageCadastroTecnico; }
+
+    public static Stage getStageCadastroCliente () { return stageCadastroCliente; }
+
+    public static void setStageCadastroCliente (Stage stageCadastroCliente) { MainController.stageCadastroCliente = stageCadastroCliente; }
 
 }

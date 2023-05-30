@@ -2,7 +2,6 @@ package com.pbl.gerenciamentomicrocomputadores.controller;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
-import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -70,7 +69,7 @@ public class InicioController {
             stage.setScene(scene);
 
             MainController.setStageInicio(stage);
-            MainController.setFXMLLoaderInicio(fxmlLoader);
+            MainController.setFXMLLoaderPrincipal(fxmlLoader);
 
             if (!(idTecnico.getText().equals(""))) {
 

@@ -46,7 +46,7 @@ public class TecnicoController {
             Stage stage = MainController.getStageInicio();
             stage.setScene(scene);
             MainController.setStageInicio(stage);
-            MainController.setFXMLLoaderInicio(fxmlLoader);
+            MainController.setFXMLLoaderPrincipal(fxmlLoader);
             stage.show();
         }
         catch (java.io.IOException e) {
@@ -81,7 +81,7 @@ public class TecnicoController {
             Stage stage = MainController.getStageInicio();
             stage.setScene(scene);
             MainController.setStageInicio(stage);
-            MainController.setFXMLLoaderInicio(fxmlLoader);
+            MainController.setFXMLLoaderPrincipal(fxmlLoader);
             stage.show();
         }
         catch (java.io.IOException e) {
