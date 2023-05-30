@@ -1,6 +1,8 @@
 package com.pbl.gerenciamentomicrocomputadores.controller;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
+import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
+import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -66,8 +68,19 @@ public class InicioController {
             Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
             Stage stage = MainController.getStageInicio();
             stage.setScene(scene);
+
             MainController.setStageInicio(stage);
+            MainController.setFXMLLoaderInicio(fxmlLoader);
+
+            if (!(idTecnico.getText().equals(""))) {
+
+                ClienteController clienteController = fxmlLoader.getController();
+                clienteController.fazendoMudancaLogin(DAO.getTecnico().encontrarPorId(
+                        Integer.parseInt(idTecnico.getText())));
+            }
+
             stage.show();
+
         }
         catch (java.io.IOException e) {
 

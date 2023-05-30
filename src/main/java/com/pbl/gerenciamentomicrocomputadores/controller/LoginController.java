@@ -34,8 +34,19 @@ public class LoginController {
         else if (DAO.getTecnico().checarPorCpf(cpfTecnico.getText())) {
 
             FXMLLoader fxmlLoader = MainController.getFXMLLoaderInicio();
-            InicioController inicioController = fxmlLoader.getController();
-            inicioController.fazendoMudancaLogin(DAO.getTecnico().encontrarPorCpf(cpfTecnico.getText()));
+            String classeController = fxmlLoader.getController().getClass().getSimpleName();
+
+            if (classeController.equals("InicioController")) {
+
+                InicioController inicioController = fxmlLoader.getController();
+                inicioController.fazendoMudancaLogin(DAO.getTecnico().encontrarPorCpf(cpfTecnico.getText()));
+            }
+            if (classeController.equals("ClienteController")) {
+
+                ClienteController clienteController = fxmlLoader.getController();
+                clienteController.fazendoMudancaLogin(DAO.getTecnico().encontrarPorCpf(cpfTecnico.getText()));
+            }
+
             cpfTecnico.setText("");
             Stage stage = (Stage) voltarBotao.getScene().getWindow();
             stage.close();

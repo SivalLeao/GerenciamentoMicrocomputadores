@@ -8,7 +8,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -18,45 +17,6 @@
    <children>
       <StackPane layoutX="-17.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox fx:id="containerBarraRetraida" prefHeight="100.0" prefWidth="200.0" visible="false">
-               <children>
-                  <Pane fx:id="barraRetraida" prefHeight="650.0" prefWidth="98.0" style="-fx-background-color: #0097b2;">
-                     <children>
-                        <ImageView fitHeight="79.0" fitWidth="80.0" layoutX="22.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Icones/LogoIcon.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="61.0" fitWidth="58.0" layoutX="26.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Icones/CasaPressIcon.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="61.0" fitWidth="58.0" layoutX="27.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Icones/TecnicoIcon.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="61.0" fitWidth="58.0" layoutX="26.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Icones/ClienteIcon.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="61.0" fitWidth="58.0" layoutX="27.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Icones/EstoqueIcon.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="61.0" fitWidth="58.0" layoutX="24.0" layoutY="492.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Icones/OrdemServicoIcon.png" />
-                           </image>
-                        </ImageView>
-                        <Separator layoutX="18.0" layoutY="190.0" prefHeight="11.0" prefWidth="84.0" />
-                     </children>
-                  </Pane>
-               </children>
-            </HBox>
             <VBox fx:id="barraInteira" prefHeight="682.0" prefWidth="288.0" style="-fx-background-color: #0097b2;">
                <children>
                   <Pane prefHeight="196.0" prefWidth="288.0">
@@ -182,7 +142,7 @@
                                  </graphic></Button>
                               <Label alignment="CENTER" layoutX="216.0" layoutY="10.0" prefHeight="23.0" prefWidth="66.0" style="-fx-background-color: #00768B; -fx-background-radius: 5 0 0 5;" text="NOME:" textFill="WHITE" />
                               <Label fx:id="idTecnico" alignment="CENTER" layoutX="279.0" layoutY="40.0" prefHeight="23.0" prefWidth="66.0" style="-fx-background-color: #00768B; -fx-background-radius: 0 5 5 0;" textFill="WHITE" />
-                              <Label fx:id="idTecnico1" alignment="CENTER" layoutX="216.0" layoutY="40.0" prefHeight="23.0" prefWidth="66.0" style="-fx-background-color: #00768B; -fx-background-radius: 5 0 0 5;" text="ID:" textFill="WHITE" />
+                              <Label alignment="CENTER" layoutX="216.0" layoutY="40.0" prefHeight="23.0" prefWidth="66.0" style="-fx-background-color: #00768B; -fx-background-radius: 5 0 0 5;" text="ID:" textFill="WHITE" />
                            </children>
                         </Pane>
                      </children>

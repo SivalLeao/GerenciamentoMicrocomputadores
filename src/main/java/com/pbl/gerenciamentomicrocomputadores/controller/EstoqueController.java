@@ -37,7 +37,8 @@ public class EstoqueController {
     }
 
     @FXML
-    void abaCliente(ActionEvent event) {
+    void abaCliente (ActionEvent event) {
+
         try {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("ClienteView.fxml"));
@@ -45,11 +46,13 @@ public class EstoqueController {
             Stage stage = MainController.getStageInicio();
             stage.setScene(scene);
             MainController.setStageInicio(stage);
+            MainController.setFXMLLoaderInicio(fxmlLoader);
             stage.show();
         }
         catch (java.io.IOException e) {
 
         }
+
     }
 
     @FXML
