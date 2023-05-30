@@ -11,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -55,6 +54,9 @@ public class ClienteController {
     private GridPane gridContainer;
 
     @FXML
+    private Button cadastrarCliente;
+
+    @FXML
     void initialize() {
 
         paneCantoInicio.setVisible(true);
@@ -66,8 +68,8 @@ public class ClienteController {
 
             for (int i = 0; i < 10; i++) {
 
-                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("CardOrdemView.fxml"));
-                AnchorPane novoCard = fxmlLoader.load();
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("CardClienteView.fxml"));
+                Pane novoCard = fxmlLoader.load();
 
                 this.gridContainer.add(novoCard, 0, linhaAtual++);
 
@@ -108,7 +110,7 @@ public class ClienteController {
             stage.setScene(scene);
 
             MainController.setStageInicio(stage);
-            MainController.setFXMLLoaderInicio(fxmlLoader);
+            MainController.setFXMLLoaderPrincipal(fxmlLoader);
 
             if (!(idTecnico.getText().equals(""))) {
 
@@ -238,5 +240,35 @@ public class ClienteController {
     }
 
 
+    @FXML
+    void abaCadastrarCliente(ActionEvent event) {
+
+        try {
+
+            if (MainController.getStageCadastroCliente() == null) {
+
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("CadastrarClienteView.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+                stage.setScene(scene);
+
+                MainController.setStageCadastroCliente(stage);
+
+                stage.show();
+            }
+            else {
+
+                Stage stage = MainController.getStageCadastroCliente();
+                stage.show();
+                stage.toFront();
+            }
+        }
+        catch (java.io.IOException e) {
+
+        }
+
+    }
 
 }

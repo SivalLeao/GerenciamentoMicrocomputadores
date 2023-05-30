@@ -167,6 +167,17 @@
                </children>
             </VBox>
          </right>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="cadastrarCliente" layoutX="576.0" layoutY="14.0" mnemonicParsing="false" onAction="#abaCadastrarCliente" text="Cadastrar">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </center>
       </BorderPane>
     </children>
 </AnchorPane>
