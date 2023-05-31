@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.ClienteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.ClienteController">
     <children>
         <VBox layoutX="-17.0" prefHeight="650.0" prefWidth="290.0" style="-fx-background-color: #0097b2;">
             <children>
@@ -178,15 +178,21 @@
                             </font>
                         </Button>
                         <Label layoutX="73.0" layoutY="93.0" text="Nome: " />
-                        <Label layoutX="72.0" layoutY="133.0" text="Endereço: " />
-                        <Label layoutX="72.0" layoutY="171.0" text="Telefone: " />
-                        <Label layoutX="72.0" layoutY="205.0" text="CPF: " />
+                        <Label layoutX="71.0" layoutY="155.0" text="Endereço: " />
+                        <Label layoutX="73.0" layoutY="212.0" text="Telefone: " />
+                        <Label layoutX="72.0" layoutY="271.0" text="CPF: " />
                         <TextField fx:id="nomeCliente" layoutX="135.0" layoutY="89.0" />
-                        <TextField fx:id="enderecoCliente" layoutX="135.0" layoutY="129.0" />
-                        <TextField fx:id="telefoneCliente" layoutX="135.0" layoutY="167.0" />
-                        <TextField fx:id="cpfCliente" layoutX="135.0" layoutY="201.0" />
-                        <Button fx:id="atualizarBotao" layoutX="192.0" layoutY="339.0" mnemonicParsing="false" text="Atualizar" />
-                        <Button fx:id="removerBotao" layoutX="291.0" layoutY="339.0" mnemonicParsing="false" text="Remover" />
+                        <TextField fx:id="enderecoCliente" layoutX="134.0" layoutY="151.0" />
+                        <TextField fx:id="telefoneCliente" layoutX="134.0" layoutY="208.0" />
+                        <TextField fx:id="cpfCliente" layoutX="135.0" layoutY="267.0" />
+                        <Button fx:id="atualizarBotao" layoutX="193.0" layoutY="381.0" mnemonicParsing="false" onAction="#atualizarClienteAcao" text="Atualizar" />
+                        <Button fx:id="removerBotao" layoutX="302.0" layoutY="381.0" mnemonicParsing="false" onAction="#removerClienteAcao" text="Remover" />
+                  <Label layoutX="76.0" layoutY="53.0" text="ID: " />
+                  <Label fx:id="idCliente" layoutX="135.0" layoutY="53.0" prefHeight="17.0" prefWidth="146.0" />
+                  <Label fx:id="mensagemDeErroNome" layoutX="135.0" layoutY="114.0" textFill="#ff2e2e" />
+                  <Label fx:id="mensagemDeErroEndereco" layoutX="135.0" layoutY="176.0" textFill="#ff2e2e" />
+                  <Label fx:id="mensagemDeErroTelefone" layoutX="135.0" layoutY="233.0" textFill="#ff2e2e" />
+                  <Label fx:id="mensagemDeErroCpf" layoutX="135.0" layoutY="292.0" textFill="#ff2e2e" />
                     </children>
                 </AnchorPane>
             </center>

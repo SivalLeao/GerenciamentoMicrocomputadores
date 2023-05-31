@@ -79,6 +79,21 @@ public class ClienteController {
     @FXML
     private TextField telefoneCliente;
 
+    @FXML
+    private Label idCliente;
+
+    @FXML
+    private Label mensagemDeErroCpf;
+
+    @FXML
+    private Label mensagemDeErroEndereco;
+
+    @FXML
+    private Label mensagemDeErroNome;
+
+    @FXML
+    private Label mensagemDeErroTelefone;
+
     private MyListener<Cliente> myListener;
 
     private List<Cliente> clientesData;
@@ -95,6 +110,8 @@ public class ClienteController {
 
     public void atualizarCards () {
 
+        gridContainer.getChildren().clear();
+
         this.clientesData = DAO.getCliente().encontrarTodos();
 
         if (this.clientesData.size() > 0) {
@@ -106,6 +123,10 @@ public class ClienteController {
                 public void onClickListener(Cliente cliente) {
 
                     setClienteEscolhido(cliente);
+                    mensagemDeErroNome.setText("");
+                    mensagemDeErroEndereco.setText("");
+                    mensagemDeErroTelefone.setText("");
+                    mensagemDeErroCpf.setText("");
                 }
             };
 
@@ -330,8 +351,118 @@ public class ClienteController {
 
     }
 
+    @FXML
+    void atualizarClienteAcao(ActionEvent event) {
+
+        int qtdErros = 0;
+
+        if (! ((nomeCliente.getText().matches("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"))
+                && (nomeCliente.getText().replaceAll("\\s+", "").length() >= 3))) {
+
+            mensagemDeErroNome.setText("Entrada inválida");
+            qtdErros++;
+        }
+        else {
+            mensagemDeErroNome.setText("");
+        }
+
+        if (! ((enderecoCliente.getText().replaceAll("\\s+", "").length() >= 3))) {
+
+            mensagemDeErroEndereco.setText("Entrada inválida");
+            qtdErros++;
+        }
+        else {
+            mensagemDeErroEndereco.setText("");
+        }
+
+        if (! ((telefoneCliente.getText().matches("^[0-9() -]+$")) &&
+                (telefoneCliente.getText().replaceAll("\\s+|\\(+|\\)+|-+", "").length() == 11)))  {
+
+            mensagemDeErroTelefone.setText("Entrada inválida");
+            qtdErros++;
+        }
+        else {
+            mensagemDeErroTelefone.setText("");
+        }
+
+        if (! ((cpfCliente.getText().matches("^[0-9 .-]+$")) &&
+                (cpfCliente.getText().replaceAll("\\s+|\\.+|-+", "").length() == 11)))  {
+
+            mensagemDeErroCpf.setText("Entrada inválida");
+            qtdErros++;
+        }
+        else {
+            mensagemDeErroCpf.setText("");
+        }
+
+        if (qtdErros == 0) {
+
+            Cliente cliente = new Cliente(nomeCliente.getText(), enderecoCliente.getText(), telefoneCliente.getText(),
+                    cpfCliente.getText());
+            cliente.setId(Integer.parseInt(idCliente.getText()));
+
+            DAO.getCliente().atualizar(cliente);
+
+            atualizarCards();
+
+            try {
+
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+                stage.setScene(scene);
+
+                MensagemController mensagemController = fxmlLoader.getController();
+                mensagemController.setMensagem("     Cliente Atualizado.");
+
+                stage.show();
+            }
+            catch (java.io.IOException e) {
+
+            }
+
+        }
+
+    }
+
+    @FXML
+    void removerClienteAcao(ActionEvent event) {
+
+        DAO.getCliente().remover(Integer.parseInt(idCliente.getText()));
+
+        idCliente.setText("");
+        nomeCliente.setText("");
+        enderecoCliente.setText("");
+        telefoneCliente.setText("");
+        cpfCliente.setText("");
+
+        atualizarCards();
+
+        try {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+            stage.setScene(scene);
+
+            MensagemController mensagemController = fxmlLoader.getController();
+            mensagemController.setMensagem("     Cliente Removido.");
+
+            stage.show();
+        }
+        catch (java.io.IOException e) {
+
+        }
+
+    }
+
     private void setClienteEscolhido (Cliente cliente) {
 
+        idCliente.setText(Integer.toString(cliente.getId()));
         nomeCliente.setText(cliente.getNome());
         enderecoCliente.setText(cliente.getEndereco());
         telefoneCliente.setText(cliente.getTelefone());
