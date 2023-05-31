@@ -200,6 +200,28 @@ public class OrdemDeServicoArquivoImpl implements OrdemDeServicoDAO {
         return listOrdemDeServico;
     }
 
+    /** Método de retorno da lista de ordens de serviço pedidas por determinado cliente.
+     * A busca pelas ordens é feita através do ID do cliente.
+     *
+     * @param idCliente int - ID do cliente
+     * @return List - lista de ordens de serviço pedidas por um cliente específico*/
+
+    @Override
+    public List<OrdemDeServico> encontrarPorIdCliente(int idCliente) {
+
+        List<OrdemDeServico> listOrdemDeServico = new ArrayList<OrdemDeServico>();
+
+        for (OrdemDeServico ordemDeServico: this.lista) {
+
+            if (ordemDeServico.getIdCliente() == idCliente) {
+
+                listOrdemDeServico.add(ordemDeServico);
+            }
+        }
+
+        return listOrdemDeServico;
+    }
+
     /** Método de retorno da lista de ordens de serviço em aberto de um determinado técnico. A busca pelas
      * ordens é feita através do ID do técnico. As ordens em aberto são indicadas se estiverem com o
      * status "Em andamento" ou "Em espera".

@@ -23,6 +23,14 @@ public interface OrdemDeServicoDAO extends CRUD<OrdemDeServico> {
 
     public List<OrdemDeServico> encontrarPorIdTecnico(int idTecnico);
 
+    /** Método de retorno da lista de ordens de serviços pedidas por determinado cliente.
+     * A busca pelas ordens é feita através do ID do cliente.
+     *
+     * @param idCliente int - ID do cliente
+     * @return List - lista de ordens de serviço pedidas por determinado cliente*/
+
+    public List<OrdemDeServico> encontrarPorIdCliente(int idCliente);
+
     /** Método de retorno da lista de ordens de serviço em aberto de um determinado técnico. A busca pelas
      * ordens é feita através do ID do técnico.
      *

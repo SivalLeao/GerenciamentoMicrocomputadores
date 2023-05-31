@@ -183,6 +183,16 @@ public class OrdemDeServicoArquivoImplTest {
     }
 
     @Test
+    void encontrarPorIdCliente() {
+
+        List<OrdemDeServico> listaCliente = DAO.getOrdemDeServico().encontrarPorIdCliente(1122);
+
+        assertEquals( 1, listaCliente.size());
+
+        assertEquals( ordem1, listaCliente.get(0));
+    }
+
+    @Test
     void listaEmAbertoTecnico() {
 
         DAO.getOrdemDeServico().atualizarStatus(1123, "Finalizado");
