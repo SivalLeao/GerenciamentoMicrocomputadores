@@ -3,6 +3,7 @@ package com.pbl.gerenciamentomicrocomputadores.controller;
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
+import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
@@ -103,6 +105,9 @@ public class ClienteController {
     @FXML
     private TextField infoPesquisa;
 
+    @FXML
+    private GridPane gridMiniCards;
+
     private MyListener<Cliente> myListener;
 
     private List<Cliente> clientesData;
@@ -114,6 +119,7 @@ public class ClienteController {
         paneTecnicoLogado.setVisible(false);
 
         atualizarCards();
+        atualizarMiniCards();
 
     }
 
@@ -132,6 +138,7 @@ public class ClienteController {
                 public void onClickListener(Cliente cliente) {
 
                     setClienteEscolhido(cliente);
+                    atualizarMiniCards();
                     mensagemDeErroNome.setText("");
                     mensagemDeErroEndereco.setText("");
                     mensagemDeErroTelefone.setText("");
@@ -171,6 +178,45 @@ public class ClienteController {
         catch ( java.io.IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void atualizarMiniCards () {
+
+        gridMiniCards.getChildren().clear();
+
+        List<OrdemDeServico> listaOrdens = DAO.getOrdemDeServico().encontrarPorIdCliente(Integer.parseInt(idCliente.getText()));
+
+        try {
+
+            int colunaAtual = 0;
+
+            for (int i = 0; i < listaOrdens.size(); i++) {
+
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MiniCardOrdemView.fxml"));
+                AnchorPane novoCard = fxmlLoader.load();
+
+                MiniCardOrdemController miniCardOrdemController = fxmlLoader.getController();
+                miniCardOrdemController.setInfo(listaOrdens.get(i));
+
+                this.gridMiniCards.add(novoCard, colunaAtual++, 1);
+
+                this.gridMiniCards.setMinWidth(Region.USE_COMPUTED_SIZE);
+                this.gridMiniCards.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                this.gridMiniCards.setMaxWidth(Region.USE_COMPUTED_SIZE);
+
+                this.gridMiniCards.setMinHeight(Region.USE_COMPUTED_SIZE);
+                this.gridMiniCards.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                this.gridMiniCards.setMaxHeight(Region.USE_COMPUTED_SIZE);
+
+                GridPane.setMargin(novoCard, new Insets(5));
+
+            }
+
+        }
+        catch ( java.io.IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @FXML

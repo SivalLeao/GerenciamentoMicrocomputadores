@@ -190,14 +190,23 @@
                         <TextField fx:id="enderecoCliente" layoutX="134.0" layoutY="151.0" />
                         <TextField fx:id="telefoneCliente" layoutX="134.0" layoutY="208.0" />
                         <TextField fx:id="cpfCliente" layoutX="135.0" layoutY="267.0" />
-                        <Button fx:id="atualizarBotao" layoutX="193.0" layoutY="381.0" mnemonicParsing="false" onAction="#atualizarClienteAcao" text="Atualizar" />
-                        <Button fx:id="removerBotao" layoutX="302.0" layoutY="381.0" mnemonicParsing="false" onAction="#removerClienteAcao" text="Remover" />
+                        <Button fx:id="atualizarBotao" layoutX="189.0" layoutY="327.0" mnemonicParsing="false" onAction="#atualizarClienteAcao" text="Atualizar" />
+                        <Button fx:id="removerBotao" layoutX="299.0" layoutY="327.0" mnemonicParsing="false" onAction="#removerClienteAcao" text="Remover" />
                   <Label layoutX="76.0" layoutY="53.0" text="ID: " />
                   <Label fx:id="idCliente" layoutX="135.0" layoutY="53.0" prefHeight="17.0" prefWidth="146.0" />
                   <Label fx:id="mensagemDeErroNome" layoutX="135.0" layoutY="114.0" textFill="#ff2e2e" />
                   <Label fx:id="mensagemDeErroEndereco" layoutX="135.0" layoutY="176.0" textFill="#ff2e2e" />
                   <Label fx:id="mensagemDeErroTelefone" layoutX="135.0" layoutY="233.0" textFill="#ff2e2e" />
                   <Label fx:id="mensagemDeErroCpf" layoutX="135.0" layoutY="292.0" textFill="#ff2e2e" />
+                  <ScrollPane layoutX="76.0" layoutY="406.0" prefHeight="158.0" prefWidth="570.0">
+                     <content>
+                        <GridPane fx:id="gridMiniCards" prefHeight="3.0" prefWidth="0.0">
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                     </content>
+                  </ScrollPane>
                     </children>
                 </AnchorPane>
             </center>
