@@ -73,7 +73,7 @@ public class ClienteController {
 
                 this.gridContainer.add(novoCard, 0, linhaAtual++);
 
-                GridPane.setMargin(novoCard, new Insets(10));
+                GridPane.setMargin(novoCard, new Insets(5));
 
             }
 

@@ -155,7 +155,7 @@
             <VBox prefHeight="576.0" prefWidth="317.0" BorderPane.alignment="CENTER">
                <children>
                   <Pane prefHeight="10.0" prefWidth="244.0" />
-                  <ScrollPane prefHeight="563.0" prefWidth="312.0">
+                  <ScrollPane prefHeight="563.0" prefWidth="312.0" style="-fx-background-color: trasp;">
                      <content>
                         <GridPane fx:id="gridContainer" prefHeight="0.0" prefWidth="0.0">
                           <rowConstraints>
