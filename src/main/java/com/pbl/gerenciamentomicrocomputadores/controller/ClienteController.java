@@ -94,6 +94,15 @@ public class ClienteController {
     @FXML
     private Label mensagemDeErroTelefone;
 
+    @FXML
+    private Button pesquisarBotao;
+
+    @FXML
+    private Label mensagemPesquisa;
+
+    @FXML
+    private TextField infoPesquisa;
+
     private MyListener<Cliente> myListener;
 
     private List<Cliente> clientesData;
@@ -459,6 +468,30 @@ public class ClienteController {
         }
 
     }
+
+
+    @FXML
+    void pesquisarAcao(ActionEvent event) {
+
+        String cpfPesquisado = infoPesquisa.getText();
+
+        if (DAO.getCliente().checarPorCpf(cpfPesquisado)) {
+
+            setClienteEscolhido(DAO.getCliente().encontrarPorCpf(cpfPesquisado));
+            mensagemPesquisa.setText("");
+        }
+        else if ((cpfPesquisado.matches("^[0-9 .-]+$")) &&
+                (cpfPesquisado.replaceAll("\\s+|\\.+|-+", "").length() == 11)) {
+
+            mensagemPesquisa.setText("Cliente não encontrado.");
+        }
+        else {
+
+            mensagemPesquisa.setText("Dado inválido.");
+        }
+
+    }
+
 
     private void setClienteEscolhido (Cliente cliente) {
 
