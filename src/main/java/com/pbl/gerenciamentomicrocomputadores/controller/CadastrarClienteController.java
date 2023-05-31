@@ -97,6 +97,9 @@ public class CadastrarClienteController {
 
             DAO.getCliente().criar(cliente);
 
+            ClienteController clienteController = MainController.getFXMLLoaderPrincipal().getController();
+            clienteController.atualizarCards();
+
             Stage stage = (Stage) voltarBotao.getScene().getWindow();
             stage.close();
         }

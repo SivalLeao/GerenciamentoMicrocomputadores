@@ -6,34 +6,44 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="89.0" prefWidth="288.0" style="-fx-background-radius: 100 0 0 100; -fx-background-color: #B5714A;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMousePressed="#click" prefHeight="89.0" prefWidth="288.0" style="-fx-background-radius: 100 0 0 100; -fx-background-color: #B5714A;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.CardClienteController">
    <children>
       <ImageView fitHeight="95.0" fitWidth="99.0" layoutX="-3.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Icones/perfil.png" />
          </image>
       </ImageView>
-      <Label layoutX="58.0" layoutY="-10.0" prefHeight="40.0" prefWidth="242.0" text="    -  -  -  -  -  -  -  -  -  -  -  -" textFill="#f3d0ac">
+      <Label layoutX="58.0" layoutY="-10.0" prefHeight="40.0" prefWidth="242.0" text="    -  -  -  -  -  - " textFill="#f3d0ac">
          <font>
             <Font name="Gill Sans MT Ext Condensed Bold" size="32.0" />
          </font>
       </Label>
-      <Label layoutX="51.0" layoutY="57.0" prefHeight="40.0" prefWidth="242.0" text="    -  -  -  -  -  -  -  -  -  -  -  -" textFill="#f3d0ac">
+      <Label layoutX="58.0" layoutY="48.0" prefHeight="40.0" prefWidth="242.0" text="    -  -  -  -  -  -" textFill="#f3d0ac">
          <font>
             <Font name="Gill Sans MT Ext Condensed Bold" size="32.0" />
          </font>
       </Label>
-      <Label layoutX="237.0" layoutY="35.0" prefHeight="40.0" prefWidth="88.0" rotate="90.0" text="  -  -  -  -  " textFill="#f3d0ac">
+      <Label layoutX="230.0" layoutY="38.0" prefHeight="40.0" prefWidth="88.0" rotate="90.0" text="- - - " textFill="#f3d0ac">
          <font>
             <Font name="Gill Sans MT Ext Condensed Bold" size="32.0" />
          </font>
       </Label>
-      <Label layoutX="98.0" layoutY="17.0" prefHeight="29.0" prefWidth="170.0" text="Nome:" textFill="#f3d0ac" underline="true" wrapText="true">
+      <Label layoutX="98.0" layoutY="17.0" prefHeight="29.0" prefWidth="47.0" text="Nome:" textFill="#f3d0ac" underline="true" wrapText="true">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="98.0" layoutY="42.0" prefHeight="29.0" prefWidth="170.0" text="ID:" textFill="#f3d0ac" underline="true" wrapText="true">
+      <Label layoutX="98.0" layoutY="42.0" prefHeight="29.0" prefWidth="20.0" text="ID:" textFill="#f3d0ac" underline="true" wrapText="true">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="nomeCliente" layoutX="144.0" layoutY="17.0" prefHeight="29.0" prefWidth="121.0" textFill="#f3d0ac" underline="true" wrapText="true">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="idCliente" layoutX="122.0" layoutY="42.0" prefHeight="29.0" prefWidth="142.0" textFill="#f3d0ac" underline="true" wrapText="true">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
