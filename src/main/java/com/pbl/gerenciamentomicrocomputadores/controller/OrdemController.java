@@ -59,12 +59,17 @@ public class OrdemController {
     @FXML
     private Label dataPedido;
 
-    private MyListener myListener;
+    private MyListener<OrdemDeServico> myListener;
 
     private List<OrdemDeServico> ordensData;
 
     @FXML
     void initialize() {
+
+        atualizarCards();
+    }
+
+    public void atualizarCards () {
 
         this.ordensData = DAO.getOrdemDeServico().encontrarTodos();
 
@@ -72,7 +77,7 @@ public class OrdemController {
 
             setOrdemEscolhida(this.ordensData.get(0));
 
-            this.myListener = new MyListener() {
+            this.myListener = new MyListener<OrdemDeServico>() {
                 @Override
                 public void onClickListener(OrdemDeServico ordemDeServico) {
 
@@ -119,7 +124,6 @@ public class OrdemController {
         catch ( java.io.IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @FXML

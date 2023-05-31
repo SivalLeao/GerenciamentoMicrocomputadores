@@ -1,8 +1,6 @@
 package com.pbl.gerenciamentomicrocomputadores.controller;
 
-import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
+public interface MyListener<T> {
 
-public interface MyListener {
-
-    void onClickListener (OrdemDeServico ordemDeServico);
+    void onClickListener (T obj);
 }
