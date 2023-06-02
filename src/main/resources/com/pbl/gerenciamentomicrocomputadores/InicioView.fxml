@@ -2,109 +2,100 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.InicioController">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1280.0" styleClass="plano-fundo" stylesheets="@CSS/custumizacao.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.InicioController">
    <children>
-      <StackPane layoutX="-17.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox layoutX="-1.0" prefHeight="650.0" prefWidth="290.0" styleClass="menu-lateral">
          <children>
-            <VBox fx:id="barraInteira" prefHeight="682.0" prefWidth="288.0" style="-fx-background-color: #0097b2;">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Pane prefHeight="196.0" prefWidth="288.0">
-                     <children>
-                        <Label alignment="CENTER" layoutX="9.0" layoutY="105.0" prefHeight="49.0" prefWidth="271.0" text="Technical Assistance" textFill="WHITE">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="79.0" fitWidth="80.0" layoutX="107.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Icones/LogoIcon.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Separator prefHeight="2.0" prefWidth="243.0" />
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="291.0" stylesheets="@CSS/custumizacao.css" text="Inicio" textFill="WHITE">
-                     <padding>
-                        <Insets left="25.0" />
-                     </padding>
+                  <ImageView fitHeight="138.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icones/CasaIcon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="480.0" prefWidth="290.0">
+               <children>
+                  <Button graphicTextGap="15.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="290.0" styleClass="menu-botao" text="Início             ">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="23.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="61.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="60.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Icones/CasaPressIcon.png" />
+                              <Image url="@Icones/Casa-R15.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="tecnicoBotao" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#abaTecnico" prefHeight="72.0" prefWidth="289.0" stylesheets="@CSS/custumizacao.css" text="Técnico" textFill="WHITE">
-                     <padding>
-                        <Insets left="25.0" />
-                     </padding>
+                  <Button fx:id="clienteBotao" graphicTextGap="15.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#abaCliente" prefHeight="75.0" prefWidth="290.0" styleClass="menu-botao" text="Cliente           ">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="23.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="61.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="60.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Icones/TecnicoIcon.png" />
+                              <Image url="@Icones/Cliente-R15.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="clienteBotao" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="82.0" mnemonicParsing="false" onAction="#abaCliente" prefHeight="72.0" prefWidth="290.0" stylesheets="@CSS/custumizacao.css" text="Cliente" textFill="WHITE">
-                     <padding>
-                        <Insets left="25.0" />
-                     </padding>
+                  <Button fx:id="tecnicoBotao" graphicTextGap="15.0" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#abaTecnico" prefHeight="75.0" prefWidth="290.0" styleClass="menu-botao" text="Técnico        ">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="23.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="61.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="60.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Icones/ClienteIcon.png" />
+                              <Image url="@Icones/Tecnico-R15.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="estoqueBotao" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="226.0" mnemonicParsing="false" onAction="#abaEstoque" prefHeight="72.0" prefWidth="290.0" stylesheets="@CSS/custumizacao.css" text="Estoque" textFill="WHITE">
-                     <padding>
-                        <Insets left="25.0" />
-                     </padding>
+                  <Button fx:id="estoqueBotao" graphicTextGap="15.0" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#abaEstoque" prefHeight="75.0" prefWidth="290.0" styleClass="menu-botao" text="Estoque        ">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="23.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="61.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="60.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Icones/EstoqueIcon.png" />
+                              <Image url="@Icones/Estoque-R15.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="ordemBotao" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="154.0" mnemonicParsing="false" onAction="#abaOrdem" prefHeight="72.0" prefWidth="296.0" stylesheets="@CSS/custumizacao.css" text="Ordem de Serviços" textFill="WHITE">
-                     <padding>
-                        <Insets left="25.0" />
-                     </padding>
+                  <Button fx:id="ordemBotao" graphicTextGap="15.0" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#abaOrdem" prefHeight="75.0" prefWidth="290.0" styleClass="menu-botao" text="Serviço         ">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="23.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="61.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="60.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Icones/OrdemServicoIcon.png" />
+                              <Image url="@Icones/Serviço-R15.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="PagamentoBotao" graphicTextGap="15.0" layoutX="10.0" layoutY="377.0" mnemonicParsing="false" onAction="#abaPagamento" prefHeight="75.0" prefWidth="290.0" styleClass="menu-botao" text="Pagamento">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icones/Pagamento-R15.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -112,45 +103,12 @@
                </children>
             </VBox>
          </children>
-      </StackPane>
-      <BorderPane layoutX="270.0" prefHeight="650.0" prefWidth="1012.0">
-         <left>
-            <Pane prefHeight="576.0" prefWidth="10.0" style="-fx-background-color: #00768B;" BorderPane.alignment="CENTER" />
-         </left>
-         <top>
-            <Pane prefHeight="76.0" prefWidth="1010.0" style="-fx-background-color: #014A57;" BorderPane.alignment="CENTER">
-               <children>
-                  <StackPane layoutX="570.0" prefHeight="86.0" prefWidth="441.0">
-                     <children>
-                        <Pane fx:id="paneCantoInicio" prefHeight="72.0" prefWidth="409.0" visible="false">
-                           <children>
-                              <Button fx:id="loginBotao" layoutX="262.0" layoutY="18.0" mnemonicParsing="false" onAction="#abaLogin" prefHeight="37.0" prefWidth="76.0" style="-fx-background-radius: 10 0 0 10;" stylesheets="@CSS/custumizacao.css" text="login" />
-                              <Button fx:id="cadastrar" layoutX="338.0" layoutY="18.0" mnemonicParsing="false" onAction="#abaCadastrar" prefHeight="37.0" prefWidth="76.0" style="-fx-background-radius: 0 10 10 0;" stylesheets="@CSS/custumizacao.css" text="Cadastrar" />
-                           </children>
-                        </Pane>
-                        <Pane fx:id="paneTecnicoLogado" prefHeight="72.0" prefWidth="441.0">
-                           <children>
-                              <ImageView fitHeight="49.0" fitWidth="58.0" layoutX="28.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label fx:id="nomeTecnico" alignment="CENTER" layoutX="279.0" layoutY="10.0" prefHeight="23.0" prefWidth="66.0" style="-fx-background-color: #00768B; -fx-background-radius: 0 5 5 0;" textFill="WHITE" />
-                              <Button fx:id="deslogarBotao" alignment="BOTTOM_RIGHT" layoutX="361.0" layoutY="5.0" mnemonicParsing="false" onAction="#deslogarAcao" prefHeight="57.0" prefWidth="52.0" styleClass="my-button" stylesheets="@CSS/custumizacao.css" textFill="WHITE">
-                                 <graphic>
-                                    <ImageView fitHeight="45.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@Icones/deslogar.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic></Button>
-                              <Label alignment="CENTER" layoutX="216.0" layoutY="10.0" prefHeight="23.0" prefWidth="66.0" style="-fx-background-color: #00768B; -fx-background-radius: 5 0 0 5;" text="NOME:" textFill="WHITE" />
-                              <Label fx:id="idTecnico" alignment="CENTER" layoutX="279.0" layoutY="40.0" prefHeight="23.0" prefWidth="66.0" style="-fx-background-color: #00768B; -fx-background-radius: 0 5 5 0;" textFill="WHITE" />
-                              <Label alignment="CENTER" layoutX="216.0" layoutY="40.0" prefHeight="23.0" prefWidth="66.0" style="-fx-background-color: #00768B; -fx-background-radius: 5 0 0 5;" text="ID:" textFill="WHITE" />
-                           </children>
-                        </Pane>
-                     </children>
-                  </StackPane>
-                  <Pane layoutY="67.0" prefHeight="10.0" prefWidth="1010.0" style="-fx-background-color: #00768B;" />
-               </children>
-            </Pane>
-         </top>
-      </BorderPane>
+      </VBox>
+      <Pane layoutX="289.0" prefHeight="70.0" prefWidth="991.0" styleClass="plano-fundo-superior">
+         <children>
+            <Button fx:id="cadastrarBotao" layoutX="25.0" layoutY="15.0" mnemonicParsing="false" onAction="#abaCadastrar" prefHeight="40.0" prefWidth="105.0" styleClass="botao-superior" text="Cadastrar" textFill="WHITE" />
+            <Button fx:id="loginBotao" layoutX="153.0" layoutY="15.0" mnemonicParsing="false" onAction="#abaLogin" prefHeight="40.0" prefWidth="105.0" styleClass="botao-superior" text="Login" textFill="WHITE" />
+         </children>
+      </Pane>
    </children>
-</AnchorPane>
+</Pane>
