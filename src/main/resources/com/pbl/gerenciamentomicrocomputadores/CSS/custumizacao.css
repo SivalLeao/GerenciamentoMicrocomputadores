@@ -1,11 +1,14 @@
 /*fonte: https://github.com/k33ptoo/School-Management-System-JavaFX/blob/master/src/home/css/fullpackstyling.css */
 .button
 {
--fx-background-color :#0097b2
+    -fx-background-color :#0097b2;
+    -fx-background-radius: 20;
+
 }
 .button:hover
 {
--fx-background-color : #00BFE1 ;
+    -fx-cursor: hand;
+    -fx-background-color : #00BFE1 ;
 }
 .button:pressed
 {
@@ -104,6 +107,7 @@
 
 .button-volta:hover
 {
+    -fx-cursor: hand;
     -fx-background-color : #00BFE1;
 }
 .gradiente{
@@ -120,7 +124,8 @@
 }
 
 .my-button:hover {
-  -fx-text-fill: #00BFE1; /* cor do texto quando hover */
+    -fx-cursor: hand;
+    -fx-text-fill: #00BFE1; /* cor do texto quando hover */
 }
 
 /**************************************************/
@@ -141,14 +146,51 @@
 }
 
 .menu-botao: haver{
+    -fx-cursor: hand;
     -fx-background-color: #00818D;
 
 }
 .botao-superior{
-    -fx-background-radius: 20;
+   -fx-background-radius: 20;
    -fx-background-color: transparent;
    -fx-border-color: #FFFFFF; /* Defina a cor das bordas como branco */
    -fx-border-width: 2; /* Defina a espessura da borda */
    -fx-border-radius: 20; /* Defina o raio do arredondamento da borda */
    -fx-padding: 10 20; /* Ajuste o preenchimento interno conforme necessário */
+}
+
+.botao-superior: haver{
+    -fx-cursor: hand;
+}
+
+.button-cadastrar-client{
+
+    -fx-background-radius: 20;
+    -fx-background-color :#004B52;
+}
+.button-cadastrar-client:hover
+{
+    -fx-cursor: hand;
+    -fx-background-color : #00BFE1 ;
+}
+.button-cadastrar-client:pressed
+{
+    -fx-background-color : #00768B ;
+}
+
+.caixa-pesquisa{
+    -fx-background-radius: 20;
+}
+
+.caixa-pesquisa: focused{
+    -fx-border-color: #00BFE1;
+    -fx-border-width: 3;
+     -fx-border-radius: 20;
+}
+
+.custom-scroll-pane {
+    -fx-background-color: #004B52;
+}
+.scroll-pane .viewport {
+    -fx-background-color: #004B52;
 }
