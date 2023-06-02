@@ -2,60 +2,100 @@ package com.pbl.gerenciamentomicrocomputadores.controller;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
+import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+
+import java.util.List;
 
 public class InicioController {
 
-    @FXML
-    private Button clienteBotao;
-    @FXML
-    private Button cadastrarBotao;
-    @FXML
-    private Button tecnicoBotao;
+    @FXML private Button clienteBotao;
+    @FXML private Button tecnicoBotao;
+    @FXML private Button ordemBotao;
+    @FXML private Button estoqueBotao;
+    @FXML private Button PagamentoBotao;
+
+    @FXML private Pane paneCantoInicio;
+    @FXML private Button cadastrarBotao;
+    @FXML private Button loginBotao;
+
+    @FXML private Pane paneTecnicoLogado;
+    @FXML private Label nomeTecnico;
+    @FXML private Label idTecnico;
+    @FXML private Button deslogarBotao;
 
     @FXML
-    private Button ordemBotao;
+    private GridPane gridContainer;
 
-    @FXML
-    private Button estoqueBotao;
-
-    @FXML
-    private Pane paneCantoInicio;
-
-    @FXML
-    private Pane paneTecnicoLogado;
-
-    @FXML
-    private Button loginBotao;
-
-
-    @FXML
-    private Label nomeTecnico;
-
-    @FXML
-    private Label idTecnico;
-
-    @FXML
-    private Button deslogarBotao;
-
-    @FXML
-    private Button PagamentoBotao;
+    @FXML private Label qtdCanceladas;
+    @FXML private Label qtdEmAndamento;
+    @FXML private Label qtdEmEspera;
+    @FXML private Label qtdTotal;
 
 
     @FXML
     void initialize () {
 
-        //paneCantoInicio.setVisible(true);
-        //paneTecnicoLogado.setVisible(false);
+        paneCantoInicio.setVisible(true);
+        paneTecnicoLogado.setVisible(false);
+
+        atualizarCards();
+
+    }
+
+    public void atualizarCards () {
+
+        List<OrdemDeServico> ordensData = DAO.getOrdemDeServico().encontrarTodos();
+
+        try {
+
+            int linhaAtual = 1;
+            int colunaAtual = 0;
+
+            for (int i = 0; i < ordensData.size(); i++) {
+
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("CardOrdemInicioView.fxml"));
+                AnchorPane novoCard = fxmlLoader.load();
+
+                CardOrdemInicioController cardOrdemInicioController = fxmlLoader.getController();
+                cardOrdemInicioController.setInfo(ordensData.get(i));
+
+                if ( colunaAtual == 3) {
+                    colunaAtual = 0;
+                    linhaAtual++;
+                }
+
+                this.gridContainer.add(novoCard, colunaAtual++, linhaAtual);
+
+                this.gridContainer.setMinWidth(Region.USE_COMPUTED_SIZE);
+                this.gridContainer.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                this.gridContainer.setMaxWidth(Region.USE_COMPUTED_SIZE);
+
+                this.gridContainer.setMinHeight(Region.USE_COMPUTED_SIZE);
+                this.gridContainer.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                this.gridContainer.setMaxHeight(Region.USE_COMPUTED_SIZE);
+
+                GridPane.setMargin(novoCard, new Insets(20));
+
+            }
+
+        }
+        catch ( java.io.IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -142,6 +182,11 @@ public class InicioController {
 
     }
 
+    @FXML
+    void abaPagamento(ActionEvent event) {
+
+    }
+
 
     @FXML
     void abaLogin (ActionEvent event) {
@@ -179,8 +224,7 @@ public class InicioController {
         paneTecnicoLogado.setVisible(true);
 
         nomeTecnico.setText(tecnico.getNome());
-        int id = tecnico.getId();
-        idTecnico.setText(Integer.toString(id));
+        idTecnico.setText(Integer.toString(tecnico.getId()));
 
     }
 
@@ -221,13 +265,6 @@ public class InicioController {
         paneCantoInicio.setVisible(true);
         paneTecnicoLogado.setVisible(false);
         nomeTecnico.setText("");
-        idTecnico.setText("");
     }
-    @FXML
-    void abaPagamento(ActionEvent event) {
-
-    }
-
-
 
 }
