@@ -549,4 +549,21 @@ public class ClienteController {
 
     }
 
+    @FXML
+    void abaPagamento(ActionEvent event) {
+
+    }
+    @FXML
+    void abaRemover(ActionEvent event) {
+
+    }
+    @FXML
+    void abapesquisar(ActionEvent event) {
+
+    }
+    @FXML
+    void abaAtualizar(ActionEvent event) {
+
+    }
+
 }
