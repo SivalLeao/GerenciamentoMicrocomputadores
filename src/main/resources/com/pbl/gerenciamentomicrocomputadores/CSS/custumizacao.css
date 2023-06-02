@@ -108,6 +108,7 @@
 }
 .gradiente{
     -fx-background: linear-gradient(#00768B, #00FA9A);
+    /*-fx-background: linear-gradient(to right, #00a9ee, #0f1f6a);*/
 }
 
 
@@ -121,4 +122,33 @@
 .my-button:hover {
   -fx-text-fill: #00BFE1; /* cor do texto quando hover */
 }
-*/
+
+/**************************************************/
+
+.plano-fundo{
+    -fx-background-color: #002E32;
+}
+.plano-fundo-superior{
+    -fx-background-color: #00818D;
+}
+
+.menu-lateral{
+    -fx-background-color: #004B52;
+}
+.menu-botao{
+    -fx-background-color: #004B52;
+
+}
+
+.menu-botao: haver{
+    -fx-background-color: #00818D;
+
+}
+.botao-superior{
+    -fx-background-radius: 20;
+   -fx-background-color: transparent;
+   -fx-border-color: #FFFFFF; /* Defina a cor das bordas como branco */
+   -fx-border-width: 2; /* Defina a espessura da borda */
+   -fx-border-radius: 20; /* Defina o raio do arredondamento da borda */
+   -fx-padding: 10 20; /* Ajuste o preenchimento interno conforme necessário */
+}
