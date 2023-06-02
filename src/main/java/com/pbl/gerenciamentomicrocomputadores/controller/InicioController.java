@@ -18,7 +18,7 @@ public class InicioController {
     @FXML
     private Button clienteBotao;
     @FXML
-    private Button cadastrar;
+    private Button cadastrarBotao;
     @FXML
     private Button tecnicoBotao;
 
@@ -37,8 +37,6 @@ public class InicioController {
     @FXML
     private Button loginBotao;
 
-    @FXML
-    private Button cadastrarBotao;
 
     @FXML
     private Label nomeTecnico;
@@ -49,12 +47,15 @@ public class InicioController {
     @FXML
     private Button deslogarBotao;
 
+    @FXML
+    private Button PagamentoBotao;
+
 
     @FXML
     void initialize () {
 
-        paneCantoInicio.setVisible(true);
-        paneTecnicoLogado.setVisible(false);
+        //paneCantoInicio.setVisible(true);
+        //paneTecnicoLogado.setVisible(false);
 
     }
 
@@ -222,5 +223,11 @@ public class InicioController {
         nomeTecnico.setText("");
         idTecnico.setText("");
     }
+    @FXML
+    void abaPagamento(ActionEvent event) {
+
+    }
+
+
 
 }
