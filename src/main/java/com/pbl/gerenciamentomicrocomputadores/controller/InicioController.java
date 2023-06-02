@@ -44,6 +44,9 @@ public class InicioController {
     @FXML private Label qtdEmAndamento;
     @FXML private Label qtdEmEspera;
     @FXML private Label qtdTotal;
+    @FXML private Label qtdFinalizadas;
+
+    private List<OrdemDeServico> ordensData;
 
 
     @FXML
@@ -52,26 +55,27 @@ public class InicioController {
         paneCantoInicio.setVisible(true);
         paneTecnicoLogado.setVisible(false);
 
+        this.ordensData = DAO.getOrdemDeServico().encontrarTodos();
+
         atualizarCards();
+        atualizarEstatisticasLaterais();
 
     }
 
     public void atualizarCards () {
-
-        List<OrdemDeServico> ordensData = DAO.getOrdemDeServico().encontrarTodos();
 
         try {
 
             int linhaAtual = 1;
             int colunaAtual = 0;
 
-            for (int i = 0; i < ordensData.size(); i++) {
+            for (int i = 0; i < this.ordensData.size(); i++) {
 
                 FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("CardOrdemInicioView.fxml"));
                 AnchorPane novoCard = fxmlLoader.load();
 
                 CardOrdemInicioController cardOrdemInicioController = fxmlLoader.getController();
-                cardOrdemInicioController.setInfo(ordensData.get(i));
+                cardOrdemInicioController.setInfo(this.ordensData.get(i));
 
                 if ( colunaAtual == 3) {
                     colunaAtual = 0;
@@ -96,6 +100,31 @@ public class InicioController {
         catch ( java.io.IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public void atualizarEstatisticasLaterais () {
+
+        int countTotal = this.ordensData.size();
+        int countEmEspera = 0;
+        int countEmAndamento = 0;
+        int countCanceladas = 0;
+        int countFinalizadas = 0;
+
+        for (OrdemDeServico ordemDeServico: this.ordensData) {
+
+            if (ordemDeServico.getStatusAtual().equals("Em espera")) { countEmEspera++; }
+            else if (ordemDeServico.getStatusAtual().equals("Em andamento")) { countEmAndamento++; }
+            else if (ordemDeServico.getStatusAtual().equals("Cancelada")) { countCanceladas++; }
+            else if (ordemDeServico.getStatusAtual().equals("Finalizada")) { countCanceladas++; }
+
+        }
+
+        qtdCanceladas.setText(Integer.toString(countCanceladas));
+        qtdEmAndamento.setText(Integer.toString(countEmAndamento));
+        qtdEmEspera.setText(Integer.toString(countEmEspera));
+        qtdFinalizadas.setText(Integer.toString(countFinalizadas));
+        qtdTotal.setText(Integer.toString(countTotal));
 
     }
 
