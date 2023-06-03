@@ -7,8 +7,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -108,25 +111,80 @@
       </VBox>
       <Pane layoutX="289.0" prefHeight="70.0" prefWidth="991.0" styleClass="plano-fundo-superior">
          <children>
-            <Button fx:id="cadastrarBotao" layoutX="25.0" layoutY="15.0" mnemonicParsing="false" onAction="#abaCadastrar" prefHeight="40.0" prefWidth="105.0" styleClass="botao-superior" text="Cadastrar" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Button>
-            <Button fx:id="loginBotao" layoutX="153.0" layoutY="15.0" mnemonicParsing="false" onAction="#abaLogin" prefHeight="40.0" prefWidth="105.0" styleClass="botao-superior" text="Login" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Button>
+            <StackPane prefHeight="70.0" prefWidth="470.0">
+               <children>
+                  <Pane fx:id="paneCantoInicio" prefHeight="70.0" prefWidth="462.0">
+                     <children>
+                        <Button fx:id="loginBotao" layoutX="53.0" layoutY="15.0" mnemonicParsing="false" onAction="#abaLogin" prefHeight="40.0" prefWidth="105.0" styleClass="botao-superior" text="Login" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="cadastrarBotao" layoutX="199.0" layoutY="15.0" mnemonicParsing="false" onAction="#abaCadastrar" prefHeight="40.0" prefWidth="105.0" styleClass="botao-superior" text="Cadastrar" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneTecnicoLogado" prefHeight="200.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="58.0" fitWidth="70.0" layoutX="36.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icones/Tecnico-R15.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="116.0" layoutY="14.0" text="Nome: ">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="nomeTecnico" layoutX="158.0" layoutY="14.0" prefHeight="19.0" prefWidth="187.0">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="137.0" layoutY="35.0" text="ID: ">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="idTecnico" layoutX="158.0" layoutY="35.0" prefHeight="19.0" prefWidth="187.0">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="deslogarBotao" layoutX="358.0" layoutY="15.0" mnemonicParsing="false" onAction="#deslogarAcao" prefHeight="41.0" prefWidth="98.0" styleClass="botao-superior" text="Deslogar" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
+               </children>
+            </StackPane>
          </children>
       </Pane>
-      <Pane layoutX="980.0" layoutY="140.0" prefHeight="450.0" prefWidth="300.0" styleClass="menu-lateral" />
-      <Pane layoutX="349.0" layoutY="140.0" prefHeight="451.0" prefWidth="576.0" styleClass="plano-fundo-superior">
+      <Pane layoutX="987.0" layoutY="155.0" prefHeight="473.0" prefWidth="290.0" styleClass="menu-lateral">
          <children>
-            <Button fx:id="atualizarBotao" layoutX="146.0" layoutY="232.0" mnemonicParsing="false" onAction="#abaAtualizar" prefHeight="40.0" prefWidth="105.0" styleClass="botao-superior" text="Atualizar" textFill="WHITE">
+            <ScrollPane layoutY="2.0" prefHeight="473.0" prefWidth="290.0">
+               <content>
+                  <GridPane fx:id="gridContainer" prefHeight="7.0" prefWidth="0.0">
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+         </children></Pane>
+      <Pane layoutX="349.0" layoutY="140.0" prefHeight="486.0" prefWidth="576.0" styleClass="plano-fundo-superior">
+         <children>
+            <Button fx:id="atualizarBotao" layoutX="168.0" layoutY="261.0" mnemonicParsing="false" onAction="#atualizarClienteAcao" prefHeight="40.0" prefWidth="105.0" styleClass="botao-superior" text="Atualizar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="removerBotao" layoutX="328.0" layoutY="232.0" mnemonicParsing="false" onAction="#abaRemover" prefHeight="40.0" prefWidth="105.0" styleClass="botao-superior" text="Remover" textFill="WHITE">
+            <Button fx:id="removerBotao" layoutX="321.0" layoutY="261.0" mnemonicParsing="false" onAction="#removerClienteAcao" prefHeight="40.0" prefWidth="105.0" styleClass="botao-superior" text="Remover" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -136,39 +194,85 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Label fx:id="IdLabel" layoutX="63.0" layoutY="51.0" prefHeight="30.0" prefWidth="300.0" text="ID:" textFill="WHITE">
+            <Label layoutX="105.0" layoutY="21.0" prefHeight="30.0" prefWidth="27.0" text="ID: " textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="NomeLabel" layoutX="63.0" layoutY="82.0" prefHeight="30.0" prefWidth="300.0" text="Nome:" textFill="WHITE">
+            <Label layoutX="78.0" layoutY="62.0" prefHeight="30.0" prefWidth="53.0" text="Nome: " textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="enderecoLabel" layoutX="63.0" layoutY="112.0" prefHeight="30.0" prefWidth="300.0" text="Endereço:" textFill="WHITE">
+            <Label layoutX="56.0" layoutY="106.0" prefHeight="30.0" prefWidth="78.0" text="Endereço: " textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="telefoneLabel" layoutX="63.0" layoutY="142.0" prefHeight="30.0" prefWidth="300.0" text="Telefone:" textFill="WHITE">
+            <Label layoutX="56.0" layoutY="158.0" prefHeight="30.0" prefWidth="78.0" text="Telefone: " textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="cpfLabel" layoutX="63.0" layoutY="170.0" prefHeight="30.0" prefWidth="300.0" text="CPF:" textFill="WHITE">
+            <Label layoutX="95.0" layoutY="209.0" prefHeight="30.0" prefWidth="35.0" text="CPF: " textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <ScrollPane layoutX="54.0" layoutY="286.0" prefHeight="134.0" prefWidth="451.0" styleClass="custom-scroll-pane" />
+            <ScrollPane layoutX="63.0" layoutY="327.0" prefHeight="150.0" prefWidth="451.0" styleClass="custom-scroll-pane">
+               <content>
+                  <GridPane fx:id="gridMiniOrdens" prefHeight="0.0" prefWidth="0.0">
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+               </content></ScrollPane>
+            <Label fx:id="mensagemDeErroNome" layoutX="129.0" layoutY="92.0" prefHeight="16.0" prefWidth="205.0" textFill="#e82121">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="mensagemDeErroEndereco" layoutX="135.0" layoutY="137.0" prefHeight="16.0" prefWidth="205.0" textFill="#e82121">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="mensagemDeErroTelefone" layoutX="135.0" layoutY="185.0" prefHeight="16.0" prefWidth="187.0" textFill="#e82121">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="mensagemDeErroCpf" layoutX="135.0" layoutY="236.0" prefHeight="16.0" prefWidth="187.0" textFill="#e82121">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="idCliente" layoutX="135.0" layoutY="21.0" prefHeight="30.0" prefWidth="42.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nomeCliente" layoutX="134.0" layoutY="64.0" prefHeight="25.0" prefWidth="277.0" />
+            <TextField fx:id="enderecoCliente" layoutX="134.0" layoutY="109.0" prefHeight="25.0" prefWidth="277.0" />
+            <TextField fx:id="telefoneCliente" layoutX="134.0" layoutY="160.0" prefHeight="25.0" prefWidth="277.0" />
+            <TextField fx:id="cpfCliente" layoutX="134.0" layoutY="211.0" prefHeight="25.0" prefWidth="277.0" />
+            <Label fx:id="mensagemTecnicoDeslogado" layoutX="197.0" layoutY="302.0" prefHeight="16.0" prefWidth="205.0" textFill="#e82121">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
-      <Button fx:id="pesquisarBotao" layoutX="1181.0" layoutY="86.0" mnemonicParsing="false" onAction="#abapesquisar" prefHeight="40.0" prefWidth="88.0" text="Pesquisar" textFill="WHITE">
+      <Button fx:id="pesquisarBotao" layoutX="1181.0" layoutY="86.0" mnemonicParsing="false" onAction="#pesquisarAcao" prefHeight="40.0" prefWidth="88.0" text="Pesquisar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
       <TextField fx:id="barraDePesquisa" layoutX="980.0" layoutY="86.0" prefHeight="40.0" prefWidth="189.0" promptText="Pesquisar" styleClass="caixa-pesquisa" />
+      <Label fx:id="mensagemPesquisa" layoutX="987.0" layoutY="126.0" prefHeight="16.0" prefWidth="205.0" textFill="#e82121">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

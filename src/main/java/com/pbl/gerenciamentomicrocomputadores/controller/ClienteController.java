@@ -24,89 +24,43 @@ import java.util.List;
 
 public class ClienteController {
 
-    @FXML
-    private Button atualizarBotao;
+    @FXML private Button inicioBotao;
+    @FXML private Button tecnicoBotao;
+    @FXML private Button ordemBotao;
+    @FXML private Button estoqueBotao;
+    @FXML private Button PagamentoBotao;
 
-    @FXML
-    private Button cadastrar;
+    @FXML private Pane paneCantoInicio;
+    @FXML private Button cadastrarBotao;
+    @FXML private Button loginBotao;
 
-    @FXML
-    private Button cadastrarCliente;
+    @FXML private Pane paneTecnicoLogado;
+    @FXML private Label nomeTecnico;
+    @FXML private Label idTecnico;
+    @FXML private Button deslogarBotao;
 
-    @FXML
-    private TextField cpfCliente;
+    @FXML private Label idCliente;
+    @FXML private TextField nomeCliente;
+    @FXML private TextField enderecoCliente;
+    @FXML private TextField telefoneCliente;
+    @FXML private TextField cpfCliente;
 
-    @FXML
-    private Button deslogarBotao;
+    @FXML private Label mensagemDeErroNome;
+    @FXML private Label mensagemDeErroCpf;
+    @FXML private Label mensagemDeErroEndereco;
+    @FXML private Label mensagemDeErroTelefone;
 
-    @FXML
-    private TextField enderecoCliente;
+    @FXML private GridPane gridMiniOrdens;
+    @FXML private GridPane gridContainer;
 
-    @FXML
-    private Button estoqueBotao;
+    @FXML private Button cadastrarClienteBotao;
+    @FXML private Button atualizarBotao;
+    @FXML private Button removerBotao;
+    @FXML private Label mensagemTecnicoDeslogado;
 
-    @FXML
-    private GridPane gridContainer;
-
-    @FXML
-    private Label idTecnico;
-
-    @FXML
-    private Button inicioBotao;
-
-    @FXML
-    private Button loginBotao;
-
-    @FXML
-    private TextField nomeCliente;
-
-    @FXML
-    private Label nomeTecnico;
-
-    @FXML
-    private Button ordemBotao;
-
-    @FXML
-    private Pane paneCantoInicio;
-
-    @FXML
-    private Pane paneTecnicoLogado;
-
-    @FXML
-    private Button removerBotao;
-
-    @FXML
-    private Button tecnicoBotao;
-
-    @FXML
-    private TextField telefoneCliente;
-
-    @FXML
-    private Label idCliente;
-
-    @FXML
-    private Label mensagemDeErroCpf;
-
-    @FXML
-    private Label mensagemDeErroEndereco;
-
-    @FXML
-    private Label mensagemDeErroNome;
-
-    @FXML
-    private Label mensagemDeErroTelefone;
-
-    @FXML
-    private Button pesquisarBotao;
-
-    @FXML
-    private Label mensagemPesquisa;
-
-    @FXML
-    private TextField infoPesquisa;
-
-    @FXML
-    private GridPane gridMiniCards;
+    @FXML private TextField barraDePesquisa;
+    @FXML private Label mensagemPesquisa;
+    @FXML private Button pesquisarBotao;
 
     private MyListener<Cliente> myListener;
 
@@ -118,8 +72,9 @@ public class ClienteController {
         paneCantoInicio.setVisible(true);
         paneTecnicoLogado.setVisible(false);
 
+        resetarMensagensDeErro();
         atualizarCards();
-        atualizarMiniCards();
+        atualizarMiniOrdens();
 
     }
 
@@ -138,11 +93,8 @@ public class ClienteController {
                 public void onClickListener(Cliente cliente) {
 
                     setClienteEscolhido(cliente);
-                    atualizarMiniCards();
-                    mensagemDeErroNome.setText("");
-                    mensagemDeErroEndereco.setText("");
-                    mensagemDeErroTelefone.setText("");
-                    mensagemDeErroCpf.setText("");
+                    atualizarMiniOrdens();
+                    resetarMensagensDeErro();
                 }
             };
 
@@ -180,9 +132,9 @@ public class ClienteController {
         }
     }
 
-    public void atualizarMiniCards () {
+    public void atualizarMiniOrdens() {
 
-        gridMiniCards.getChildren().clear();
+        gridMiniOrdens.getChildren().clear();
 
         List<OrdemDeServico> listaOrdens = DAO.getOrdemDeServico().encontrarPorIdCliente(Integer.parseInt(idCliente.getText()));
 
@@ -198,15 +150,15 @@ public class ClienteController {
                 MiniCardOrdemController miniCardOrdemController = fxmlLoader.getController();
                 miniCardOrdemController.setInfo(listaOrdens.get(i));
 
-                this.gridMiniCards.add(novoCard, colunaAtual++, 1);
+                this.gridMiniOrdens.add(novoCard, colunaAtual++, 1);
 
-                this.gridMiniCards.setMinWidth(Region.USE_COMPUTED_SIZE);
-                this.gridMiniCards.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                this.gridMiniCards.setMaxWidth(Region.USE_COMPUTED_SIZE);
+                this.gridMiniOrdens.setMinWidth(Region.USE_COMPUTED_SIZE);
+                this.gridMiniOrdens.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                this.gridMiniOrdens.setMaxWidth(Region.USE_COMPUTED_SIZE);
 
-                this.gridMiniCards.setMinHeight(Region.USE_COMPUTED_SIZE);
-                this.gridMiniCards.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                this.gridMiniCards.setMaxHeight(Region.USE_COMPUTED_SIZE);
+                this.gridMiniOrdens.setMinHeight(Region.USE_COMPUTED_SIZE);
+                this.gridMiniOrdens.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                this.gridMiniOrdens.setMaxHeight(Region.USE_COMPUTED_SIZE);
 
                 GridPane.setMargin(novoCard, new Insets(5));
 
@@ -219,21 +171,17 @@ public class ClienteController {
 
     }
 
-    @FXML
-    void abaEstoque(ActionEvent event) {
-        try {
+    public void resetarMensagensDeErro () {
 
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("EstoqueView.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
-            Stage stage = MainController.getStageInicio();
-            stage.setScene(scene);
-            MainController.setStageInicio(stage);
-            stage.show();
-        }
-        catch (java.io.IOException e) {
+        mensagemDeErroNome.setText("");
+        mensagemDeErroEndereco.setText("");
+        mensagemDeErroTelefone.setText("");
+        mensagemDeErroCpf.setText("");
+        mensagemTecnicoDeslogado.setText("");
+        mensagemPesquisa.setText("");
 
-        }
     }
+
 
     @FXML
     void abaInicio(ActionEvent event) {
@@ -262,6 +210,38 @@ public class ClienteController {
     }
 
     @FXML
+    void abaTecnico(ActionEvent event) {
+        try {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("TecnicoView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
+            Stage stage = MainController.getStageInicio();
+            stage.setScene(scene);
+            MainController.setStageInicio(stage);
+            stage.show();
+        }
+        catch (java.io.IOException e) {
+
+        }
+    }
+
+    @FXML
+    void abaEstoque(ActionEvent event) {
+        try {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("EstoqueView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
+            Stage stage = MainController.getStageInicio();
+            stage.setScene(scene);
+            MainController.setStageInicio(stage);
+            stage.show();
+        }
+        catch (java.io.IOException e) {
+
+        }
+    }
+
+    @FXML
     void abaOrdem(ActionEvent event) {
         try {
 
@@ -278,19 +258,8 @@ public class ClienteController {
     }
 
     @FXML
-    void abaTecnico(ActionEvent event) {
-        try {
+    void abaPagamento(ActionEvent event) {
 
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("TecnicoView.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
-            Stage stage = MainController.getStageInicio();
-            stage.setScene(scene);
-            MainController.setStageInicio(stage);
-            stage.show();
-        }
-        catch (java.io.IOException e) {
-
-        }
     }
 
     @FXML
@@ -325,12 +294,13 @@ public class ClienteController {
 
     public void fazendoMudancaLogin (Tecnico tecnico) {
 
+        resetarMensagensDeErro();
+
         paneCantoInicio.setVisible(false);
         paneTecnicoLogado.setVisible(true);
 
         nomeTecnico.setText(tecnico.getNome());
-        int id = tecnico.getId();
-        idTecnico.setText(Integer.toString(id));
+        idTecnico.setText(Integer.toString(tecnico.getId()));
 
     }
 
@@ -409,56 +379,108 @@ public class ClienteController {
     @FXML
     void atualizarClienteAcao(ActionEvent event) {
 
-        int qtdErros = 0;
+        resetarMensagensDeErro();
 
-        if (! ((nomeCliente.getText().matches("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"))
-                && (nomeCliente.getText().replaceAll("\\s+", "").length() >= 3))) {
+        if (idTecnico.getText().equals("")) {
 
-            mensagemDeErroNome.setText("Entrada inválida");
-            qtdErros++;
+            mensagemTecnicoDeslogado.setText("Técnico não logado.");
+
         }
         else {
-            mensagemDeErroNome.setText("");
+
+            int qtdErros = 0;
+
+            if (!((nomeCliente.getText().matches("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"))
+                    && (nomeCliente.getText().replaceAll("\\s+", "").length() >= 3))) {
+
+                mensagemDeErroNome.setText("Entrada inválida");
+                qtdErros++;
+            } else {
+                mensagemDeErroNome.setText("");
+            }
+
+            if (!((enderecoCliente.getText().replaceAll("\\s+", "").length() >= 3))) {
+
+                mensagemDeErroEndereco.setText("Entrada inválida");
+                qtdErros++;
+            } else {
+                mensagemDeErroEndereco.setText("");
+            }
+
+            if (!((telefoneCliente.getText().matches("^[0-9() -]+$")) &&
+                    (telefoneCliente.getText().replaceAll("\\s+|\\(+|\\)+|-+", "").length() == 11))) {
+
+                mensagemDeErroTelefone.setText("Entrada inválida");
+                qtdErros++;
+            } else {
+                mensagemDeErroTelefone.setText("");
+            }
+
+            if (!((cpfCliente.getText().matches("^[0-9 .-]+$")) &&
+                    (cpfCliente.getText().replaceAll("\\s+|\\.+|-+", "").length() == 11))) {
+
+                mensagemDeErroCpf.setText("Entrada inválida");
+                qtdErros++;
+            } else {
+                mensagemDeErroCpf.setText("");
+            }
+
+            if (qtdErros == 0) {
+
+                Cliente cliente = new Cliente(nomeCliente.getText(), enderecoCliente.getText(), telefoneCliente.getText(),
+                        cpfCliente.getText());
+                cliente.setId(Integer.parseInt(idCliente.getText()));
+
+                DAO.getCliente().atualizar(cliente);
+
+                atualizarCards();
+
+                try {
+
+                    FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
+                    Scene scene = new Scene(fxmlLoader.load());
+                    Stage stage = new Stage();
+                    stage.setResizable(false);
+                    stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+                    stage.setScene(scene);
+
+                    MensagemController mensagemController = fxmlLoader.getController();
+                    mensagemController.setMensagem("     Cliente Atualizado.");
+
+                    stage.show();
+
+                } catch (java.io.IOException e) {
+
+                }
+
+            }
+
         }
 
-        if (! ((enderecoCliente.getText().replaceAll("\\s+", "").length() >= 3))) {
+    }
 
-            mensagemDeErroEndereco.setText("Entrada inválida");
-            qtdErros++;
+    @FXML
+    void removerClienteAcao(ActionEvent event) {
+
+        resetarMensagensDeErro();
+
+        if (idTecnico.getText().equals("")) {
+
+            mensagemTecnicoDeslogado.setText("Técnico não logado.");
+
         }
         else {
-            mensagemDeErroEndereco.setText("");
-        }
 
-        if (! ((telefoneCliente.getText().matches("^[0-9() -]+$")) &&
-                (telefoneCliente.getText().replaceAll("\\s+|\\(+|\\)+|-+", "").length() == 11)))  {
+            DAO.getCliente().remover(Integer.parseInt(idCliente.getText()));
 
-            mensagemDeErroTelefone.setText("Entrada inválida");
-            qtdErros++;
-        }
-        else {
-            mensagemDeErroTelefone.setText("");
-        }
-
-        if (! ((cpfCliente.getText().matches("^[0-9 .-]+$")) &&
-                (cpfCliente.getText().replaceAll("\\s+|\\.+|-+", "").length() == 11)))  {
-
-            mensagemDeErroCpf.setText("Entrada inválida");
-            qtdErros++;
-        }
-        else {
-            mensagemDeErroCpf.setText("");
-        }
-
-        if (qtdErros == 0) {
-
-            Cliente cliente = new Cliente(nomeCliente.getText(), enderecoCliente.getText(), telefoneCliente.getText(),
-                    cpfCliente.getText());
-            cliente.setId(Integer.parseInt(idCliente.getText()));
-
-            DAO.getCliente().atualizar(cliente);
+            idCliente.setText("");
+            nomeCliente.setText("");
+            enderecoCliente.setText("");
+            telefoneCliente.setText("");
+            cpfCliente.setText("");
 
             atualizarCards();
+            atualizarMiniOrdens();
 
             try {
 
@@ -470,46 +492,13 @@ public class ClienteController {
                 stage.setScene(scene);
 
                 MensagemController mensagemController = fxmlLoader.getController();
-                mensagemController.setMensagem("     Cliente Atualizado.");
+                mensagemController.setMensagem("     Cliente Removido.");
 
                 stage.show();
-            }
-            catch (java.io.IOException e) {
+
+            } catch (java.io.IOException e) {
 
             }
-
-        }
-
-    }
-
-    @FXML
-    void removerClienteAcao(ActionEvent event) {
-
-        DAO.getCliente().remover(Integer.parseInt(idCliente.getText()));
-
-        idCliente.setText("");
-        nomeCliente.setText("");
-        enderecoCliente.setText("");
-        telefoneCliente.setText("");
-        cpfCliente.setText("");
-
-        atualizarCards();
-
-        try {
-
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = new Stage();
-            stage.setResizable(false);
-            stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
-            stage.setScene(scene);
-
-            MensagemController mensagemController = fxmlLoader.getController();
-            mensagemController.setMensagem("     Cliente Removido.");
-
-            stage.show();
-        }
-        catch (java.io.IOException e) {
 
         }
 
@@ -519,12 +508,15 @@ public class ClienteController {
     @FXML
     void pesquisarAcao(ActionEvent event) {
 
-        String cpfPesquisado = infoPesquisa.getText();
+        resetarMensagensDeErro();
+
+        String cpfPesquisado = barraDePesquisa.getText();
 
         if (DAO.getCliente().checarPorCpf(cpfPesquisado)) {
 
             setClienteEscolhido(DAO.getCliente().encontrarPorCpf(cpfPesquisado));
-            mensagemPesquisa.setText("");
+            mensagemPesquisa.setText("Cliente encontrado.");
+            mensagemTecnicoDeslogado.setText("");
         }
         else if ((cpfPesquisado.matches("^[0-9 .-]+$")) &&
                 (cpfPesquisado.replaceAll("\\s+|\\.+|-+", "").length() == 11)) {
@@ -546,23 +538,6 @@ public class ClienteController {
         enderecoCliente.setText(cliente.getEndereco());
         telefoneCliente.setText(cliente.getTelefone());
         cpfCliente.setText(cliente.getCpf());
-
-    }
-
-    @FXML
-    void abaPagamento(ActionEvent event) {
-
-    }
-    @FXML
-    void abaRemover(ActionEvent event) {
-
-    }
-    @FXML
-    void abapesquisar(ActionEvent event) {
-
-    }
-    @FXML
-    void abaAtualizar(ActionEvent event) {
 
     }
 
