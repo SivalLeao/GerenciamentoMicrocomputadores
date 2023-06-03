@@ -36,6 +36,8 @@ public class LoginController {
         }
         else if (DAO.getTecnico().checarPorCpf(cpfTecnico.getText())) {
 
+            mensagemDeErro.setText("");
+
             FXMLLoader fxmlLoader = MainController.getFXMLLoaderPrincipal();
             String classeController = fxmlLoader.getController().getClass().getSimpleName();
 

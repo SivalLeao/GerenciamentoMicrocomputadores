@@ -304,6 +304,7 @@ public class InicioController {
         paneCantoInicio.setVisible(true);
         paneTecnicoLogado.setVisible(false);
         nomeTecnico.setText("");
+        idTecnico.setText("");
     }
 
 }
