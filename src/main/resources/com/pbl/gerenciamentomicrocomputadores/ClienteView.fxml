@@ -227,22 +227,22 @@
                     </rowConstraints>
                   </GridPane>
                </content></ScrollPane>
-            <Label fx:id="mensagemDeErroNome" layoutX="129.0" layoutY="92.0" prefHeight="16.0" prefWidth="205.0" textFill="#e82121">
+            <Label fx:id="mensagemDeErroNome" layoutX="135.0" layoutY="92.0" prefHeight="16.0" prefWidth="205.0" text="Apenas letras. Ao menos 3 caracteres." textFill="#e82121">
                <font>
                   <Font size="11.0" />
                </font>
             </Label>
-            <Label fx:id="mensagemDeErroEndereco" layoutX="135.0" layoutY="137.0" prefHeight="16.0" prefWidth="205.0" textFill="#e82121">
+            <Label fx:id="mensagemDeErroEndereco" layoutX="135.0" layoutY="137.0" prefHeight="16.0" prefWidth="130.0" text="Ao menos 3 caracteres." textFill="#e82121">
                <font>
                   <Font size="11.0" />
                </font>
             </Label>
-            <Label fx:id="mensagemDeErroTelefone" layoutX="135.0" layoutY="185.0" prefHeight="16.0" prefWidth="187.0" textFill="#e82121">
+            <Label fx:id="mensagemDeErroTelefone" layoutX="135.0" layoutY="185.0" prefHeight="16.0" prefWidth="229.0" text="Apenas números. Deve conter 11 caracteres." textFill="#e82121">
                <font>
                   <Font size="11.0" />
                </font>
             </Label>
-            <Label fx:id="mensagemDeErroCpf" layoutX="135.0" layoutY="236.0" prefHeight="16.0" prefWidth="187.0" textFill="#e82121">
+            <Label fx:id="mensagemDeErroCpf" layoutX="135.0" layoutY="236.0" prefHeight="16.0" prefWidth="229.0" text="Apenas números. Deve conter 11 caracteres." textFill="#e82121">
                <font>
                   <Font size="11.0" />
                </font>
@@ -256,7 +256,7 @@
             <TextField fx:id="enderecoCliente" layoutX="134.0" layoutY="109.0" prefHeight="25.0" prefWidth="277.0" />
             <TextField fx:id="telefoneCliente" layoutX="134.0" layoutY="160.0" prefHeight="25.0" prefWidth="277.0" />
             <TextField fx:id="cpfCliente" layoutX="134.0" layoutY="211.0" prefHeight="25.0" prefWidth="277.0" />
-            <Label fx:id="mensagemTecnicoDeslogado" layoutX="197.0" layoutY="302.0" prefHeight="16.0" prefWidth="205.0" textFill="#e82121">
+            <Label fx:id="mensagemTecnicoDeslogado" layoutX="262.0" layoutY="302.0" prefHeight="16.0" prefWidth="105.0" text="Técnico deslogado." textFill="#e82121">
                <font>
                   <Font size="11.0" />
                </font>
@@ -269,7 +269,7 @@
          </font>
       </Button>
       <TextField fx:id="barraDePesquisa" layoutX="980.0" layoutY="86.0" prefHeight="40.0" prefWidth="189.0" promptText="Pesquisar" styleClass="caixa-pesquisa" />
-      <Label fx:id="mensagemPesquisa" layoutX="987.0" layoutY="126.0" prefHeight="16.0" prefWidth="205.0" textFill="#e82121">
+      <Label fx:id="mensagemPesquisa" layoutX="987.0" layoutY="126.0" prefHeight="16.0" prefWidth="205.0" text="Entrada inválida." textFill="#e82121">
          <font>
             <Font size="11.0" />
          </font>

@@ -72,7 +72,7 @@ public class ClienteController {
         paneCantoInicio.setVisible(true);
         paneTecnicoLogado.setVisible(false);
 
-        resetarMensagensDeErro();
+        esconderMensagensDeErro();
         atualizarCards();
         atualizarMiniOrdens();
 
@@ -94,7 +94,7 @@ public class ClienteController {
 
                     setClienteEscolhido(cliente);
                     atualizarMiniOrdens();
-                    resetarMensagensDeErro();
+                    esconderMensagensDeErro();
                 }
             };
 
@@ -171,13 +171,13 @@ public class ClienteController {
 
     }
 
-    public void resetarMensagensDeErro () {
+    public void esconderMensagensDeErro() {
 
-        mensagemDeErroNome.setText("");
-        mensagemDeErroEndereco.setText("");
-        mensagemDeErroTelefone.setText("");
-        mensagemDeErroCpf.setText("");
-        mensagemTecnicoDeslogado.setText("");
+        mensagemDeErroNome.setVisible(false);
+        mensagemDeErroEndereco.setVisible(false);
+        mensagemDeErroTelefone.setVisible(false);
+        mensagemDeErroCpf.setVisible(false);
+        mensagemTecnicoDeslogado.setVisible(false);
         mensagemPesquisa.setText("");
 
     }
@@ -294,7 +294,7 @@ public class ClienteController {
 
     public void fazendoMudancaLogin (Tecnico tecnico) {
 
-        resetarMensagensDeErro();
+        esconderMensagensDeErro();
 
         paneCantoInicio.setVisible(false);
         paneTecnicoLogado.setVisible(true);
@@ -342,6 +342,7 @@ public class ClienteController {
         paneTecnicoLogado.setVisible(false);
         nomeTecnico.setText("");
         idTecnico.setText("");
+        esconderMensagensDeErro();
     }
 
 
@@ -379,11 +380,11 @@ public class ClienteController {
     @FXML
     void atualizarClienteAcao(ActionEvent event) {
 
-        resetarMensagensDeErro();
+        esconderMensagensDeErro();
 
         if (idTecnico.getText().equals("")) {
 
-            mensagemTecnicoDeslogado.setText("Técnico não logado.");
+            mensagemTecnicoDeslogado.setVisible(true);
 
         }
         else {
@@ -393,36 +394,36 @@ public class ClienteController {
             if (!((nomeCliente.getText().matches("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"))
                     && (nomeCliente.getText().replaceAll("\\s+", "").length() >= 3))) {
 
-                mensagemDeErroNome.setText("Entrada inválida");
+                mensagemDeErroNome.setVisible(true);
                 qtdErros++;
             } else {
-                mensagemDeErroNome.setText("");
+                mensagemDeErroNome.setVisible(false);
             }
 
             if (!((enderecoCliente.getText().replaceAll("\\s+", "").length() >= 3))) {
 
-                mensagemDeErroEndereco.setText("Entrada inválida");
+                mensagemDeErroEndereco.setVisible(true);
                 qtdErros++;
             } else {
-                mensagemDeErroEndereco.setText("");
+                mensagemDeErroEndereco.setVisible(false);
             }
 
             if (!((telefoneCliente.getText().matches("^[0-9() -]+$")) &&
                     (telefoneCliente.getText().replaceAll("\\s+|\\(+|\\)+|-+", "").length() == 11))) {
 
-                mensagemDeErroTelefone.setText("Entrada inválida");
+                mensagemDeErroTelefone.setVisible(true);
                 qtdErros++;
             } else {
-                mensagemDeErroTelefone.setText("");
+                mensagemDeErroTelefone.setVisible(false);
             }
 
             if (!((cpfCliente.getText().matches("^[0-9 .-]+$")) &&
                     (cpfCliente.getText().replaceAll("\\s+|\\.+|-+", "").length() == 11))) {
 
-                mensagemDeErroCpf.setText("Entrada inválida");
+                mensagemDeErroCpf.setVisible(true);
                 qtdErros++;
             } else {
-                mensagemDeErroCpf.setText("");
+                mensagemDeErroCpf.setVisible(false);
             }
 
             if (qtdErros == 0) {
@@ -434,6 +435,7 @@ public class ClienteController {
                 DAO.getCliente().atualizar(cliente);
 
                 atualizarCards();
+                atualizarMiniOrdens();
 
                 try {
 
@@ -462,11 +464,11 @@ public class ClienteController {
     @FXML
     void removerClienteAcao(ActionEvent event) {
 
-        resetarMensagensDeErro();
+        esconderMensagensDeErro();
 
         if (idTecnico.getText().equals("")) {
 
-            mensagemTecnicoDeslogado.setText("Técnico não logado.");
+            mensagemTecnicoDeslogado.setVisible(true);
 
         }
         else {
@@ -508,15 +510,16 @@ public class ClienteController {
     @FXML
     void pesquisarAcao(ActionEvent event) {
 
-        resetarMensagensDeErro();
+        esconderMensagensDeErro();
 
         String cpfPesquisado = barraDePesquisa.getText();
 
         if (DAO.getCliente().checarPorCpf(cpfPesquisado)) {
 
             setClienteEscolhido(DAO.getCliente().encontrarPorCpf(cpfPesquisado));
+            atualizarMiniOrdens();
+            esconderMensagensDeErro();
             mensagemPesquisa.setText("Cliente encontrado.");
-            mensagemTecnicoDeslogado.setText("");
         }
         else if ((cpfPesquisado.matches("^[0-9 .-]+$")) &&
                 (cpfPesquisado.replaceAll("\\s+|\\.+|-+", "").length() == 11)) {

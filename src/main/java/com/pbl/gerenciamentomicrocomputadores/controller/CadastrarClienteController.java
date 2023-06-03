@@ -99,6 +99,8 @@ public class CadastrarClienteController {
 
             ClienteController clienteController = MainController.getFXMLLoaderPrincipal().getController();
             clienteController.atualizarCards();
+            clienteController.atualizarMiniOrdens();
+            clienteController.esconderMensagensDeErro();
 
             Stage stage = (Stage) voltarBotao.getScene().getWindow();
             stage.close();
