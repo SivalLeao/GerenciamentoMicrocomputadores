@@ -41,10 +41,15 @@ public class LoginController {
                 InicioController inicioController = fxmlLoader.getController();
                 inicioController.fazendoMudancaLogin(DAO.getTecnico().encontrarPorCpf(cpfTecnico.getText()));
             }
-            if (classeController.equals("ClienteController")) {
+            else if (classeController.equals("ClienteController")) {
 
                 ClienteController clienteController = fxmlLoader.getController();
                 clienteController.fazendoMudancaLogin(DAO.getTecnico().encontrarPorCpf(cpfTecnico.getText()));
+            }
+            else if (classeController.equals("TecnicoController")) {
+
+                TecnicoController tecnicoController = fxmlLoader.getController();
+                tecnicoController.fazendoMudancaLogin(DAO.getTecnico().encontrarPorCpf(cpfTecnico.getText()));
             }
 
             cpfTecnico.setText("");

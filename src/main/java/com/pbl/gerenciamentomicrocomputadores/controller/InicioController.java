@@ -158,21 +158,29 @@ public class InicioController {
     }
 
     @FXML
-    void abaTecnico (ActionEvent event) {
-
+    void abaTecnico(ActionEvent event) {
         try {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("TecnicoView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
             Stage stage = MainController.getStageInicio();
             stage.setScene(scene);
+
             MainController.setStageInicio(stage);
+            MainController.setFXMLLoaderPrincipal(fxmlLoader);
+
+            if (!(idTecnico.getText().equals(""))) {
+
+                TecnicoController tecnicoController = fxmlLoader.getController();
+                tecnicoController.fazendoMudancaLogin(DAO.getTecnico().encontrarPorId(
+                        Integer.parseInt(idTecnico.getText())));
+            }
+
             stage.show();
         }
         catch (java.io.IOException e) {
 
         }
-
     }
 
     @FXML
