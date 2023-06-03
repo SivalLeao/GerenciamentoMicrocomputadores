@@ -174,6 +174,11 @@ public class TecnicoController {
     @FXML
     void deslogarAcao(ActionEvent event) {
 
+        deslogar();
+    }
+
+    public void deslogar() {
+
         paneMensagemPedidoLogin.setVisible(true);
         paneDadosTecnico.setVisible(false);
 
@@ -182,7 +187,6 @@ public class TecnicoController {
         nomeTecnico.setText("");
         idTecnico.setText("");
         esconderMensagensDeErro();
-
     }
 
     @FXML
@@ -385,6 +389,35 @@ public class TecnicoController {
 
         esconderMensagensDeErro();
 
+        DAO.getTecnico().remover(Integer.parseInt(idPerfil.getText()));
+
+        idPerfil.setText("");
+        nomePerfil.setText("");
+        enderecoPerfil.setText("");
+        telefonePerfil.setText("");
+        cpfPerfil.setText("");
+
+        atualizarCards();
+
+        deslogar();
+
+        try {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+            stage.setScene(scene);
+
+            MensagemController mensagemController = fxmlLoader.getController();
+            mensagemController.setMensagem("     Perfil Removido.");
+
+            stage.show();
+
+        } catch (java.io.IOException e) {
+
+        }
     }
 
     private void setDadosPerfil (Tecnico tecnico) {
