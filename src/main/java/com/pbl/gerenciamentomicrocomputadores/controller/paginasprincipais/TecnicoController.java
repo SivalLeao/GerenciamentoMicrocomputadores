@@ -6,6 +6,7 @@ import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardTecnicoContro
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.ClienteController;
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.InicioController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
+import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,6 +41,7 @@ public class TecnicoController {
     @FXML private Label idTecnico;
     @FXML private Button deslogarBotao;
 
+    @FXML private Pane paneDadosTecnico;
     @FXML private Label idPerfil;
     @FXML private TextField nomePerfil;
     @FXML private TextField enderecoPerfil;
@@ -50,6 +52,8 @@ public class TecnicoController {
     @FXML private Label mensagemDeErroCpf;
     @FXML private Label mensagemDeErroEndereco;
     @FXML private Label mensagemDeErroTelefone;
+    
+    @FXML private Pane paneMensagemPedidoLogin;
 
     @FXML private Button atualizarBotao;
     @FXML private Button removerBotao;
@@ -63,6 +67,9 @@ public class TecnicoController {
 
         paneCantoInicio.setVisible(true);
         paneTecnicoLogado.setVisible(false);
+
+        paneMensagemPedidoLogin.setVisible(true);
+        paneDadosTecnico.setVisible(false);
 
         esconderMensagensDeErro();
         atualizarCards();
@@ -150,6 +157,11 @@ public class TecnicoController {
 
         esconderMensagensDeErro();
 
+        setDadosPerfil(tecnico);
+
+        paneMensagemPedidoLogin.setVisible(false);
+        paneDadosTecnico.setVisible(true);
+
         paneCantoInicio.setVisible(false);
         paneTecnicoLogado.setVisible(true);
 
@@ -158,6 +170,19 @@ public class TecnicoController {
 
     }
 
+    @FXML
+    void deslogarAcao(ActionEvent event) {
+
+        paneMensagemPedidoLogin.setVisible(true);
+        paneDadosTecnico.setVisible(false);
+
+        paneCantoInicio.setVisible(true);
+        paneTecnicoLogado.setVisible(false);
+        nomeTecnico.setText("");
+        idTecnico.setText("");
+        esconderMensagensDeErro();
+
+    }
 
     @FXML
     void abaCadastrar(ActionEvent event) {
@@ -288,12 +313,17 @@ public class TecnicoController {
     }
 
     @FXML
-    void deslogarAcao(ActionEvent event) {
+    void removerPerfilAcao(ActionEvent event) {
 
     }
 
-    @FXML
-    void removerPerfilAcao(ActionEvent event) {
+    private void setDadosPerfil (Tecnico tecnico) {
+
+        idPerfil.setText(Integer.toString(tecnico.getId()));
+        nomePerfil.setText(tecnico.getNome());
+        enderecoPerfil.setText(tecnico.getEndereco());
+        telefonePerfil.setText(tecnico.getTelefone());
+        cpfPerfil.setText(tecnico.getCpf());
 
     }
 
