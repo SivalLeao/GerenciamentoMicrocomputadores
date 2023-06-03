@@ -3,10 +3,13 @@ package com.pbl.gerenciamentomicrocomputadores.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.InicioController;
+import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.TecnicoController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -105,6 +108,15 @@ public class CadastrarTecnicoController {
             cpfTecnico.setText("");
 
             DAO.getTecnico().criar(tecnico);
+
+            FXMLLoader fxmlLoader = MainController.getFXMLLoaderPrincipal();
+            String classeController = fxmlLoader.getController().getClass().getSimpleName();
+
+            if (classeController.equals("TecnicoController")) {
+
+                TecnicoController tecnicoController = fxmlLoader.getController();
+                tecnicoController.atualizarCards();
+            }
 
             Stage stage = (Stage) voltarBotao.getScene().getWindow();
             stage.close();

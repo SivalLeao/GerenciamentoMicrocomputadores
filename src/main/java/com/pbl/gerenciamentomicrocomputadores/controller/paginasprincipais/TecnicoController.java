@@ -2,6 +2,7 @@ package com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
 import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
+import com.pbl.gerenciamentomicrocomputadores.controller.MensagemController;
 import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardTecnicoController;
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.ClienteController;
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.InicioController;
@@ -310,10 +311,79 @@ public class TecnicoController {
     @FXML
     void atualizarPerfilAcao(ActionEvent event) {
 
+        esconderMensagensDeErro();
+
+        int qtdErros = 0;
+
+        if (!((nomePerfil.getText().matches("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"))
+                && (nomePerfil.getText().replaceAll("\\s+", "").length() >= 3))) {
+
+            mensagemDeErroNome.setVisible(true);
+            qtdErros++;
+        } else {
+            mensagemDeErroNome.setVisible(false);
+        }
+
+        if (!((enderecoPerfil.getText().replaceAll("\\s+", "").length() >= 3))) {
+
+            mensagemDeErroEndereco.setVisible(true);
+            qtdErros++;
+        } else {
+            mensagemDeErroEndereco.setVisible(false);
+        }
+
+        if (!((telefonePerfil.getText().matches("^[0-9() -]+$")) &&
+                (telefonePerfil.getText().replaceAll("\\s+|\\(+|\\)+|-+", "").length() == 11))) {
+
+            mensagemDeErroTelefone.setVisible(true);
+            qtdErros++;
+        } else {
+            mensagemDeErroTelefone.setVisible(false);
+        }
+
+        if (!((cpfPerfil.getText().matches("^[0-9 .-]+$")) &&
+                (cpfPerfil.getText().replaceAll("\\s+|\\.+|-+", "").length() == 11))) {
+
+            mensagemDeErroCpf.setVisible(true);
+            qtdErros++;
+        } else {
+            mensagemDeErroCpf.setVisible(false);
+        }
+
+        if (qtdErros == 0) {
+
+            Tecnico tecnico = new Tecnico(nomePerfil.getText(), enderecoPerfil.getText(), telefonePerfil.getText(),
+                    cpfPerfil.getText());
+            tecnico.setId(Integer.parseInt(idPerfil.getText()));
+
+            DAO.getTecnico().atualizar(tecnico);
+
+            atualizarCards();
+
+            try {
+
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+                stage.setScene(scene);
+
+                MensagemController mensagemController = fxmlLoader.getController();
+                mensagemController.setMensagem("     Perfil Atualizado.");
+
+                stage.show();
+
+            } catch (java.io.IOException e) {
+
+            }
+        }
     }
 
     @FXML
     void removerPerfilAcao(ActionEvent event) {
+
+        esconderMensagensDeErro();
 
     }
 
