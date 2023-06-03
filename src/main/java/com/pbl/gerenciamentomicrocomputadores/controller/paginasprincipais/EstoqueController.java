@@ -1,9 +1,10 @@
-package com.pbl.gerenciamentomicrocomputadores.controller;
+package com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
+import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

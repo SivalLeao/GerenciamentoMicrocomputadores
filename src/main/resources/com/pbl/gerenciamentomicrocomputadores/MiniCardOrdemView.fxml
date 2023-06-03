@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="91.0" prefWidth="93.0" style="-fx-background-color: #00a8ff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.MiniCardOrdemController">
+<AnchorPane prefHeight="91.0" prefWidth="93.0" style="-fx-background-color: #00a8ff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.cards.MiniCardOrdemController">
    <children>
       <Label layoutX="9.0" layoutY="14.0" text="Tipo de Serviço" />
       <Label layoutX="14.0" layoutY="37.0" text="ID: " />

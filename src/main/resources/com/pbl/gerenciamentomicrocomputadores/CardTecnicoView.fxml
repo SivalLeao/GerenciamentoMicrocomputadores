@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="89.0" prefWidth="288.0" style="-fx-background-radius: 100 0 0 100; -fx-background-color: #B5714A;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.CardTecnicoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="89.0" prefWidth="288.0" style="-fx-background-radius: 100 0 0 100; -fx-background-color: #B5714A;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.cards.CardTecnicoController">
    <children>
       <ImageView fitHeight="95.0" fitWidth="99.0" layoutX="-3.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
          <image>

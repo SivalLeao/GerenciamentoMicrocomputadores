@@ -1,11 +1,12 @@
-package com.pbl.gerenciamentomicrocomputadores.controller;
+package com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais;
 
-import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
+import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
+import com.pbl.gerenciamentomicrocomputadores.controller.MyListener;
+import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardOrdemController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
 import javafx.event.ActionEvent;
@@ -20,23 +21,11 @@ import javafx.scene.control.Label;
 
 public class OrdemController {
 
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private Button clienteBotao;
-
-    @FXML
-    private Button estoqueBotao;
-
-    @FXML
-    private Button inicioBotao;
-
-    @FXML
-    private Button tecnicoBotao;
+    @FXML private Button inicioBotao;
+    @FXML private Button clienteBotao;
+    @FXML private Button tecnicoBotao;
+    @FXML private Button estoqueBotao;
+    @FXML private Button PagamentoBotao;
 
     @FXML
     private GridPane gridContainer;

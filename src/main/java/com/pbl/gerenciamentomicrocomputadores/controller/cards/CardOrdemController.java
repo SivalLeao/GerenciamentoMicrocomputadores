@@ -1,5 +1,6 @@
-package com.pbl.gerenciamentomicrocomputadores.controller;
+package com.pbl.gerenciamentomicrocomputadores.controller.cards;
 
+import com.pbl.gerenciamentomicrocomputadores.controller.MyListener;
 import javafx.fxml.FXML;
 
 import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;

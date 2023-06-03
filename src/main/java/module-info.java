@@ -8,4 +8,8 @@ module com.pbl.gerenciamentomicrocomputadores {
     exports com.pbl.gerenciamentomicrocomputadores;
     exports com.pbl.gerenciamentomicrocomputadores.controller;
     opens com.pbl.gerenciamentomicrocomputadores.controller to javafx.fxml;
+    exports com.pbl.gerenciamentomicrocomputadores.controller.cards;
+    opens com.pbl.gerenciamentomicrocomputadores.controller.cards to javafx.fxml;
+    exports com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais;
+    opens com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais to javafx.fxml;
 }

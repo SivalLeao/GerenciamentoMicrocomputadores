@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1280.0" styleClass="plano-fundo" stylesheets="@CSS/custumizacao.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.InicioController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1280.0" styleClass="plano-fundo" stylesheets="@CSS/custumizacao.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.InicioController">
    <children>
       <VBox layoutX="-1.0" prefHeight="650.0" prefWidth="290.0" styleClass="menu-lateral">
          <children>

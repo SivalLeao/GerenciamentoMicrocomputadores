@@ -1,6 +1,8 @@
-package com.pbl.gerenciamentomicrocomputadores.controller;
+package com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
+import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
+import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardOrdemInicioController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;

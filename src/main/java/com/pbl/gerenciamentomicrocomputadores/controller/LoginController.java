@@ -1,5 +1,8 @@
 package com.pbl.gerenciamentomicrocomputadores.controller;
 
+import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.ClienteController;
+import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.InicioController;
+import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.TecnicoController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

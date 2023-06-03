@@ -1,4 +1,4 @@
-package com.pbl.gerenciamentomicrocomputadores.controller;
+package com.pbl.gerenciamentomicrocomputadores.controller.cards;
 
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
 import javafx.fxml.FXML;
