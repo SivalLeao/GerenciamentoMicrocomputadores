@@ -13,7 +13,9 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -48,6 +50,12 @@ public class InicioController {
     @FXML private Label qtdTotal;
     @FXML private Label qtdFinalizadas;
 
+    @FXML
+    private TextArea infoText;
+
+    @FXML
+    private ImageView tcConectado;
+
     private List<OrdemDeServico> ordensData;
 
 
@@ -56,6 +64,21 @@ public class InicioController {
 
         paneCantoInicio.setVisible(true);
         paneTecnicoLogado.setVisible(false);
+
+        nomeTecnico.setVisible(false);
+        idTecnico.setVisible(false);
+
+        tcConectado.setOnMouseEntered(event -> {
+            nomeTecnico.setVisible(true);
+            idTecnico.setVisible(true);
+
+
+        });
+        tcConectado.setOnMouseExited(event -> {
+            nomeTecnico.setVisible(false);
+            idTecnico.setVisible(false);
+
+        });
 
         this.ordensData = DAO.getOrdemDeServico().encontrarTodos();
 
@@ -262,8 +285,12 @@ public class InicioController {
         paneCantoInicio.setVisible(false);
         paneTecnicoLogado.setVisible(true);
 
+
+
         nomeTecnico.setText(tecnico.getNome());
         idTecnico.setText(Integer.toString(tecnico.getId()));
+
+
 
     }
 

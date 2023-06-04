@@ -111,50 +111,44 @@
       </VBox>
       <Pane layoutX="289.0" prefHeight="70.0" prefWidth="991.0" styleClass="plano-fundo-superior">
          <children>
-            <StackPane prefHeight="70.0" prefWidth="470.0">
+            <StackPane prefHeight="70.0" prefWidth="991.0">
                <children>
-                  <Pane fx:id="paneCantoInicio" prefHeight="70.0" prefWidth="462.0">
+                  <Pane fx:id="paneTecnicoLogado" prefHeight="70.0" prefWidth="549.0" visible="false">
                      <children>
-                        <Button fx:id="loginBotao" layoutX="53.0" layoutY="15.0" mnemonicParsing="false" onAction="#abaLogin" prefHeight="40.0" prefWidth="105.0" styleClass="botao-superior" text="Login" textFill="WHITE">
+                        <Label fx:id="nomeTecnico" layoutX="832.0" layoutY="15.0" prefHeight="19.0" prefWidth="69.0" style="-fx-background-color: #FFFFFF;">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="idTecnico" layoutX="832.0" layoutY="34.0" prefHeight="19.0" prefWidth="69.0" style="-fx-background-color: #FFFFFF;">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="deslogarBotao" layoutX="815.0" layoutY="14.0" mnemonicParsing="false" onAction="#deslogarAcao" prefHeight="41.0" prefWidth="98.0" styleClass="botao-superior" text="Deslogar" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="cadastrarBotao" layoutX="199.0" layoutY="15.0" mnemonicParsing="false" onAction="#abaCadastrar" prefHeight="40.0" prefWidth="105.0" styleClass="botao-superior" text="Cadastrar" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Button>
+                        <Pane fx:id="PANECONEC" layoutX="917.0" layoutY="7.0" prefHeight="58.0" prefWidth="60.0" style="-fx-background-color: #ffffff; -fx-background-radius: 100;">
+                           <children>
+                              <ImageView fx:id="tcConectado" fitHeight="70.0" fitWidth="51.0" layoutX="5.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icones/Conectado-R15.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
                      </children>
                   </Pane>
-                  <Pane fx:id="paneTecnicoLogado" prefHeight="200.0" prefWidth="200.0" visible="false">
+                  <Pane fx:id="paneCantoInicio" prefHeight="70.0" prefWidth="462.0" visible="false">
                      <children>
-                        <ImageView fitHeight="58.0" fitWidth="70.0" layoutX="36.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Icones/Tecnico-R15.png" />
-                           </image>
-                        </ImageView>
-                        <Label layoutX="116.0" layoutY="14.0" text="Nome: ">
+                        <Button fx:id="loginBotao" layoutX="856.0" layoutY="15.0" mnemonicParsing="false" onAction="#abaLogin" prefHeight="40.0" prefWidth="105.0" styleClass="botao-superior" text="Login" textFill="WHITE">
                            <font>
-                              <Font size="13.0" />
+                              <Font name="System Bold" size="12.0" />
                            </font>
-                        </Label>
-                        <Label fx:id="nomeTecnico" layoutX="158.0" layoutY="14.0" prefHeight="19.0" prefWidth="187.0">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="137.0" layoutY="35.0" text="ID: ">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="idTecnico" layoutX="158.0" layoutY="35.0" prefHeight="19.0" prefWidth="187.0">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="deslogarBotao" layoutX="358.0" layoutY="15.0" mnemonicParsing="false" onAction="#deslogarAcao" prefHeight="41.0" prefWidth="98.0" styleClass="botao-superior" text="Deslogar" textFill="WHITE">
+                        </Button>
+                        <Button fx:id="cadastrarBotao" layoutX="715.0" layoutY="15.0" mnemonicParsing="false" onAction="#abaCadastrar" prefHeight="40.0" prefWidth="105.0" styleClass="botao-superior" text="Cadastrar" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
