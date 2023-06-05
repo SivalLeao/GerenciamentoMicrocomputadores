@@ -1,13 +1,16 @@
 package com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais;
 
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
 import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
 import com.pbl.gerenciamentomicrocomputadores.controller.MyListener;
+import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardClienteController;
 import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardOrdemController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
+import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
 import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
 import javafx.event.ActionEvent;
@@ -29,26 +32,21 @@ public class OrdemController {
     @FXML private Button estoqueBotao;
     @FXML private Button PagamentoBotao;
 
-    @FXML
-    private Button cadastrarBotao;
+    @FXML private Pane paneCantoInicio;
+    @FXML private Button cadastrarBotao;
+    @FXML private Button loginBotao;
 
-    @FXML
-    private Button deslogarBotao;
+    @FXML private Pane paneTecnicoLogado;
+    @FXML private Button deslogarBotao;
+    @FXML private Label idTecnico;
+    @FXML private Label nomeTecnico;
 
-    @FXML
-    private Label idTecnico;
-
-    @FXML
-    private Button loginBotao;
-
-    @FXML
-    private Label nomeTecnico;
-
-    @FXML
-    private Pane paneCantoInicio;
-
-    @FXML
-    private Pane paneTecnicoLogado;
+    @FXML private Button todosBotao;
+    @FXML private Button emAndamentoBotao;
+    @FXML private Button emEsperaBotao;
+    @FXML private Button finalizadosBotao;
+    @FXML private Button canceladosBotao;
+    @FXML GridPane gridContainer;
 
     private List<OrdemDeServico> ordensData;
 
@@ -58,11 +56,44 @@ public class OrdemController {
         paneCantoInicio.setVisible(true);
         paneTecnicoLogado.setVisible(false);
 
-        atualizarCards();
+        this.ordensData = DAO.getOrdemDeServico().encontrarTodos();
+        atualizarCards(this.ordensData);
     }
 
-    public void atualizarCards () {
+    public void atualizarCards (List<OrdemDeServico> ordensData) {
 
+        gridContainer.getChildren().clear();
+
+        try {
+
+            int colunaAtual = 0;
+
+            for (int i = 0; i < ordensData.size(); i++) {
+
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("CardOrdemView.fxml"));
+                AnchorPane novoCard = fxmlLoader.load();
+
+                CardOrdemController cardOrdemController = fxmlLoader.getController();
+                cardOrdemController.setInfo(ordensData.get(i));
+
+                this.gridContainer.add(novoCard, colunaAtual++, 1);
+
+                this.gridContainer.setMinWidth(Region.USE_COMPUTED_SIZE);
+                this.gridContainer.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                this.gridContainer.setMaxWidth(Region.USE_COMPUTED_SIZE);
+
+                this.gridContainer.setMinHeight(Region.USE_COMPUTED_SIZE);
+                this.gridContainer.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                this.gridContainer.setMaxHeight(Region.USE_COMPUTED_SIZE);
+
+                GridPane.setMargin(novoCard, new Insets(5));
+
+            }
+
+        }
+        catch ( java.io.IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -246,6 +277,76 @@ public class OrdemController {
         paneTecnicoLogado.setVisible(false);
         nomeTecnico.setText("");
         idTecnico.setText("");
+    }
+
+    @FXML
+    void todosAcao(ActionEvent event) {
+
+        atualizarCards(this.ordensData);
+    }
+
+    @FXML
+    void emAndamentoAcao(ActionEvent event) {
+
+        List<OrdemDeServico> listaFormatada = new ArrayList<>();
+
+        for (OrdemDeServico ordemDeServico: this.ordensData) {
+
+            if (ordemDeServico.getStatusAtual().equals("Em andamento")) {
+
+                listaFormatada.add(ordemDeServico);
+            }
+        }
+
+        atualizarCards(listaFormatada);
+    }
+
+    @FXML
+    void emEsperaAcao(ActionEvent event) {
+
+        List<OrdemDeServico> listaFormatada = new ArrayList<>();
+
+        for (OrdemDeServico ordemDeServico: this.ordensData) {
+
+            if (ordemDeServico.getStatusAtual().equals("Em espera")) {
+
+                listaFormatada.add(ordemDeServico);
+            }
+        }
+
+        atualizarCards(listaFormatada);
+    }
+
+    @FXML
+    void finalizadosAcao(ActionEvent event) {
+
+        List<OrdemDeServico> listaFormatada = new ArrayList<>();
+
+        for (OrdemDeServico ordemDeServico: this.ordensData) {
+
+            if (ordemDeServico.getStatusAtual().equals("Finalizado")) {
+
+                listaFormatada.add(ordemDeServico);
+            }
+        }
+
+        atualizarCards(listaFormatada);
+    }
+
+    @FXML
+    void canceladosAcao(ActionEvent event) {
+
+        List<OrdemDeServico> listaFormatada = new ArrayList<>();
+
+        for (OrdemDeServico ordemDeServico: this.ordensData) {
+
+            if (ordemDeServico.getStatusAtual().equals("Cancelado")) {
+
+                listaFormatada.add(ordemDeServico);
+            }
+        }
+
+        atualizarCards(listaFormatada);
     }
 
 }
