@@ -289,6 +289,25 @@ public class OrdemDeServicoArquivoImpl implements OrdemDeServicoDAO {
         return false;
     }
 
+    /** Método para coletar a próxima ordem de serviço da lista para o técnico realizar. Caso não tenha
+     * serviço disponível, ele retorna null.
+     *
+     * @return OrdemDeServico - retorna a ordem de serviço que deve ser realizada pelo técnico*/
+
+    public OrdemDeServico coletarOrdem() {
+
+        for (OrdemDeServico ordemDeServico: this.lista) {
+
+            if (ordemDeServico.getStatusAtual().equals("Em espera")) {
+
+                return ordemDeServico;
+            }
+        }
+
+        return null;
+
+    }
+
     /** Método para esvaziar toda a lista de ordens de serviço, usando a função clear. O arquivo binário de
      * armazenamento é reescrito com a lista vazia.*/
 

@@ -230,6 +230,13 @@ public class OrdemDeServicoArquivoImplTest {
     }
 
     @Test
+    void coletarOrdem () {
+
+        assertEquals(ordem0, DAO.getOrdemDeServico().coletarOrdem());
+
+    }
+
+    @Test
     void removerTodos() {
 
         List<OrdemDeServico> lista = DAO.getOrdemDeServico().encontrarTodos();

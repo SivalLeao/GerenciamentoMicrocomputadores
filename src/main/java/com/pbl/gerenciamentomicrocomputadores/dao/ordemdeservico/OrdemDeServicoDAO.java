@@ -57,4 +57,11 @@ public interface OrdemDeServicoDAO extends CRUD<OrdemDeServico> {
 
     public boolean checarStatusEmAndamento(int idTecnico);
 
+    /** Método para coletar a próxima ordem de serviço da lista para o técnico realizar. Caso não tenha
+     * serviço disponível, ele retorna null.
+     *
+     * @return OrdemDeServico - retorna a ordem de serviço que deve ser realizada pelo técnico*/
+
+    public OrdemDeServico coletarOrdem();
+
 }
