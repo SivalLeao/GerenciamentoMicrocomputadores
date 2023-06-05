@@ -237,6 +237,19 @@ public class OrdemDeServicoArquivoImplTest {
     }
 
     @Test
+    void conseguirOrdemTecnico () {
+
+        OrdemDeServico ordemDeServico = DAO.getOrdemDeServico().encontrarPorId(1143);
+
+        ordemDeServico.setStatusAtual("Em andamento");
+
+        DAO.getOrdemDeServico().atualizar(ordemDeServico);
+
+        assertEquals(ordemDeServico, DAO.getOrdemDeServico().conseguirOrdemTecnico(1141));
+
+    }
+
+    @Test
     void removerTodos() {
 
         List<OrdemDeServico> lista = DAO.getOrdemDeServico().encontrarTodos();

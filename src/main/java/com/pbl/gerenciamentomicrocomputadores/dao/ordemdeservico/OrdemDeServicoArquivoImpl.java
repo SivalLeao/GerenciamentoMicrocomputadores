@@ -308,6 +308,25 @@ public class OrdemDeServicoArquivoImpl implements OrdemDeServicoDAO {
 
     }
 
+    /** Método para retornar a ordem de serviço que determinado técnico está trabalhando. Busca feita
+     * pelo ID do técnico.
+     *
+     * @return OrdemDeServico - retorna a ordem de serviço que o técnico está realizando*/
+
+    public OrdemDeServico conseguirOrdemTecnico(int idTecnico) {
+
+        for (OrdemDeServico ordemDeServico: this.lista) {
+
+            if (ordemDeServico.getIdTecnico() == idTecnico &&
+                    ordemDeServico.getStatusAtual().equals("Em andamento")) {
+
+                return ordemDeServico;
+            }
+        }
+
+        return null;
+    }
+
     /** Método para esvaziar toda a lista de ordens de serviço, usando a função clear. O arquivo binário de
      * armazenamento é reescrito com a lista vazia.*/
 

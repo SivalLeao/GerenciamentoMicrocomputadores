@@ -64,4 +64,12 @@ public interface OrdemDeServicoDAO extends CRUD<OrdemDeServico> {
 
     public OrdemDeServico coletarOrdem();
 
+    /** Método para retornar a ordem de serviço que determinado técnico está trabalhando. Busca feita
+     * pelo ID do técnico
+     *
+     * @param idTecnico int - ID do técnico
+     * @return OrdemDeServico - retorna a ordem de serviço que o técnico está realizando*/
+
+    public OrdemDeServico conseguirOrdemTecnico(int idTecnico);
+
 }
