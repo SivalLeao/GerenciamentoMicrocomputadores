@@ -3,6 +3,7 @@ package com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
 import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
@@ -48,7 +49,17 @@ public class OrdemController {
     @FXML private Button canceladosBotao;
     @FXML GridPane gridContainer;
 
+    @FXML private Label idOrdem;
+    @FXML private Label idClienteOrdem;
+    @FXML private Label dataPedidoOrdem;
+    @FXML private Label dataFinalizacaoOrdem;
+    @FXML private Label statusOrdem;
+    @FXML private Label tipoDeServicoOrdem;
+    @FXML private Label listaPecas;
+
     private List<OrdemDeServico> ordensData;
+
+    private MyListener<OrdemDeServico> myListener;
 
     @FXML
     void initialize() {
@@ -64,6 +75,20 @@ public class OrdemController {
 
         gridContainer.getChildren().clear();
 
+        if (this.ordensData.size() > 0) {
+
+            setOrdemEscolhida(this.ordensData.get(0));
+
+            this.myListener = new MyListener<OrdemDeServico>() {
+                @Override
+                public void onClickListener(OrdemDeServico ordemDeServico) {
+
+                    setOrdemEscolhida(ordemDeServico);
+                }
+            };
+
+        }
+
         try {
 
             int colunaAtual = 0;
@@ -74,7 +99,7 @@ public class OrdemController {
                 AnchorPane novoCard = fxmlLoader.load();
 
                 CardOrdemController cardOrdemController = fxmlLoader.getController();
-                cardOrdemController.setInfo(ordensData.get(i));
+                cardOrdemController.setInfo(ordensData.get(i), myListener);
 
                 this.gridContainer.add(novoCard, colunaAtual++, 1);
 
@@ -347,6 +372,52 @@ public class OrdemController {
         }
 
         atualizarCards(listaFormatada);
+    }
+
+    public void setOrdemEscolhida (OrdemDeServico ordemDeServico) {
+
+        idOrdem.setText(Integer.toString(ordemDeServico.getIdOrdem()));
+        idClienteOrdem.setText(Integer.toString(ordemDeServico.getIdCliente()));
+
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        dataPedidoOrdem.setText(ordemDeServico.getData().getDataInicio().format(formatador));
+
+        if (ordemDeServico.getData().getDataFim() == null) {
+
+            dataFinalizacaoOrdem.setText("Não foi finalizada");
+        }
+        else {
+
+            dataFinalizacaoOrdem.setText(ordemDeServico.getData().getDataFim().format(formatador));
+        }
+
+        statusOrdem.setText(ordemDeServico.getStatusAtual());
+        tipoDeServicoOrdem.setText(ordemDeServico.getDescricaoServico().getTipoDeServico());
+        setListaPecas();
+
+    }
+
+    public void setListaPecas () {
+
+        String textoLista = "";
+
+        Map<String, Integer> itensUtilizados = DAO.getOrdemDeServico().encontrarPorId(
+                Integer.parseInt(idOrdem.getText())).getDescricaoServico().getMapItens();
+
+        if (itensUtilizados.size() == 0) {
+
+            textoLista = "\n    Nenhuma peça foi utilizada.";
+        }
+        else {
+
+            for (String nomePeca : itensUtilizados.keySet()) {
+
+                textoLista = textoLista.concat("\n    " + nomePeca + " " + itensUtilizados.get(nomePeca) + "x.");
+            }
+        }
+
+        listaPecas.setText(textoLista);
+
     }
 
 }
