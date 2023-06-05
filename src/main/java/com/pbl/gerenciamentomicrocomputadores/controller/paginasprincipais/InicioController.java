@@ -83,7 +83,7 @@ public class InicioController {
             for (int i = 0; i < this.ordensData.size(); i++) {
 
                 FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("CardOrdemInicioView.fxml"));
-                AnchorPane novoCard = fxmlLoader.load();
+                Pane novoCard = fxmlLoader.load();
 
                 CardOrdemInicioController cardOrdemInicioController = fxmlLoader.getController();
                 cardOrdemInicioController.setInfo(this.ordensData.get(i));
