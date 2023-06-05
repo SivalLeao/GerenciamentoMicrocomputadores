@@ -21,7 +21,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="137.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="121.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Icones/CasaIcon.png" />
                      </image>
@@ -31,7 +31,7 @@
                   <Insets />
                </opaqueInsets>
             </HBox>
-            <VBox alignment="CENTER" prefHeight="500.0" prefWidth="290.0">
+            <VBox alignment="CENTER" prefHeight="480.0" prefWidth="290.0">
                <children>
                   <Button graphicTextGap="15.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="290.0" styleClass="menu-botao" text="Início             ">
                      <font>
@@ -166,9 +166,9 @@
             </StackPane>
          </children>
       </Pane>
-      <AnchorPane layoutX="342.0" layoutY="174.0" prefHeight="429.0" prefWidth="679.0" style="-fx-background-color: #004b52;">
+      <AnchorPane layoutX="302.0" layoutY="161.0" prefHeight="444.0" prefWidth="690.0" style="-fx-background-color: #004b52;">
          <children>
-            <ScrollPane layoutX="7.0" layoutY="11.0" prefHeight="408.0" prefWidth="664.0">
+            <ScrollPane prefHeight="444.0" prefWidth="690.0">
                <content>
                   <GridPane fx:id="gridContainer" prefHeight="0.0" prefWidth="0.0">
                      <rowConstraints>
@@ -179,63 +179,83 @@
             </ScrollPane>
          </children>
       </AnchorPane>
-      <Label alignment="CENTER" layoutX="342.0" layoutY="92.0" prefHeight="58.0" prefWidth="280.0" text="Ordens do dia" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+      <Label alignment="CENTER" layoutX="294.0" layoutY="87.0" prefHeight="58.0" prefWidth="280.0" text="Ordens do dia" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
          <font>
             <Font name="Comic Sans MS" size="37.0" />
          </font>
       </Label>
       <AnchorPane layoutX="1065.0" layoutY="70.0" prefHeight="580.0" prefWidth="217.0" style="-fx-background-color: #004b52;">
          <children>
-            <Label fx:id="qtdTotal" alignment="CENTER" layoutX="4.0" layoutY="34.0" prefHeight="24.0" prefWidth="206.0" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-               <font>
-                  <Font name="Comic Sans MS" size="25.0" />
-               </font>
-            </Label>
-            <Label fx:id="qtdCanceladas" alignment="CENTER" layoutX="7.0" layoutY="337.0" prefHeight="24.0" prefWidth="206.0" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-               <font>
-                  <Font name="Comic Sans MS" size="25.0" />
-               </font>
-            </Label>
-            <Label fx:id="qtdEmAndamento" alignment="CENTER" layoutX="4.0" layoutY="233.0" prefHeight="24.0" prefWidth="206.0" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-               <font>
-                  <Font name="Comic Sans MS" size="25.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutY="278.0" prefHeight="24.0" prefWidth="206.0" text="Ordens em andamento" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-               <font>
-                  <Font name="Comic Sans MS" size="17.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutY="70.0" prefHeight="24.0" prefWidth="206.0" text="Total de ordens" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-               <font>
-                  <Font name="Comic Sans MS" size="17.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutY="176.0" prefHeight="24.0" prefWidth="206.0" text="Ordens em espera" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-               <font>
-                  <Font name="Comic Sans MS" size="17.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="4.0" layoutY="380.0" prefHeight="24.0" prefWidth="206.0" text="Ordens canceladas" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-               <font>
-                  <Font name="Comic Sans MS" size="17.0" />
-               </font>
-            </Label>
-            <Label fx:id="qtdFinalizadas" alignment="CENTER" layoutX="7.0" layoutY="449.0" prefHeight="24.0" prefWidth="206.0" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-               <font>
-                  <Font name="Comic Sans MS" size="25.0" />
-               </font>
-            </Label>
-            <Label fx:id="qtdEmEspera" alignment="CENTER" layoutX="7.0" layoutY="125.0" prefHeight="24.0" prefWidth="206.0" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-               <font>
-                  <Font name="Comic Sans MS" size="25.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="7.0" layoutY="495.0" prefHeight="24.0" prefWidth="206.0" text="Ordens finalizadas" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-               <font>
-                  <Font name="Comic Sans MS" size="17.0" />
-               </font>
-            </Label>
+            <Pane prefHeight="116.0" prefWidth="217.0">
+               <children>
+                  <Label alignment="CENTER" layoutX="6.0" layoutY="64.0" prefHeight="24.0" prefWidth="206.0" text="Total de ordens" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+                     <font>
+                        <Font name="Comic Sans MS" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="qtdTotal" alignment="CENTER" layoutX="6.0" layoutY="22.0" prefHeight="24.0" prefWidth="206.0" text="10" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+                     <font>
+                        <Font name="Comic Sans MS" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="2.0" layoutY="116.0" prefHeight="116.0" prefWidth="217.0" style="-fx-background-color: #005159;">
+               <children>
+                  <Label alignment="CENTER" layoutX="6.0" layoutY="58.0" prefHeight="24.0" prefWidth="206.0" text="Ordens em espera" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+                     <font>
+                        <Font name="Comic Sans MS" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="qtdEmEspera" alignment="CENTER" layoutX="6.0" layoutY="22.0" prefHeight="24.0" prefWidth="206.0" text="4" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+                     <font>
+                        <Font name="Comic Sans MS" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="2.0" layoutY="232.0" prefHeight="116.0" prefWidth="217.0">
+               <children>
+                  <Label alignment="CENTER" layoutX="6.0" layoutY="58.0" prefHeight="24.0" prefWidth="206.0" text="Ordens em andamento" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+                     <font>
+                        <Font name="Comic Sans MS" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="qtdEmAndamento" alignment="CENTER" layoutX="6.0" layoutY="22.0" prefHeight="24.0" prefWidth="206.0" text="3" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+                     <font>
+                        <Font name="Comic Sans MS" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="2.0" layoutY="346.0" prefHeight="116.0" prefWidth="217.0" style="-fx-background-color: #005159;">
+               <children>
+                  <Label alignment="CENTER" layoutX="6.0" layoutY="58.0" prefHeight="24.0" prefWidth="206.0" text="Ordens canceladas" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+                     <font>
+                        <Font name="Comic Sans MS" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="qtdCanceladas" alignment="CENTER" layoutX="6.0" layoutY="22.0" prefHeight="24.0" prefWidth="206.0" text="2" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+                     <font>
+                        <Font name="Comic Sans MS" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="6.0" layoutY="462.0" prefHeight="116.0" prefWidth="217.0">
+               <children>
+                  <Label fx:id="qtdFinalizadas" alignment="CENTER" layoutX="6.0" layoutY="22.0" prefHeight="24.0" prefWidth="206.0" text="1" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+                     <font>
+                        <Font name="Comic Sans MS" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="6.0" layoutY="58.0" prefHeight="24.0" prefWidth="206.0" text="Ordens finalizadas" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+                     <font>
+                        <Font name="Comic Sans MS" size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
    </children>
