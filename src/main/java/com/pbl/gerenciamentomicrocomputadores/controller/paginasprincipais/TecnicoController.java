@@ -24,7 +24,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TecnicoController {
 
@@ -65,6 +68,13 @@ public class TecnicoController {
     @FXML private Button iniciarServicoBotao;
     @FXML private Label mensagemSemServico;
     @FXML private Pane paneDadosServico;
+    @FXML private Button finalizarServicoBotao;
+
+    @FXML private Label idOrdem;
+    @FXML private Label idClienteOrdem;
+    @FXML private Label dataPedidoOrdem;
+    @FXML private Label tipoDeServicoOrdem;
+    @FXML private Label listaPecas;
 
     @FXML private GridPane gridContainer;
 
@@ -90,8 +100,12 @@ public class TecnicoController {
         if (!(idTecnico.getText().equals(""))) {
 
             paneSemServico.setVisible(false);
+            paneDadosServico.setVisible(false);
+            paneBotaoColetarServico.setVisible(false);
 
             if (DAO.getOrdemDeServico().checarStatusEmAndamento(Integer.parseInt(idTecnico.getText()))) {
+
+                setDadosServico();
 
                 paneDadosServico.setVisible(true);
                 paneBotaoColetarServico.setVisible(false);
@@ -454,7 +468,7 @@ public class TecnicoController {
         }
     }
 
-    private void setDadosPerfil (Tecnico tecnico) {
+    public void setDadosPerfil (Tecnico tecnico) {
 
         idPerfil.setText(Integer.toString(tecnico.getId()));
         nomePerfil.setText(tecnico.getNome());
@@ -468,6 +482,7 @@ public class TecnicoController {
     void iniciarServicoAcao(ActionEvent event) {
 
         OrdemDeServico ordemDeServico = DAO.getOrdemDeServico().coletarOrdem();
+        ordemDeServico.setIdTecnico(Integer.parseInt(idTecnico.getText()));
 
         if (ordemDeServico == null) {
 
@@ -477,9 +492,59 @@ public class TecnicoController {
 
             mensagemSemServico.setVisible(false);
             DAO.getOrdemDeServico().atualizarStatus(ordemDeServico.getIdOrdem(), "Em andamento");
+            DAO.getOrdemDeServico().atualizar(ordemDeServico);
+            setDadosServico();
             paneDadosServico.setVisible(true);
             paneBotaoColetarServico.setVisible(false);
         }
+
+    }
+
+    public void setDadosServico() {
+
+        OrdemDeServico ordemDeServico = DAO.getOrdemDeServico().
+                conseguirOrdemTecnico(Integer.parseInt(idTecnico.getText()));
+
+        idOrdem.setText(Integer.toString(ordemDeServico.getIdOrdem()));
+        idClienteOrdem.setText(Integer.toString(ordemDeServico.getIdCliente()));
+
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        dataPedidoOrdem.setText(ordemDeServico.getData().getDataInicio().format(formatador));
+
+        tipoDeServicoOrdem.setText(ordemDeServico.getDescricaoServico().getTipoDeServico());
+        setListaPecas();
+
+    }
+
+    public void setListaPecas () {
+
+        String textoLista = "";
+
+        Map<String, Integer> itensUtilizados = DAO.getOrdemDeServico().encontrarPorId(
+                Integer.parseInt(idOrdem.getText())).getDescricaoServico().getMapItens();
+
+        if (itensUtilizados.size() == 0) {
+
+            textoLista = "\n    Nenhuma peça foi utilizada.";
+        }
+        else {
+
+            for (String nomePeca : itensUtilizados.keySet()) {
+
+                textoLista = textoLista.concat("\n    " + nomePeca + " " + itensUtilizados.get(nomePeca) + "x.");
+            }
+        }
+
+        listaPecas.setText(textoLista);
+
+    }
+
+
+    @FXML
+    void finalizarServicoAcao(ActionEvent event) {
+
+        DAO.getOrdemDeServico().atualizarStatus(Integer.parseInt(idOrdem.getText()), "Finalizado");
+        modificarAbaServico();
 
     }
 

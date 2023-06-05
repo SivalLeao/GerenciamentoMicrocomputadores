@@ -228,14 +228,14 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                            <graphic>
-                              <ImageView fx:id="tcConectado1" fitHeight="25.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="25.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Icones/Deslogar-R15.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Pane fx:id="PANECONEC" layoutX="901.0" layoutY="12.0" prefHeight="47.0" prefWidth="138.0" style="-fx-background-radius: 100;" styleClass="botao-superior">
+                        <Pane layoutX="901.0" layoutY="12.0" prefHeight="47.0" prefWidth="138.0" style="-fx-background-radius: 100;" styleClass="botao-superior">
                            <children>
                               <Label fx:id="nomeTecnico" layoutX="49.0" layoutY="5.0" prefHeight="19.0" prefWidth="80.0" textFill="WHITE">
                                  <font>
@@ -247,7 +247,7 @@
                                     <Font name="System Bold" size="13.0" />
                                  </font>
                               </Label>
-                              <ImageView fx:id="tcConectado" fitHeight="47.0" fitWidth="42.0" layoutX="3.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="47.0" fitWidth="42.0" layoutX="3.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Icones/Conectado-R15.png" />
                                  </image>
@@ -262,36 +262,70 @@
       </Pane>
       <StackPane layoutX="888.0" layoutY="94.0">
          <children>
-            <Pane fx:id="paneDadosServico" prefHeight="351.0" prefWidth="351.0" styleClass="plano-fundo-superior" visible="false">
+            <Pane fx:id="paneDadosServico" prefHeight="351.0" prefWidth="351.0" styleClass="plano-fundo-superior">
                <children>
-                  <Label layoutX="105.0" layoutY="21.0" prefHeight="30.0" prefWidth="27.0" text="ID: " textFill="WHITE">
+                  <Label layoutX="44.0" layoutY="50.0" prefHeight="30.0" prefWidth="80.0" text="ID serviço: " textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="78.0" layoutY="62.0" prefHeight="30.0" prefWidth="53.0" text="Nome: " textFill="WHITE">
+                  <Label layoutX="45.0" layoutY="80.0" prefHeight="30.0" prefWidth="78.0" text="ID cliente: " textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="56.0" layoutY="106.0" prefHeight="30.0" prefWidth="78.0" text="Endereço: " textFill="WHITE">
+                  <Label layoutX="44.0" layoutY="110.0" prefHeight="30.0" prefWidth="124.0" text="Data do pedido: " textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="56.0" layoutY="158.0" prefHeight="30.0" prefWidth="78.0" text="Telefone: " textFill="WHITE">
+                  <Label layoutX="44.0" layoutY="140.0" prefHeight="30.0" prefWidth="124.0" text="Tipo de Serviço: " textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="95.0" layoutY="209.0" prefHeight="30.0" prefWidth="35.0" text="CPF: " textFill="WHITE">
+                  <Button fx:id="finalizarServicoBotao" layoutX="238.0" layoutY="9.0" mnemonicParsing="false" onAction="#finalizarServicoAcao" prefHeight="40.0" prefWidth="105.0" styleClass="botao-superior" text="Finalizar" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="idOrdem" layoutX="123.0" layoutY="50.0" prefHeight="30.0" prefWidth="80.0" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
+                  <Label fx:id="idClienteOrdem" layoutX="123.0" layoutY="80.0" prefHeight="30.0" prefWidth="80.0" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="dataPedidoOrdem" layoutX="163.0" layoutY="110.0" prefHeight="30.0" prefWidth="105.0" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tipoDeServicoOrdem" layoutX="163.0" layoutY="140.0" prefHeight="30.0" prefWidth="158.0" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="44.0" layoutY="184.0" prefHeight="30.0" prefWidth="124.0" text="Peças utilizadas: " textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane layoutX="45.0" layoutY="214.0" prefHeight="118.0" prefWidth="270.0">
+                     <content>
+                        <Label fx:id="listaPecas" textAlignment="JUSTIFY" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </content>
+                  </ScrollPane>
                </children>
             </Pane>
-            <Pane fx:id="paneBotaoColetarServico" prefHeight="200.0" prefWidth="200.0" styleClass="plano-fundo-superior">
+            <Pane fx:id="paneBotaoColetarServico" prefHeight="200.0" prefWidth="200.0" styleClass="plano-fundo-superior" visible="false">
                <children>
                   <Button fx:id="iniciarServicoBotao" layoutX="4.0" layoutY="-1.0" mnemonicParsing="false" onAction="#iniciarServicoAcao" prefHeight="351.0" prefWidth="345.0" text="Iniciar serviço">
                      <font>
