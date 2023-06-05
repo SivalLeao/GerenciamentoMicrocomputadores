@@ -163,6 +163,15 @@
     -fx-cursor: hand;
 }
 
+.card-cliente {
+    -fx-background-color: #00818D;
+    -fx-background-radius: 100 0 0 100;
+}
+
+.card-cliente:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #00BFE1;
+}
 .button-cadastrar-client{
 
     -fx-background-radius: 20;
@@ -193,4 +202,15 @@
 }
 .scroll-pane .viewport {
     -fx-background-color: #004B52;
+}
+
+.pane-arredondado {
+    -fx-background-color: #00818D;
+    -fx-background-radius: 50 0 50 50;
+    /*-fx-background-color: transparent;*/
+    -fx-border-color: #FFFFFF; /* Defina a cor das bordas como branco */
+    -fx-border-width: 2; /* Defina a espessura da borda */
+    -fx-border-radius: 50 0 50 50; /* Defina o raio do arredondamento da borda */
+    -fx-padding: 10 20;
+
 }

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMousePressed="#click" prefHeight="59.0" prefWidth="265.0" style="-fx-background-radius: 100 0 0 100;" styleClass="plano-fundo-superior" stylesheets="@CSS/custumizacao.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.cards.CardClienteController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMousePressed="#click" prefHeight="59.0" prefWidth="265.0" styleClass="card-cliente" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.cards.CardClienteController">
    <children>
       <ImageView fitHeight="65.0" fitWidth="84.0" layoutX="-3.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -23,7 +23,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="nomeCliente" layoutX="108.0" layoutY="9.0" prefHeight="23.0" prefWidth="121.0" textFill="#f3d0ac" underline="true" wrapText="true">
+      <Label fx:id="nomeCliente" layoutX="108.0" layoutY="9.0" prefHeight="23.0" prefWidth="121.0" stylesheets="@CSS/estilo.css" textFill="#f3d0ac" underline="true" wrapText="true">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
