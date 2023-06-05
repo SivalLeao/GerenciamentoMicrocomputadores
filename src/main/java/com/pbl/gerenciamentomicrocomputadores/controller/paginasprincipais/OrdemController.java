@@ -197,4 +197,15 @@ public class OrdemController {
 
     }
 
+    public void abaPagamento(ActionEvent actionEvent) {
+    }
+
+    public void abaLogin(ActionEvent actionEvent) {
+    }
+
+    public void abaCadastrar(ActionEvent actionEvent) {
+    }
+
+    public void deslogarAcao(ActionEvent actionEvent) {
+    }
 }
