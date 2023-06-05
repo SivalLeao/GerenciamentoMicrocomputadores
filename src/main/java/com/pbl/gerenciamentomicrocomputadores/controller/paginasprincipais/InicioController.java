@@ -65,20 +65,6 @@ public class InicioController {
         paneCantoInicio.setVisible(true);
         paneTecnicoLogado.setVisible(false);
 
-        nomeTecnico.setVisible(false);
-        idTecnico.setVisible(false);
-
-        tcConectado.setOnMouseEntered(event -> {
-            nomeTecnico.setVisible(true);
-            idTecnico.setVisible(true);
-
-
-        });
-        tcConectado.setOnMouseExited(event -> {
-            nomeTecnico.setVisible(false);
-            idTecnico.setVisible(false);
-
-        });
 
         this.ordensData = DAO.getOrdemDeServico().encontrarTodos();
 
