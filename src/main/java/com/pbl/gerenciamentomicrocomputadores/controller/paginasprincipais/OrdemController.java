@@ -42,6 +42,7 @@ public class OrdemController {
     @FXML private Label idTecnico;
     @FXML private Label nomeTecnico;
 
+    @FXML private Button novoServicoBotao;
     @FXML private Button todosBotao;
     @FXML private Button emAndamentoBotao;
     @FXML private Button emEsperaBotao;
@@ -302,6 +303,37 @@ public class OrdemController {
         paneTecnicoLogado.setVisible(false);
         nomeTecnico.setText("");
         idTecnico.setText("");
+    }
+
+    @FXML
+    void abaCadastrarOrdem(ActionEvent event) {
+
+        try {
+
+            if (MainController.getStageCadastroOrdem() == null) {
+
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("CadastrarOrdemView.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+                stage.setScene(scene);
+
+                MainController.setStageCadastroOrdem(stage);
+
+                stage.show();
+            }
+            else {
+
+                Stage stage = MainController.getStageCadastroOrdem();
+                stage.show();
+                stage.toFront();
+            }
+        }
+        catch (java.io.IOException e) {
+
+        }
+
     }
 
     @FXML

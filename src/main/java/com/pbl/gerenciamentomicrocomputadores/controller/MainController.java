@@ -15,6 +15,8 @@ public class MainController {
 
     private static Stage stageCadastroCliente;
 
+    private static Stage stageCadastroOrdem;
+
     public static Stage getStageInicio () { return stageInicio; }
 
     public static void setStageInicio (Stage stageInicio) { MainController.stageInicio = stageInicio; }
@@ -34,5 +36,9 @@ public class MainController {
     public static Stage getStageCadastroCliente () { return stageCadastroCliente; }
 
     public static void setStageCadastroCliente (Stage stageCadastroCliente) { MainController.stageCadastroCliente = stageCadastroCliente; }
+
+    public static Stage getStageCadastroOrdem () { return stageCadastroOrdem; }
+
+    public static void setStageCadastroOrdem (Stage stageCadastroOrdem) { MainController.stageCadastroOrdem = stageCadastroOrdem; }
 
 }
