@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="451.0" prefWidth="287.0" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.CadastrarClienteController">
+<AnchorPane prefHeight="451.0" prefWidth="287.0" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.paginascadastrar.CadastrarClienteController">
    <children>
       <HBox prefHeight="49.0" prefWidth="306.0">
          <children>

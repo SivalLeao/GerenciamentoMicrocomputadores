@@ -1,8 +1,9 @@
-package com.pbl.gerenciamentomicrocomputadores.controller;
+package com.pbl.gerenciamentomicrocomputadores.controller.paginascadastrar;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.InicioController;
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.TecnicoController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;

@@ -12,4 +12,6 @@ module com.pbl.gerenciamentomicrocomputadores {
     opens com.pbl.gerenciamentomicrocomputadores.controller.cards to javafx.fxml;
     exports com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais;
     opens com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais to javafx.fxml;
+    exports com.pbl.gerenciamentomicrocomputadores.controller.paginascadastrar;
+    opens com.pbl.gerenciamentomicrocomputadores.controller.paginascadastrar to javafx.fxml;
 }
