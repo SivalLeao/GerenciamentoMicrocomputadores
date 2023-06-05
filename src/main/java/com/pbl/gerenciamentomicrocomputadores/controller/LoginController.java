@@ -2,6 +2,7 @@ package com.pbl.gerenciamentomicrocomputadores.controller;
 
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.ClienteController;
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.InicioController;
+import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.OrdemController;
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.TecnicoController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import javafx.event.ActionEvent;
@@ -55,6 +56,11 @@ public class LoginController {
 
                 TecnicoController tecnicoController = fxmlLoader.getController();
                 tecnicoController.fazendoMudancaLogin(DAO.getTecnico().encontrarPorCpf(cpfTecnico.getText()));
+            }
+            else if (classeController.equals("OrdemController")) {
+
+                OrdemController ordemController = fxmlLoader.getController();
+                ordemController.fazendoMudancaLogin(DAO.getTecnico().encontrarPorCpf(cpfTecnico.getText()));
             }
 
             cpfTecnico.setText("");

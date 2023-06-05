@@ -202,7 +202,17 @@ public class InicioController {
             Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
             Stage stage = MainController.getStageInicio();
             stage.setScene(scene);
+
             MainController.setStageInicio(stage);
+            MainController.setFXMLLoaderPrincipal(fxmlLoader);
+
+            if (!(idTecnico.getText().equals(""))) {
+
+                OrdemController ordemController = fxmlLoader.getController();
+                ordemController.fazendoMudancaLogin(DAO.getTecnico().encontrarPorId(
+                        Integer.parseInt(idTecnico.getText())));
+            }
+
             stage.show();
         }
         catch (java.io.IOException e) {
@@ -270,18 +280,15 @@ public class InicioController {
         paneCantoInicio.setVisible(false);
         paneTecnicoLogado.setVisible(true);
 
-
-
         nomeTecnico.setText(tecnico.getNome());
         idTecnico.setText(Integer.toString(tecnico.getId()));
-
-
 
     }
 
 
     @FXML
     void abaCadastrar(ActionEvent event) {
+
         try {
 
             if (MainController.getStageCadastroTecnico() == null) {

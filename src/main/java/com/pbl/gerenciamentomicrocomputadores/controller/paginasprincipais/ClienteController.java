@@ -280,18 +280,30 @@ public class ClienteController {
 
     @FXML
     void abaOrdem(ActionEvent event) {
+
         try {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("OrdemView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
             Stage stage = MainController.getStageInicio();
             stage.setScene(scene);
+
             MainController.setStageInicio(stage);
+            MainController.setFXMLLoaderPrincipal(fxmlLoader);
+
+            if (!(idTecnico.getText().equals(""))) {
+
+                OrdemController ordemController = fxmlLoader.getController();
+                ordemController.fazendoMudancaLogin(DAO.getTecnico().encontrarPorId(
+                        Integer.parseInt(idTecnico.getText())));
+            }
+
             stage.show();
         }
         catch (java.io.IOException e) {
 
         }
+
     }
 
     @FXML
