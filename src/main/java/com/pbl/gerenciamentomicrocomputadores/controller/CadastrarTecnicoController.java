@@ -99,27 +99,35 @@ public class CadastrarTecnicoController {
 
         if (qtdErros == 0) {
 
-            Tecnico tecnico = new Tecnico(nomeTecnico.getText(), enderecoTecnico.getText(), telefoneTecnico.getText(),
-                    cpfTecnico.getText());
+            if (DAO.getCliente().checarPorCpf(cpfTecnico.getText())) {
 
-            nomeTecnico.setText("");
-            enderecoTecnico.setText("");
-            telefoneTecnico.setText("");
-            cpfTecnico.setText("");
-
-            DAO.getTecnico().criar(tecnico);
-
-            FXMLLoader fxmlLoader = MainController.getFXMLLoaderPrincipal();
-            String classeController = fxmlLoader.getController().getClass().getSimpleName();
-
-            if (classeController.equals("TecnicoController")) {
-
-                TecnicoController tecnicoController = fxmlLoader.getController();
-                tecnicoController.atualizarCards();
+                mensagemDeErroCpf.setText("CPF já cadastrado.");
             }
+            else {
 
-            Stage stage = (Stage) voltarBotao.getScene().getWindow();
-            stage.close();
+                Tecnico tecnico = new Tecnico(nomeTecnico.getText(), enderecoTecnico.getText(), telefoneTecnico.getText(),
+                        cpfTecnico.getText());
+
+                nomeTecnico.setText("");
+                enderecoTecnico.setText("");
+                telefoneTecnico.setText("");
+                cpfTecnico.setText("");
+
+                DAO.getTecnico().criar(tecnico);
+
+                FXMLLoader fxmlLoader = MainController.getFXMLLoaderPrincipal();
+                String classeController = fxmlLoader.getController().getClass().getSimpleName();
+
+                if (classeController.equals("TecnicoController")) {
+
+                    TecnicoController tecnicoController = fxmlLoader.getController();
+                    tecnicoController.atualizarCards();
+                }
+
+                Stage stage = (Stage) voltarBotao.getScene().getWindow();
+                stage.close();
+
+            }
         }
 
     }

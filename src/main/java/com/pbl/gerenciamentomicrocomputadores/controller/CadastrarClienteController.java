@@ -5,6 +5,7 @@ import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -88,23 +89,36 @@ public class CadastrarClienteController {
 
         if (qtdErros == 0) {
 
-            Cliente cliente = new Cliente(nomeCliente.getText(), enderecoCliente.getText(), telefoneCliente.getText(),
-                    cpfCliente.getText());
+            if (DAO.getCliente().checarPorCpf(cpfCliente.getText())) {
 
-            nomeCliente.setText("");
-            enderecoCliente.setText("");
-            telefoneCliente.setText("");
-            cpfCliente.setText("");
+                mensagemDeErroCpf.setText("CPF já cadastrado.");
+            }
+            else {
 
-            DAO.getCliente().criar(cliente);
+                Cliente cliente = new Cliente(nomeCliente.getText(), enderecoCliente.getText(), telefoneCliente.getText(),
+                        cpfCliente.getText());
 
-            ClienteController clienteController = MainController.getFXMLLoaderPrincipal().getController();
-            clienteController.atualizarCards();
-            clienteController.atualizarMiniOrdens();
-            clienteController.esconderMensagensDeErro();
+                nomeCliente.setText("");
+                enderecoCliente.setText("");
+                telefoneCliente.setText("");
+                cpfCliente.setText("");
 
-            Stage stage = (Stage) voltarBotao.getScene().getWindow();
-            stage.close();
+                DAO.getCliente().criar(cliente);
+
+                FXMLLoader fxmlLoader = MainController.getFXMLLoaderPrincipal();
+                String classeController = fxmlLoader.getController().getClass().getSimpleName();
+
+                if (classeController.equals("ClienteController")) {
+
+                    ClienteController clienteController = MainController.getFXMLLoaderPrincipal().getController();
+                    clienteController.atualizarCards();
+                    clienteController.atualizarMiniOrdens();
+                    clienteController.esconderMensagensDeErro();
+                }
+
+                Stage stage = (Stage) voltarBotao.getScene().getWindow();
+                stage.close();
+            }
         }
 
     }
