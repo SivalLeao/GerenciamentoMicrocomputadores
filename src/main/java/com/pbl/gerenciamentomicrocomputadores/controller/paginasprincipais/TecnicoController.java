@@ -8,6 +8,7 @@ import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.Clien
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.InicioController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
+import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -59,6 +60,12 @@ public class TecnicoController {
     @FXML private Button atualizarBotao;
     @FXML private Button removerBotao;
 
+    @FXML private Pane paneSemServico;
+    @FXML private Pane paneBotaoColetarServico;
+    @FXML private Button iniciarServicoBotao;
+    @FXML private Label mensagemSemServico;
+    @FXML private Pane paneDadosServico;
+
     @FXML private GridPane gridContainer;
 
     private List<Tecnico> tecnicosData;
@@ -73,8 +80,32 @@ public class TecnicoController {
         paneDadosTecnico.setVisible(false);
 
         esconderMensagensDeErro();
+        modificarAbaServico();
         atualizarCards();
 
+    }
+
+    public void modificarAbaServico () {
+
+        if (!(idTecnico.getText().equals(""))) {
+
+            paneSemServico.setVisible(false);
+
+            if (DAO.getOrdemDeServico().checarStatusEmAndamento(Integer.parseInt(idTecnico.getText()))) {
+
+                paneDadosServico.setVisible(true);
+                paneBotaoColetarServico.setVisible(false);
+            }
+            else {
+
+                paneDadosServico.setVisible(false);
+                paneBotaoColetarServico.setVisible(true);
+            }
+        }
+        else {
+
+            paneSemServico.setVisible(true);
+        }
     }
 
     public void atualizarCards () {
@@ -85,7 +116,7 @@ public class TecnicoController {
 
         try {
 
-            int linhaAtual = 1;
+            int colunaAtual= 0;
 
             for (int i = 0; i < tecnicosData.size(); i++) {
 
@@ -95,7 +126,7 @@ public class TecnicoController {
                 CardTecnicoController cardTecnicoController = fxmlLoader.getController();
                 cardTecnicoController.setInfo(this.tecnicosData.get(i));
 
-                this.gridContainer.add(novoCard, 0, linhaAtual++);
+                this.gridContainer.add(novoCard, colunaAtual++, 1);
 
                 this.gridContainer.setMinWidth(Region.USE_COMPUTED_SIZE);
                 this.gridContainer.setPrefWidth(Region.USE_COMPUTED_SIZE);
@@ -121,6 +152,7 @@ public class TecnicoController {
         mensagemDeErroEndereco.setVisible(false);
         mensagemDeErroTelefone.setVisible(false);
         mensagemDeErroCpf.setVisible(false);
+        mensagemSemServico.setVisible(false);
 
     }
 
@@ -168,6 +200,7 @@ public class TecnicoController {
 
         nomeTecnico.setText(tecnico.getNome());
         idTecnico.setText(Integer.toString(tecnico.getId()));
+        modificarAbaServico();
 
     }
 
@@ -186,6 +219,7 @@ public class TecnicoController {
         paneTecnicoLogado.setVisible(false);
         nomeTecnico.setText("");
         idTecnico.setText("");
+        modificarAbaServico();
         esconderMensagensDeErro();
     }
 
@@ -427,6 +461,25 @@ public class TecnicoController {
         enderecoPerfil.setText(tecnico.getEndereco());
         telefonePerfil.setText(tecnico.getTelefone());
         cpfPerfil.setText(tecnico.getCpf());
+
+    }
+
+    @FXML
+    void iniciarServicoAcao(ActionEvent event) {
+
+        OrdemDeServico ordemDeServico = DAO.getOrdemDeServico().coletarOrdem();
+
+        if (ordemDeServico == null) {
+
+            mensagemSemServico.setVisible(true);
+        }
+        else {
+
+            mensagemSemServico.setVisible(false);
+            DAO.getOrdemDeServico().atualizarStatus(ordemDeServico.getIdOrdem(), "Em andamento");
+            paneDadosServico.setVisible(true);
+            paneBotaoColetarServico.setVisible(false);
+        }
 
     }
 
