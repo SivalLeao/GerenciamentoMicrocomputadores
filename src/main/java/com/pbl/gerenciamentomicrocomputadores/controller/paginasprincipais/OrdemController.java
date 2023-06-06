@@ -452,4 +452,11 @@ public class OrdemController {
 
     }
 
+    public void atualizarOrdensData () {
+
+        this.ordensData = DAO.getOrdemDeServico().encontrarTodos();
+    }
+
+    public List<OrdemDeServico> getOrdensData () { return ordensData; }
+
 }
