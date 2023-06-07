@@ -485,6 +485,7 @@ public class ClienteController {
 
                 atualizarCards();
                 atualizarMiniOrdens();
+                setClienteEscolhido(cliente);
 
                 try {
 
