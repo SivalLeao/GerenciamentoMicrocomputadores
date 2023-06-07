@@ -125,8 +125,8 @@ public class InicioController {
 
             if (ordemDeServico.getStatusAtual().equals("Em espera")) { countEmEspera++; }
             else if (ordemDeServico.getStatusAtual().equals("Em andamento")) { countEmAndamento++; }
-            else if (ordemDeServico.getStatusAtual().equals("Cancelada")) { countCanceladas++; }
-            else if (ordemDeServico.getStatusAtual().equals("Finalizada")) { countCanceladas++; }
+            else if (ordemDeServico.getStatusAtual().equals("Cancelado")) { countCanceladas++; }
+            else if (ordemDeServico.getStatusAtual().equals("Finalizado")) { countFinalizadas++; }
 
         }
 
