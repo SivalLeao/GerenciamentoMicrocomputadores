@@ -72,8 +72,6 @@ public class ClienteController {
 
     private MyListener<Cliente> myListener;
 
-    private List<Cliente> clientesData;
-
     @FXML
     void initialize() {
 
@@ -109,11 +107,11 @@ public class ClienteController {
 
         gridContainer.getChildren().clear();
 
-        this.clientesData = DAO.getCliente().encontrarTodos();
+        List<Cliente> clientesData = DAO.getCliente().encontrarTodos();
 
-        if (this.clientesData.size() > 0) {
+        if (clientesData.size() > 0) {
 
-            setClienteEscolhido(this.clientesData.get(0));
+            setClienteEscolhido(clientesData.get(0));
 
             this.myListener = new MyListener<Cliente>() {
                 @Override
@@ -137,7 +135,7 @@ public class ClienteController {
                 Pane novoCard = fxmlLoader.load();
 
                 CardClienteController cardClienteController = fxmlLoader.getController();
-                cardClienteController.setInfo(this.clientesData.get(i), myListener);
+                cardClienteController.setInfo(clientesData.get(i), myListener);
 
                 this.gridContainer.add(novoCard, 0, linhaAtual++);
 
