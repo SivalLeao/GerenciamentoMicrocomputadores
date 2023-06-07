@@ -8,10 +8,8 @@ import java.util.Map;
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
 import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
 import com.pbl.gerenciamentomicrocomputadores.controller.MyListener;
-import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardClienteController;
 import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardOrdemController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
-import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
 import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
 import javafx.event.ActionEvent;
@@ -52,11 +50,16 @@ public class OrdemController {
 
     @FXML private Label idOrdem;
     @FXML private Label idClienteOrdem;
+    @FXML private Label idTecnicoOrdem;
     @FXML private Label dataPedidoOrdem;
     @FXML private Label dataFinalizacaoOrdem;
     @FXML private Label statusOrdem;
     @FXML private Label tipoDeServicoOrdem;
     @FXML private Label listaPecas;
+
+    @FXML private Button removerOrdemBotao;
+    @FXML private Button cancelarOrdemBotao;
+    @FXML private Label mensagemDeErroAlterarOrdem;
 
     private List<OrdemDeServico> ordensData;
 
@@ -70,6 +73,7 @@ public class OrdemController {
 
         this.ordensData = DAO.getOrdemDeServico().encontrarTodos();
         atualizarCards(this.ordensData);
+        mensagemDeErroAlterarOrdem.setText("");
     }
 
     public void atualizarCards (List<OrdemDeServico> ordensData) {
@@ -84,6 +88,7 @@ public class OrdemController {
                 @Override
                 public void onClickListener(OrdemDeServico ordemDeServico) {
 
+                    mensagemDeErroAlterarOrdem.setText("");
                     setOrdemEscolhida(ordemDeServico);
                 }
             };
@@ -411,6 +416,15 @@ public class OrdemController {
         idOrdem.setText(Integer.toString(ordemDeServico.getIdOrdem()));
         idClienteOrdem.setText(Integer.toString(ordemDeServico.getIdCliente()));
 
+        if (ordemDeServico.getIdTecnico() == 0) {
+
+            idTecnicoOrdem.setText("?");
+        }
+        else {
+
+            idTecnicoOrdem.setText(Integer.toString(ordemDeServico.getIdTecnico()));
+        }
+
         DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         dataPedidoOrdem.setText(ordemDeServico.getData().getDataInicio().format(formatador));
 
@@ -458,5 +472,46 @@ public class OrdemController {
     }
 
     public List<OrdemDeServico> getOrdensData () { return ordensData; }
+
+    @FXML
+    void removerOrdemAcao(ActionEvent event) {
+
+        if (idTecnico.getText().equals("")) {
+
+            mensagemDeErroAlterarOrdem.setText("Tecnico deslogado.");
+        }
+        else if (statusOrdem.getText().equals("Em andamento")) {
+
+            mensagemDeErroAlterarOrdem.setText("Serviço em andamento.");
+        }
+        else {
+
+            DAO.getOrdemDeServico().remover(Integer.parseInt(idOrdem.getText()));
+            atualizarOrdensData();
+            atualizarCards(this.ordensData);
+        }
+    }
+
+    @FXML
+    void cancelarOrdemAcao(ActionEvent event) {
+
+        if (idTecnico.getText().equals("")) {
+
+            mensagemDeErroAlterarOrdem.setText("Tecnico deslogado.");
+        }
+        else if (statusOrdem.getText().equals("Em andamento")) {
+
+            mensagemDeErroAlterarOrdem.setText("Serviço em andamento.");
+        }
+        else {
+
+            int id = Integer.parseInt(idOrdem.getText());
+
+            DAO.getOrdemDeServico().atualizarStatus(id, "Cancelado");
+            atualizarOrdensData();
+            atualizarCards(this.ordensData);
+            setOrdemEscolhida(DAO.getOrdemDeServico().encontrarPorId(id));
+        }
+    }
 
 }
