@@ -1,10 +1,6 @@
 package com.pbl.gerenciamentomicrocomputadores.controller.paginascadastrar;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
-import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.InicioController;
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.TecnicoController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
@@ -18,41 +14,18 @@ import javafx.stage.Stage;
 
 public class CadastrarTecnicoController {
 
-    @FXML
-    private ResourceBundle resources;
+    @FXML private Button cadastrarBotao;
+    @FXML private Button voltarBotao;
 
-    @FXML
-    private URL location;
+    @FXML private TextField nomeTecnico;
+    @FXML private TextField enderecoTecnico;
+    @FXML private TextField cpfTecnico;
+    @FXML private TextField telefoneTecnico;
 
-    @FXML
-    private Button cadastrarBotao;
-
-    @FXML
-    private TextField cpfTecnico;
-
-    @FXML
-    private TextField enderecoTecnico;
-
-    @FXML
-    private Label mensagemDeErroCpf;
-
-    @FXML
-    private Label mensagemDeErroEndereco;
-
-    @FXML
-    private Label mensagemDeErroNome;
-
-    @FXML
-    private Label mensagemDeErroTelefone;
-
-    @FXML
-    private TextField nomeTecnico;
-
-    @FXML
-    private TextField telefoneTecnico;
-
-    @FXML
-    private Button voltarBotao;
+    @FXML private Label mensagemDeErroNome;
+    @FXML private Label mensagemDeErroEndereco;
+    @FXML private Label mensagemDeErroCpf;
+    @FXML private Label mensagemDeErroTelefone;
 
     @FXML
     void cadastrarAcao (ActionEvent event) {
@@ -62,7 +35,7 @@ public class CadastrarTecnicoController {
         if (! ((nomeTecnico.getText().matches("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"))
                 && (nomeTecnico.getText().replaceAll("\\s+", "").length() >= 3))) {
 
-            mensagemDeErroNome.setText("Entrada inválida");
+            mensagemDeErroNome.setText("Apenas letras. Mínimo 3 caracteres.");
             qtdErros++;
         }
         else {
@@ -71,31 +44,31 @@ public class CadastrarTecnicoController {
 
         if (! ((enderecoTecnico.getText().replaceAll("\\s+", "").length() >= 3))) {
 
-            mensagemDeErroEndereco.setText("Entrada inválida");
+            mensagemDeErroEndereco.setText("Mínimo 3 caracteres.");
             qtdErros++;
         }
         else {
             mensagemDeErroEndereco.setText("");
         }
 
-        if (! ((telefoneTecnico.getText().matches("^[0-9() -]+$")) &&
-        (telefoneTecnico.getText().replaceAll("\\s+|\\(+|\\)+|-+", "").length() == 11)))  {
-
-            mensagemDeErroTelefone.setText("Entrada inválida");
-            qtdErros++;
-        }
-        else {
-            mensagemDeErroTelefone.setText("");
-        }
-
         if (! ((cpfTecnico.getText().matches("^[0-9 .-]+$")) &&
                 (cpfTecnico.getText().replaceAll("\\s+|\\.+|-+", "").length() == 11)))  {
 
-            mensagemDeErroCpf.setText("Entrada inválida");
+            mensagemDeErroCpf.setText("Apenas números. Deve conter 11 caracteres.");
             qtdErros++;
         }
         else {
             mensagemDeErroCpf.setText("");
+        }
+
+        if (! ((telefoneTecnico.getText().matches("^[0-9() -]+$")) &&
+        (telefoneTecnico.getText().replaceAll("\\s+|\\(+|\\)+|-+", "").length() == 11)))  {
+
+            mensagemDeErroTelefone.setText("Apenas números. Deve conter 11 caracteres.");
+            qtdErros++;
+        }
+        else {
+            mensagemDeErroTelefone.setText("");
         }
 
         if (qtdErros == 0) {
@@ -136,7 +109,19 @@ public class CadastrarTecnicoController {
     @FXML
     void fecharAbaCadastrar(ActionEvent event) {
 
+        nomeTecnico.setText("");
+        enderecoTecnico.setText("");
+        telefoneTecnico.setText("");
+        cpfTecnico.setText("");
+
+        mensagemDeErroNome.setText("");
+        mensagemDeErroEndereco.setText("");
+        mensagemDeErroTelefone.setText("");
+        mensagemDeErroCpf.setText("");
+
         Stage stage = (Stage) voltarBotao.getScene().getWindow();
         stage.close();
+
     }
+
 }

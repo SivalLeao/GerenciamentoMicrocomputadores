@@ -14,35 +14,18 @@ import javafx.stage.Stage;
 
 public class CadastrarClienteController {
 
-    @FXML
-    private Button cadastrarBotao;
+    @FXML private Button cadastrarBotao;
+    @FXML private Button voltarBotao;
 
-    @FXML
-    private TextField cpfCliente;
+    @FXML private TextField nomeCliente;
+    @FXML private TextField enderecoCliente;
+    @FXML private TextField cpfCliente;
+    @FXML private TextField telefoneCliente;
 
-    @FXML
-    private TextField enderecoCliente;
-
-    @FXML
-    private Label mensagemDeErroCpf;
-
-    @FXML
-    private Label mensagemDeErroEndereco;
-
-    @FXML
-    private Label mensagemDeErroNome;
-
-    @FXML
-    private Label mensagemDeErroTelefone;
-
-    @FXML
-    private TextField nomeCliente;
-
-    @FXML
-    private TextField telefoneCliente;
-
-    @FXML
-    private Button voltarBotao;
+    @FXML private Label mensagemDeErroNome;
+    @FXML private Label mensagemDeErroEndereco;
+    @FXML private Label mensagemDeErroCpf;
+    @FXML private Label mensagemDeErroTelefone;
 
     @FXML
     void cadastrarAcao(ActionEvent event) {
@@ -52,7 +35,7 @@ public class CadastrarClienteController {
         if (! ((nomeCliente.getText().matches("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"))
                 && (nomeCliente.getText().replaceAll("\\s+", "").length() >= 3))) {
 
-            mensagemDeErroNome.setText("Entrada inválida");
+            mensagemDeErroNome.setText("Apenas letras. Mínimo 3 caracteres.");
             qtdErros++;
         }
         else {
@@ -61,7 +44,7 @@ public class CadastrarClienteController {
 
         if (! ((enderecoCliente.getText().replaceAll("\\s+", "").length() >= 3))) {
 
-            mensagemDeErroEndereco.setText("Entrada inválida");
+            mensagemDeErroEndereco.setText("Mínimo 3 caracteres.");
             qtdErros++;
         }
         else {
@@ -71,7 +54,7 @@ public class CadastrarClienteController {
         if (! ((telefoneCliente.getText().matches("^[0-9() -]+$")) &&
                 (telefoneCliente.getText().replaceAll("\\s+|\\(+|\\)+|-+", "").length() == 11)))  {
 
-            mensagemDeErroTelefone.setText("Entrada inválida");
+            mensagemDeErroTelefone.setText("Apenas números. Deve conter 11 caracteres.");
             qtdErros++;
         }
         else {
@@ -81,7 +64,7 @@ public class CadastrarClienteController {
         if (! ((cpfCliente.getText().matches("^[0-9 .-]+$")) &&
                 (cpfCliente.getText().replaceAll("\\s+|\\.+|-+", "").length() == 11)))  {
 
-            mensagemDeErroCpf.setText("Entrada inválida");
+            mensagemDeErroCpf.setText("Apenas números. Deve conter 11 caracteres.");
             qtdErros++;
         }
         else {
@@ -126,6 +109,16 @@ public class CadastrarClienteController {
 
     @FXML
     void fecharAbaCadastrar(ActionEvent event) {
+
+        nomeCliente.setText("");
+        enderecoCliente.setText("");
+        telefoneCliente.setText("");
+        cpfCliente.setText("");
+
+        mensagemDeErroNome.setText("");
+        mensagemDeErroEndereco.setText("");
+        mensagemDeErroTelefone.setText("");
+        mensagemDeErroCpf.setText("");
 
         Stage stage = (Stage) voltarBotao.getScene().getWindow();
         stage.close();
