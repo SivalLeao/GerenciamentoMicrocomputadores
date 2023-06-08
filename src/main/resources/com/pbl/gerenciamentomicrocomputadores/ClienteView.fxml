@@ -23,7 +23,7 @@
                <children>
                   <ImageView fitHeight="138.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Icones/ClienteIcon.png" />
+                        <Image url="@Icones/LogoIcon.png" />
                      </image>
                   </ImageView>
                </children>
@@ -33,74 +33,74 @@
             </HBox>
             <VBox alignment="CENTER" prefHeight="480.0" prefWidth="290.0">
                <children>
-                  <Button fx:id="inicioBotao" graphicTextGap="15.0" mnemonicParsing="false" onAction="#abaInicio" prefHeight="75.0" prefWidth="290.0" styleClass="menu-botao" text="Início             ">
+                  <Button fx:id="inicioBotao" graphicTextGap="15.0" mnemonicParsing="false" onAction="#abaInicio" prefHeight="75.0" prefWidth="290.0" styleClass="menu-botao" text="Início   " textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="Consolas Bold" size="18.0" />
                      </font>
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Icones/Casa-R15.png" />
+                              <Image url="@Icones/CasaIcon.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button graphicTextGap="15.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="290.0" styleClass="menu-botao" text="Cliente           ">
+                  <Button graphicTextGap="15.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="290.0" style="-fx-background-color: #002E32;" styleClass="menu-botao" text="Cliente   " textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="Consolas Bold" size="18.0" />
                      </font>
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Icones/Cliente-R15.png" />
+                              <Image url="@Icones/ClienteIcon.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="tecnicoBotao" graphicTextGap="15.0" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#abaTecnico" prefHeight="75.0" prefWidth="290.0" styleClass="menu-botao" text="Técnico        ">
+                  <Button fx:id="tecnicoBotao" graphicTextGap="15.0" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#abaTecnico" prefHeight="75.0" prefWidth="290.0" styleClass="menu-botao" text="Técnico   " textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="Consolas Bold" size="18.0" />
                      </font>
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Icones/Tecnico-R15.png" />
+                              <Image url="@Icones/Tecnico_branco-R15.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="estoqueBotao" graphicTextGap="15.0" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#abaEstoque" prefHeight="75.0" prefWidth="290.0" styleClass="menu-botao" text="Estoque        ">
+                  <Button fx:id="estoqueBotao" graphicTextGap="15.0" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#abaEstoque" prefHeight="75.0" prefWidth="290.0" styleClass="menu-botao" text="Estoque   " textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="Consolas Bold" size="18.0" />
                      </font>
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Icones/Estoque-R15.png" />
+                              <Image url="@Icones/Estoque_branco-R15.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="ordemBotao" graphicTextGap="15.0" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#abaOrdem" prefHeight="75.0" prefWidth="290.0" styleClass="menu-botao" text="Serviço         ">
+                  <Button fx:id="ordemBotao" graphicTextGap="15.0" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#abaOrdem" prefHeight="75.0" prefWidth="290.0" styleClass="menu-botao" text="Serviço   " textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="Consolas Bold" size="18.0" />
                      </font>
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Icones/Serviço-R15.png" />
+                              <Image url="@Icones/OrdemServicoIcon.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="PagamentoBotao" graphicTextGap="15.0" layoutX="10.0" layoutY="377.0" mnemonicParsing="false" onAction="#abaPagamento" prefHeight="75.0" prefWidth="290.0" styleClass="menu-botao" text="Pagamento">
+                  <Button fx:id="PagamentoBotao" graphicTextGap="15.0" layoutX="10.0" layoutY="377.0" mnemonicParsing="false" onAction="#abaPagamento" prefHeight="75.0" prefWidth="290.0" styleClass="menu-botao" text="Pagamento " textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="Consolas Bold" size="18.0" />
                      </font>
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Icones/Pagamento-R15.png" />
+                              <Image url="@Icones/Pagamento_branco-R15.png" />
                            </image>
                         </ImageView>
                      </graphic>
