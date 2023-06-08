@@ -141,6 +141,7 @@
     -fx-background-color: #004B52;
 }
 .menu-botao{
+-fx-background-radius: 0;
     -fx-background-color: #004B52;
 
 }
