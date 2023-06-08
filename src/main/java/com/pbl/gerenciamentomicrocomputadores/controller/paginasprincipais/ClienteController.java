@@ -592,6 +592,28 @@ public class ClienteController {
             mensagemTecnicoDeslogado.setVisible(true);
 
         }
+        else if (DAO.getOrdemDeServico().encontrarPorIdCliente(Integer.parseInt(idCliente.getText())).size() > 0) {
+
+            try {
+
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+                stage.setScene(scene);
+
+                MensagemController mensagemController = fxmlLoader.getController();
+                mensagemController.setMensagem(" O cliente possui serviços registrados \n" +
+                        "no sistema. Não é permitido removê-lo.");
+
+                stage.show();
+
+            } catch (java.io.IOException e) {
+
+            }
+
+        }
         else {
 
             try {
@@ -668,8 +690,8 @@ public class ClienteController {
             esconderMensagensDeErro();
             mensagemPesquisa.setText("Cliente encontrado.");
         }
-        else if ((cpfPesquisado.matches("^[0-9 .-]+$")) &&
-                (cpfPesquisado.replaceAll("\\s+|\\.+|-+", "").length() == 11)) {
+        else if ((cpfPesquisado.matches("^[0-9]+$")) &&
+                (cpfPesquisado.length() == 11)) {
 
             mensagemPesquisa.setText("Cliente não encontrado.");
         }
