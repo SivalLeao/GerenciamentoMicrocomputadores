@@ -13,9 +13,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
@@ -40,8 +38,9 @@ public class InicioController {
     @FXML private Label idTecnico;
     @FXML private Button deslogarBotao;
 
-    @FXML
-    private GridPane gridContainer;
+    @FXML private Pane paneCardsOrdens;
+    @FXML private GridPane gridContainer;
+    @FXML private Pane paneSemServico;
 
     @FXML private Label qtdCanceladas;
     @FXML private Label qtdEmAndamento;
@@ -49,14 +48,7 @@ public class InicioController {
     @FXML private Label qtdTotal;
     @FXML private Label qtdFinalizadas;
 
-    @FXML
-    private TextArea infoText;
-
-    @FXML
-    private ImageView tcConectado;
-
     private List<OrdemDeServico> ordensData;
-
 
     @FXML
     void initialize () {
@@ -67,7 +59,18 @@ public class InicioController {
 
         this.ordensData = DAO.getOrdemDeServico().encontrarTodos();
 
-        atualizarCards();
+        if (this.ordensData.size() != 0) {
+
+            paneCardsOrdens.setVisible(true);
+            paneSemServico.setVisible(false);
+            atualizarCards();
+        }
+        else {
+
+            paneCardsOrdens.setVisible(false);
+            paneSemServico.setVisible(true);
+        }
+
         atualizarEstatisticasLaterais();
 
     }
@@ -159,7 +162,6 @@ public class InicioController {
             }
 
             stage.show();
-
         }
         catch (java.io.IOException e) {
 
@@ -191,6 +193,7 @@ public class InicioController {
         catch (java.io.IOException e) {
 
         }
+
     }
 
     @FXML
@@ -221,6 +224,7 @@ public class InicioController {
 
     }
 
+    // Atualizar quando fizer a página de estoque
     @FXML
     void abaEstoque (ActionEvent event) {
 
@@ -239,11 +243,11 @@ public class InicioController {
 
     }
 
+    // Atualizar quando fizer a página de pagamento
     @FXML
     void abaPagamento(ActionEvent event) {
 
     }
-
 
     @FXML
     void abaLogin (ActionEvent event) {
@@ -273,6 +277,7 @@ public class InicioController {
         catch (java.io.IOException e) {
 
         }
+
     }
 
     public void fazendoMudancaLogin (Tecnico tecnico) {
@@ -284,7 +289,6 @@ public class InicioController {
         idTecnico.setText(Integer.toString(tecnico.getId()));
 
     }
-
 
     @FXML
     void abaCadastrar(ActionEvent event) {
@@ -324,6 +328,7 @@ public class InicioController {
         paneTecnicoLogado.setVisible(false);
         nomeTecnico.setText("");
         idTecnico.setText("");
+
     }
 
 }
