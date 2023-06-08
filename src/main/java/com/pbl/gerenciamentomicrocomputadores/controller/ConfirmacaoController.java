@@ -16,6 +16,8 @@ public class ConfirmacaoController {
     @FXML private Button confirmarBotao;
     @FXML private Button cancelarBotao;
 
+    String tipoDeAcao;
+
     @FXML
     void confirmarAcao(ActionEvent event) {
 
@@ -25,7 +27,15 @@ public class ConfirmacaoController {
         if (classeController.equals("ClienteController")) {
 
             ClienteController clienteController = fxmlLoader.getController();
-            clienteController.atualizarCliente();
+
+            if (tipoDeAcao.equals("atualizar")) {
+
+                clienteController.atualizarCliente();
+            }
+            else if (tipoDeAcao.equals("remover")) {
+
+                clienteController.removerCliente();
+            }
         }
 
         Stage stage = (Stage) confirmarBotao.getScene().getWindow();
@@ -42,6 +52,11 @@ public class ConfirmacaoController {
     public void setTexto (String mensagem) {
 
         texto.setText(mensagem);
+    }
+
+    public void setTipoDeAcao (String acao) {
+
+        tipoDeAcao = acao;
     }
 
 }

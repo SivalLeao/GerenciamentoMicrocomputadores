@@ -477,6 +477,7 @@ public class ClienteController {
 
                     ConfirmacaoController confirmacaoController = fxmlLoader.getController();
                     confirmacaoController.setTexto("Deseja atualizar as informações do cliente?");
+                    confirmacaoController.setTipoDeAcao("atualizar");
 
                     MainController.setStageConfirmacao(stage);
 
@@ -593,34 +594,60 @@ public class ClienteController {
         }
         else {
 
-            DAO.getCliente().remover(Integer.parseInt(idCliente.getText()));
-
-            idCliente.setText("");
-            nomeCliente.setText("");
-            enderecoCliente.setText("");
-            telefoneCliente.setText("");
-            cpfCliente.setText("");
-
-            atualizarCards();
-            atualizarMiniOrdens();
-
             try {
 
-                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("ConfirmacaoView.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 Stage stage = new Stage();
                 stage.setResizable(false);
                 stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
                 stage.setScene(scene);
+                stage.setAlwaysOnTop(true);
 
-                MensagemController mensagemController = fxmlLoader.getController();
-                mensagemController.setMensagem("     Cliente Removido.");
+                ConfirmacaoController confirmacaoController = fxmlLoader.getController();
+                confirmacaoController.setTexto("Deseja remover o cliente?");
+                confirmacaoController.setTipoDeAcao("remover");
+
+                MainController.setStageConfirmacao(stage);
 
                 stage.show();
-
-            } catch (java.io.IOException e) {
+            }
+            catch (java.io.IOException e) {
 
             }
+
+        }
+
+    }
+
+    public void removerCliente () {
+
+        DAO.getCliente().remover(Integer.parseInt(idCliente.getText()));
+
+        idCliente.setText("");
+        nomeCliente.setText("");
+        enderecoCliente.setText("");
+        telefoneCliente.setText("");
+        cpfCliente.setText("");
+
+        atualizarCards();
+        atualizarMiniOrdens();
+
+        try {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+            stage.setScene(scene);
+
+            MensagemController mensagemController = fxmlLoader.getController();
+            mensagemController.setMensagem("     Cliente Removido.");
+
+            stage.show();
+
+        } catch (java.io.IOException e) {
 
         }
 
