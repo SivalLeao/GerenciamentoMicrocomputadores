@@ -35,7 +35,7 @@ public class CadastrarTecnicoController {
         if (! ((nomeTecnico.getText().matches("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"))
                 && (nomeTecnico.getText().replaceAll("\\s+", "").length() >= 3))) {
 
-            mensagemDeErroNome.setText("Apenas letras. Mínimo 3 caracteres.");
+            mensagemDeErroNome.setText("Apenas letras. Ao menos 3 caracteres.");
             qtdErros++;
         }
         else {
@@ -44,15 +44,15 @@ public class CadastrarTecnicoController {
 
         if (! ((enderecoTecnico.getText().replaceAll("\\s+", "").length() >= 3))) {
 
-            mensagemDeErroEndereco.setText("Mínimo 3 caracteres.");
+            mensagemDeErroEndereco.setText("Ao menos 3 caracteres.");
             qtdErros++;
         }
         else {
             mensagemDeErroEndereco.setText("");
         }
 
-        if (! ((cpfTecnico.getText().matches("^[0-9 .-]+$")) &&
-                (cpfTecnico.getText().replaceAll("\\s+|\\.+|-+", "").length() == 11)))  {
+        if (! ((cpfTecnico.getText().matches("^[0-9]+$")) &&
+                (cpfTecnico.getText().length() == 11)))  {
 
             mensagemDeErroCpf.setText("Apenas números. Deve conter 11 caracteres.");
             qtdErros++;
@@ -61,8 +61,8 @@ public class CadastrarTecnicoController {
             mensagemDeErroCpf.setText("");
         }
 
-        if (! ((telefoneTecnico.getText().matches("^[0-9() -]+$")) &&
-        (telefoneTecnico.getText().replaceAll("\\s+|\\(+|\\)+|-+", "").length() == 11)))  {
+        if (! ((telefoneTecnico.getText().matches("^[0-9]+$")) &&
+        (telefoneTecnico.getText().length() == 11)))  {
 
             mensagemDeErroTelefone.setText("Apenas números. Deve conter 11 caracteres.");
             qtdErros++;

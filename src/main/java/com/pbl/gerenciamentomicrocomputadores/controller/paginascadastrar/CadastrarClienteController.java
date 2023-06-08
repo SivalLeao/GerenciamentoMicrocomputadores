@@ -35,7 +35,7 @@ public class CadastrarClienteController {
         if (! ((nomeCliente.getText().matches("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"))
                 && (nomeCliente.getText().replaceAll("\\s+", "").length() >= 3))) {
 
-            mensagemDeErroNome.setText("Apenas letras. Mínimo 3 caracteres.");
+            mensagemDeErroNome.setText("Apenas letras. Ao menos 3 caracteres.");
             qtdErros++;
         }
         else {
@@ -44,15 +44,15 @@ public class CadastrarClienteController {
 
         if (! ((enderecoCliente.getText().replaceAll("\\s+", "").length() >= 3))) {
 
-            mensagemDeErroEndereco.setText("Mínimo 3 caracteres.");
+            mensagemDeErroEndereco.setText("Ao menos 3 caracteres.");
             qtdErros++;
         }
         else {
             mensagemDeErroEndereco.setText("");
         }
 
-        if (! ((telefoneCliente.getText().matches("^[0-9() -]+$")) &&
-                (telefoneCliente.getText().replaceAll("\\s+|\\(+|\\)+|-+", "").length() == 11)))  {
+        if (! ((telefoneCliente.getText().matches("^[0-9]+$")) &&
+                (telefoneCliente.getText().length() == 11)))  {
 
             mensagemDeErroTelefone.setText("Apenas números. Deve conter 11 caracteres.");
             qtdErros++;
@@ -61,8 +61,8 @@ public class CadastrarClienteController {
             mensagemDeErroTelefone.setText("");
         }
 
-        if (! ((cpfCliente.getText().matches("^[0-9 .-]+$")) &&
-                (cpfCliente.getText().replaceAll("\\s+|\\.+|-+", "").length() == 11)))  {
+        if (! ((cpfCliente.getText().matches("^[0-9]+$")) &&
+                (cpfCliente.getText().length() == 11)))  {
 
             mensagemDeErroCpf.setText("Apenas números. Deve conter 11 caracteres.");
             qtdErros++;
