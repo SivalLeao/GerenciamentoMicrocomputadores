@@ -1,5 +1,6 @@
 package com.pbl.gerenciamentomicrocomputadores.controller.cards;
 
+import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
 import com.pbl.gerenciamentomicrocomputadores.controller.MyListener;
 import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
 import javafx.fxml.FXML;
@@ -22,6 +23,11 @@ public class CardClienteController {
     public void click (MouseEvent mouseEvent) {
 
         this.myListener.onClickListener(cliente);
+
+        if (MainController.getStageConfirmacao() != null) {
+
+            MainController.getStageConfirmacao().close();
+        }
     }
 
     public void setInfo (Cliente cliente, MyListener<Cliente> myListener) {

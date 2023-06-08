@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -74,6 +75,16 @@ public class ClienteController {
     private MyListener<Cliente> myListener;
 
     String cpfAtual;
+
+    @FXML
+    void pressed(MouseEvent event) {
+
+        if (MainController.getStageConfirmacao() != null) {
+
+            MainController.getStageConfirmacao().close();
+        }
+
+    }
 
     @FXML
     void initialize() {
@@ -450,88 +461,121 @@ public class ClienteController {
         }
         else {
 
-            int qtdErros = 0;
-
-            if (!((nomeCliente.getText().matches("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"))
-                    && (nomeCliente.getText().replaceAll("\\s+", "").length() >= 3))) {
-
-                mensagemDeErroNome.setVisible(true);
-                qtdErros++;
-            } else {
-                mensagemDeErroNome.setVisible(false);
-            }
-
-            if (!((enderecoCliente.getText().replaceAll("\\s+", "").length() >= 3))) {
-
-                mensagemDeErroEndereco.setVisible(true);
-                qtdErros++;
-            } else {
-                mensagemDeErroEndereco.setVisible(false);
-            }
-
-            if (!((telefoneCliente.getText().matches("^[0-9() -]+$")) &&
-                    (telefoneCliente.getText().replaceAll("\\s+|\\(+|\\)+|-+", "").length() == 11))) {
-
-                mensagemDeErroTelefone.setVisible(true);
-                qtdErros++;
-            } else {
-                mensagemDeErroTelefone.setVisible(false);
-            }
-
-            if (!((cpfCliente.getText().matches("^[0-9 .-]+$")) &&
-                    (cpfCliente.getText().replaceAll("\\s+|\\.+|-+", "").length() == 11))) {
-
-                mensagemDeErroCpf.setVisible(true);
-                mensagemDeErroCpf.setText("Apenas números. Deve conter 11 caracteres.");
-                qtdErros++;
-            } else {
-                mensagemDeErroCpf.setVisible(false);
-            }
+            int qtdErros = validarEntradas();
 
             if (qtdErros == 0) {
 
-                if (! (cpfAtual.equals(cpfCliente.getText()))) {
+                try {
 
-                    if (DAO.getCliente().checarPorCpf(cpfCliente.getText())) {
+                    FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("ConfirmacaoView.fxml"));
+                    Scene scene = new Scene(fxmlLoader.load());
+                    Stage stage = new Stage();
+                    stage.setResizable(false);
+                    stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+                    stage.setScene(scene);
+                    stage.setAlwaysOnTop(true);
 
-                        mensagemDeErroCpf.setVisible(true);
-                        mensagemDeErroCpf.setText("CPF já cadastrado.");
-                    }
+                    ConfirmacaoController confirmacaoController = fxmlLoader.getController();
+                    confirmacaoController.setTexto("Deseja atualizar as informações do cliente?");
+
+                    MainController.setStageConfirmacao(stage);
+
+                    stage.show();
                 }
-
-                if (! (mensagemDeErroCpf.isVisible())) {
-
-                    Cliente cliente = new Cliente(nomeCliente.getText(), enderecoCliente.getText(), telefoneCliente.getText(),
-                            cpfCliente.getText());
-                    cliente.setId(Integer.parseInt(idCliente.getText()));
-
-                    DAO.getCliente().atualizar(cliente);
-
-                    atualizarCards();
-                    setClienteEscolhido(cliente);
-                    atualizarMiniOrdens();
-
-                    try {
-
-                        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
-                        Scene scene = new Scene(fxmlLoader.load());
-                        Stage stage = new Stage();
-                        stage.setResizable(false);
-                        stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
-                        stage.setScene(scene);
-
-                        MensagemController mensagemController = fxmlLoader.getController();
-                        mensagemController.setMensagem("     Cliente Atualizado.");
-
-                        stage.show();
-
-                    } catch (java.io.IOException e) {
-
-                    }
+                catch (java.io.IOException e) {
 
                 }
+            }
+
+        }
+
+    }
+
+    public int validarEntradas () {
+
+        int qtdErros = 0;
+
+        if (!((nomeCliente.getText().matches("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"))
+                && (nomeCliente.getText().replaceAll("\\s+", "").length() >= 3))) {
+
+            mensagemDeErroNome.setVisible(true);
+            qtdErros++;
+
+        } else {
+            mensagemDeErroNome.setVisible(false);
+        }
+
+        if (!((enderecoCliente.getText().replaceAll("\\s+", "").length() >= 3))) {
+
+            mensagemDeErroEndereco.setVisible(true);
+            qtdErros++;
+
+        } else {
+            mensagemDeErroEndereco.setVisible(false);
+        }
+
+        if (!((telefoneCliente.getText().matches("^[0-9]+$")) &&
+                (telefoneCliente.getText().length() == 11))) {
+
+            mensagemDeErroTelefone.setVisible(true);
+            qtdErros++;
+
+        } else {
+            mensagemDeErroTelefone.setVisible(false);
+        }
+
+        if (!((cpfCliente.getText().matches("^[0-9]+$")) &&
+                (cpfCliente.getText().length() == 11))) {
+
+            mensagemDeErroCpf.setVisible(true);
+            mensagemDeErroCpf.setText("Apenas números. Deve conter 11 caracteres.");
+            qtdErros++;
+
+        } else {
+            mensagemDeErroCpf.setVisible(false);
+        }
+
+        if (! (cpfAtual.equals(cpfCliente.getText()))) {
+
+            if (DAO.getCliente().checarPorCpf(cpfCliente.getText())) {
+
+                mensagemDeErroCpf.setVisible(true);
+                mensagemDeErroCpf.setText("CPF já cadastrado.");
+                qtdErros++;
 
             }
+        }
+
+        return qtdErros;
+    }
+
+    public void atualizarCliente () {
+
+        Cliente cliente = new Cliente(nomeCliente.getText(), enderecoCliente.getText(), telefoneCliente.getText(),
+                cpfCliente.getText());
+        cliente.setId(Integer.parseInt(idCliente.getText()));
+
+        DAO.getCliente().atualizar(cliente);
+
+        atualizarCards();
+        setClienteEscolhido(cliente);
+        atualizarMiniOrdens();
+
+        try {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+            stage.setScene(scene);
+
+            MensagemController mensagemController = fxmlLoader.getController();
+            mensagemController.setMensagem("     Cliente Atualizado.");
+
+            stage.show();
+
+        } catch (java.io.IOException e) {
 
         }
 
