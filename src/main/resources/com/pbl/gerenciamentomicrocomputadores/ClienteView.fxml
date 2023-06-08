@@ -121,93 +121,112 @@
                </content>
             </ScrollPane>
          </children></Pane>
-      <Pane layoutX="349.0" layoutY="140.0" prefHeight="486.0" prefWidth="576.0" styleClass="plano-fundo-superior">
+      <StackPane layoutX="349.0" layoutY="140.0">
          <children>
-            <Button fx:id="atualizarBotao" layoutX="168.0" layoutY="261.0" mnemonicParsing="false" onAction="#atualizarClienteAcao" prefHeight="40.0" prefWidth="105.0" styleClass="botao-superior" text="Atualizar" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="removerBotao" layoutX="321.0" layoutY="261.0" mnemonicParsing="false" onAction="#removerClienteAcao" prefHeight="40.0" prefWidth="105.0" styleClass="botao-superior" text="Remover" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Label layoutX="105.0" layoutY="21.0" prefHeight="30.0" prefWidth="27.0" text="ID: " textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="78.0" layoutY="62.0" prefHeight="30.0" prefWidth="53.0" text="Nome: " textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="56.0" layoutY="106.0" prefHeight="30.0" prefWidth="78.0" text="Endereço: " textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="56.0" layoutY="158.0" prefHeight="30.0" prefWidth="78.0" text="Telefone: " textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="95.0" layoutY="209.0" prefHeight="30.0" prefWidth="35.0" text="CPF: " textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <ScrollPane layoutX="63.0" layoutY="327.0" prefHeight="150.0" prefWidth="451.0" styleClass="custom-scroll-pane">
-               <content>
-                  <GridPane fx:id="gridMiniOrdens" prefHeight="0.0" prefWidth="0.0">
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                  </GridPane>
-               </content></ScrollPane>
-            <Label fx:id="mensagemDeErroNome" layoutX="135.0" layoutY="92.0" prefHeight="16.0" prefWidth="205.0" text="Apenas letras. Ao menos 3 caracteres." textFill="#e82121">
-               <font>
-                  <Font size="11.0" />
-               </font>
-            </Label>
-            <Label fx:id="mensagemDeErroEndereco" layoutX="135.0" layoutY="137.0" prefHeight="16.0" prefWidth="130.0" text="Ao menos 3 caracteres." textFill="#e82121">
-               <font>
-                  <Font size="11.0" />
-               </font>
-            </Label>
-            <Label fx:id="mensagemDeErroTelefone" layoutX="135.0" layoutY="185.0" prefHeight="16.0" prefWidth="229.0" text="Apenas números. Deve conter 11 caracteres." textFill="#e82121">
-               <font>
-                  <Font size="11.0" />
-               </font>
-            </Label>
-            <Label fx:id="mensagemDeErroCpf" layoutX="135.0" layoutY="236.0" prefHeight="16.0" prefWidth="229.0" text="Apenas números. Deve conter 11 caracteres." textFill="#e82121">
-               <font>
-                  <Font size="11.0" />
-               </font>
-            </Label>
-            <Label fx:id="idCliente" layoutX="135.0" layoutY="21.0" prefHeight="30.0" prefWidth="42.0" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <TextField fx:id="nomeCliente" layoutX="134.0" layoutY="64.0" prefHeight="25.0" prefWidth="277.0" />
-            <TextField fx:id="enderecoCliente" layoutX="134.0" layoutY="109.0" prefHeight="25.0" prefWidth="277.0" />
-            <TextField fx:id="telefoneCliente" layoutX="134.0" layoutY="160.0" prefHeight="25.0" prefWidth="277.0" />
-            <TextField fx:id="cpfCliente" layoutX="134.0" layoutY="211.0" prefHeight="25.0" prefWidth="277.0" />
-            <Label fx:id="mensagemTecnicoDeslogado" layoutX="262.0" layoutY="302.0" prefHeight="16.0" prefWidth="105.0" text="Técnico deslogado." textFill="#e82121">
-               <font>
-                  <Font size="11.0" />
-               </font>
-            </Label>
+            <Pane fx:id="paneDadosCliente" prefHeight="486.0" prefWidth="576.0" styleClass="plano-fundo-superior" visible="false">
+               <children>
+                  <Button fx:id="atualizarBotao" layoutX="168.0" layoutY="261.0" mnemonicParsing="false" onAction="#atualizarClienteAcao" prefHeight="40.0" prefWidth="105.0" styleClass="botao-superior" text="Atualizar" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="removerBotao" layoutX="321.0" layoutY="261.0" mnemonicParsing="false" onAction="#removerClienteAcao" prefHeight="40.0" prefWidth="105.0" styleClass="botao-superior" text="Remover" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="105.0" layoutY="21.0" prefHeight="30.0" prefWidth="27.0" text="ID: " textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="78.0" layoutY="62.0" prefHeight="30.0" prefWidth="53.0" text="Nome: " textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="56.0" layoutY="106.0" prefHeight="30.0" prefWidth="78.0" text="Endereço: " textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="56.0" layoutY="158.0" prefHeight="30.0" prefWidth="78.0" text="Telefone: " textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="95.0" layoutY="209.0" prefHeight="30.0" prefWidth="35.0" text="CPF: " textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane layoutX="63.0" layoutY="327.0" prefHeight="150.0" prefWidth="451.0" styleClass="custom-scroll-pane">
+                     <content>
+                        <GridPane fx:id="gridMiniOrdens" prefHeight="0.0" prefWidth="0.0">
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                     </content>
+                  </ScrollPane>
+                  <Label fx:id="mensagemDeErroNome" layoutX="135.0" layoutY="92.0" prefHeight="16.0" prefWidth="205.0" text="Apenas letras. Ao menos 3 caracteres." textFill="#e82121">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="mensagemDeErroEndereco" layoutX="135.0" layoutY="137.0" prefHeight="16.0" prefWidth="130.0" text="Ao menos 3 caracteres." textFill="#e82121">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="mensagemDeErroTelefone" layoutX="135.0" layoutY="185.0" prefHeight="16.0" prefWidth="229.0" text="Apenas números. Deve conter 11 caracteres." textFill="#e82121">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="mensagemDeErroCpf" layoutX="135.0" layoutY="236.0" prefHeight="16.0" prefWidth="229.0" text="Apenas números. Deve conter 11 caracteres." textFill="#e82121">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="idCliente" layoutX="135.0" layoutY="21.0" prefHeight="30.0" prefWidth="42.0" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nomeCliente" layoutX="134.0" layoutY="64.0" prefHeight="25.0" prefWidth="277.0" />
+                  <TextField fx:id="enderecoCliente" layoutX="134.0" layoutY="109.0" prefHeight="25.0" prefWidth="277.0" />
+                  <TextField fx:id="telefoneCliente" layoutX="134.0" layoutY="160.0" prefHeight="25.0" prefWidth="277.0" />
+                  <TextField fx:id="cpfCliente" layoutX="134.0" layoutY="211.0" prefHeight="25.0" prefWidth="277.0" />
+                  <Label fx:id="mensagemTecnicoDeslogado" layoutX="262.0" layoutY="302.0" prefHeight="16.0" prefWidth="105.0" text="Técnico deslogado." textFill="#e82121">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneSemClientes" prefHeight="200.0" prefWidth="200.0" styleClass="plano-fundo-superior">
+               <children>
+                  <ImageView fitHeight="97.0" fitWidth="163.0" layoutX="222.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icones/Cliente-R15.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="186.0" layoutY="243.0" text="Sem clientes cadastrados.">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
          </children>
-      </Pane>
+      </StackPane>
       <Button fx:id="pesquisarBotao" layoutX="1153.0" layoutY="84.0" mnemonicParsing="false" onAction="#pesquisarAcao" prefHeight="44.0" prefWidth="58.0" scaleX="-1.0" stylesheets="@CSS/style.css" text="🔎" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <TextField fx:id="barraDePesquisa" layoutX="987.0" layoutY="86.0" prefHeight="40.0" prefWidth="162.0" promptText="Pesquisar" styleClass="caixa-pesquisa" />
+      <TextField fx:id="barraDePesquisa" layoutX="987.0" layoutY="86.0" prefHeight="40.0" prefWidth="162.0" promptText="Pesquisar por CPF" styleClass="caixa-pesquisa" />
       <Label fx:id="mensagemPesquisa" layoutX="998.0" layoutY="126.0" prefHeight="16.0" prefWidth="140.0" text="Entrada inválida." textFill="#e82121">
          <font>
             <Font size="11.0" />
@@ -260,14 +279,14 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                            <graphic>
-                              <ImageView fx:id="tcConectado1" fitHeight="25.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="25.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Icones/Deslogar-R15.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Pane fx:id="PANECONEC" layoutX="901.0" layoutY="12.0" prefHeight="47.0" prefWidth="138.0" style="-fx-background-radius: 100;" styleClass="botao-superior">
+                        <Pane layoutX="901.0" layoutY="12.0" prefHeight="47.0" prefWidth="138.0" style="-fx-background-radius: 100;" styleClass="botao-superior">
                            <children>
                               <Label fx:id="nomeTecnico" layoutX="49.0" layoutY="5.0" prefHeight="19.0" prefWidth="80.0" textFill="WHITE">
                                  <font>
@@ -279,7 +298,7 @@
                                     <Font name="System Bold" size="13.0" />
                                  </font>
                               </Label>
-                              <ImageView fx:id="tcConectado" fitHeight="47.0" fitWidth="42.0" layoutX="3.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="47.0" fitWidth="42.0" layoutX="3.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Icones/Conectado-R15.png" />
                                  </image>

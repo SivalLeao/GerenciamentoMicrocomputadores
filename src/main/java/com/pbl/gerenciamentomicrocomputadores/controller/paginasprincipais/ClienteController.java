@@ -42,6 +42,9 @@ public class ClienteController {
     @FXML private Label idTecnico;
     @FXML private Button deslogarBotao;
 
+    @FXML private Pane paneSemClientes;
+
+    @FXML private Pane paneDadosCliente;
     @FXML private Label idCliente;
     @FXML private TextField nomeCliente;
     @FXML private TextField enderecoCliente;
@@ -65,12 +68,12 @@ public class ClienteController {
     @FXML private Label mensagemPesquisa;
     @FXML private Button pesquisarBotao;
 
-    @FXML
-    private Label adicionar;
-    @FXML
-    private Label pesquisar;
+    @FXML private Label adicionar;
+    @FXML private Label pesquisar;
 
     private MyListener<Cliente> myListener;
+
+    String cpfAtual;
 
     @FXML
     void initialize() {
@@ -95,13 +98,11 @@ public class ClienteController {
             adicionar.setVisible(false);
         });
 
-
         esconderMensagensDeErro();
         atualizarCards();
         atualizarMiniOrdens();
 
     }
-
 
     public void atualizarCards () {
 
@@ -110,6 +111,9 @@ public class ClienteController {
         List<Cliente> clientesData = DAO.getCliente().encontrarTodos();
 
         if (clientesData.size() > 0) {
+
+            paneDadosCliente.setVisible(true);
+            paneSemClientes.setVisible(false);
 
             setClienteEscolhido(clientesData.get(0));
 
@@ -122,6 +126,12 @@ public class ClienteController {
                     esconderMensagensDeErro();
                 }
             };
+
+        }
+        else {
+
+            paneDadosCliente.setVisible(false);
+            paneSemClientes.setVisible(true);
 
         }
 
@@ -155,43 +165,47 @@ public class ClienteController {
         catch ( java.io.IOException e) {
             e.printStackTrace();
         }
+
     }
 
     public void atualizarMiniOrdens() {
 
         gridMiniOrdens.getChildren().clear();
 
-        List<OrdemDeServico> listaOrdens = DAO.getOrdemDeServico().encontrarPorIdCliente(Integer.parseInt(idCliente.getText()));
+        if (! (paneSemClientes.isVisible())) {
 
-        try {
+            List<OrdemDeServico> listaOrdens = DAO.getOrdemDeServico().encontrarPorIdCliente(Integer.parseInt(idCliente.getText()));
 
-            int colunaAtual = 0;
+            try {
 
-            for (int i = 0; i < listaOrdens.size(); i++) {
+                int colunaAtual = 0;
 
-                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MiniCardOrdemView.fxml"));
-                AnchorPane novoCard = fxmlLoader.load();
+                for (int i = 0; i < listaOrdens.size(); i++) {
 
-                MiniCardOrdemController miniCardOrdemController = fxmlLoader.getController();
-                miniCardOrdemController.setInfo(listaOrdens.get(i));
+                    FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MiniCardOrdemView.fxml"));
+                    AnchorPane novoCard = fxmlLoader.load();
 
-                this.gridMiniOrdens.add(novoCard, colunaAtual++, 1);
+                    MiniCardOrdemController miniCardOrdemController = fxmlLoader.getController();
+                    miniCardOrdemController.setInfo(listaOrdens.get(i));
 
-                this.gridMiniOrdens.setMinWidth(Region.USE_COMPUTED_SIZE);
-                this.gridMiniOrdens.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                this.gridMiniOrdens.setMaxWidth(Region.USE_COMPUTED_SIZE);
+                    this.gridMiniOrdens.add(novoCard, colunaAtual++, 1);
 
-                this.gridMiniOrdens.setMinHeight(Region.USE_COMPUTED_SIZE);
-                this.gridMiniOrdens.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                this.gridMiniOrdens.setMaxHeight(Region.USE_COMPUTED_SIZE);
+                    this.gridMiniOrdens.setMinWidth(Region.USE_COMPUTED_SIZE);
+                    this.gridMiniOrdens.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                    this.gridMiniOrdens.setMaxWidth(Region.USE_COMPUTED_SIZE);
 
-                GridPane.setMargin(novoCard, new Insets(5));
+                    this.gridMiniOrdens.setMinHeight(Region.USE_COMPUTED_SIZE);
+                    this.gridMiniOrdens.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                    this.gridMiniOrdens.setMaxHeight(Region.USE_COMPUTED_SIZE);
 
+                    GridPane.setMargin(novoCard, new Insets(5));
+
+                }
+
+            } catch (java.io.IOException e) {
+                e.printStackTrace();
             }
 
-        }
-        catch ( java.io.IOException e) {
-            e.printStackTrace();
         }
 
     }
@@ -468,6 +482,7 @@ public class ClienteController {
                     (cpfCliente.getText().replaceAll("\\s+|\\.+|-+", "").length() == 11))) {
 
                 mensagemDeErroCpf.setVisible(true);
+                mensagemDeErroCpf.setText("Apenas números. Deve conter 11 caracteres.");
                 qtdErros++;
             } else {
                 mensagemDeErroCpf.setVisible(false);
@@ -475,31 +490,44 @@ public class ClienteController {
 
             if (qtdErros == 0) {
 
-                Cliente cliente = new Cliente(nomeCliente.getText(), enderecoCliente.getText(), telefoneCliente.getText(),
-                        cpfCliente.getText());
-                cliente.setId(Integer.parseInt(idCliente.getText()));
+                if (! (cpfAtual.equals(cpfCliente.getText()))) {
 
-                DAO.getCliente().atualizar(cliente);
+                    if (DAO.getCliente().checarPorCpf(cpfCliente.getText())) {
 
-                atualizarCards();
-                atualizarMiniOrdens();
-                setClienteEscolhido(cliente);
+                        mensagemDeErroCpf.setVisible(true);
+                        mensagemDeErroCpf.setText("CPF já cadastrado.");
+                    }
+                }
 
-                try {
+                if (! (mensagemDeErroCpf.isVisible())) {
 
-                    FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load());
-                    Stage stage = new Stage();
-                    stage.setResizable(false);
-                    stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
-                    stage.setScene(scene);
+                    Cliente cliente = new Cliente(nomeCliente.getText(), enderecoCliente.getText(), telefoneCliente.getText(),
+                            cpfCliente.getText());
+                    cliente.setId(Integer.parseInt(idCliente.getText()));
 
-                    MensagemController mensagemController = fxmlLoader.getController();
-                    mensagemController.setMensagem("     Cliente Atualizado.");
+                    DAO.getCliente().atualizar(cliente);
 
-                    stage.show();
+                    atualizarCards();
+                    setClienteEscolhido(cliente);
+                    atualizarMiniOrdens();
 
-                } catch (java.io.IOException e) {
+                    try {
+
+                        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
+                        Scene scene = new Scene(fxmlLoader.load());
+                        Stage stage = new Stage();
+                        stage.setResizable(false);
+                        stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+                        stage.setScene(scene);
+
+                        MensagemController mensagemController = fxmlLoader.getController();
+                        mensagemController.setMensagem("     Cliente Atualizado.");
+
+                        stage.show();
+
+                    } catch (java.io.IOException e) {
+
+                    }
 
                 }
 
@@ -583,6 +611,8 @@ public class ClienteController {
 
 
     private void setClienteEscolhido (Cliente cliente) {
+
+        cpfAtual = cliente.getCpf();
 
         idCliente.setText(Integer.toString(cliente.getId()));
         nomeCliente.setText(cliente.getNome());
