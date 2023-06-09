@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="451.0" prefWidth="287.0" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.paginascadastrar.CadastrarTecnicoController">
+<AnchorPane prefHeight="451.0" prefWidth="287.0" styleClass="cadastro" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.paginascadastrar.CadastrarTecnicoController">
     <children>
         <HBox prefHeight="49.0" prefWidth="306.0">
             <children>
@@ -36,34 +36,37 @@
                 </HBox>
             </children>
         </HBox>
-      <TextField fx:id="nomeTecnico" layoutX="20.0" layoutY="90.0" prefHeight="27.0" prefWidth="266.0" promptText="Digite seu Nome" styleClass="text-box" stylesheets="@CSS/style.css" />
-      <Label alignment="CENTER" layoutX="-7.0" layoutY="58.0" prefHeight="32.0" prefWidth="302.0" text="NOME">
+      <TextField fx:id="nomeTecnico" alignment="CENTER" layoutX="20.0" layoutY="90.0" prefHeight="27.0" prefWidth="266.0" promptText="Digite seu Nome" styleClass="texto-login" stylesheets="@CSS/style.css" />
+      <Label alignment="CENTER" layoutX="-7.0" layoutY="58.0" prefHeight="32.0" prefWidth="313.0" text="NOME" textFill="WHITE">
          <font>
-            <Font size="13.0" />
+            <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
-        <Label fx:id="mensagemDeErroEndereco" layoutX="18.0" layoutY="195.0" prefHeight="17.0" prefWidth="272.0" textFill="RED" />
-        <TextField fx:id="enderecoTecnico" layoutX="18.0" layoutY="168.0" prefHeight="27.0" prefWidth="272.0" promptText="Digite seu Endereço" styleClass="text-box" stylesheets="@CSS/style.css" />
-        <Button fx:id="cadastrarBotao" layoutX="97.0" layoutY="396.0" mnemonicParsing="false" onAction="#cadastrarAcao" prefHeight="32.0" prefWidth="123.0" style="-fx-background-radius: 10;" stylesheets="@CSS/style.css" text="Cadastrar" />
-      <TextField fx:id="cpfTecnico" layoutX="20.0" layoutY="245.0" prefHeight="27.0" prefWidth="272.0" promptText="Digite seu CPF" styleClass="text-box" stylesheets="@CSS/style.css" />
-      <Label alignment="CENTER" layoutX="18.0" layoutY="149.0" prefHeight="19.0" prefWidth="266.0" text="ENDEREÇO">
+        <Label fx:id="mensagemDeErroEndereco" alignment="CENTER" layoutX="15.0" layoutY="202.0" prefHeight="17.0" prefWidth="272.0" textFill="RED" />
+        <TextField fx:id="enderecoTecnico" alignment="CENTER" layoutX="18.0" layoutY="168.0" prefHeight="27.0" prefWidth="272.0" promptText="Digite seu Endereço" styleClass="texto-login" stylesheets="@CSS/style.css" />
+        <Button fx:id="cadastrarBotao" layoutX="97.0" layoutY="396.0" mnemonicParsing="false" onAction="#cadastrarAcao" prefHeight="32.0" prefWidth="123.0" style="-fx-background-radius: 10;" stylesheets="@CSS/style.css" text="Cadastrar" textFill="WHITE">
          <font>
-            <Font size="13.0" />
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <TextField fx:id="cpfTecnico" alignment="CENTER" layoutX="20.0" layoutY="245.0" prefHeight="27.0" prefWidth="272.0" promptText="Digite seu CPF" styleClass="texto-login" stylesheets="@CSS/style.css" />
+      <Label alignment="CENTER" layoutX="-3.0" layoutY="135.0" prefHeight="33.0" prefWidth="306.0" text="ENDEREÇO" textFill="WHITE">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="18.0" layoutY="306.0" prefHeight="19.0" prefWidth="266.0" text="TELEFONE">
+      <Label alignment="CENTER" layoutX="20.0" layoutY="293.0" prefHeight="32.0" prefWidth="266.0" text="TELEFONE" textFill="WHITE">
          <font>
-            <Font size="13.0" />
+            <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="telefoneTecnico" layoutX="15.0" layoutY="325.0" prefHeight="27.0" prefWidth="278.0" promptText="Digite seu Telefone" styleClass="text-box" stylesheets="@CSS/style.css" />
-      <Label alignment="CENTER" layoutX="20.0" layoutY="226.0" prefHeight="19.0" prefWidth="266.0" text="CPF">
+      <TextField fx:id="telefoneTecnico" alignment="CENTER" layoutX="15.0" layoutY="325.0" prefHeight="27.0" prefWidth="278.0" promptText="Digite seu Telefone" styleClass="texto-login" stylesheets="@CSS/style.css" />
+      <Label alignment="CENTER" layoutX="17.0" layoutY="213.0" prefHeight="32.0" prefWidth="266.0" text="CPF" textFill="WHITE">
          <font>
-            <Font size="13.0" />
+            <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="mensagemDeErroNome" layoutX="20.0" layoutY="118.0" prefHeight="17.0" prefWidth="266.0" textFill="RED" />
-      <Label fx:id="mensagemDeErroCpf" layoutX="17.0" layoutY="272.0" prefHeight="17.0" prefWidth="278.0" textFill="RED" />
-      <Label fx:id="mensagemDeErroTelefone" layoutX="15.0" layoutY="352.0" prefHeight="17.0" prefWidth="272.0" textFill="RED" />
+      <Label fx:id="mensagemDeErroNome" alignment="CENTER" layoutX="18.0" layoutY="123.0" prefHeight="17.0" prefWidth="266.0" textFill="RED" />
+      <Label fx:id="mensagemDeErroCpf" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="278.0" prefHeight="17.0" prefWidth="278.0" textFill="RED" />
+      <Label fx:id="mensagemDeErroTelefone" alignment="CENTER" layoutX="15.0" layoutY="359.0" prefHeight="17.0" prefWidth="272.0" textFill="RED" />
     </children>
 </AnchorPane>
