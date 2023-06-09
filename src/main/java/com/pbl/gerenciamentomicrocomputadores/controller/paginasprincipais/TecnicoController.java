@@ -59,14 +59,15 @@ public class TecnicoController {
     @FXML private Pane paneMensagemPedidoLogin;
 
     @FXML private Button atualizarBotao;
-    @FXML private Button removerBotao;
 
+    @FXML private Button removerBotao;
     @FXML private Pane paneSemServico;
     @FXML private Pane paneBotaoColetarServico;
     @FXML private Button iniciarServicoBotao;
     @FXML private Label mensagemSemServico;
     @FXML private Pane paneDadosServico;
     @FXML private Button finalizarServicoBotao;
+    @FXML private Button dispensarServicoBotao;
 
     @FXML private Label idOrdem;
     @FXML private Label idClienteOrdem;
@@ -667,6 +668,17 @@ public class TecnicoController {
         DAO.getOrdemDeServico().atualizarStatus(Integer.parseInt(idOrdem.getText()), "Finalizado");
         modificarAbaServico();
 
+    }
+
+    @FXML
+    void dispensarServicoAcao(ActionEvent event) {
+
+        OrdemDeServico ordemDeServico = DAO.getOrdemDeServico().encontrarPorId(Integer.parseInt(idOrdem.getText()));
+
+        ordemDeServico.setStatusAtual("Em espera");
+        ordemDeServico.setIdTecnico(0);
+
+        modificarAbaServico();
     }
 
 }

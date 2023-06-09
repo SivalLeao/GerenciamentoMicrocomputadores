@@ -323,6 +323,11 @@
                         </Label>
                      </content>
                   </ScrollPane>
+                  <Button fx:id="dispensarServicoBotao" layoutX="123.0" layoutY="9.0" mnemonicParsing="false" onAction="#dispensarServicoAcao" onMousePressed="#pressed" prefHeight="25.0" prefWidth="105.0" styleClass="botao-superior" text="Dispensar" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
             <Pane fx:id="paneBotaoColetarServico" onMousePressed="#pressed" prefHeight="200.0" prefWidth="200.0" styleClass="plano-fundo-superior" visible="false">
@@ -339,7 +344,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="paneSemServico" onMousePressed="#pressed" prefHeight="200.0" prefWidth="200.0" styleClass="plano-fundo-superior">
+            <Pane fx:id="paneSemServico" onMousePressed="#pressed" prefHeight="200.0" prefWidth="200.0" styleClass="plano-fundo-superior" visible="false">
                <children>
                   <Label layoutX="150.0" layoutY="105.0" prefHeight="141.0" prefWidth="51.0" text="?">
                      <font>
