@@ -12,8 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="501.0" prefWidth="306.0" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.paginascadastrar.CadastrarOrdemController">
+<AnchorPane prefHeight="501.0" prefWidth="306.0" styleClass="cadastro" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.paginascadastrar.CadastrarOrdemController">
    <children>
       <HBox prefHeight="49.0" prefWidth="306.0">
          <children>
@@ -31,7 +30,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Label prefHeight="49.0" prefWidth="276.0" style="-fx-background-color: #00768B;" text="   CADASTRAR" textFill="WHITE">
+                  <Label prefHeight="49.0" prefWidth="276.0" style="-fx-background-color: #00768B;" text="Nova Ordem de Serviço" textFill="WHITE">
                      <font>
                         <Font name="Agency FB" size="29.0" />
                      </font>
@@ -40,16 +39,19 @@
             </HBox>
          </children>
       </HBox>
-      <HBox layoutX="2.0" layoutY="158.0" prefHeight="27.0" prefWidth="302.0" />
-      <Label alignment="CENTER" layoutX="3.0" layoutY="59.0" prefHeight="32.0" prefWidth="302.0" text="ID cliente">
+      <HBox layoutX="3.0" layoutY="151.0" prefHeight="27.0" prefWidth="302.0" />
+      <Label alignment="CENTER" layoutX="2.0" layoutY="49.0" prefHeight="32.0" prefWidth="302.0" text="ID Cliente" textFill="WHITE">
          <font>
-            <Font size="13.0" />
+            <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="idCliente" layoutX="22.0" layoutY="91.0" prefHeight="27.0" prefWidth="266.0" promptText="Digite o ID do cliente" styleClass="text-box" stylesheets="@CSS/style.css" />
-      <Label fx:id="mensagemDeErroId" layoutX="36.0" layoutY="118.0" prefHeight="17.0" prefWidth="266.0" textFill="RED" />
-      <Button fx:id="cadastrarBotao" layoutX="94.0" layoutY="436.0" mnemonicParsing="false" onAction="#cadastrarAcao" prefHeight="32.0" prefWidth="123.0" style="-fx-background-radius: 10;" stylesheets="@CSS/style.css" text="Cadastrar" />
-      <Pane fx:id="paneListaPecas" layoutX="20.0" layoutY="172.0" prefHeight="249.0" prefWidth="266.0">
+      <TextField fx:id="idCliente" alignment="CENTER" layoutX="20.0" layoutY="81.0" prefHeight="27.0" prefWidth="266.0" promptText="Digite o ID do cliente" styleClass="text-box" stylesheets="@CSS/style.css" />
+      <Label fx:id="mensagemDeErroId" contentDisplay="CENTER" layoutX="21.0" layoutY="108.0" prefHeight="17.0" prefWidth="266.0" textFill="RED" />
+      <Button fx:id="cadastrarBotao" layoutX="92.0" layoutY="455.0" mnemonicParsing="false" onAction="#cadastrarAcao" prefHeight="32.0" prefWidth="123.0" style="-fx-background-radius: 10;" stylesheets="@CSS/style.css" text="Criar ordem" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Pane fx:id="paneListaPecas" layoutX="21.0" layoutY="178.0" prefHeight="273.0" prefWidth="266.0">
          <children>
             <ScrollPane layoutY="26.0" prefHeight="108.0" prefWidth="266.0">
                <content>
@@ -60,35 +62,44 @@
                   </Label>
                </content>
             </ScrollPane>
-            <Label alignment="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="19.0" prefWidth="127.0" text="Itens utilizados: ">
+            <Label alignment="CENTER" layoutX="-5.0" layoutY="2.0" prefHeight="19.0" prefWidth="127.0" text="Itens Utilizados: " textFill="WHITE">
                <font>
-                  <Font size="13.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="choiceBoxItens" layoutX="48.0" layoutY="134.0" prefWidth="150.0" />
-            <Button fx:id="adicionarPecaBotao" layoutX="13.0" layoutY="223.0" mnemonicParsing="false" onAction="#adicionarPecaAcao" text="Adicionar item" />
-            <Label alignment="CENTER" layoutY="137.0" prefHeight="19.0" prefWidth="41.0" text="Item: ">
+            <ChoiceBox fx:id="choiceBoxItens" layoutX="49.0" layoutY="137.0" prefHeight="25.0" prefWidth="212.0" styleClass="selecao-itens" />
+            <Button fx:id="adicionarPecaBotao" layoutX="79.0" layoutY="238.0" mnemonicParsing="false" onAction="#adicionarPecaAcao" text="Adicionar item" textFill="WHITE">
                <font>
-                  <Font size="13.0" />
+                  <Font name="System Bold" size="13.0" />
+               </font></Button>
+            <Label alignment="CENTER" layoutX="1.0" layoutY="139.0" prefHeight="19.0" prefWidth="41.0" text="Item: " textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="-5.0" layoutY="172.0" prefHeight="19.0" prefWidth="93.0" text="Quantidade: ">
+            <Label alignment="CENTER" layoutX="-3.0" layoutY="195.0" prefHeight="21.0" prefWidth="165.0" text="Quantidade Solicitada:" textFill="WHITE">
                <font>
-                  <Font size="13.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="quantidadePeca" layoutX="81.0" layoutY="169.0" promptText="Digite a quantidade" />
-            <Label layoutX="201.0" layoutY="138.0" text="Max: " />
-            <Label fx:id="maxQuantidade" layoutX="230.0" layoutY="138.0" />
-            <Label fx:id="mensagemDeErroLista" layoutX="140.0" layoutY="6.0" prefHeight="17.0" prefWidth="123.0" textFill="RED" />
-            <Label fx:id="mensagemDeErroQuantidade" layoutX="79.0" layoutY="194.0" prefHeight="17.0" prefWidth="123.0" textFill="RED" />
+            <TextField fx:id="quantidadePeca" layoutX="168.0" layoutY="193.0" prefHeight="25.0" prefWidth="94.0" promptText="Insira a quantidade" />
+            <Label layoutX="1.0" layoutY="168.0" text="Quantidade Disponivel:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label fx:id="maxQuantidade" alignment="CENTER" layoutX="168.0" layoutY="168.0" prefHeight="21.0" prefWidth="94.0" styleClass="label-personalizado" />
+            <Label fx:id="mensagemDeErroLista" layoutX="140.0" layoutY="4.0" prefHeight="17.0" prefWidth="123.0" textFill="RED">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <Label fx:id="mensagemDeErroQuantidade" layoutX="72.0" layoutY="220.0" prefHeight="17.0" prefWidth="123.0" textFill="RED" />
          </children>
       </Pane>
-      <Label alignment="CENTER" layoutX="2.0" layoutY="139.0" prefHeight="19.0" prefWidth="127.0" text="Tipo de Serviço:">
+      <Label alignment="CENTER" layoutX="15.0" layoutY="125.0" prefHeight="19.0" prefWidth="127.0" text="Tipo de Serviço:" textFill="WHITE">
          <font>
-            <Font size="13.0" />
+            <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="choiceBox" layoutX="126.0" layoutY="137.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choiceBox" layoutX="141.0" layoutY="125.0" prefWidth="150.0" styleClass="selecao-itens" />
    </children>
 </AnchorPane>
