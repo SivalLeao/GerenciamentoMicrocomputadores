@@ -99,11 +99,21 @@
     -fx-border-color: #00FFFF; /* Cor da borda ao digitar */
 }
 
+.texto-login {
+    -fx-background-radius: 20;
+    /*-fx-text-inner-color: red;*/
 
-.button-volta {
--fx-background-color :  #00768B;
+}
+.texto-login: focused {
+    -fx-border-color: #00BFE1;
+    -fx-border-width: 3;
+    -fx-border-radius: 20;
 }
 
+
+.button-volta {
+    -fx-background-color :  transparent;
+}
 
 .button-volta:hover
 {
@@ -141,7 +151,7 @@
     -fx-background-color: #004B52;
 }
 .menu-botao{
--fx-background-radius: 0;
+    -fx-background-radius: 0;
     -fx-background-color: #004B52;
 
 }
@@ -214,4 +224,23 @@
     -fx-border-radius: 50 0 50 50; /* Defina o raio do arredondamento da borda */
     -fx-padding: 10 20;
 
+}
+.cadastro {
+    -fx-background-color: #00818D;
+    /*-fx-border-color: #ffffff;
+    -fx-border-width: 2;*/
+}
+.selecao-itens{
+    -fx-background-radius: 20;
+}
+
+.selecao-itens: hover{
+    -fx-cursor: hand;
+}
+
+
+
+.label-personalizado {
+    -fx-background-radius: 5;
+    -fx-background-color: #ffffff;
 }
