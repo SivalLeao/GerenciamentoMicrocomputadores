@@ -73,7 +73,7 @@ public class CadastrarTecnicoController {
 
         if (qtdErros == 0) {
 
-            if (DAO.getCliente().checarPorCpf(cpfTecnico.getText())) {
+            if (DAO.getTecnico().checarPorCpf(cpfTecnico.getText())) {
 
                 mensagemDeErroCpf.setText("CPF já cadastrado.");
             }

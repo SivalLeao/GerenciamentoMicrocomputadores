@@ -1,7 +1,7 @@
 package com.pbl.gerenciamentomicrocomputadores.controller;
 
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.ClienteController;
-import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.OrdemController;
+import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.TecnicoController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,6 +36,21 @@ public class ConfirmacaoController {
 
                 clienteController.removerCliente();
             }
+        }
+        else if (classeController.equals("TecnicoController")) {
+
+            TecnicoController tecnicoController = fxmlLoader.getController();
+
+            if (tipoDeAcao.equals("atualizar")) {
+
+                tecnicoController.atualizarPerfil();
+            }
+            else if (tipoDeAcao.equals("remover")) {
+
+                tecnicoController.removerPerfil();
+            }
+
+
         }
 
         Stage stage = (Stage) confirmarBotao.getScene().getWindow();

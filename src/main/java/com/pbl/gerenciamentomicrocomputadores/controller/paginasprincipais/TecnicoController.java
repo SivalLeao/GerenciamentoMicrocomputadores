@@ -1,13 +1,11 @@
 package com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
+import com.pbl.gerenciamentomicrocomputadores.controller.ConfirmacaoController;
 import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
 import com.pbl.gerenciamentomicrocomputadores.controller.MensagemController;
 import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardTecnicoController;
-import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.ClienteController;
-import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.InicioController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
-import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
 import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
 import javafx.event.ActionEvent;
@@ -19,13 +17,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -78,7 +76,17 @@ public class TecnicoController {
 
     @FXML private GridPane gridContainer;
 
-    private List<Tecnico> tecnicosData;
+    String cpfAtual;
+
+    @FXML
+    void pressed(MouseEvent event) {
+
+        if (MainController.getStageConfirmacao() != null) {
+
+            MainController.getStageConfirmacao().close();
+        }
+
+    }
 
     @FXML
     void initialize() {
@@ -126,7 +134,7 @@ public class TecnicoController {
 
         gridContainer.getChildren().clear();
 
-        this.tecnicosData = DAO.getTecnico().encontrarTodos();
+        List<Tecnico> tecnicosData = DAO.getTecnico().encontrarTodos();
 
         try {
 
@@ -138,7 +146,7 @@ public class TecnicoController {
                 Pane novoCard = fxmlLoader.load();
 
                 CardTecnicoController cardTecnicoController = fxmlLoader.getController();
-                cardTecnicoController.setInfo(this.tecnicosData.get(i));
+                cardTecnicoController.setInfo(tecnicosData.get(i));
 
                 this.gridContainer.add(novoCard, colunaAtual++, 1);
 
@@ -376,6 +384,36 @@ public class TecnicoController {
 
         esconderMensagensDeErro();
 
+        if (validarEntradas() == 0) {
+
+            try {
+
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("ConfirmacaoView.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+                stage.setScene(scene);
+                stage.setAlwaysOnTop(true);
+
+                ConfirmacaoController confirmacaoController = fxmlLoader.getController();
+                confirmacaoController.setTexto("Deseja atualizar as informações de perfil?");
+                confirmacaoController.setTipoDeAcao("atualizar");
+
+                MainController.setStageConfirmacao(stage);
+
+                stage.show();
+            }
+            catch (java.io.IOException e) {
+
+            }
+
+        }
+
+    }
+
+    public int validarEntradas () {
+
         int qtdErros = 0;
 
         if (!((nomePerfil.getText().matches("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"))
@@ -383,6 +421,7 @@ public class TecnicoController {
 
             mensagemDeErroNome.setVisible(true);
             qtdErros++;
+
         } else {
             mensagemDeErroNome.setVisible(false);
         }
@@ -391,37 +430,82 @@ public class TecnicoController {
 
             mensagemDeErroEndereco.setVisible(true);
             qtdErros++;
+
         } else {
             mensagemDeErroEndereco.setVisible(false);
         }
 
-        if (!((telefonePerfil.getText().matches("^[0-9() -]+$")) &&
-                (telefonePerfil.getText().replaceAll("\\s+|\\(+|\\)+|-+", "").length() == 11))) {
+        if (!((telefonePerfil.getText().matches("^[0-9]+$")) &&
+                (telefonePerfil.getText().length() == 11))) {
 
             mensagemDeErroTelefone.setVisible(true);
             qtdErros++;
+
         } else {
             mensagemDeErroTelefone.setVisible(false);
         }
 
-        if (!((cpfPerfil.getText().matches("^[0-9 .-]+$")) &&
-                (cpfPerfil.getText().replaceAll("\\s+|\\.+|-+", "").length() == 11))) {
+        if (!((cpfPerfil.getText().matches("^[0-9]+$")) &&
+                (cpfPerfil.getText().length() == 11))) {
 
             mensagemDeErroCpf.setVisible(true);
+            mensagemDeErroCpf.setText("Apenas números. Deve conter 11 caracteres.");
             qtdErros++;
+
         } else {
             mensagemDeErroCpf.setVisible(false);
         }
 
-        if (qtdErros == 0) {
+        if (! (cpfAtual.equals(cpfPerfil.getText()))) {
 
-            Tecnico tecnico = new Tecnico(nomePerfil.getText(), enderecoPerfil.getText(), telefonePerfil.getText(),
-                    cpfPerfil.getText());
-            tecnico.setId(Integer.parseInt(idPerfil.getText()));
+            if (DAO.getTecnico().checarPorCpf(cpfPerfil.getText())) {
 
-            DAO.getTecnico().atualizar(tecnico);
+                mensagemDeErroCpf.setVisible(true);
+                mensagemDeErroCpf.setText("CPF já cadastrado.");
+                qtdErros++;
 
-            atualizarCards();
+            }
+        }
+
+        return qtdErros;
+    }
+
+    public void atualizarPerfil () {
+
+        Tecnico tecnico = new Tecnico(nomePerfil.getText(), enderecoPerfil.getText(), telefonePerfil.getText(),
+                cpfPerfil.getText());
+        tecnico.setId(Integer.parseInt(idPerfil.getText()));
+
+        DAO.getTecnico().atualizar(tecnico);
+
+        atualizarCards();
+        fazendoMudancaLogin(DAO.getTecnico().encontrarPorId(Integer.parseInt(idPerfil.getText())));
+
+        try {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+            stage.setScene(scene);
+
+            MensagemController mensagemController = fxmlLoader.getController();
+            mensagemController.setMensagem("    Perfil Atualizado.");
+
+            stage.show();
+
+        } catch (java.io.IOException e) {
+
+        }
+    }
+
+    @FXML
+    void removerPerfilAcao(ActionEvent event) {
+
+        esconderMensagensDeErro();
+
+        if (DAO.getOrdemDeServico().checarStatusEmAndamento(Integer.parseInt(idPerfil.getText()))) {
 
             try {
 
@@ -433,7 +517,8 @@ public class TecnicoController {
                 stage.setScene(scene);
 
                 MensagemController mensagemController = fxmlLoader.getController();
-                mensagemController.setMensagem("     Perfil Atualizado.");
+                mensagemController.setMensagem(" O técnico está realizando um serviço.\n" +
+                        "        Não pode ser removido.");
 
                 stage.show();
 
@@ -441,12 +526,34 @@ public class TecnicoController {
 
             }
         }
+        else {
+
+            try {
+
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("ConfirmacaoView.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+                stage.setScene(scene);
+                stage.setAlwaysOnTop(true);
+
+                ConfirmacaoController confirmacaoController = fxmlLoader.getController();
+                confirmacaoController.setTexto("Deseja excluir o perfil?");
+                confirmacaoController.setTipoDeAcao("remover");
+
+                MainController.setStageConfirmacao(stage);
+
+                stage.show();
+            }
+            catch (java.io.IOException e) {
+
+            }
+
+        }
     }
 
-    @FXML
-    void removerPerfilAcao(ActionEvent event) {
-
-        esconderMensagensDeErro();
+    public void removerPerfil () {
 
         DAO.getTecnico().remover(Integer.parseInt(idPerfil.getText()));
 
@@ -470,16 +577,19 @@ public class TecnicoController {
             stage.setScene(scene);
 
             MensagemController mensagemController = fxmlLoader.getController();
-            mensagemController.setMensagem("     Perfil Removido.");
+            mensagemController.setMensagem("     Perfil removido.");
 
             stage.show();
 
         } catch (java.io.IOException e) {
 
         }
+
     }
 
     public void setDadosPerfil (Tecnico tecnico) {
+
+        cpfAtual = tecnico.getCpf();
 
         idPerfil.setText(Integer.toString(tecnico.getId()));
         nomePerfil.setText(tecnico.getNome());
@@ -493,7 +603,6 @@ public class TecnicoController {
     void iniciarServicoAcao(ActionEvent event) {
 
         OrdemDeServico ordemDeServico = DAO.getOrdemDeServico().coletarOrdem();
-        ordemDeServico.setIdTecnico(Integer.parseInt(idTecnico.getText()));
 
         if (ordemDeServico == null) {
 
@@ -502,6 +611,7 @@ public class TecnicoController {
         else {
 
             mensagemSemServico.setVisible(false);
+            ordemDeServico.setIdTecnico(Integer.parseInt(idTecnico.getText()));
             DAO.getOrdemDeServico().atualizarStatus(ordemDeServico.getIdOrdem(), "Em andamento");
             DAO.getOrdemDeServico().atualizar(ordemDeServico);
             setDadosServico();
@@ -536,7 +646,7 @@ public class TecnicoController {
 
         if (itensUtilizados.size() == 0) {
 
-            textoLista = "\n    Nenhuma peça foi utilizada.";
+            textoLista = "\n    Nenhuma peça foi solicitada.";
         }
         else {
 
