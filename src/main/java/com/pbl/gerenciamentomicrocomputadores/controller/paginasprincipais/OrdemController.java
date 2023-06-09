@@ -216,7 +216,17 @@ public class OrdemController {
             Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
             Stage stage = MainController.getStageInicio();
             stage.setScene(scene);
+
             MainController.setStageInicio(stage);
+            MainController.setFXMLLoaderPrincipal(fxmlLoader);
+
+            if (!(idTecnico.getText().equals(""))) {
+
+                EstoqueController estoqueController = fxmlLoader.getController();
+                estoqueController.fazendoMudancaLogin(DAO.getTecnico().encontrarPorId(
+                        Integer.parseInt(idTecnico.getText())));
+            }
+
             stage.show();
         }
         catch (java.io.IOException e) {

@@ -1,9 +1,6 @@
 package com.pbl.gerenciamentomicrocomputadores.controller;
 
-import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.ClienteController;
-import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.InicioController;
-import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.OrdemController;
-import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.TecnicoController;
+import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.*;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 
 public class LoginController {
 
@@ -61,6 +57,11 @@ public class LoginController {
 
                 OrdemController ordemController = fxmlLoader.getController();
                 ordemController.fazendoMudancaLogin(DAO.getTecnico().encontrarPorCpf(cpfTecnico.getText()));
+            }
+            else if (classeController.equals("EstoqueController")) {
+
+                EstoqueController estoqueController = fxmlLoader.getController();
+                estoqueController.fazendoMudancaLogin(DAO.getTecnico().encontrarPorCpf(cpfTecnico.getText()));
             }
 
             cpfTecnico.setText("");
