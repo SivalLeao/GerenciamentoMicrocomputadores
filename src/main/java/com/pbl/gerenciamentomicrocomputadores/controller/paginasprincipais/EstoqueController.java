@@ -2,17 +2,27 @@ package com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
 import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
+import com.pbl.gerenciamentomicrocomputadores.controller.MyListener;
+import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardPecaController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
+import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
+import com.pbl.gerenciamentomicrocomputadores.model.Peca;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+
+import java.util.List;
 
 public class EstoqueController {
 
@@ -31,11 +41,82 @@ public class EstoqueController {
     @FXML private Label idTecnico;
     @FXML private Button deslogarBotao;
 
+    @FXML private GridPane gridContainer;
+
+    @FXML private Label nomePeca;
+    @FXML private Label valorPeca;
+    @FXML private Label custoPeca;
+    @FXML private Label qtdDisponivelPeca;
+    @FXML private Label qtdReservadaPeca;
+
+    private MyListener<Peca> myListener;
+
     @FXML
     void initialize() {
 
         paneCantoInicio.setVisible(true);
         paneTecnicoLogado.setVisible(false);
+
+        atualizarCards();
+    }
+
+    public void atualizarCards () {
+
+        gridContainer.getChildren().clear();
+
+        List<Peca> pecasData = DAO.getPeca().encontrarTodos();
+
+        if (pecasData.size() > 0) {
+
+            setPecaEscolhida(pecasData.get(0));
+
+            this.myListener = new MyListener<Peca>() {
+                @Override
+                public void onClickListener(Peca peca) {
+
+                    setPecaEscolhida(peca);
+                }
+            };
+
+        }
+
+        try {
+
+            int linhaAtual = 1;
+            int colunaAtual= 0;
+
+            for (int i = 0; i < pecasData.size(); i++) {
+
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("CardPecaView.fxml"));
+                AnchorPane novoCard = fxmlLoader.load();
+
+                CardPecaController cardPecaController = fxmlLoader.getController();
+                cardPecaController.setInfo(pecasData.get(i), myListener);
+
+                if (colunaAtual == 3) {
+
+                    linhaAtual++;
+                    colunaAtual = 0;
+                }
+
+                this.gridContainer.add(novoCard, colunaAtual++, linhaAtual);
+
+                this.gridContainer.setMinWidth(Region.USE_COMPUTED_SIZE);
+                this.gridContainer.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                this.gridContainer.setMaxWidth(Region.USE_COMPUTED_SIZE);
+
+                this.gridContainer.setMinHeight(Region.USE_COMPUTED_SIZE);
+                this.gridContainer.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                this.gridContainer.setMaxHeight(Region.USE_COMPUTED_SIZE);
+
+                GridPane.setMargin(novoCard, new Insets(16));
+
+            }
+
+        }
+        catch ( java.io.IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -235,6 +316,15 @@ public class EstoqueController {
         paneTecnicoLogado.setVisible(false);
         nomeTecnico.setText("");
         idTecnico.setText("");
+
+    }
+
+    public void setPecaEscolhida (Peca peca) {
+
+        nomePeca.setText(peca.getNome());
+        valorPeca.setText(Double.toString(peca.getValor()));
+        custoPeca.setText(Double.toString(peca.getCusto()));
+        qtdDisponivelPeca.setText(Integer.toString(peca.getQuantidade()));
 
     }
 
