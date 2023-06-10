@@ -194,7 +194,7 @@ public class ClienteController {
                 for (int i = 0; i < listaOrdens.size(); i++) {
 
                     FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MiniCardOrdemView.fxml"));
-                    AnchorPane novoCard = fxmlLoader.load();
+                    Pane novoCard = fxmlLoader.load();
 
                     MiniCardOrdemController miniCardOrdemController = fxmlLoader.getController();
                     miniCardOrdemController.setInfo(listaOrdens.get(i));
