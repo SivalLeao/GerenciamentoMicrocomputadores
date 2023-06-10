@@ -185,14 +185,14 @@
                   </Pane>
                   <Pane fx:id="paneSemServico" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="230.0" fitWidth="251.0" layoutX="241.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="243.0" fitWidth="297.0" layoutX="220.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Icones/Serviço-R15.png" />
+                              <Image url="@Icones/Sem%20servico.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="306.0" layoutY="348.0" prefHeight="36.0" prefWidth="121.0" text="Sem serviço." textFill="#b29494">
+                        <Label layoutX="268.0" layoutY="303.0" prefHeight="36.0" prefWidth="155.0" text="Sem serviço">
                            <font>
-                              <Font size="20.0" />
+                              <Font name="System Bold" size="25.0" />
                            </font>
                         </Label>
                      </children>
