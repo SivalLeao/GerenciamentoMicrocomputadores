@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
+import com.pbl.gerenciamentomicrocomputadores.controller.ConfirmacaoController;
 import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
 import com.pbl.gerenciamentomicrocomputadores.controller.MensagemController;
 import com.pbl.gerenciamentomicrocomputadores.controller.MyListener;
@@ -21,6 +22,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
@@ -71,6 +73,20 @@ public class OrdemController {
     private List<OrdemDeServico> ordensData;
 
     private MyListener<OrdemDeServico> myListener;
+
+    @FXML
+    void pressed(MouseEvent event) {
+
+        if (MainController.getStageConfirmacao() != null) {
+
+            MainController.getStageConfirmacao().close();
+        }
+        if (MainController.getStageCadastroOrdem() != null) {
+
+            MainController.getStageCadastroOrdem().close();
+        }
+
+    }
 
     @FXML
     void initialize() {
@@ -529,23 +545,48 @@ public class OrdemController {
         }
         else {
 
-            if (statusOrdem.getText().equals("Em espera")) {
+            try {
 
-                OrdemDeServico ordemDeServico = DAO.getOrdemDeServico().encontrarPorId(
-                        Integer.parseInt(idOrdem.getText()));
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("ConfirmacaoView.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+                stage.setScene(scene);
+                stage.setAlwaysOnTop(true);
 
-                if (ordemDeServico.getDescricaoServico().getTipoDeServico()
-                        .equals("Montagem/Instalação")) {
+                ConfirmacaoController confirmacaoController = fxmlLoader.getController();
+                confirmacaoController.setTexto("Deseja remover o serviço?");
+                confirmacaoController.setTipoDeAcao("remover");
 
-                    DAO.getPeca().devolverQuantidade(ordemDeServico.getDescricaoServico().getMapItens());
-                }
+                MainController.setStageConfirmacao(stage);
+
+                stage.show();
+            }
+            catch (java.io.IOException e) {
 
             }
-
-            DAO.getOrdemDeServico().remover(Integer.parseInt(idOrdem.getText()));
-            atualizarOrdensData();
-            atualizarCards(this.ordensData);
         }
+    }
+
+    public void removerOrdem () {
+
+        if (statusOrdem.getText().equals("Em espera")) {
+
+            OrdemDeServico ordemDeServico = DAO.getOrdemDeServico().encontrarPorId(
+                    Integer.parseInt(idOrdem.getText()));
+
+            if (ordemDeServico.getDescricaoServico().getTipoDeServico()
+                    .equals("Montagem/Instalação")) {
+
+                DAO.getPeca().devolverQuantidade(ordemDeServico.getDescricaoServico().getMapItens());
+            }
+
+        }
+
+        DAO.getOrdemDeServico().remover(Integer.parseInt(idOrdem.getText()));
+        atualizarOrdensData();
+        atualizarCards(this.ordensData);
     }
 
     @FXML
@@ -568,20 +609,45 @@ public class OrdemController {
         }
         else if (statusOrdem.getText().equals("Em espera")) {
 
-            int id = Integer.parseInt(idOrdem.getText());
-            OrdemDeServico ordemDeServico = DAO.getOrdemDeServico().encontrarPorId(id);
+            try {
 
-            if (ordemDeServico.getDescricaoServico().getTipoDeServico()
-                    .equals("Montagem/Instalação")) {
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("ConfirmacaoView.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+                stage.setScene(scene);
+                stage.setAlwaysOnTop(true);
 
-                DAO.getPeca().devolverQuantidade(ordemDeServico.getDescricaoServico().getMapItens());
+                ConfirmacaoController confirmacaoController = fxmlLoader.getController();
+                confirmacaoController.setTexto("Deseja cancelar o serviço?");
+                confirmacaoController.setTipoDeAcao("cancelar");
+
+                MainController.setStageConfirmacao(stage);
+
+                stage.show();
             }
+            catch (java.io.IOException e) {
 
-            DAO.getOrdemDeServico().atualizarStatus(id, "Cancelado");
-            atualizarOrdensData();
-            atualizarCards(this.ordensData);
-            setOrdemEscolhida(DAO.getOrdemDeServico().encontrarPorId(id));
+            }
         }
+    }
+
+    public void cancelarOrdem () {
+
+        int id = Integer.parseInt(idOrdem.getText());
+        OrdemDeServico ordemDeServico = DAO.getOrdemDeServico().encontrarPorId(id);
+
+        if (ordemDeServico.getDescricaoServico().getTipoDeServico()
+                .equals("Montagem/Instalação")) {
+
+            DAO.getPeca().devolverQuantidade(ordemDeServico.getDescricaoServico().getMapItens());
+        }
+
+        DAO.getOrdemDeServico().atualizarStatus(id, "Cancelado");
+        atualizarOrdensData();
+        atualizarCards(this.ordensData);
+        setOrdemEscolhida(DAO.getOrdemDeServico().encontrarPorId(id));
     }
 
     public void exibirMensagem (String mensagem) {
