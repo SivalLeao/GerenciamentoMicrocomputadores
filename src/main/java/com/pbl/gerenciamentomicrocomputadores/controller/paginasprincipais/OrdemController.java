@@ -503,6 +503,19 @@ public class OrdemController {
         }
         else {
 
+            if (statusOrdem.getText().equals("Em espera")) {
+
+                OrdemDeServico ordemDeServico = DAO.getOrdemDeServico().encontrarPorId(
+                        Integer.parseInt(idOrdem.getText()));
+
+                if (ordemDeServico.getDescricaoServico().getTipoDeServico()
+                        .equals("Montagem/Instalação")) {
+
+                    DAO.getPeca().devolverQuantidade(ordemDeServico.getDescricaoServico().getMapItens());
+                }
+
+            }
+
             DAO.getOrdemDeServico().remover(Integer.parseInt(idOrdem.getText()));
             atualizarOrdensData();
             atualizarCards(this.ordensData);
@@ -514,17 +527,29 @@ public class OrdemController {
 
         if (idTecnico.getText().equals("")) {
 
-            exibirMensagem("O técnico não está logado.\nFaça o login para alterar peça.");
+            exibirMensagem("O técnico não está logado.\nFaça o login para alterar serviço.");
 
         }
         else if (statusOrdem.getText().equals("Em andamento")) {
 
-            exibirMensagem("Serviço em andamento, \nnão é permitido cancelá-la");
+            exibirMensagem("Serviço em andamento, \nnão é permitido cancelá-lo");
 
         }
-        else {
+        else if (statusOrdem.getText().equals("Finalizado")) {
+
+            exibirMensagem("Serviço já foi finalizado, \nnão é permitido cancelá-lo");
+
+        }
+        else if (statusOrdem.getText().equals("Em espera")) {
 
             int id = Integer.parseInt(idOrdem.getText());
+            OrdemDeServico ordemDeServico = DAO.getOrdemDeServico().encontrarPorId(id);
+
+            if (ordemDeServico.getDescricaoServico().getTipoDeServico()
+                    .equals("Montagem/Instalação")) {
+
+                DAO.getPeca().devolverQuantidade(ordemDeServico.getDescricaoServico().getMapItens());
+            }
 
             DAO.getOrdemDeServico().atualizarStatus(id, "Cancelado");
             atualizarOrdensData();
