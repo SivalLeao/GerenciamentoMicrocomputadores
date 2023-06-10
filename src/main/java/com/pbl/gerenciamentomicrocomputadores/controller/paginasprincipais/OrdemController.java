@@ -7,8 +7,10 @@ import java.util.Map;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
 import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
+import com.pbl.gerenciamentomicrocomputadores.controller.MensagemController;
 import com.pbl.gerenciamentomicrocomputadores.controller.MyListener;
 import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardOrdemController;
+import com.pbl.gerenciamentomicrocomputadores.controller.paginascadastrar.CadastrarOrdemController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
@@ -59,7 +61,6 @@ public class OrdemController {
 
     @FXML private Button removerOrdemBotao;
     @FXML private Button cancelarOrdemBotao;
-    @FXML private Label mensagemDeErroAlterarOrdem;
 
     private List<OrdemDeServico> ordensData;
 
@@ -73,7 +74,6 @@ public class OrdemController {
 
         this.ordensData = DAO.getOrdemDeServico().encontrarTodos();
         atualizarCards(this.ordensData);
-        mensagemDeErroAlterarOrdem.setText("");
     }
 
     public void atualizarCards (List<OrdemDeServico> ordensData) {
@@ -88,7 +88,6 @@ public class OrdemController {
                 @Override
                 public void onClickListener(OrdemDeServico ordemDeServico) {
 
-                    mensagemDeErroAlterarOrdem.setText("");
                     setOrdemEscolhida(ordemDeServico);
                 }
             };
@@ -335,6 +334,12 @@ public class OrdemController {
                 stage.setScene(scene);
 
                 MainController.setStageCadastroOrdem(stage);
+                stage.setOnCloseRequest(e -> {
+                    MainController.setStageCadastroOrdem(null);
+                });
+
+                CadastrarOrdemController cadastrarOrdemController = fxmlLoader.getController();
+                cadastrarOrdemController.limparPecasEscolhidas();
 
                 stage.show();
             }
@@ -488,11 +493,13 @@ public class OrdemController {
 
         if (idTecnico.getText().equals("")) {
 
-            mensagemDeErroAlterarOrdem.setText("Tecnico deslogado.");
+            exibirMensagem("O técnico não está logado.\nFaça o login para alterar peça.");
+
         }
         else if (statusOrdem.getText().equals("Em andamento")) {
 
-            mensagemDeErroAlterarOrdem.setText("Serviço em andamento.");
+            exibirMensagem("Serviço em andamento, \nnão é permitido removê-lo");
+
         }
         else {
 
@@ -507,11 +514,13 @@ public class OrdemController {
 
         if (idTecnico.getText().equals("")) {
 
-            mensagemDeErroAlterarOrdem.setText("Tecnico deslogado.");
+            exibirMensagem("O técnico não está logado.\nFaça o login para alterar peça.");
+
         }
         else if (statusOrdem.getText().equals("Em andamento")) {
 
-            mensagemDeErroAlterarOrdem.setText("Serviço em andamento.");
+            exibirMensagem("Serviço em andamento, \nnão é permitido cancelá-la");
+
         }
         else {
 
@@ -523,5 +532,29 @@ public class OrdemController {
             setOrdemEscolhida(DAO.getOrdemDeServico().encontrarPorId(id));
         }
     }
+
+    public void exibirMensagem (String mensagem) {
+
+        try {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+            stage.setScene(scene);
+
+            MensagemController mensagemController = fxmlLoader.getController();
+            mensagemController.setMensagem(mensagem);
+
+            stage.show();
+
+        }
+        catch (java.io.IOException e) {
+
+        }
+
+    }
+
 
 }

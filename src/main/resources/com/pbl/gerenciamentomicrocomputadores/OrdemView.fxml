@@ -313,11 +313,6 @@
                   <Font name="Arial Bold" size="12.0" />
                </font>
             </Button>
-            <Label fx:id="mensagemDeErroAlterarOrdem" layoutX="130.0" layoutY="492.0" prefHeight="16.0" prefWidth="120.0" text="Serviço em andamento." textFill="#a48181">
-               <font>
-                  <Font size="11.0" />
-               </font>
-            </Label>
          </children>
       </Pane>
     </children>
