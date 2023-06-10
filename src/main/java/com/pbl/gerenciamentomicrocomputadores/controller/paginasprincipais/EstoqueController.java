@@ -15,6 +15,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -46,6 +47,10 @@ public class EstoqueController {
 
     @FXML private GridPane gridContainer;
 
+    @FXML private TextField barraDePesquisa;
+    @FXML private Button pesquisarBotao;
+    @FXML private Label mensagemPesquisa;
+
     @FXML private Label nomePeca;
     @FXML private Label valorPeca;
     @FXML private Label custoPeca;
@@ -64,6 +69,7 @@ public class EstoqueController {
         paneTecnicoLogado.setVisible(false);
 
         atualizarCards();
+        mensagemPesquisa.setText("");
     }
 
     public void atualizarCards () {
@@ -246,6 +252,8 @@ public class EstoqueController {
     @FXML
     void abaLogin (ActionEvent event) {
 
+        mensagemPesquisa.setText("");
+
         try {
 
             if (MainController.getStageLogin() == null) {
@@ -276,6 +284,8 @@ public class EstoqueController {
 
     public void fazendoMudancaLogin (Tecnico tecnico) {
 
+        mensagemPesquisa.setText("");
+
         paneCantoInicio.setVisible(false);
         paneTecnicoLogado.setVisible(true);
 
@@ -286,6 +296,8 @@ public class EstoqueController {
 
     @FXML
     void abaCadastrar(ActionEvent event) {
+
+        mensagemPesquisa.setText("");
 
         try {
 
@@ -322,6 +334,7 @@ public class EstoqueController {
         paneTecnicoLogado.setVisible(false);
         nomeTecnico.setText("");
         idTecnico.setText("");
+        mensagemPesquisa.setText("");
 
     }
 
@@ -397,6 +410,27 @@ public class EstoqueController {
         }
         catch (java.io.IOException e) {
 
+        }
+
+    }
+
+    @FXML
+    void pesquisarAcao(ActionEvent event) {
+
+        String nomePesquisado = barraDePesquisa.getText();
+
+        if (DAO.getPeca().checarPorNome(nomePesquisado)) {
+
+            setPecaEscolhida(DAO.getPeca().encontrarPorNome(nomePesquisado));
+            mensagemPesquisa.setText("Peça encontrada.");
+        }
+        else if (nomePesquisado.replaceAll("\\s+", "").length() >= 2) {
+
+            mensagemPesquisa.setText("Peça não encontrada.");
+        }
+        else {
+
+            mensagemPesquisa.setText("Dado inválido.");
         }
 
     }
