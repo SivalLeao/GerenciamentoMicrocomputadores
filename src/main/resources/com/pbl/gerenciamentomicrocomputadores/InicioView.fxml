@@ -172,7 +172,7 @@
                <children>
                   <Pane fx:id="paneCardsOrdens" visible="false">
                      <children>
-                        <ScrollPane prefHeight="444.0" prefWidth="690.0">
+                        <ScrollPane prefHeight="444.0" prefWidth="690.0" styleClass="custom-scroll-pane">
                            <content>
                               <GridPane fx:id="gridContainer" prefHeight="0.0" prefWidth="0.0">
                                  <rowConstraints>
