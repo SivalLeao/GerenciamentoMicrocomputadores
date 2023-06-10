@@ -257,7 +257,7 @@
     -fx-background-radius: 200;
 }
 
-
+.borda-branca-quadrada {
+    -fx-border-color: #ffffff;
+    -fx-border-width: 2;
 }
-
-
