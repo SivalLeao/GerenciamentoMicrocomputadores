@@ -60,7 +60,7 @@ public class EstoqueController {
     @FXML private Label listaOrdemQtd;
 
     @FXML private Button adicionarQtdBotao;
-
+    @FXML private Button atualizarPecaBotao;
     @FXML private Button removerPecaBotao;
 
     private MyListener<Peca> myListener;
@@ -488,6 +488,11 @@ public class EstoqueController {
             }
 
         }
+
+    }
+
+    @FXML
+    void atualizarPecaAcao(ActionEvent event) {
 
     }
 
