@@ -244,3 +244,20 @@
     -fx-background-radius: 5;
     -fx-background-color: #ffffff;
 }
+
+.confimacao-aba{
+    -fx-background-color: #00818D;
+}
+.aviso{
+    -fx-background-color: #FFE500;
+}
+
+.confimacao-botao {
+    -fx-background-color: #00818D;
+    -fx-background-radius: 200;
+}
+
+
+}
+
+

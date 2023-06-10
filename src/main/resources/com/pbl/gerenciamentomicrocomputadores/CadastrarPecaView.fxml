@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="390.0" prefWidth="306.0" styleClass="cadastro" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.paginascadastrar.CadastrarPecaController">
    <children>
       <HBox prefHeight="49.0" prefWidth="306.0">
@@ -31,7 +30,7 @@
                      </graphic>
                   </Button>
                   <Separator opacity="0.0" orientation="VERTICAL" prefHeight="49.0" prefWidth="6.0" />
-                  <Label prefHeight="49.0" prefWidth="203.0" style="-fx-background-color: #00768B;" text="Cadastrar peça" textFill="WHITE">
+                  <Label prefHeight="49.0" prefWidth="247.0" style="-fx-background-color: #00768B;" text="   Adicionar nova peça" textFill="WHITE">
                      <font>
                         <Font name="Agency FB" size="29.0" />
                      </font>
@@ -43,38 +42,38 @@
             </HBox>
          </children>
       </HBox>
-      <TextField fx:id="nomePeca" alignment="CENTER" layoutX="73.0" layoutY="68.0" prefHeight="27.0" prefWidth="226.0" promptText="Digite o nome" styleClass="texto-login" stylesheets="@CSS/style.css" />
+      <TextField fx:id="nomePeca" alignment="CENTER" layoutX="73.0" layoutY="68.0" prefHeight="27.0" prefWidth="219.0" promptText="Digite o nome" styleClass="texto-login" stylesheets="@CSS/style.css" />
       <Label alignment="CENTER" layoutX="11.0" layoutY="65.0" prefHeight="32.0" prefWidth="55.0" text="Nome: " textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="mensagemDeErroValor" alignment="CENTER" layoutX="74.0" layoutY="154.0" prefHeight="17.0" prefWidth="219.0" textFill="RED" />
-      <TextField fx:id="valorPeca" alignment="CENTER" layoutX="74.0" layoutY="125.0" prefHeight="27.0" prefWidth="226.0" promptText="Digite o valor" styleClass="texto-login" stylesheets="@CSS/style.css" />
-      <Button fx:id="cadastrarBotao" layoutX="92.0" layoutY="321.0" mnemonicParsing="false" onAction="#cadastrarAcao" prefHeight="32.0" prefWidth="123.0" style="-fx-background-radius: 10;" stylesheets="@CSS/style.css" text="Cadastrar" textFill="WHITE">
+      <Label fx:id="mensagemDeErroValor" alignment="CENTER" layoutX="74.0" layoutY="156.0" prefHeight="17.0" prefWidth="219.0" textFill="RED" />
+      <TextField fx:id="valorPeca" alignment="CENTER" layoutX="74.0" layoutY="125.0" prefHeight="27.0" prefWidth="219.0" promptText="Digite o valor" styleClass="texto-login" stylesheets="@CSS/style.css" />
+      <Button fx:id="cadastrarBotao" layoutX="92.0" layoutY="321.0" mnemonicParsing="false" onAction="#cadastrarAcao" prefHeight="32.0" prefWidth="123.0" style="-fx-background-radius: 10;" stylesheets="@CSS/style.css" text="Adicionar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <TextField fx:id="custoPeca" alignment="CENTER" layoutX="74.0" layoutY="188.0" prefHeight="27.0" prefWidth="226.0" promptText="Digite o custo" styleClass="texto-login" stylesheets="@CSS/style.css" />
-      <Label alignment="CENTER" layoutX="11.0" layoutY="122.0" prefHeight="32.0" prefWidth="55.0" text="Valor: " textFill="WHITE">
+      <TextField fx:id="custoPeca" alignment="CENTER" layoutX="74.0" layoutY="188.0" prefHeight="27.0" prefWidth="219.0" promptText="Digite o custo" styleClass="texto-login" stylesheets="@CSS/style.css" />
+      <Label alignment="CENTER" layoutX="10.0" layoutY="123.0" prefHeight="32.0" prefWidth="55.0" text="Valor: " textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="19.0" layoutY="253.0" prefHeight="32.0" prefWidth="86.0" text="Quantidade: " textFill="WHITE">
+      <Label alignment="CENTER" layoutX="10.0" layoutY="253.0" prefHeight="32.0" prefWidth="104.0" text="Quantidade: " textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="qtdPeca" alignment="CENTER" layoutX="107.0" layoutY="255.0" prefHeight="27.0" prefWidth="190.0" promptText="Digite a quantidade" styleClass="texto-login" stylesheets="@CSS/style.css" />
-      <Label alignment="CENTER" layoutX="15.0" layoutY="185.0" prefHeight="32.0" prefWidth="47.0" text="Custo: " textFill="WHITE">
+      <TextField fx:id="qtdPeca" alignment="CENTER" layoutX="113.0" layoutY="255.0" prefHeight="27.0" prefWidth="180.0" promptText="Digite a quantidade" styleClass="texto-login" stylesheets="@CSS/style.css" />
+      <Label alignment="CENTER" layoutX="10.0" layoutY="186.0" prefHeight="32.0" prefWidth="71.0" text="Custo: " textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="mensagemDeErroNome" alignment="CENTER" layoutX="74.0" layoutY="97.0" prefHeight="17.0" prefWidth="226.0" textFill="RED" />
-      <Label fx:id="mensagemDeErroCusto" alignment="CENTER" layoutX="71.0" layoutY="217.0" prefHeight="17.0" prefWidth="226.0" textFill="RED" />
-      <Label fx:id="mensagemDeErroQtd" alignment="CENTER" layoutX="107.0" layoutY="282.0" prefHeight="17.0" prefWidth="190.0" textFill="RED" />
+      <Label fx:id="mensagemDeErroNome" alignment="CENTER" layoutX="74.0" layoutY="99.0" prefHeight="17.0" prefWidth="226.0" textFill="RED" />
+      <Label fx:id="mensagemDeErroCusto" alignment="CENTER" layoutX="80.0" layoutY="220.0" prefHeight="17.0" prefWidth="210.0" textFill="RED" />
+      <Label fx:id="mensagemDeErroQtd" alignment="CENTER" layoutX="113.0" layoutY="287.0" prefHeight="17.0" prefWidth="180.0" textFill="RED" />
    </children>
 </AnchorPane>
