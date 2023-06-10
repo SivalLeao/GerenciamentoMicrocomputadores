@@ -199,12 +199,12 @@
                   <Font name="Arial Black" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="38.0" layoutY="158.0" prefHeight="27.0" prefWidth="187.0" text="Quantidade disponível: " textFill="#ededed">
+            <Label layoutX="38.0" layoutY="131.0" prefHeight="27.0" prefWidth="187.0" text="Quantidade disponível: " textFill="#ededed">
                <font>
                   <Font name="Arial Black" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="38.0" layoutY="185.0" prefHeight="27.0" prefWidth="187.0" text="Quantidade reservada: " textFill="#ededed">
+            <Label layoutX="38.0" layoutY="158.0" prefHeight="27.0" prefWidth="187.0" text="Quantidade reservada: " textFill="#ededed">
                <font>
                   <Font name="Arial Black" size="14.0" />
                </font>
@@ -234,16 +234,35 @@
                   <Font name="Arial Black" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="qtdDisponivelPeca" layoutX="218.0" layoutY="158.0" prefHeight="27.0" prefWidth="132.0" textFill="#ededed">
+            <Label fx:id="qtdDisponivelPeca" layoutX="218.0" layoutY="131.0" prefHeight="27.0" prefWidth="132.0" textFill="#ededed">
                <font>
                   <Font name="Arial Black" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="qtdReservadaPeca" layoutX="218.0" layoutY="185.0" prefHeight="27.0" prefWidth="132.0" textFill="#ededed">
+            <Label fx:id="qtdReservadaPeca" layoutX="218.0" layoutY="158.0" prefHeight="27.0" prefWidth="132.0" textFill="#ededed">
                <font>
                   <Font name="Arial Black" size="14.0" />
                </font>
             </Label>
+            <ScrollPane layoutX="31.0" layoutY="221.0" prefHeight="138.0" prefWidth="296.0">
+               <content>
+                  <Label fx:id="listaOrdemQtd" textFill="#ededed">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </Label>
+               </content>
+            </ScrollPane>
+            <Label layoutX="38.0" layoutY="194.0" prefHeight="27.0" prefWidth="187.0" text="Serviços utilizando: " textFill="#ededed">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="removerPecaBotao" layoutX="218.0" layoutY="410.0" mnemonicParsing="false" onAction="#removerPecaAcao" prefHeight="40.0" prefWidth="105.0" text="Remover" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
     </children>

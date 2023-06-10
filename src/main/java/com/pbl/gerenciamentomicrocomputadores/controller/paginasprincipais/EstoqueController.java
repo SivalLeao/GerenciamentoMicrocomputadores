@@ -2,6 +2,7 @@ package com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
 import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
+import com.pbl.gerenciamentomicrocomputadores.controller.MensagemController;
 import com.pbl.gerenciamentomicrocomputadores.controller.MyListener;
 import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardPecaController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
@@ -22,6 +23,7 @@ import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 import java.util.List;
+import java.util.Map;
 
 public class EstoqueController {
 
@@ -49,6 +51,9 @@ public class EstoqueController {
     @FXML private Label custoPeca;
     @FXML private Label qtdDisponivelPeca;
     @FXML private Label qtdReservadaPeca;
+    @FXML private Label listaOrdemQtd;
+
+    @FXML private Button removerPecaBotao;
 
     private MyListener<Peca> myListener;
 
@@ -327,6 +332,41 @@ public class EstoqueController {
         custoPeca.setText(Double.toString(peca.getCusto()));
         qtdDisponivelPeca.setText(Integer.toString(peca.getQuantidade()));
 
+        Map<Integer, Integer> mapOrdemQtd = DAO.getOrdemDeServico().OrdensUtilizandoPeca(nomePeca.getText());
+
+        int qtdUsada = 0;
+
+        for (int chave: mapOrdemQtd.keySet()) {
+
+            qtdUsada += mapOrdemQtd.get(chave);
+        }
+
+        qtdReservadaPeca.setText(Integer.toString(qtdUsada));
+
+        setListaOrdemQtd (qtdUsada, mapOrdemQtd);
+
+    }
+
+    public void setListaOrdemQtd (int qtdUsada, Map<Integer, Integer> mapOrdemQtd) {
+
+        String texto;
+
+        if (qtdUsada == 0) {
+
+            texto = "\n    Nenhuma quantidade está sendo \n    utilizada.";
+        }
+        else {
+
+            texto = "\n    ID serviço : quantidade\n";
+
+            for (int idOrdem: mapOrdemQtd.keySet()) {
+
+                texto = texto.concat("\n    " + Integer.toString(idOrdem) + " : " +
+                        Integer.toString(mapOrdemQtd.get(idOrdem)));
+            }
+        }
+
+        listaOrdemQtd.setText(texto);
     }
 
 
@@ -360,6 +400,50 @@ public class EstoqueController {
         }
 
     }
+
+    @FXML
+    void removerPecaAcao(ActionEvent event) {
+
+        String mensagem = "";
+
+        if (idTecnico.getText().equals("")) {
+
+            mensagem = "O técnico não está logado.\nFaça o login para alterar peça.";
+
+        }
+        else if (DAO.getOrdemDeServico().OrdensUtilizandoPeca(nomePeca.getText()).size() > 0) {
+
+            mensagem = "Peça está sendo utilizada, \nnão é possível removê-la do sistema.";
+        }
+        else {
+
+            DAO.getPeca().removerPeca(nomePeca.getText());
+            atualizarCards();
+
+            mensagem = "Peça foi removida.";
+        }
+
+        try {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+            stage.setScene(scene);
+
+            MensagemController mensagemController = fxmlLoader.getController();
+            mensagemController.setMensagem(mensagem);
+
+            stage.show();
+        }
+        catch (java.io.IOException e) {
+
+        }
+
+    }
+
+
 
 
 }
