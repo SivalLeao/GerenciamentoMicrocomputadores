@@ -1,6 +1,7 @@
 package com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
+import com.pbl.gerenciamentomicrocomputadores.controller.AdicionarQtdController;
 import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
 import com.pbl.gerenciamentomicrocomputadores.controller.MensagemController;
 import com.pbl.gerenciamentomicrocomputadores.controller.MyListener;
@@ -58,6 +59,8 @@ public class EstoqueController {
     @FXML private Label qtdReservadaPeca;
     @FXML private Label listaOrdemQtd;
 
+    @FXML private Button adicionarQtdBotao;
+
     @FXML private Button removerPecaBotao;
 
     private MyListener<Peca> myListener;
@@ -80,7 +83,14 @@ public class EstoqueController {
 
         if (pecasData.size() > 0) {
 
-            setPecaEscolhida(pecasData.get(0));
+            if (nomePeca.getText().equals("") || !(DAO.getPeca().checarPorNome(nomePeca.getText()))) {
+
+                setPecaEscolhida(pecasData.get(0));
+            }
+            else {
+
+                setPecaEscolhida(DAO.getPeca().encontrarPorNome(nomePeca.getText()));
+            }
 
             this.myListener = new MyListener<Peca>() {
                 @Override
@@ -431,6 +441,52 @@ public class EstoqueController {
         else {
 
             mensagemPesquisa.setText("Dado inválido.");
+        }
+
+    }
+
+    @FXML
+    void adicionarQtdAcao(ActionEvent event) {
+
+        if (idTecnico.getText().equals("")) {
+
+            try {
+
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+                stage.setScene(scene);
+
+                MensagemController mensagemController = fxmlLoader.getController();
+                mensagemController.setMensagem("O técnico não está logado.\nFaça o login para alterar peça.");
+
+                stage.show();
+            }
+            catch (java.io.IOException e) {
+
+            }
+        }
+        else {
+
+            try {
+
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("AdicionarQtdView.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+                stage.setScene(scene);
+
+                AdicionarQtdController adicionarQtdController = fxmlLoader.getController();
+                adicionarQtdController.setNomePeca(nomePeca.getText());
+
+                stage.show();
+            } catch (java.io.IOException e) {
+
+            }
+
         }
 
     }
