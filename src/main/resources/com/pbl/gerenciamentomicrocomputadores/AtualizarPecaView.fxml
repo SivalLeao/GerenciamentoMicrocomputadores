@@ -12,13 +12,13 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="390.0" prefWidth="306.0" styleClass="cadastro" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.AtualizarPecaController">
+<AnchorPane onMousePressed="#pressed" prefHeight="390.0" prefWidth="306.0" styleClass="cadastro" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.AtualizarPecaController">
    <children>
       <HBox prefHeight="49.0" prefWidth="306.0">
          <children>
             <HBox prefHeight="49.0" prefWidth="309.0" style="-fx-background-color: #00768B;">
                <children>
-                  <Button fx:id="voltarBotao" mnemonicParsing="false" onAction="#fecharAbaCadastrar" prefHeight="48.0" prefWidth="49.0" style="-fx-background-radius: 0 10 10 0;" styleClass="button-volta" textFill="WHITE">
+                  <Button fx:id="voltarBotao" mnemonicParsing="false" onAction="#fecharAbaCadastrar" onMousePressed="#pressed" prefHeight="48.0" prefWidth="49.0" style="-fx-background-radius: 0 10 10 0;" styleClass="button-volta" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -49,13 +49,13 @@
          </font>
       </Label>
       <Label fx:id="mensagemDeErroValor" alignment="CENTER" layoutX="74.0" layoutY="156.0" prefHeight="17.0" prefWidth="219.0" textFill="RED" />
-      <TextField fx:id="valorPeca" alignment="CENTER" layoutX="74.0" layoutY="125.0" prefHeight="27.0" prefWidth="219.0" promptText="Digite novo valor" styleClass="texto-login" stylesheets="@CSS/style.css" />
-      <Button fx:id="atualizarPecaBotao" layoutX="92.0" layoutY="321.0" mnemonicParsing="false" onAction="#atualizarPecaAcao" prefHeight="32.0" prefWidth="123.0" style="-fx-background-radius: 10;" stylesheets="@CSS/style.css" text="Atualizar" textFill="WHITE">
+      <TextField fx:id="valorPeca" alignment="CENTER" layoutX="74.0" layoutY="125.0" onMousePressed="#pressed" prefHeight="27.0" prefWidth="219.0" promptText="Digite novo valor" styleClass="texto-login" stylesheets="@CSS/style.css" />
+      <Button fx:id="atualizarPecaBotao" layoutX="92.0" layoutY="321.0" mnemonicParsing="false" onAction="#atualizarPecaAcao" onMousePressed="#pressed" prefHeight="32.0" prefWidth="123.0" style="-fx-background-radius: 10;" stylesheets="@CSS/style.css" text="Atualizar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <TextField fx:id="custoPeca" alignment="CENTER" layoutX="74.0" layoutY="188.0" prefHeight="27.0" prefWidth="219.0" promptText="Digite novo custo" styleClass="texto-login" stylesheets="@CSS/style.css" />
+      <TextField fx:id="custoPeca" alignment="CENTER" layoutX="74.0" layoutY="188.0" onMousePressed="#pressed" prefHeight="27.0" prefWidth="219.0" promptText="Digite novo custo" styleClass="texto-login" stylesheets="@CSS/style.css" />
       <Label alignment="CENTER" layoutX="10.0" layoutY="123.0" prefHeight="32.0" prefWidth="55.0" text="Valor: " textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
@@ -66,7 +66,7 @@
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="qtdPeca" alignment="CENTER" layoutX="113.0" layoutY="255.0" prefHeight="27.0" prefWidth="180.0" promptText="Digite nova quantidade" styleClass="texto-login" stylesheets="@CSS/style.css" />
+      <TextField fx:id="qtdPeca" alignment="CENTER" layoutX="113.0" layoutY="255.0" onMousePressed="#pressed" prefHeight="27.0" prefWidth="180.0" promptText="Digite nova quantidade" styleClass="texto-login" stylesheets="@CSS/style.css" />
       <Label alignment="CENTER" layoutX="10.0" layoutY="186.0" prefHeight="32.0" prefWidth="71.0" text="Custo: " textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />

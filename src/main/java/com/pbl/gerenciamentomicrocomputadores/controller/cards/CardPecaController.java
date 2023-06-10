@@ -26,6 +26,10 @@ public class CardPecaController {
 
             MainController.getStageConfirmacao().close();
         }
+        if (MainController.getStageAtualizarPeca() != null) {
+
+            MainController.getStageAtualizarPeca().close();
+        }
     }
 
     public void setInfo (Peca peca, MyListener<Peca> myListener) {

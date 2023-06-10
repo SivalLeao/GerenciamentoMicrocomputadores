@@ -1,6 +1,7 @@
 package com.pbl.gerenciamentomicrocomputadores.controller;
 
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.ClienteController;
+import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.EstoqueController;
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.TecnicoController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,6 +37,7 @@ public class ConfirmacaoController {
 
                 clienteController.removerCliente();
             }
+
         }
         else if (classeController.equals("TecnicoController")) {
 
@@ -50,6 +52,21 @@ public class ConfirmacaoController {
                 tecnicoController.removerPerfil();
             }
 
+        }
+        else if (classeController.equals("EstoqueController")) {
+
+            EstoqueController estoqueController = fxmlLoader.getController();
+
+            if (tipoDeAcao.equals("atualizar")) {
+
+               FXMLLoader fxmlLoaderAtualizarPeca = MainController.getFXMLLoaderAtualizarPeca();
+               AtualizarPecaController atualizarPecaController = fxmlLoaderAtualizarPeca.getController();
+               atualizarPecaController.atualizarPeca();
+            }
+            else if (tipoDeAcao.equals("remover")) {
+
+                estoqueController.removerPeca();
+            }
 
         }
 

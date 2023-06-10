@@ -19,6 +19,10 @@ public class MainController {
 
     private static Stage stageCadastroPeca;
 
+    private static FXMLLoader fxmlLoaderAtualizarPeca;
+
+    private static Stage stageAtualizarPeca;
+
     private static Stage stageConfirmacao;
 
     public static Stage getStageInicio () { return stageInicio; }
@@ -48,6 +52,14 @@ public class MainController {
     public static Stage getStageCadastroPeca () { return stageCadastroPeca; }
 
     public static void setStageCadastroPeca (Stage stageCadastroPeca) { MainController.stageCadastroPeca = stageCadastroPeca; }
+
+    public static FXMLLoader getFXMLLoaderAtualizarPeca() { return fxmlLoaderAtualizarPeca; }
+
+    public static void setFXMLLoaderAtualizarPeca(FXMLLoader fxmlLoaderAtualizarPeca) { MainController.fxmlLoaderAtualizarPeca = fxmlLoaderAtualizarPeca; }
+
+    public static Stage getStageAtualizarPeca() { return stageAtualizarPeca; }
+
+    public static void setStageAtualizarPeca (Stage stageAtualizarPeca) { MainController.stageAtualizarPeca = stageAtualizarPeca; }
 
     public static Stage getStageConfirmacao () { return stageConfirmacao; }
 
