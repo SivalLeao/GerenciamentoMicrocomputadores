@@ -70,7 +70,7 @@ public class ClienteController {
     @FXML private Button pesquisarBotao;
 
     @FXML private Label adicionar;
-    @FXML private Label pesquisar;
+
 
     private MyListener<Cliente> myListener;
 
@@ -92,14 +92,14 @@ public class ClienteController {
         paneCantoInicio.setVisible(true);
         paneTecnicoLogado.setVisible(false);
 
-        pesquisar.setVisible(false);
+
         adicionar.setVisible(false);
 
         pesquisarBotao.setOnMouseEntered(mouseEvent -> {
-            pesquisar.setVisible(true);
+
         });
         pesquisarBotao.setOnMouseExited(event -> {
-            pesquisar.setVisible(false);
+
         });
 
         cadastrarClienteBotao.setOnMouseEntered(mouseEvent -> {
