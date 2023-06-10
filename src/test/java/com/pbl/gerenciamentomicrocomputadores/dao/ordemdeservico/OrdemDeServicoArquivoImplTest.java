@@ -250,6 +250,45 @@ public class OrdemDeServicoArquivoImplTest {
     }
 
     @Test
+    void OrdensUtilizandoPeca () {
+
+        DAO.getOrdemDeServico().remover(1113);
+        DAO.getOrdemDeServico().remover(1123);
+        DAO.getOrdemDeServico().remover(1133);
+        DAO.getOrdemDeServico().remover(1143);
+        DAO.getOrdemDeServico().remover(1153);
+
+        OrdemDeServico newOrdem1 = new OrdemDeServico(1111,1112);
+        newOrdem1.getDescricaoServico().setTipoDeServico("Montagem/Instalação");
+        newOrdem1.getDescricaoServico().setMapItens("teclado", 5);
+        newOrdem1.getDescricaoServico().setMapItens("mouse", 3);
+
+        DAO.getOrdemDeServico().criar(newOrdem1);
+
+        OrdemDeServico newOrdem2 = new OrdemDeServico(1111,1112);
+        newOrdem2.getDescricaoServico().setTipoDeServico("Montagem/Instalação");
+        newOrdem2.getDescricaoServico().setMapItens("tela", 1);
+        newOrdem2.getDescricaoServico().setMapItens("hd", 3);
+
+        DAO.getOrdemDeServico().criar(newOrdem2);
+
+        OrdemDeServico newOrdem3 = new OrdemDeServico(1111,1112);
+        newOrdem3.getDescricaoServico().setTipoDeServico("Montagem/Instalação");
+        newOrdem3.getDescricaoServico().setMapItens("teclado", 3);
+        newOrdem3.getDescricaoServico().setMapItens("hd", 3);
+
+        DAO.getOrdemDeServico().criar(newOrdem3);
+
+        Map<Integer,Integer> mapOrdemQtd = DAO.getOrdemDeServico().OrdensUtilizandoPeca("teclado");
+
+        assertEquals(mapOrdemQtd.size(), 2);
+
+        assertEquals(mapOrdemQtd.get(1113), 5);
+        assertEquals(mapOrdemQtd.get(1133), 3);
+
+    }
+
+    @Test
     void removerTodos() {
 
         List<OrdemDeServico> lista = DAO.getOrdemDeServico().encontrarTodos();

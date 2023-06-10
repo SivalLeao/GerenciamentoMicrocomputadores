@@ -4,6 +4,7 @@ import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -297,6 +298,36 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
         }
 
         return null;
+    }
+
+    /** Método para retornar os IDs das ordens que estão utilizando determinada peça e a sua
+     * quantidade. A busca é feita pelo nome da peça. A ordens checadas são as que ainda estão
+     * sendo feitas.
+     *
+     * @param nomePeca String - nome da peça.
+     * @return Map - Mapa com os IDs das ordens que estão utilizando determinada peça e a sua
+     * quantidade.*/
+
+    public Map<Integer, Integer> OrdensUtilizandoPeca(String nomePeca) {
+
+        Map<Integer, Integer> mapOrdemQtd = new HashMap<>();
+
+        for (OrdemDeServico ordemDeServico: this.lista) {
+
+            if (ordemDeServico.getStatusAtual().equals("Em espera") ||
+                    ordemDeServico.getStatusAtual().equals("Em andamento")) {
+
+                Map<String, Integer> mapItens = ordemDeServico.getDescricaoServico().getMapItens();
+
+                if (mapItens.containsKey(nomePeca)) {
+
+                    mapOrdemQtd.put(ordemDeServico.getIdOrdem(), mapItens.get(nomePeca));
+                }
+
+            }
+        }
+
+        return mapOrdemQtd;
     }
 
     /** Método para esvaziar o armazenamento de ordens de serviço. A função clear é usada para

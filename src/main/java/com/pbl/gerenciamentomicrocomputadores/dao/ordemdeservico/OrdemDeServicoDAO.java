@@ -72,4 +72,13 @@ public interface OrdemDeServicoDAO extends CRUD<OrdemDeServico> {
 
     public OrdemDeServico conseguirOrdemTecnico(int idTecnico);
 
+    /** Método para retornar os IDs das ordens que estão utilizando determinada peça e a sua
+     * quantidade. A busca é feita pelo nome da peça.
+     *
+     * @param nomePeca String - nome da peça.
+     * @return Map - Mapa com os IDs das ordens que estão utilizando determinada peça e a sua
+     * quantidade.*/
+
+    public Map<Integer, Integer> OrdensUtilizandoPeca(String nomePeca);
+
 }
