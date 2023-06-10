@@ -172,6 +172,11 @@
                   <Font name="Arial Black" size="26.0" />
                </font>
             </Label>
+            <Button fx:id="novaPecaBotao" layoutX="436.0" layoutY="19.0" mnemonicParsing="false" onAction="#abaCadastrarPeca" prefHeight="40.0" prefWidth="105.0" style="-fx-background-color: #004b52;" text="Nova peça" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
       <Pane layoutX="273.0" layoutY="173.0" prefHeight="446.0" prefWidth="584.0" style="-fx-background-color: #00818d;">

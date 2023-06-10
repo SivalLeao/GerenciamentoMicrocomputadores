@@ -17,6 +17,8 @@ public class MainController {
 
     private static Stage stageCadastroOrdem;
 
+    private static Stage stageCadastroPeca;
+
     private static Stage stageConfirmacao;
 
     public static Stage getStageInicio () { return stageInicio; }
@@ -42,6 +44,10 @@ public class MainController {
     public static Stage getStageCadastroOrdem () { return stageCadastroOrdem; }
 
     public static void setStageCadastroOrdem (Stage stageCadastroOrdem) { MainController.stageCadastroOrdem = stageCadastroOrdem; }
+
+    public static Stage getStageCadastroPeca () { return stageCadastroPeca; }
+
+    public static void setStageCadastroPeca (Stage stageCadastroPeca) { MainController.stageCadastroPeca = stageCadastroPeca; }
 
     public static Stage getStageConfirmacao () { return stageConfirmacao; }
 

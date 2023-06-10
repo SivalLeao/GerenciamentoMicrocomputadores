@@ -5,7 +5,6 @@ import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
 import com.pbl.gerenciamentomicrocomputadores.controller.MyListener;
 import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardPecaController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
-import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
 import com.pbl.gerenciamentomicrocomputadores.model.Peca;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
 import javafx.event.ActionEvent;
@@ -40,6 +39,8 @@ public class EstoqueController {
     @FXML private Label nomeTecnico;
     @FXML private Label idTecnico;
     @FXML private Button deslogarBotao;
+
+    @FXML private Button novaPecaBotao;
 
     @FXML private GridPane gridContainer;
 
@@ -327,5 +328,38 @@ public class EstoqueController {
         qtdDisponivelPeca.setText(Integer.toString(peca.getQuantidade()));
 
     }
+
+
+    @FXML
+    void abaCadastrarPeca(ActionEvent event) {
+
+        try {
+
+            if (MainController.getStageCadastroPeca() == null) {
+
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("CadastrarPecaView.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+                stage.setScene(scene);
+
+                MainController.setStageCadastroPeca(stage);
+
+                stage.show();
+            }
+            else {
+
+                Stage stage = MainController.getStageCadastroPeca();
+                stage.show();
+                stage.toFront();
+            }
+        }
+        catch (java.io.IOException e) {
+
+        }
+
+    }
+
 
 }
