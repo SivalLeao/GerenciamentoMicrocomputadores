@@ -7,8 +7,10 @@ import java.util.Map;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
 import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
+import com.pbl.gerenciamentomicrocomputadores.controller.MensagemController;
 import com.pbl.gerenciamentomicrocomputadores.controller.MyListener;
 import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardOrdemController;
+import com.pbl.gerenciamentomicrocomputadores.controller.paginascadastrar.CadastrarOrdemController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
@@ -40,6 +42,7 @@ public class OrdemController {
     @FXML private Label idTecnico;
     @FXML private Label nomeTecnico;
 
+    @FXML private Pane paneCardsServicos;
     @FXML private Button novoServicoBotao;
     @FXML private Button todosBotao;
     @FXML private Button emAndamentoBotao;
@@ -48,6 +51,9 @@ public class OrdemController {
     @FXML private Button canceladosBotao;
     @FXML GridPane gridContainer;
 
+    @FXML private Pane paneSemServico;
+
+    @FXML private Pane paneDadosServico;
     @FXML private Label idOrdem;
     @FXML private Label idClienteOrdem;
     @FXML private Label idTecnicoOrdem;
@@ -59,7 +65,8 @@ public class OrdemController {
 
     @FXML private Button removerOrdemBotao;
     @FXML private Button cancelarOrdemBotao;
-    @FXML private Label mensagemDeErroAlterarOrdem;
+
+    @FXML private Pane paneSemDadosServico;
 
     private List<OrdemDeServico> ordensData;
 
@@ -73,7 +80,6 @@ public class OrdemController {
 
         this.ordensData = DAO.getOrdemDeServico().encontrarTodos();
         atualizarCards(this.ordensData);
-        mensagemDeErroAlterarOrdem.setText("");
     }
 
     public void atualizarCards (List<OrdemDeServico> ordensData) {
@@ -82,17 +88,36 @@ public class OrdemController {
 
         if (this.ordensData.size() > 0) {
 
-            setOrdemEscolhida(this.ordensData.get(0));
+            paneCardsServicos.setVisible(true);
+            paneSemServico.setVisible(false);
+            paneDadosServico.setVisible(true);
+            paneSemDadosServico.setVisible(false);
+
+            if (idOrdem.getText().equals("") || !(DAO.getOrdemDeServico().
+                    checarPorId(Integer.parseInt(idOrdem.getText())))) {
+
+                setOrdemEscolhida(this.ordensData.get(0));
+            }
+            else {
+
+                setOrdemEscolhida(DAO.getOrdemDeServico().encontrarPorId(Integer.parseInt(idOrdem.getText())));
+            }
 
             this.myListener = new MyListener<OrdemDeServico>() {
                 @Override
                 public void onClickListener(OrdemDeServico ordemDeServico) {
 
-                    mensagemDeErroAlterarOrdem.setText("");
                     setOrdemEscolhida(ordemDeServico);
                 }
             };
 
+        }
+        else {
+
+            paneCardsServicos.setVisible(false);
+            paneSemServico.setVisible(true);
+            paneDadosServico.setVisible(false);
+            paneSemDadosServico.setVisible(true);
         }
 
         try {
@@ -335,6 +360,12 @@ public class OrdemController {
                 stage.setScene(scene);
 
                 MainController.setStageCadastroOrdem(stage);
+                stage.setOnCloseRequest(e -> {
+                    MainController.setStageCadastroOrdem(null);
+                });
+
+                CadastrarOrdemController cadastrarOrdemController = fxmlLoader.getController();
+                cadastrarOrdemController.limparPecasEscolhidas();
 
                 stage.show();
             }
@@ -488,13 +519,28 @@ public class OrdemController {
 
         if (idTecnico.getText().equals("")) {
 
-            mensagemDeErroAlterarOrdem.setText("Tecnico deslogado.");
+            exibirMensagem("O técnico não está logado.\nFaça o login para alterar peça.");
+
         }
         else if (statusOrdem.getText().equals("Em andamento")) {
 
-            mensagemDeErroAlterarOrdem.setText("Serviço em andamento.");
+            exibirMensagem("Serviço em andamento, \nnão é permitido removê-lo");
+
         }
         else {
+
+            if (statusOrdem.getText().equals("Em espera")) {
+
+                OrdemDeServico ordemDeServico = DAO.getOrdemDeServico().encontrarPorId(
+                        Integer.parseInt(idOrdem.getText()));
+
+                if (ordemDeServico.getDescricaoServico().getTipoDeServico()
+                        .equals("Montagem/Instalação")) {
+
+                    DAO.getPeca().devolverQuantidade(ordemDeServico.getDescricaoServico().getMapItens());
+                }
+
+            }
 
             DAO.getOrdemDeServico().remover(Integer.parseInt(idOrdem.getText()));
             atualizarOrdensData();
@@ -507,15 +553,29 @@ public class OrdemController {
 
         if (idTecnico.getText().equals("")) {
 
-            mensagemDeErroAlterarOrdem.setText("Tecnico deslogado.");
+            exibirMensagem("O técnico não está logado.\nFaça o login para alterar serviço.");
+
         }
         else if (statusOrdem.getText().equals("Em andamento")) {
 
-            mensagemDeErroAlterarOrdem.setText("Serviço em andamento.");
+            exibirMensagem("Serviço em andamento, \nnão é permitido cancelá-lo");
+
         }
-        else {
+        else if (statusOrdem.getText().equals("Finalizado")) {
+
+            exibirMensagem("Serviço já foi finalizado, \nnão é permitido cancelá-lo");
+
+        }
+        else if (statusOrdem.getText().equals("Em espera")) {
 
             int id = Integer.parseInt(idOrdem.getText());
+            OrdemDeServico ordemDeServico = DAO.getOrdemDeServico().encontrarPorId(id);
+
+            if (ordemDeServico.getDescricaoServico().getTipoDeServico()
+                    .equals("Montagem/Instalação")) {
+
+                DAO.getPeca().devolverQuantidade(ordemDeServico.getDescricaoServico().getMapItens());
+            }
 
             DAO.getOrdemDeServico().atualizarStatus(id, "Cancelado");
             atualizarOrdensData();
@@ -523,5 +583,29 @@ public class OrdemController {
             setOrdemEscolhida(DAO.getOrdemDeServico().encontrarPorId(id));
         }
     }
+
+    public void exibirMensagem (String mensagem) {
+
+        try {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+            stage.setScene(scene);
+
+            MensagemController mensagemController = fxmlLoader.getController();
+            mensagemController.setMensagem(mensagem);
+
+            stage.show();
+
+        }
+        catch (java.io.IOException e) {
+
+        }
+
+    }
+
 
 }

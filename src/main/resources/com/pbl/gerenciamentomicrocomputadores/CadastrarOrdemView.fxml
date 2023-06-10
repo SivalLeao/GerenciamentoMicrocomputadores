@@ -88,10 +88,7 @@
                   <Font name="System Bold" size="15.0" />
                </font></Label>
             <Label fx:id="maxQuantidade" alignment="CENTER" layoutX="168.0" layoutY="168.0" prefHeight="21.0" prefWidth="94.0" styleClass="label-personalizado" />
-            <Label fx:id="mensagemDeErroLista" layoutX="140.0" layoutY="4.0" prefHeight="17.0" prefWidth="123.0" textFill="RED">
-               <font>
-                  <Font size="15.0" />
-               </font></Label>
+            <Label fx:id="mensagemDeErroLista" layoutX="140.0" layoutY="4.0" prefHeight="17.0" prefWidth="123.0" textFill="RED" />
             <Label fx:id="mensagemDeErroQuantidade" layoutX="72.0" layoutY="220.0" prefHeight="17.0" prefWidth="123.0" textFill="RED" />
          </children>
       </Pane>

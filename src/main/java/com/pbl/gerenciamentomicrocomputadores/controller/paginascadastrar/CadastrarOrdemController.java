@@ -2,12 +2,9 @@ package com.pbl.gerenciamentomicrocomputadores.controller.paginascadastrar;
 
 import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.OrdemController;
-import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.TecnicoController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
 import com.pbl.gerenciamentomicrocomputadores.model.Peca;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -57,32 +54,49 @@ public class CadastrarOrdemController {
         paneListaPecas.setVisible(false);
 
         choiceBox.setOnAction(e -> {
+
+            esconderMensagensDeErro();
+
             if (choiceBox.getValue().equals("Montagem/Instalação")) {
 
                 paneListaPecas.setVisible(true);
-                atualizarChoiceBoxs();
                 atualizarMaxQuantidade();
             }
             else {
 
                 paneListaPecas.setVisible(false);
-            }});
+            }
+        });
 
+        choiceBoxItens.setOnAction(a -> {
+
+            atualizarMaxQuantidade();
+        });
+
+        atualizarChoiceBoxItens();
         esconderMensagensDeErro();
     }
 
-    public void atualizarChoiceBoxs () {
+    public void limparPecasEscolhidas () {
+
+        pecasEscolhidas.clear();
+    }
+
+    public void atualizarChoiceBoxItens() {
 
         List<Peca> estoque = DAO.getPeca().encontrarTodos();
 
         for (Peca peca: estoque) {
 
-            choiceBoxItens.getItems().add(peca.getNome());
+            if (peca.getQuantidade() != 0) {
+
+                choiceBoxItens.getItems().add(peca.getNome());
+            }
         }
 
         choiceBoxItens.getSelectionModel().selectFirst();
 
-        atualizarLabelPecas();
+        atualizarMaxQuantidade();
     }
 
     public void atualizarMaxQuantidade () {
@@ -118,6 +132,11 @@ public class CadastrarOrdemController {
 
             mensagemDeErroQuantidade.setText("Quantidade inválida.");
         }
+        else if (Integer.parseInt(quantidadePeca.getText()) == 0) {
+
+            pecasEscolhidas.remove(choiceBoxItens.getValue());
+            atualizarLabelPecas();
+        }
         else if (Integer.parseInt(quantidadePeca.getText()) > Integer.parseInt(maxQuantidade.getText())) {
 
             mensagemDeErroQuantidade.setText("Quantidade excedida.");
@@ -136,12 +155,15 @@ public class CadastrarOrdemController {
 
         if (idCliente.getText().matches("^[0-9]+$")) {
 
+            mensagemDeErroId.setText("");
+
             if (DAO.getCliente().checarPorId(Integer.parseInt(idCliente.getText()))) {
 
                 if (choiceBox.getValue().equals("Montagem/Instalação")) {
 
                     if (pecasEscolhidas.size() != 0) {
 
+                        retirarEstoque();
                         criarOrdem();
                         esconderMensagensDeErro();
                         limparEntradas();
@@ -158,6 +180,8 @@ public class CadastrarOrdemController {
 
                         Stage stage = (Stage) voltarBotao.getScene().getWindow();
                         stage.close();
+
+                        MainController.setStageCadastroOrdem(null);
                     }
                     else {
 
@@ -182,6 +206,8 @@ public class CadastrarOrdemController {
 
                     Stage stage = (Stage) voltarBotao.getScene().getWindow();
                     stage.close();
+
+                    MainController.setStageCadastroOrdem(null);
                 }
             }
             else {
@@ -194,6 +220,14 @@ public class CadastrarOrdemController {
             mensagemDeErroId.setText("ID inválido.");
         }
 
+    }
+
+    public void retirarEstoque () {
+
+        for (String nomePeca: pecasEscolhidas.keySet()) {
+
+            DAO.getPeca().removerQuantidade(nomePeca, pecasEscolhidas.get(nomePeca));
+        }
     }
 
     public void criarOrdem () {
