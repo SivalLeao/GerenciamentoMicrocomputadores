@@ -1,10 +1,7 @@
 package com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
-import com.pbl.gerenciamentomicrocomputadores.controller.AdicionarQtdController;
-import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
-import com.pbl.gerenciamentomicrocomputadores.controller.MensagemController;
-import com.pbl.gerenciamentomicrocomputadores.controller.MyListener;
+import com.pbl.gerenciamentomicrocomputadores.controller.*;
 import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardPecaController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.Peca;
@@ -493,6 +490,50 @@ public class EstoqueController {
 
     @FXML
     void atualizarPecaAcao(ActionEvent event) {
+
+        if (idTecnico.getText().equals("")) {
+
+            try {
+
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+                stage.setScene(scene);
+
+                MensagemController mensagemController = fxmlLoader.getController();
+                mensagemController.setMensagem("O técnico não está logado.\nFaça o login para alterar peça.");
+
+                stage.show();
+
+            }
+            catch (java.io.IOException e) {
+
+            }
+
+        }
+        else {
+
+            try {
+
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("AtualizarPecaView.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+                stage.setScene(scene);
+
+                AtualizarPecaController atualizarPecaController = fxmlLoader.getController();
+                atualizarPecaController.setDadosPeca(nomePeca.getText());
+
+                stage.show();
+
+            } catch (java.io.IOException e) {
+
+            }
+
+        }
 
     }
 
