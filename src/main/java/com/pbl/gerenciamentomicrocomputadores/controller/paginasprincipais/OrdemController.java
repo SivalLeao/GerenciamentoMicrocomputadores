@@ -42,6 +42,7 @@ public class OrdemController {
     @FXML private Label idTecnico;
     @FXML private Label nomeTecnico;
 
+    @FXML private Pane paneCardsServicos;
     @FXML private Button novoServicoBotao;
     @FXML private Button todosBotao;
     @FXML private Button emAndamentoBotao;
@@ -50,6 +51,9 @@ public class OrdemController {
     @FXML private Button canceladosBotao;
     @FXML GridPane gridContainer;
 
+    @FXML private Pane paneSemServico;
+
+    @FXML private Pane paneDadosServico;
     @FXML private Label idOrdem;
     @FXML private Label idClienteOrdem;
     @FXML private Label idTecnicoOrdem;
@@ -61,6 +65,8 @@ public class OrdemController {
 
     @FXML private Button removerOrdemBotao;
     @FXML private Button cancelarOrdemBotao;
+
+    @FXML private Pane paneSemDadosServico;
 
     private List<OrdemDeServico> ordensData;
 
@@ -82,7 +88,20 @@ public class OrdemController {
 
         if (this.ordensData.size() > 0) {
 
-            setOrdemEscolhida(this.ordensData.get(0));
+            paneCardsServicos.setVisible(true);
+            paneSemServico.setVisible(false);
+            paneDadosServico.setVisible(true);
+            paneSemDadosServico.setVisible(false);
+
+            if (idOrdem.getText().equals("") || !(DAO.getOrdemDeServico().
+                    checarPorId(Integer.parseInt(idOrdem.getText())))) {
+
+                setOrdemEscolhida(this.ordensData.get(0));
+            }
+            else {
+
+                setOrdemEscolhida(DAO.getOrdemDeServico().encontrarPorId(Integer.parseInt(idOrdem.getText())));
+            }
 
             this.myListener = new MyListener<OrdemDeServico>() {
                 @Override
@@ -92,6 +111,13 @@ public class OrdemController {
                 }
             };
 
+        }
+        else {
+
+            paneCardsServicos.setVisible(false);
+            paneSemServico.setVisible(true);
+            paneDadosServico.setVisible(false);
+            paneSemDadosServico.setVisible(true);
         }
 
         try {
