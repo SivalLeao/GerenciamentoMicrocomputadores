@@ -384,7 +384,7 @@ public class EstoqueController {
         custoPeca.setText(Double.toString(peca.getCusto()));
         qtdDisponivelPeca.setText(Integer.toString(peca.getQuantidade()));
 
-        Map<Integer, Integer> mapOrdemQtd = DAO.getOrdemDeServico().OrdensUtilizandoPeca(nomePeca.getText());
+        Map<Integer, Integer> mapOrdemQtd = DAO.getOrdemDeServico().ordensUtilizandoPeca(nomePeca.getText());
 
         int qtdUsada = 0;
 
@@ -548,7 +548,7 @@ public class EstoqueController {
             exibirMensagem("O técnico não está logado.\nFaça o login para alterar peça.");
 
         }
-        else if (DAO.getOrdemDeServico().OrdensUtilizandoPeca(nomePeca.getText()).size() > 0) {
+        else if (DAO.getOrdemDeServico().ordensUtilizandoPeca(nomePeca.getText()).size() > 0) {
 
             exibirMensagem("Peça está sendo utilizada, \nnão é possível removê-la do sistema.");
 

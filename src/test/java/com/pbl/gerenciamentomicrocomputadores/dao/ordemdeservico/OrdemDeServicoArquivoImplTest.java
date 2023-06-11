@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -251,7 +250,7 @@ public class OrdemDeServicoArquivoImplTest {
     }
 
     @Test
-    void OrdensUtilizandoPeca () {
+    void ordensUtilizandoPeca () {
 
         DAO.getOrdemDeServico().remover(1113);
         DAO.getOrdemDeServico().remover(1123);
@@ -280,7 +279,7 @@ public class OrdemDeServicoArquivoImplTest {
 
         DAO.getOrdemDeServico().criar(newOrdem3);
 
-        Map<Integer,Integer> mapOrdemQtd = DAO.getOrdemDeServico().OrdensUtilizandoPeca("teclado");
+        Map<Integer,Integer> mapOrdemQtd = DAO.getOrdemDeServico().ordensUtilizandoPeca("teclado");
 
         assertEquals(mapOrdemQtd.size(), 2);
 

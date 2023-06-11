@@ -79,7 +79,7 @@ public interface OrdemDeServicoDAO extends CRUD<OrdemDeServico> {
      * @return Map - Mapa com os IDs das ordens que estão utilizando determinada peça e a sua
      * quantidade.*/
 
-    public Map<Integer, Integer> OrdensUtilizandoPeca(String nomePeca);
+    public Map<Integer, Integer> ordensUtilizandoPeca(String nomePeca);
 
     /** Método para retornar as ordens com status em andamento ou em espera.
      *
