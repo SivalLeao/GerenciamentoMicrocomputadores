@@ -145,6 +145,7 @@ public class CadastrarOrdemController {
         else if (Integer.parseInt(quantidadePeca.getText()) == 0) {
 
             pecasEscolhidas.remove(choiceBoxItens.getValue());
+            quantidadePeca.setText("");
             atualizarLabelPecas();
         }
         else if (Integer.parseInt(quantidadePeca.getText()) > Integer.parseInt(maxQuantidade.getText())) {
@@ -154,6 +155,7 @@ public class CadastrarOrdemController {
         else {
 
             pecasEscolhidas.put(choiceBoxItens.getValue(), Integer.parseInt(quantidadePeca.getText()));
+            quantidadePeca.setText("");
             atualizarLabelPecas();
             esconderMensagensDeErro();
         }
