@@ -88,7 +88,20 @@
     -fx-effect: dropshadow(gaussian, rgba(80, 80, 80, 0.5), 0, 0, 3.5, 3.5);
 }
 
-
+.shadow-button {
+    -fx-background-color: #DCDCDC;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    /*-fx-padding: 10 20;*/
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 2, 0.0, 0, 2);
+}
+.shadow-button: haver {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    /*-fx-padding: 10 20;*/
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 2, 0.0, 0, 2);
+}
 
 .text-box {
     -fx-background-color: transparent;
