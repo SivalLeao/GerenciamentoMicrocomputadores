@@ -264,57 +264,47 @@
          <children>
             <Pane fx:id="paneDadosServico" onMousePressed="#pressed" prefHeight="351.0" prefWidth="351.0" styleClass="plano-fundo-superior">
                <children>
-                  <Label layoutX="44.0" layoutY="50.0" prefHeight="30.0" prefWidth="80.0" text="ID serviço: " textFill="WHITE">
+                  <Label fx:id="idOrdem" alignment="CENTER" layoutX="166.0" layoutY="14.0" prefHeight="30.0" prefWidth="87.0" style="-fx-background-color: #00BFE1; -fx-background-radius: 9;" styleClass="plano-fundo" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="45.0" layoutY="80.0" prefHeight="30.0" prefWidth="78.0" text="ID cliente: " textFill="WHITE">
+                  <Label layoutX="90.0" layoutY="14.0" prefHeight="30.0" prefWidth="87.0" style="-fx-background-radius: 9;" styleClass="plano-fundo" text=" ID serviço: " textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="44.0" layoutY="110.0" prefHeight="30.0" prefWidth="124.0" text="Data do pedido: " textFill="WHITE">
+                  <Label layoutX="39.0" layoutY="95.0" prefHeight="30.0" prefWidth="124.0" text="Data do pedido: ">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="44.0" layoutY="140.0" prefHeight="30.0" prefWidth="124.0" text="Tipo de Serviço: " textFill="WHITE">
+                  <Label layoutX="41.0" layoutY="125.0" prefHeight="30.0" prefWidth="124.0" text="Tipo de Serviço: ">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Button fx:id="finalizarServicoBotao" layoutX="238.0" layoutY="9.0" mnemonicParsing="false" onAction="#finalizarServicoAcao" onMousePressed="#pressed" prefHeight="40.0" prefWidth="105.0" styleClass="botao-superior" text="Finalizar" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
-                  <Label fx:id="idOrdem" layoutX="123.0" layoutY="50.0" prefHeight="30.0" prefWidth="80.0" textFill="WHITE">
+                  <Label fx:id="idClienteOrdem" alignment="CENTER" layoutX="158.0" layoutY="57.0" prefHeight="30.0" prefWidth="95.0" style="-fx-background-color: #00BFE1; -fx-background-radius: 9;" styleClass="plano-fundo" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="idClienteOrdem" layoutX="123.0" layoutY="80.0" prefHeight="30.0" prefWidth="80.0" textFill="WHITE">
+                  <Label fx:id="dataPedidoOrdem" layoutX="156.0" layoutY="99.0" prefHeight="25.0" prefWidth="105.0">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="dataPedidoOrdem" layoutX="163.0" layoutY="110.0" prefHeight="30.0" prefWidth="105.0" textFill="WHITE">
+                  <Label fx:id="tipoDeServicoOrdem" layoutX="156.0" layoutY="131.0" prefHeight="21.0" prefWidth="158.0">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="tipoDeServicoOrdem" layoutX="163.0" layoutY="140.0" prefHeight="30.0" prefWidth="158.0" textFill="WHITE">
+                  <Label layoutX="39.0" layoutY="156.0" prefHeight="30.0" prefWidth="124.0" text="Peças utilizadas: ">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="44.0" layoutY="184.0" prefHeight="30.0" prefWidth="124.0" text="Peças utilizadas: " textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <ScrollPane layoutX="45.0" layoutY="214.0" onMousePressed="#pressed" prefHeight="118.0" prefWidth="270.0">
+                  <ScrollPane layoutX="40.0" layoutY="182.0" onMousePressed="#pressed" prefHeight="106.0" prefWidth="270.0">
                      <content>
                         <Label fx:id="listaPecas" textAlignment="JUSTIFY" textFill="WHITE">
                            <font>
@@ -323,11 +313,21 @@
                         </Label>
                      </content>
                   </ScrollPane>
-                  <Button fx:id="dispensarServicoBotao" layoutX="123.0" layoutY="9.0" mnemonicParsing="false" onAction="#dispensarServicoAcao" onMousePressed="#pressed" prefHeight="25.0" prefWidth="105.0" styleClass="botao-superior" text="Dispensar" textFill="WHITE">
+                  <Button fx:id="dispensarServicoBotao" layoutX="49.0" layoutY="297.0" mnemonicParsing="false" onAction="#dispensarServicoAcao" onMousePressed="#pressed" prefHeight="40.0" prefWidth="105.0" text="Dispensar">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
+                  <Button fx:id="finalizarServicoBotao" layoutX="199.0" layoutY="297.0" mnemonicParsing="false" onAction="#finalizarServicoAcao" onMousePressed="#pressed" prefHeight="40.0" prefWidth="105.0" text="Finalizar">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="90.0" layoutY="57.0" prefHeight="30.0" prefWidth="80.0" style="-fx-background-radius: 9;" styleClass="plano-fundo" text=" ID cliente: " textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane fx:id="paneBotaoColetarServico" onMousePressed="#pressed" prefHeight="200.0" prefWidth="200.0" styleClass="plano-fundo-superior" visible="false">
