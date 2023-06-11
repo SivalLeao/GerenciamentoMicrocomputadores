@@ -224,7 +224,7 @@
                   </Pane>
                   <Pane fx:id="paneCardsServicos" visible="false">
                      <children>
-                        <ScrollPane onMousePressed="#pressed" prefHeight="379.0" prefWidth="584.0" style="-fx-background-color: #00818d;">
+                        <ScrollPane onMousePressed="#pressed" prefHeight="379.0" prefWidth="584.0" style="-fx-background-color: #00818d;" styleClass="custom-scroll-pane">
                            <content>
                               <GridPane fx:id="gridContainer" onMousePressed="#pressed" prefHeight="14.0" prefWidth="0.0">
                                 <rowConstraints>
