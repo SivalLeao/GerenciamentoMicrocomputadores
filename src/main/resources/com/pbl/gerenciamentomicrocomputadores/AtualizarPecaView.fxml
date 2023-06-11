@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane onMousePressed="#pressed" prefHeight="390.0" prefWidth="306.0" styleClass="cadastro" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.AtualizarPecaController">
    <children>
       <HBox prefHeight="49.0" prefWidth="306.0">
@@ -56,18 +55,18 @@
          </font>
       </Button>
       <TextField fx:id="custoPeca" alignment="CENTER" layoutX="74.0" layoutY="188.0" onMousePressed="#pressed" prefHeight="27.0" prefWidth="219.0" promptText="Digite novo custo" styleClass="texto-login" stylesheets="@CSS/style.css" />
-      <Label alignment="CENTER" layoutX="10.0" layoutY="123.0" prefHeight="32.0" prefWidth="55.0" text="Valor: " textFill="WHITE">
+      <Label alignment="CENTER" layoutX="13.0" layoutY="123.0" prefHeight="32.0" prefWidth="55.0" text="Valor: " textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="10.0" layoutY="253.0" prefHeight="32.0" prefWidth="104.0" text="Quantidade: " textFill="WHITE">
+      <Label alignment="CENTER" layoutX="13.0" layoutY="253.0" prefHeight="32.0" prefWidth="97.0" text="Quantidade: " textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
       <TextField fx:id="qtdPeca" alignment="CENTER" layoutX="113.0" layoutY="255.0" onMousePressed="#pressed" prefHeight="27.0" prefWidth="180.0" promptText="Digite nova quantidade" styleClass="texto-login" stylesheets="@CSS/style.css" />
-      <Label alignment="CENTER" layoutX="10.0" layoutY="186.0" prefHeight="32.0" prefWidth="71.0" text="Custo: " textFill="WHITE">
+      <Label alignment="CENTER" layoutX="13.0" layoutY="186.0" prefHeight="32.0" prefWidth="55.0" text="Custo:" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
