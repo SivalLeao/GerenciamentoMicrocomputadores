@@ -57,6 +57,9 @@ public class ClienteController {
     @FXML private Label mensagemDeErroTelefone;
 
     @FXML private GridPane gridMiniOrdens;
+
+    @FXML private Pane paneSemCardsClientes;
+    @FXML private Pane paneCardsClientes;
     @FXML private GridPane gridContainer;
 
     @FXML private Button cadastrarClienteBotao;
@@ -90,7 +93,6 @@ public class ClienteController {
         paneCantoInicio.setVisible(true);
         paneTecnicoLogado.setVisible(false);
 
-
         adicionar.setVisible(false);
 
         pesquisarBotao.setOnMouseEntered(mouseEvent -> {
@@ -123,6 +125,8 @@ public class ClienteController {
 
             paneDadosCliente.setVisible(true);
             paneSemClientes.setVisible(false);
+            paneCardsClientes.setVisible(true);
+            paneSemCardsClientes.setVisible(false);
 
             setClienteEscolhido(clientesData.get(0));
 
@@ -141,6 +145,8 @@ public class ClienteController {
 
             paneDadosCliente.setVisible(false);
             paneSemClientes.setVisible(true);
+            paneCardsClientes.setVisible(false);
+            paneSemCardsClientes.setVisible(true);
 
         }
 
