@@ -5,13 +5,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="231.0" prefWidth="279.0" styleClass="confimacao-aba" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.MensagemController">
+<AnchorPane prefHeight="245.0" prefWidth="353.0" styleClass="confimacao-aba" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.MensagemController">
    <children>
-      <Label fx:id="mensagem" alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="25.0" prefHeight="140.0" prefWidth="231.0" styleClass="label-personalizado">
+      <Label fx:id="mensagem" alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="25.0" prefHeight="157.0" prefWidth="306.0" styleClass="label-personalizado">
          <font>
-            <Font size="20.0" />
+            <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="confirmarBotao" layoutX="102.0" layoutY="179.0" mnemonicParsing="false" onAction="#confirmarAcao" prefHeight="32.0" prefWidth="75.0" text="confirmar" />
+      <Button fx:id="confirmarBotao" layoutX="139.0" layoutY="199.0" mnemonicParsing="false" onAction="#confirmarAcao" prefHeight="32.0" prefWidth="75.0" text="confirmar" />
    </children>
 </AnchorPane>
