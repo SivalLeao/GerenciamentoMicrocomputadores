@@ -19,6 +19,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InicioController {
@@ -56,14 +57,15 @@ public class InicioController {
         paneCantoInicio.setVisible(true);
         paneTecnicoLogado.setVisible(false);
 
-
         this.ordensData = DAO.getOrdemDeServico().encontrarTodos();
 
-        if (this.ordensData.size() != 0) {
+        List<OrdemDeServico> listaEmAberto = DAO.getOrdemDeServico().ordensEmAberto();
+
+        if (listaEmAberto.size() != 0) {
 
             paneCardsOrdens.setVisible(true);
             paneSemServico.setVisible(false);
-            atualizarCards();
+            atualizarCards(listaEmAberto);
         }
         else {
 
@@ -75,20 +77,20 @@ public class InicioController {
 
     }
 
-    public void atualizarCards () {
+    public void atualizarCards (List<OrdemDeServico> listaEmAberto) {
 
         try {
 
             int linhaAtual = 1;
             int colunaAtual = 0;
 
-            for (int i = 0; i < this.ordensData.size(); i++) {
+            for (int i = 0; i < listaEmAberto.size(); i++) {
 
                 FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("CardOrdemInicioView.fxml"));
                 Pane novoCard = fxmlLoader.load();
 
                 CardOrdemInicioController cardOrdemInicioController = fxmlLoader.getController();
-                cardOrdemInicioController.setInfo(this.ordensData.get(i));
+                cardOrdemInicioController.setInfo(listaEmAberto.get(i));
 
                 if ( colunaAtual == 3) {
                     colunaAtual = 0;
