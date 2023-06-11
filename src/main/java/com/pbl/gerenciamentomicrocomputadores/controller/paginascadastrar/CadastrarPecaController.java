@@ -1,15 +1,19 @@
 package com.pbl.gerenciamentomicrocomputadores.controller.paginascadastrar;
 
+import com.pbl.gerenciamentomicrocomputadores.MainApplication;
 import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
+import com.pbl.gerenciamentomicrocomputadores.controller.MensagemController;
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.EstoqueController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.Peca;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.text.Normalizer;
@@ -54,6 +58,25 @@ public class CadastrarPecaController {
 
             Stage stage = (Stage) voltarBotao.getScene().getWindow();
             stage.close();
+
+            try {
+
+                fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                stage = new Stage();
+                stage.setResizable(false);
+                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+                stage.setScene(scene);
+
+                MensagemController mensagemController = fxmlLoader.getController();
+                mensagemController.setMensagem("Peça adicionada ao estoque.");
+
+                stage.show();
+
+            }
+            catch (java.io.IOException e) {
+
+            }
 
         }
 
