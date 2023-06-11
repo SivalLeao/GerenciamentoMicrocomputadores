@@ -33,22 +33,22 @@ public class PecaArquivoImpl implements PecaDAO {
         this.lista = ArmazenamentoDeDados.resgatarDados(nomeArquivo,nomePasta);
 
         if (lista.isEmpty()){
-            Peca peca0 = new Peca("ram", 10, 20, 20);
+            Peca peca0 = new Peca("ram", 0, 20, 20);
             this.lista.add(peca0);
 
-            Peca peca1 = new Peca("placa mae", 10, 100, 100);
+            Peca peca1 = new Peca("placa mae", 0, 100, 100);
             this.lista.add(peca1);
 
-            Peca peca2 = new Peca("fonte", 10, 30, 30);
+            Peca peca2 = new Peca("fonte", 0, 30, 30);
             this.lista.add(peca2);
 
-            Peca peca3 = new Peca("placa de video", 10, 100, 100);
+            Peca peca3 = new Peca("placa de video", 0, 100, 100);
             this.lista.add(peca3);
 
-            Peca peca4 = new Peca("hd", 10, 30, 30);
+            Peca peca4 = new Peca("hd", 0, 30, 30);
             this.lista.add(peca4);
 
-            Peca peca5 = new Peca("ssd", 10, 30, 30);
+            Peca peca5 = new Peca("ssd", 0, 30, 30);
             this.lista.add(peca5);
         }
 
