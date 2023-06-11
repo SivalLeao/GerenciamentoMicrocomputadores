@@ -1,6 +1,8 @@
 package com.pbl.gerenciamentomicrocomputadores.controller.paginascadastrar;
 
+import com.pbl.gerenciamentomicrocomputadores.MainApplication;
 import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
+import com.pbl.gerenciamentomicrocomputadores.controller.MensagemController;
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.OrdemController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
@@ -8,10 +10,12 @@ import com.pbl.gerenciamentomicrocomputadores.model.Peca;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -171,6 +175,8 @@ public class CadastrarOrdemController {
 
             if (DAO.getCliente().checarPorId(Integer.parseInt(idCliente.getText()))) {
 
+                String mensagem = "";
+
                 if (choiceBox.getValue().equals("Montagem/Instalação")) {
 
                     if (pecasEscolhidas.size() != 0) {
@@ -194,6 +200,8 @@ public class CadastrarOrdemController {
                         stage.close();
 
                         MainController.setStageCadastroOrdem(null);
+
+                        mensagem = "Serviço cadastrado.";
                     }
                     else {
 
@@ -220,6 +228,30 @@ public class CadastrarOrdemController {
                     stage.close();
 
                     MainController.setStageCadastroOrdem(null);
+
+                    mensagem = "Serviço cadastrado.";
+                }
+
+                if (! (mensagem.equals(""))) {
+
+                    try {
+
+                        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
+                        Scene scene = new Scene(fxmlLoader.load());
+                        Stage stage = new Stage();
+                        stage.setResizable(false);
+                        stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+                        stage.setScene(scene);
+
+                        MensagemController mensagemController = fxmlLoader.getController();
+                        mensagemController.setMensagem(mensagem);
+
+                        stage.show();
+
+                    }
+                    catch (java.io.IOException e) {
+
+                    }
                 }
             }
             else {
