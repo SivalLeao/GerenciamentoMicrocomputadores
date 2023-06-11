@@ -42,20 +42,25 @@ public class EstoqueController {
     @FXML private Label idTecnico;
     @FXML private Button deslogarBotao;
 
+    @FXML private Pane paneCardsPecas;
     @FXML private Button novaPecaBotao;
-
     @FXML private GridPane gridContainer;
+
+    @FXML private Pane paneSemPeca;
 
     @FXML private TextField barraDePesquisa;
     @FXML private Button pesquisarBotao;
     @FXML private Label mensagemPesquisa;
 
+    @FXML private Pane paneDadosPeca;
     @FXML private Label nomePeca;
     @FXML private Label valorPeca;
     @FXML private Label custoPeca;
     @FXML private Label qtdDisponivelPeca;
     @FXML private Label qtdReservadaPeca;
     @FXML private Label listaOrdemQtd;
+
+    @FXML private Pane paneSemDadosPeca;
 
     @FXML private Button adicionarQtdBotao;
     @FXML private Button atualizarPecaBotao;
@@ -95,6 +100,11 @@ public class EstoqueController {
 
         if (pecasData.size() > 0) {
 
+            paneCardsPecas.setVisible(true);
+            paneSemPeca.setVisible(false);
+            paneDadosPeca.setVisible(true);
+            paneSemDadosPeca.setVisible(false);
+
             if (nomePeca.getText().equals("") || !(DAO.getPeca().checarPorNome(nomePeca.getText()))) {
 
                 setPecaEscolhida(pecasData.get(0));
@@ -112,6 +122,13 @@ public class EstoqueController {
                 }
             };
 
+        }
+        else {
+
+            paneCardsPecas.setVisible(false);
+            paneSemPeca.setVisible(true);
+            paneDadosPeca.setVisible(false);
+            paneSemDadosPeca.setVisible(true);
         }
 
         try {
@@ -462,23 +479,8 @@ public class EstoqueController {
 
         if (idTecnico.getText().equals("")) {
 
-            try {
+            exibirMensagem("O técnico não está logado.\nFaça o login para alterar peça.");
 
-                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
-                Stage stage = new Stage();
-                stage.setResizable(false);
-                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
-                stage.setScene(scene);
-
-                MensagemController mensagemController = fxmlLoader.getController();
-                mensagemController.setMensagem("O técnico não está logado.\nFaça o login para alterar peça.");
-
-                stage.show();
-            }
-            catch (java.io.IOException e) {
-
-            }
         }
         else {
 
@@ -508,24 +510,7 @@ public class EstoqueController {
 
         if (idTecnico.getText().equals("")) {
 
-            try {
-
-                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
-                Stage stage = new Stage();
-                stage.setResizable(false);
-                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
-                stage.setScene(scene);
-
-                MensagemController mensagemController = fxmlLoader.getController();
-                mensagemController.setMensagem("O técnico não está logado.\nFaça o login para alterar peça.");
-
-                stage.show();
-
-            }
-            catch (java.io.IOException e) {
-
-            }
+            exibirMensagem("O técnico não está logado.\nFaça o login para alterar peça.");
 
         }
         else {
@@ -560,45 +545,12 @@ public class EstoqueController {
 
         if (idTecnico.getText().equals("")) {
 
-            try {
-
-                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
-                Stage stage = new Stage();
-                stage.setResizable(false);
-                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
-                stage.setScene(scene);
-
-                MensagemController mensagemController = fxmlLoader.getController();
-                mensagemController.setMensagem("O técnico não está logado.\nFaça o login para alterar peça.");
-
-                stage.show();
-            }
-            catch (java.io.IOException e) {
-
-            }
+            exibirMensagem("O técnico não está logado.\nFaça o login para alterar peça.");
 
         }
         else if (DAO.getOrdemDeServico().OrdensUtilizandoPeca(nomePeca.getText()).size() > 0) {
 
-            try {
-
-                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
-                Stage stage = new Stage();
-                stage.setResizable(false);
-                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
-                stage.setScene(scene);
-
-                MensagemController mensagemController = fxmlLoader.getController();
-                mensagemController.setMensagem("Peça está sendo utilizada, \nnão é possível removê-la do sistema.");
-
-                stage.show();
-
-            }
-            catch (java.io.IOException e) {
-
-            }
+            exibirMensagem("Peça está sendo utilizada, \nnão é possível removê-la do sistema.");
 
         }
         else {
@@ -634,6 +586,12 @@ public class EstoqueController {
         DAO.getPeca().removerPeca(nomePeca.getText());
         atualizarCards();
 
+        exibirMensagem("      Peca removida.");
+
+    }
+
+    public void exibirMensagem (String mensagem) {
+
         try {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
@@ -644,17 +602,15 @@ public class EstoqueController {
             stage.setScene(scene);
 
             MensagemController mensagemController = fxmlLoader.getController();
-            mensagemController.setMensagem("      Peca removida.");
+            mensagemController.setMensagem(mensagem);
 
             stage.show();
 
-        } catch (java.io.IOException e) {
+        }
+        catch (java.io.IOException e) {
 
         }
 
     }
-
-
-
 
 }
