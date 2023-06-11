@@ -203,11 +203,6 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="mensagemTecnicoDeslogado" layoutX="246.0" layoutY="302.0" prefHeight="16.0" prefWidth="105.0" text="Técnico deslogado." textFill="#e82121">
-                     <font>
-                        <Font size="11.0" />
-                     </font>
-                  </Label>
                </children>
             </Pane>
             <Pane fx:id="paneSemClientes" onMousePressed="#pressed" prefHeight="200.0" prefWidth="200.0" styleClass="plano-fundo-superior" visible="false">

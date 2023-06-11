@@ -18,7 +18,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
@@ -63,7 +62,6 @@ public class ClienteController {
     @FXML private Button cadastrarClienteBotao;
     @FXML private Button atualizarBotao;
     @FXML private Button removerBotao;
-    @FXML private Label mensagemTecnicoDeslogado;
 
     @FXML private TextField barraDePesquisa;
     @FXML private Label mensagemPesquisa;
@@ -227,7 +225,6 @@ public class ClienteController {
         mensagemDeErroEndereco.setVisible(false);
         mensagemDeErroTelefone.setVisible(false);
         mensagemDeErroCpf.setVisible(false);
-        mensagemTecnicoDeslogado.setVisible(false);
         mensagemPesquisa.setText("");
 
     }
@@ -466,7 +463,8 @@ public class ClienteController {
 
         if (idTecnico.getText().equals("")) {
 
-            mensagemTecnicoDeslogado.setVisible(true);
+            exibirMensagem("             " +
+                    "O técnico não está logado.\nFaça o login para alterar dados do cliente.");
 
         }
         else {
@@ -572,23 +570,7 @@ public class ClienteController {
         setClienteEscolhido(cliente);
         atualizarMiniOrdens();
 
-        try {
-
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = new Stage();
-            stage.setResizable(false);
-            stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
-            stage.setScene(scene);
-
-            MensagemController mensagemController = fxmlLoader.getController();
-            mensagemController.setMensagem("     Cliente Atualizado.");
-
-            stage.show();
-
-        } catch (java.io.IOException e) {
-
-        }
+        exibirMensagem("     Cliente Atualizado.");
 
     }
 
@@ -599,29 +581,14 @@ public class ClienteController {
 
         if (idTecnico.getText().equals("")) {
 
-            mensagemTecnicoDeslogado.setVisible(true);
+            exibirMensagem("             " +
+                    "O técnico não está logado.\nFaça o login para alterar dados do cliente.");
 
         }
         else if (DAO.getOrdemDeServico().encontrarPorIdCliente(Integer.parseInt(idCliente.getText())).size() > 0) {
 
-            try {
-
-                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
-                Stage stage = new Stage();
-                stage.setResizable(false);
-                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
-                stage.setScene(scene);
-
-                MensagemController mensagemController = fxmlLoader.getController();
-                mensagemController.setMensagem(" O cliente possui serviços registrados \n" +
+            exibirMensagem(" O cliente possui serviços registrados \n" +
                         "no sistema. Não é permitido removê-lo.");
-
-                stage.show();
-
-            } catch (java.io.IOException e) {
-
-            }
 
         }
         else {
@@ -665,23 +632,7 @@ public class ClienteController {
         atualizarCards();
         atualizarMiniOrdens();
 
-        try {
-
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = new Stage();
-            stage.setResizable(false);
-            stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
-            stage.setScene(scene);
-
-            MensagemController mensagemController = fxmlLoader.getController();
-            mensagemController.setMensagem("     Cliente Removido.");
-
-            stage.show();
-
-        } catch (java.io.IOException e) {
-
-        }
+        exibirMensagem("     Cliente Removido.");
 
     }
 
@@ -712,6 +663,28 @@ public class ClienteController {
 
     }
 
+    public void exibirMensagem (String mensagem) {
+
+        try {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+            stage.setScene(scene);
+
+            MensagemController mensagemController = fxmlLoader.getController();
+            mensagemController.setMensagem(mensagem);
+
+            stage.show();
+
+        }
+        catch (java.io.IOException e) {
+
+        }
+
+    }
 
     private void setClienteEscolhido (Cliente cliente) {
 
