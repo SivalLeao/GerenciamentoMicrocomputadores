@@ -576,7 +576,7 @@ public class ClienteController {
         setClienteEscolhido(cliente);
         atualizarMiniOrdens();
 
-        exibirMensagem("     Cliente Atualizado.");
+        exibirMensagem("  Cliente Atualizado.");
 
     }
 
@@ -593,7 +593,7 @@ public class ClienteController {
         }
         else if (DAO.getOrdemDeServico().encontrarPorIdCliente(Integer.parseInt(idCliente.getText())).size() > 0) {
 
-            exibirMensagem(" O cliente possui serviços registrados \n" +
+            exibirMensagem("  O cliente possui serviços registrados \n" +
                         "no sistema. Não é permitido removê-lo.");
 
         }
@@ -638,7 +638,7 @@ public class ClienteController {
         atualizarCards();
         atualizarMiniOrdens();
 
-        exibirMensagem("     Cliente Removido.");
+        exibirMensagem("  Cliente Removido.");
 
     }
 

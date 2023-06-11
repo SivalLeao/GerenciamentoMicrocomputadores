@@ -535,12 +535,13 @@ public class OrdemController {
 
         if (idTecnico.getText().equals("")) {
 
-            exibirMensagem("O técnico não está logado.\nFaça o login para alterar peça.");
+            exibirMensagem("          " +
+                    "O técnico não está logado.\nFaça o login para alterar dados da peça.");
 
         }
         else if (statusOrdem.getText().equals("Em andamento")) {
 
-            exibirMensagem("Serviço em andamento, \nnão é permitido removê-lo.");
+            exibirMensagem("   Serviço em andamento, \nnão é permitido removê-lo.");
 
         }
         else {
@@ -595,17 +596,18 @@ public class OrdemController {
 
         if (idTecnico.getText().equals("")) {
 
-            exibirMensagem("O técnico não está logado.\nFaça o login para alterar serviço.");
+            exibirMensagem("          " +
+                    "O técnico não está logado.\nFaça o login para alterar dados da peça.");
 
         }
         else if (statusOrdem.getText().equals("Em andamento")) {
 
-            exibirMensagem("Serviço em andamento, \nnão é permitido cancelá-lo.");
+            exibirMensagem("   Serviço em andamento, \nnão é permitido cancelá-lo.");
 
         }
         else if (statusOrdem.getText().equals("Finalizado")) {
 
-            exibirMensagem("Serviço já foi finalizado, \nnão é permitido cancelá-lo.");
+            exibirMensagem("   Serviço já foi finalizado, \nnão é permitido cancelá-lo.");
 
         }
         else if (statusOrdem.getText().equals("Em espera")) {

@@ -492,23 +492,8 @@ public class TecnicoController {
         atualizarCards();
         fazendoMudancaLogin(DAO.getTecnico().encontrarPorId(Integer.parseInt(idPerfil.getText())));
 
-        try {
+        exibirMensagem("Perfil Atualizado.");
 
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = new Stage();
-            stage.setResizable(false);
-            stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
-            stage.setScene(scene);
-
-            MensagemController mensagemController = fxmlLoader.getController();
-            mensagemController.setMensagem("    Perfil Atualizado.");
-
-            stage.show();
-
-        } catch (java.io.IOException e) {
-
-        }
     }
 
     @FXML
@@ -518,24 +503,9 @@ public class TecnicoController {
 
         if (DAO.getOrdemDeServico().checarStatusEmAndamento(Integer.parseInt(idPerfil.getText()))) {
 
-            try {
-
-                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
-                Stage stage = new Stage();
-                stage.setResizable(false);
-                stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
-                stage.setScene(scene);
-
-                MensagemController mensagemController = fxmlLoader.getController();
-                mensagemController.setMensagem(" O técnico está realizando um serviço.\n" +
+            exibirMensagem(" O técnico está realizando um serviço.\n" +
                         "        Não pode ser removido.");
 
-                stage.show();
-
-            } catch (java.io.IOException e) {
-
-            }
         }
         else {
 
@@ -578,23 +548,7 @@ public class TecnicoController {
 
         deslogar();
 
-        try {
-
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = new Stage();
-            stage.setResizable(false);
-            stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
-            stage.setScene(scene);
-
-            MensagemController mensagemController = fxmlLoader.getController();
-            mensagemController.setMensagem("     Perfil removido.");
-
-            stage.show();
-
-        } catch (java.io.IOException e) {
-
-        }
+        exibirMensagem("Perfil removido.");
 
     }
 
@@ -689,6 +643,29 @@ public class TecnicoController {
         ordemDeServico.setIdTecnico(0);
 
         modificarAbaServico();
+    }
+
+    public void exibirMensagem (String mensagem) {
+
+        try {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("MensagemView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+            stage.setScene(scene);
+
+            MensagemController mensagemController = fxmlLoader.getController();
+            mensagemController.setMensagem(mensagem);
+
+            stage.show();
+
+        }
+        catch (java.io.IOException e) {
+
+        }
+
     }
 
 }

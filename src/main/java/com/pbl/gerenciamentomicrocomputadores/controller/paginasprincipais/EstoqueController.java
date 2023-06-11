@@ -479,7 +479,8 @@ public class EstoqueController {
 
         if (idTecnico.getText().equals("")) {
 
-            exibirMensagem("O técnico não está logado.\nFaça o login para alterar peça.");
+            exibirMensagem("             " +
+                    "O técnico não está logado.\nFaça o login para alterar dados do cliente.");
 
         }
         else {
@@ -510,7 +511,8 @@ public class EstoqueController {
 
         if (idTecnico.getText().equals("")) {
 
-            exibirMensagem("O técnico não está logado.\nFaça o login para alterar peça.");
+            exibirMensagem("             " +
+                    "O técnico não está logado.\nFaça o login para alterar dados do cliente.");
 
         }
         else {
@@ -545,12 +547,14 @@ public class EstoqueController {
 
         if (idTecnico.getText().equals("")) {
 
-            exibirMensagem("O técnico não está logado.\nFaça o login para alterar peça.");
+            exibirMensagem("             " +
+                    "O técnico não está logado.\nFaça o login para alterar dados do cliente.");
 
         }
         else if (DAO.getOrdemDeServico().ordensUtilizandoPeca(nomePeca.getText()).size() > 0) {
 
-            exibirMensagem("Peça está sendo utilizada, \nnão é possível removê-la do sistema.");
+            exibirMensagem("           " +
+                    "Peça está sendo utilizada, \nnão é possível removê-la do sistema.");
 
         }
         else {
@@ -586,7 +590,7 @@ public class EstoqueController {
         DAO.getPeca().removerPeca(nomePeca.getText());
         atualizarCards();
 
-        exibirMensagem("      Peca removida.");
+        exibirMensagem("Peca removida.");
 
     }
 
