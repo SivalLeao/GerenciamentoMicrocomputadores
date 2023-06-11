@@ -540,7 +540,7 @@ public class OrdemController {
         }
         else if (statusOrdem.getText().equals("Em andamento")) {
 
-            exibirMensagem("Serviço em andamento, \nnão é permitido removê-lo");
+            exibirMensagem("Serviço em andamento, \nnão é permitido removê-lo.");
 
         }
         else {
@@ -587,6 +587,7 @@ public class OrdemController {
         DAO.getOrdemDeServico().remover(Integer.parseInt(idOrdem.getText()));
         atualizarOrdensData();
         atualizarCards(this.ordensData);
+        exibirMensagem("Serviço removido.");
     }
 
     @FXML
@@ -599,12 +600,12 @@ public class OrdemController {
         }
         else if (statusOrdem.getText().equals("Em andamento")) {
 
-            exibirMensagem("Serviço em andamento, \nnão é permitido cancelá-lo");
+            exibirMensagem("Serviço em andamento, \nnão é permitido cancelá-lo.");
 
         }
         else if (statusOrdem.getText().equals("Finalizado")) {
 
-            exibirMensagem("Serviço já foi finalizado, \nnão é permitido cancelá-lo");
+            exibirMensagem("Serviço já foi finalizado, \nnão é permitido cancelá-lo.");
 
         }
         else if (statusOrdem.getText().equals("Em espera")) {
@@ -648,6 +649,7 @@ public class OrdemController {
         atualizarOrdensData();
         atualizarCards(this.ordensData);
         setOrdemEscolhida(DAO.getOrdemDeServico().encontrarPorId(id));
+        exibirMensagem("Serviço cancelado.");
     }
 
     public void exibirMensagem (String mensagem) {
