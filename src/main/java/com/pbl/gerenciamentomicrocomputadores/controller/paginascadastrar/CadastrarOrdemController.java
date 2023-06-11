@@ -42,7 +42,6 @@ public class CadastrarOrdemController {
     @FXML
     void initialize() {
 
-        choiceBox.getItems().add("Montagem/Instalação");
         choiceBox.getItems().add("Sistema operacional");
         choiceBox.getItems().add("Programas");
         choiceBox.getItems().add("Limpeza");
@@ -84,6 +83,8 @@ public class CadastrarOrdemController {
 
     public void atualizarChoiceBoxItens() {
 
+        int qtd = 0;
+
         List<Peca> estoque = DAO.getPeca().encontrarTodos();
 
         for (Peca peca: estoque) {
@@ -91,12 +92,19 @@ public class CadastrarOrdemController {
             if (peca.getQuantidade() != 0) {
 
                 choiceBoxItens.getItems().add(peca.getNome());
+                qtd++;
             }
         }
 
-        choiceBoxItens.getSelectionModel().selectFirst();
+        if (qtd != 0) {
 
-        atualizarMaxQuantidade();
+            choiceBox.getItems().add("Montagem/Instalação");
+
+            choiceBoxItens.getSelectionModel().selectFirst();
+
+            atualizarMaxQuantidade();
+        }
+
     }
 
     public void atualizarMaxQuantidade () {
@@ -127,6 +135,8 @@ public class CadastrarOrdemController {
 
     @FXML
     void adicionarPecaAcao(ActionEvent event) {
+
+        esconderMensagensDeErro();
 
         if (!( quantidadePeca.getText().matches("^[0-9]+$")) || quantidadePeca.getText().equals("")) {
 
