@@ -358,6 +358,26 @@ public class OrdemDeServicoArquivoImpl implements OrdemDeServicoDAO {
         return mapOrdemQtd;
     }
 
+    /** Método para retornar as ordens com status em andamento ou em espera.
+     *
+     * @return List - lista com as ordens em aberto.*/
+
+    public List<OrdemDeServico> ordensEmAberto() {
+
+        List<OrdemDeServico> listaEmAberto = new ArrayList<>();
+
+        for (int i = 0; i < lista.size(); i++) {
+
+            if (lista.get(i).getStatusAtual().equals("Em espera") ||
+                    lista.get(i).getStatusAtual().equals("Em andamento")) {
+
+                listaEmAberto.add(lista.get(i));
+            }
+        }
+
+        return listaEmAberto;
+    }
+
     /** Método para esvaziar toda a lista de ordens de serviço, usando a função clear. O arquivo binário de
      * armazenamento é reescrito com a lista vazia.*/
 

@@ -81,4 +81,10 @@ public interface OrdemDeServicoDAO extends CRUD<OrdemDeServico> {
 
     public Map<Integer, Integer> OrdensUtilizandoPeca(String nomePeca);
 
+    /** Método para retornar as ordens com status em andamento ou em espera.
+     *
+     * @return List - lista com as ordens em aberto.*/
+
+    public List<OrdemDeServico> ordensEmAberto();
+
 }

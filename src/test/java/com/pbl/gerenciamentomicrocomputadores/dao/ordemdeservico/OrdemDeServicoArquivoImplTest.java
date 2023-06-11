@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -286,6 +287,17 @@ public class OrdemDeServicoArquivoImplTest {
         assertEquals(mapOrdemQtd.get(1113), 5);
         assertEquals(mapOrdemQtd.get(1133), 3);
 
+    }
+
+    @Test
+    void ordensEmAberto() {
+
+        DAO.getOrdemDeServico().atualizarStatus(1113, "Em andamento");
+        DAO.getOrdemDeServico().atualizarStatus(1123, "Finalizado");
+
+        List<OrdemDeServico> listaEmAberto = DAO.getOrdemDeServico().ordensEmAberto();
+
+        assertEquals(4, listaEmAberto.size());
     }
 
     @Test
