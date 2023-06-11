@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -184,12 +185,12 @@
          <children>
             <Pane fx:id="paneSemPeca" onMousePressed="#pressed" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00818d;">
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="219.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="207.0" fitWidth="200.0" layoutX="198.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Icones/Estoque_branco-R15.png" />
+                        <Image url="@Icones/Sem%20estoque.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="214.0" layoutY="257.0" prefHeight="36.0" prefWidth="165.0" text="Estoque vazio">
+                  <Label layoutX="209.0" layoutY="291.0" prefHeight="36.0" prefWidth="165.0" text="Estoque vazio" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
@@ -286,10 +287,14 @@
                               <Font name="Arial Black" size="14.0" />
                            </font>
                         </Label>
-                        <Button fx:id="adicionarQtdBotao" layoutX="273.0" layoutY="60.0" mnemonicParsing="false" onAction="#adicionarQtdAcao" onMousePressed="#pressed" prefHeight="25.0" prefWidth="33.0" text="+">
+                        <Button fx:id="adicionarQtdBotao" layoutX="259.0" layoutY="64.0" mnemonicParsing="false" onAction="#adicionarQtdAcao" onMousePressed="#pressed" prefHeight="27.0" prefWidth="42.0" text="+">
                            <font>
-                              <Font size="13.0" />
+                              <Font name="System Bold" size="14.0" />
                            </font>
+                           <styleClass>
+                              <String fx:value="shadow-button" />
+                              <String fx:value="button" />
+                           </styleClass>
                         </Button>
                         <Button fx:id="atualizarPecaBotao" layoutX="29.0" layoutY="300.0" mnemonicParsing="false" onAction="#atualizarPecaAcao" onMousePressed="#pressed" prefHeight="40.0" prefWidth="105.0" text="Atualizar" textFill="WHITE">
                            <font>
@@ -300,14 +305,14 @@
                   </Pane>
                </children>
             </Pane>
-            <Pane fx:id="paneSemDadosPeca" onMousePressed="#pressed" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #004b52;">
+            <Pane fx:id="paneSemDadosPeca" onMousePressed="#pressed" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #004b52;" visible="false">
                <children>
-                  <ImageView fitHeight="117.0" fitWidth="132.0" layoutX="118.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="207.0" fitWidth="196.0" layoutX="96.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Icones/Estoque_branco-R15.png" />
+                        <Image url="@Icones/Sem%20estoque.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="96.0" layoutY="235.0" prefHeight="36.0" prefWidth="165.0" text="Estoque vazio">
+                  <Label layoutX="111.0" layoutY="257.0" prefHeight="36.0" prefWidth="165.0" text="Estoque vazio" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
