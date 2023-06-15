@@ -311,3 +311,19 @@
     -fx-background-color: transparent; /* Cor de fundo dos botões */
     -fx-padding: 0; /* Espaçamento interno dos botões */
 }
+.box-com-borda {
+    -fx-border-color: #000000;
+    -fx-border-width: 2;
+    -fx-padding: 1;
+}
+.separator {
+    -fx-background-color: transparent;
+}
+
+.separator > .line {
+    -fx-background-color: red;
+}
+
+.separator > .line > .line {
+    -fx-background-color: white;
+}
