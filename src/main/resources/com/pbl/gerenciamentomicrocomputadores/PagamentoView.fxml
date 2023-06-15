@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1280.0" styleClass="plano-fundo" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
@@ -162,5 +163,192 @@
                 </StackPane>
             </children>
         </Pane>
+      <StackPane layoutX="912.0" layoutY="108.0" prefHeight="528.0" prefWidth="368.0">
+         <children>
+            <Pane prefHeight="525.0" prefWidth="368.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label layoutX="-27.0" layoutY="28.0" prefHeight="53.0" prefWidth="113.0" rotate="-90.0" text="Fatura">
+                     <font>
+                        <Font name="System Bold" size="35.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="120.0" fitWidth="113.0" layoutX="255.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icones/Link%20repositorio-R20.png" />
+                     </image>
+                  </ImageView>
+                  <VBox layoutX="56.0" layoutY="11.0" prefHeight="91.0" prefWidth="198.0">
+                     <children>
+                        <Label prefHeight="23.0" prefWidth="210.0" text="Luciano da Silva Carvalho">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="204.0" text="xxx.xxx.xxx-xx">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="42.0" prefHeight="27.0" prefWidth="203.0" text="(yy) y yyyy-yyyy">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="206.0" text="Rua A, numero 1">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER" layoutX="27.0" layoutY="116.0" prefHeight="47.0" prefWidth="315.0" styleClass="box-com-borda">
+                     <children>
+                        <VBox prefHeight="70.0" prefWidth="157.0">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <children>
+                              <Label prefHeight="22.0" prefWidth="153.0" text="O total da sua fatura é:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="36.0" prefWidth="153.0" text="R$: 000,00">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Line endX="-99.5" endY="-40.0" startX="-100.0" strokeWidth="2.0" />
+                        <VBox layoutX="13.0" layoutY="13.0" prefHeight="70.0" prefWidth="157.0">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <children>
+                              <Label prefHeight="22.0" prefWidth="153.0" text=" Serviço finalizado em:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="36.0" prefWidth="153.0" text=" DD/MM/AAAA">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <VBox layoutX="27.0" layoutY="180.0" prefHeight="43.0" prefWidth="315.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="38.0" prefWidth="315.0" text="DESCRICÃO DO SERVIÇO">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="22.0" prefWidth="315.0" text="Serviço aberto em: dd/mm/aaaa">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER" layoutX="27.0" layoutY="234.0" prefHeight="32.0" prefWidth="315.0">
+                     <children>
+                        <VBox prefHeight="70.0" prefWidth="157.0">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <children>
+                              <Label prefHeight="22.0" prefWidth="153.0" text="Pagador: Fulano da Silva">
+                                 <font>
+                                    <Font name="System Bold" size="11.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="36.0" prefWidth="153.0" text="ID do cliente: 1111">
+                                 <font>
+                                    <Font name="System Bold" size="11.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Line endX="-100.0001220703125" endY="-29.6568603515625" startX="-100.0" strokeWidth="2.0" />
+                        <VBox layoutX="13.0" layoutY="13.0" prefHeight="70.0" prefWidth="157.0">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <children>
+                              <Label prefHeight="22.0" prefWidth="153.0" text=" Emitido por: Fernando Nasc...">
+                                 <font>
+                                    <Font name="System Bold" size="11.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="36.0" prefWidth="153.0" text=" ID do tecnico: 1112">
+                                 <font>
+                                    <Font name="System Bold" size="11.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="24.0" layoutY="277.0" prefHeight="24.0" prefWidth="315.0" spacing="15.0">
+                     <children>
+                        <Label prefHeight="24.0" prefWidth="95.0" text="Produto/serviço">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="10.0" prefHeight="24.0" prefWidth="29.0" text="qtd.">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="10.0" prefHeight="24.0" prefWidth="88.0" text="Valor unitario">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="119.0" layoutY="10.0" prefHeight="24.0" prefWidth="67.0" text="Valor final">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Line endX="155.0" layoutX="184.0" layoutY="301.0" startX="-164.0" strokeWidth="2.0" />
+                  <ImageView fitHeight="53.0" fitWidth="53.0" layoutX="293.0" layoutY="474.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icones/Link%20doc%20cartao.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="53.0" fitWidth="53.0" layoutX="241.0" layoutY="474.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icones/Link%20doc%20pix.png" />
+                     </image>
+                  </ImageView>
+                  <Line endX="155.0" layoutX="189.0" layoutY="474.0" startX="-164.0" strokeWidth="2.0" />
+                  <Label layoutX="24.0" layoutY="453.0" prefHeight="24.0" prefWidth="105.0" text="Total a ser pago:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label alignment="CENTER_RIGHT" layoutX="235.0" layoutY="451.0" prefHeight="24.0" prefWidth="105.0" text="R$ 000.00">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Line endX="155.0" layoutX="189.0" layoutY="453.0" startX="-164.0" strokeWidth="2.0" />
+                  <Label layoutX="28.0" layoutY="473.0" prefHeight="53.0" prefWidth="131.0" text="Escaneie o &#10;Qr code para realizar&#10;o pagamento:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
     </children>
 </Pane>
