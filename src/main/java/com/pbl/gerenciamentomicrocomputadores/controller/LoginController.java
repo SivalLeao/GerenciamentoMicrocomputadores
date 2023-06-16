@@ -63,6 +63,11 @@ public class LoginController {
                 EstoqueController estoqueController = fxmlLoader.getController();
                 estoqueController.fazendoMudancaLogin(DAO.getTecnico().encontrarPorCpf(cpfTecnico.getText()));
             }
+            else if (classeController.equals("PagamentoController")) {
+
+                PagamentoController pagamentoController = fxmlLoader.getController();
+                pagamentoController.fazendoMudancaLogin(DAO.getTecnico().encontrarPorCpf(cpfTecnico.getText()));
+            }
 
             cpfTecnico.setText("");
             Stage stage = (Stage) voltarBotao.getScene().getWindow();

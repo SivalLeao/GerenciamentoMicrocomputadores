@@ -278,6 +278,29 @@ public class OrdemController {
     @FXML
     void abaPagamento(ActionEvent event) {
 
+        try {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("PagamentoView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
+            Stage stage = MainController.getStageInicio();
+            stage.setScene(scene);
+
+            MainController.setStageInicio(stage);
+            MainController.setFXMLLoaderPrincipal(fxmlLoader);
+
+            if (!(idTecnico.getText().equals(""))) {
+
+                PagamentoController pagamentoController = fxmlLoader.getController();
+                pagamentoController.fazendoMudancaLogin(DAO.getTecnico().encontrarPorId(
+                        Integer.parseInt(idTecnico.getText())));
+            }
+
+            stage.show();
+        }
+        catch (java.io.IOException e) {
+
+        }
+
     }
 
     @FXML
