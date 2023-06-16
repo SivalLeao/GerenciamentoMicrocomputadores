@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="239.0" prefWidth="194.0" styleClass="pane-doc" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" layoutX="38.0" layoutY="14.0" prefHeight="38.0" prefWidth="118.0" text="1234" underline="true">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Line endX="100.0" layoutX="66.0" layoutY="85.0" startX="-37.5" strokeWidth="2.0" />
+      <Line endX="100.0" layoutX="66.0" layoutY="119.0" startX="-37.5" strokeWidth="2.0" />
+      <Line endX="100.0" layoutX="66.0" layoutY="153.0" startX="-37.5" strokeWidth="2.0" />
+      <Line endX="100.0" layoutX="66.0" layoutY="187.0" startX="-37.5" strokeWidth="2.0" />
+      <Line endX="23.5" endY="-62.0" layoutX="129.0" layoutY="62.0" startX="23.5" startY="-1.7071075439453125" strokeWidth="2.0" />
+      <Line endX="100.0" layoutX="93.0" layoutY="61.0" startX="60.0" startY="-0.20709228515625" strokeWidth="2.0" />
+   </children>
+</Pane>
