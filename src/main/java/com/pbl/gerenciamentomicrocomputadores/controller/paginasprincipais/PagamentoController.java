@@ -415,6 +415,11 @@ public class PagamentoController {
 
         }
 
+        nomeServicoTexto.setPrefHeight(Region.USE_COMPUTED_SIZE);
+        qtdTexto.setPrefHeight(Region.USE_COMPUTED_SIZE);
+        valorUnitarioServicoTexto.setPrefHeight(Region.USE_COMPUTED_SIZE);
+        valorTotalServicoTexto.setPrefHeight(Region.USE_COMPUTED_SIZE);
+
         nomeServicoTexto.setText(textoServico);
         qtdTexto.setText(textoQtd);
         valorUnitarioServicoTexto.setText(textoValorUnitario);
