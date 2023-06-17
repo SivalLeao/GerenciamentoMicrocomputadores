@@ -23,6 +23,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
+import javafx.stage.StageStyle;
 
 public class OrdemController {
 
@@ -73,6 +74,9 @@ public class OrdemController {
     private MyListener<OrdemDeServico> myListener;
 
     @FXML
+    private Label Relatorio;
+
+    @FXML
     void pressed(MouseEvent event) {
 
         if (MainController.getStageConfirmacao() != null) {
@@ -91,9 +95,17 @@ public class OrdemController {
 
         paneCantoInicio.setVisible(true);
         paneTecnicoLogado.setVisible(false);
+        Relatorio.setVisible(false);
 
         this.ordensData = DAO.getOrdemDeServico().encontrarTodos();
         atualizarCards(this.ordensData);
+
+        relatorioBotao.setOnMouseEntered(mouseEvent -> {
+            Relatorio.setVisible(true);
+        });
+        relatorioBotao.setOnMouseExited(event -> {
+            Relatorio.setVisible(false);
+        });
     }
 
     public void atualizarCards (List<OrdemDeServico> ordensData) {

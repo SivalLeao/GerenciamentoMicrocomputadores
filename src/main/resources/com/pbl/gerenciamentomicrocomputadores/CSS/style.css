@@ -228,6 +228,13 @@
     -fx-background-color: #004B52;
 }
 
+.scroll-pane-relatorio {
+    -fx-background-color: transparent;
+}
+.scroll-pane-relatorio .viewport {
+    -fx-background-color: transparent;
+}
+
 .pane-arredondado {
     -fx-background-color: #00818D;
     -fx-background-radius: 50 0 50 50;
@@ -353,4 +360,14 @@
 .card-botao:hover {
     -fx-cursor: hand;
     -fx-background-color: #00BFE1;
+}
+
+.Botao-relatorio {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 20;
+}
+
+.Botao-relatorio: hover {
+    -fx-background-color: #cfcfcf;
+    -fx-background-radius: 20;
 }
