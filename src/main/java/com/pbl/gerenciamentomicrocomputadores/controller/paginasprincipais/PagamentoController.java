@@ -54,6 +54,7 @@ public class PagamentoController {
     @FXML private Label valorFatura;
     @FXML private Label dataFinalizacaoServico;
     @FXML private Label dataInicioServico;
+    @FXML private Label formaDePagamento;
     @FXML private Label nomePagador;
     @FXML private Label idPagador;
     @FXML private Label nomeEmissor;
@@ -375,6 +376,7 @@ public class PagamentoController {
         valorFatura.setText(Double.toString(ordemDeServico.calcularValorServico(DAO.getPeca().encontrarTodosMap())));
         dataFinalizacaoServico.setText(ordemDeServico.getData().getDataFim().format(formatador));
         dataInicioServico.setText(ordemDeServico.getData().getDataInicio().format(formatador));
+        formaDePagamento.setText(ordemDeServico.getFormaPagamento());
         nomePagador.setText(cliente.getNome());
         idPagador.setText(Integer.toString(cliente.getId()));
         nomeEmissor.setText(tecnico.getNome());
