@@ -416,6 +416,7 @@ public class PagamentoController {
             textoServico = textoServico.concat("\n " + ordemDeServico.getDescricaoServico().getTipoDeServico());
             textoValorUnitario = textoValorUnitario.concat("\nR$ " +
                     ordemDeServico.calcularValorServico(estoque));
+            textoQtd = "\n1";
             textoValorTotal = textoValorTotal.concat("\nR$ " + (ordemDeServico.calcularValorServico(estoque)));
 
         }
