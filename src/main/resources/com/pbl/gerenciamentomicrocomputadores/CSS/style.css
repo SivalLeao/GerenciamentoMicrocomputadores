@@ -371,3 +371,8 @@
     -fx-background-color: #cfcfcf;
     -fx-background-radius: 20;
 }
+
+.mouse-cursor: hover{
+    -fx-cursor: hand;
+}
+
