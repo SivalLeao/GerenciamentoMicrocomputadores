@@ -1,5 +1,6 @@
-package com.pbl.gerenciamentomicrocomputadores.controller;
+package com.pbl.gerenciamentomicrocomputadores.controller.login;
 
+import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.*;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import javafx.event.ActionEvent;

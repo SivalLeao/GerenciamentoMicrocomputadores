@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onMousePressed="#pressed" prefHeight="390.0" prefWidth="306.0" styleClass="cadastro" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.AtualizarPecaController">
+<AnchorPane onMousePressed="#pressed" prefHeight="390.0" prefWidth="306.0" styleClass="cadastro" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.modificarpeca.AtualizarPecaController">
    <children>
       <HBox prefHeight="49.0" prefWidth="306.0">
          <children>

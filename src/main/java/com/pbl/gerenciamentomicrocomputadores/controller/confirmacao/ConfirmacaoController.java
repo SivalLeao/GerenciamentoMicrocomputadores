@@ -1,5 +1,7 @@
-package com.pbl.gerenciamentomicrocomputadores.controller;
+package com.pbl.gerenciamentomicrocomputadores.controller.confirmacao;
 
+import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
+import com.pbl.gerenciamentomicrocomputadores.controller.modificarpeca.AtualizarPecaController;
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.ClienteController;
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.EstoqueController;
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.OrdemController;

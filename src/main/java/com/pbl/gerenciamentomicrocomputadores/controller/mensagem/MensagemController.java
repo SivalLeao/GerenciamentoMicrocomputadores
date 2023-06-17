@@ -1,4 +1,4 @@
-package com.pbl.gerenciamentomicrocomputadores.controller;
+package com.pbl.gerenciamentomicrocomputadores.controller.mensagem;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -1,6 +1,8 @@
-package com.pbl.gerenciamentomicrocomputadores.controller;
+package com.pbl.gerenciamentomicrocomputadores.controller.modificarpeca;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
+import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
+import com.pbl.gerenciamentomicrocomputadores.controller.mensagem.MensagemController;
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.EstoqueController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import javafx.event.ActionEvent;
