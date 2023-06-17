@@ -45,7 +45,13 @@ public class PagamentoController {
     @FXML private Label idTecnico;
     @FXML private Button deslogarBotao;
 
+    @FXML private Pane paneCardsFatura;
+    @FXML private Pane paneSemCardsFatura;
+
     @FXML private GridPane gridContainer;
+
+    @FXML private Pane paneSemFaturaServico;
+    @FXML private Pane paneDadosFatura;
 
     @FXML private Label nomeCliente;
     @FXML private Label enderecoCliente;
@@ -88,6 +94,11 @@ public class PagamentoController {
 
             setFaturaEscolhida(ordensFinalizadasData.get(0));
 
+            paneDadosFatura.setVisible(true);
+            paneSemFaturaServico.setVisible(false);
+            paneCardsFatura.setVisible(true);
+            paneSemCardsFatura.setVisible(false);
+
             this.myListener = new MyListener<OrdemDeServico>() {
                 @Override
                 public void onClickListener(OrdemDeServico ordemDeServico) {
@@ -95,6 +106,13 @@ public class PagamentoController {
                     setFaturaEscolhida(ordemDeServico);
                 }
             };
+        }
+        else {
+
+            paneDadosFatura.setVisible(false);
+            paneSemFaturaServico.setVisible(true);
+            paneCardsFatura.setVisible(false);
+            paneSemCardsFatura.setVisible(true);
         }
 
         try {
