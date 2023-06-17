@@ -169,21 +169,21 @@
         </Pane>
       <StackPane layoutX="912.0" layoutY="108.0" prefHeight="528.0" prefWidth="368.0">
          <children>
-            <Pane fx:id="paneSemFaturaServico" prefHeight="200.0" prefWidth="200.0" styleClass="custom-scroll-pane">
+            <Pane fx:id="paneSemFaturaServico" prefHeight="200.0" prefWidth="200.0" styleClass="custom-scroll-pane" visible="false">
                <children>
-                  <Label layoutX="50.0" layoutY="296.0" prefHeight="36.0" prefWidth="287.0" text="Sem serviços finalizados">
+                  <Label layoutX="50.0" layoutY="296.0" prefHeight="36.0" prefWidth="287.0" text="Sem serviços finalizados" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="114.0" fitWidth="258.0" layoutX="146.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="207.0" fitWidth="190.0" layoutX="99.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Icones/Pagamento_branco-R15.png" />
+                        <Image url="@Icones/Sem%20fatura.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <Pane fx:id="paneDadosFatura" prefHeight="525.0" prefWidth="368.0" style="-fx-background-color: #ffffff;" visible="false">
+            <Pane fx:id="paneDadosFatura" prefHeight="525.0" prefWidth="368.0" style="-fx-background-color: #ffffff;">
                <children>
                   <Label layoutX="-27.0" layoutY="28.0" prefHeight="53.0" prefWidth="113.0" rotate="-90.0" text="Fatura">
                      <font>
@@ -197,7 +197,7 @@
                   </ImageView>
                   <VBox layoutX="56.0" layoutY="11.0" prefHeight="91.0" prefWidth="198.0">
                      <children>
-                        <Label fx:id="nomeCliente" prefHeight="23.0" prefWidth="210.0" text="Luciano da Silva Carvalho">
+                        <Label fx:id="nomeCliente" prefHeight="23.0" prefWidth="210.0" text="Fulano da Silva Carvalho">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -496,12 +496,12 @@
          <children>
             <Pane fx:id="paneSemCardsFatura" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00818D;">
                <children>
-                  <ImageView fitHeight="114.0" fitWidth="258.0" layoutX="272.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="201.0" fitWidth="198.0" layoutX="224.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Icones/Pagamento_branco-R15.png" />
+                        <Image url="@Icones/Sem%20fatura.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="173.0" layoutY="264.0" prefHeight="36.0" prefWidth="287.0" text="Sem serviços finalizados">
+                  <Label layoutX="173.0" layoutY="264.0" prefHeight="36.0" prefWidth="287.0" text="Sem serviços finalizados" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
