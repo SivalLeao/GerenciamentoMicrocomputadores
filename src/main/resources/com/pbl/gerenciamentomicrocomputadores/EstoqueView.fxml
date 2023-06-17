@@ -174,7 +174,7 @@
                   <Font name="Arial Black" size="26.0" />
                </font>
             </Label>
-            <Button fx:id="novaPecaBotao" layoutX="453.0" layoutY="18.0" mnemonicParsing="false" onAction="#abaCadastrarPeca" onMousePressed="#pressed" prefHeight="40.0" prefWidth="105.0" style="-fx-background-color: #004b52;" text="Nova peça" textFill="WHITE">
+            <Button fx:id="novaPecaBotao" layoutX="453.0" layoutY="18.0" mnemonicParsing="false" onAction="#abaCadastrarPeca" onMousePressed="#pressed" prefHeight="40.0" prefWidth="105.0" styleClass="botao-servico" text="Nova peça" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
