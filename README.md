@@ -41,7 +41,7 @@ Classes.
 desenvolvimento dos testes de unidade.
 - :heavy_check_mark: Fase 3: Persistência de dados. Garantir que as informações sejam armazenadas e 
 recuperadas de forma consistente.
-- :x: Fase 4: Implementação da interface gráfica.
+- :heavy_check_mark: Fase 4: Implementação da interface gráfica.
 
 ## :gear: Atuais funcionalidades
 
