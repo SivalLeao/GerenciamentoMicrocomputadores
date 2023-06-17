@@ -9,14 +9,10 @@ import javafx.scene.input.MouseEvent;
 
 public class CardClienteController {
 
-    @FXML
-    private Label idCliente;
-
-    @FXML
-    private Label nomeCliente;
+    @FXML private Label idCliente;
+    @FXML private Label nomeCliente;
 
     private Cliente cliente;
-
     private MyListener<Cliente> myListener;
 
     @FXML

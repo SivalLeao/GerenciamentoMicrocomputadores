@@ -74,7 +74,6 @@ public class ClienteController {
 
     @FXML private Label adicionar;
 
-
     private MyListener<Cliente> myListener;
 
     String cpfAtual;

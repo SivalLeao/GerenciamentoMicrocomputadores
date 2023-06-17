@@ -10,17 +10,10 @@ public class CardOrdemInicioController {
     @FXML private Label idOrdem;
     @FXML private Label statusOrdem;
 
-    @FXML
-    private Pane paneLimpeza;
-
-    @FXML
-    private Pane paneMontagem;
-
-    @FXML
-    private Pane paneProgramas;
-
-    @FXML
-    private Pane paneSO;
+    @FXML private Pane paneLimpeza;
+    @FXML private Pane paneMontagem;
+    @FXML private Pane paneProgramas;
+    @FXML private Pane paneSO;
 
     public void setInfo (OrdemDeServico ordemDeServico) {
 

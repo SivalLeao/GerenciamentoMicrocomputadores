@@ -6,11 +6,8 @@ import javafx.scene.control.Label;
 
 public class CardTecnicoController {
 
-    @FXML
-    private Label idTecnico;
-
-    @FXML
-    private Label nomeTecnico;
+    @FXML private Label idTecnico;
+    @FXML private Label nomeTecnico;
 
     public void setInfo (Tecnico tecnico) {
 

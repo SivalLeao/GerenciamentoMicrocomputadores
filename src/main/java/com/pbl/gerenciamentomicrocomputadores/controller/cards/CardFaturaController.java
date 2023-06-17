@@ -8,11 +8,9 @@ import javafx.scene.input.MouseEvent;
 
 public class CardFaturaController {
 
-    @FXML
-    private Label idOrdem;
+    @FXML private Label idOrdem;
 
     private OrdemDeServico ordemDeServico;
-
     private MyListener<OrdemDeServico> myListener;
 
     @FXML

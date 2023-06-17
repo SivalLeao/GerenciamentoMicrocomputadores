@@ -13,17 +13,11 @@ import javafx.stage.Stage;
 
 public class LoginController {
 
-    @FXML
-    private TextField cpfTecnico;
+    @FXML private TextField cpfTecnico;
+    @FXML private Label mensagemDeErro;
 
-    @FXML
-    private Label mensagemDeErro;
-
-    @FXML
-    private Button entrarBotao;
-
-    @FXML
-    private Button voltarBotao;
+    @FXML private Button entrarBotao;
+    @FXML private Button voltarBotao;
 
     @FXML
     void acessoTecnico (ActionEvent event) {
