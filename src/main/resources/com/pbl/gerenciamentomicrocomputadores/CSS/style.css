@@ -339,3 +339,8 @@
 
 
 }
+
+.pane-info {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 20;
+}
