@@ -3,7 +3,6 @@ package com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais;
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
 import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
 import com.pbl.gerenciamentomicrocomputadores.controller.MyListener;
-import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardClienteController;
 import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardFaturaController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
@@ -23,7 +22,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
-import java.lang.runtime.ObjectMethods;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
@@ -161,10 +159,10 @@ public class PagamentoController {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("InicioView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
-            Stage stage = MainController.getStageInicio();
+            Stage stage = MainController.getStagePrincipal();
             stage.setScene(scene);
 
-            MainController.setStageInicio(stage);
+            MainController.setStagePrincipal(stage);
             MainController.setFXMLLoaderPrincipal(fxmlLoader);
 
             if (!(idTecnico.getText().equals(""))) {
@@ -188,10 +186,10 @@ public class PagamentoController {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("ClienteView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
-            Stage stage = MainController.getStageInicio();
+            Stage stage = MainController.getStagePrincipal();
             stage.setScene(scene);
 
-            MainController.setStageInicio(stage);
+            MainController.setStagePrincipal(stage);
             MainController.setFXMLLoaderPrincipal(fxmlLoader);
 
             if (!(idTecnico.getText().equals(""))) {
@@ -215,10 +213,10 @@ public class PagamentoController {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("TecnicoView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
-            Stage stage = MainController.getStageInicio();
+            Stage stage = MainController.getStagePrincipal();
             stage.setScene(scene);
 
-            MainController.setStageInicio(stage);
+            MainController.setStagePrincipal(stage);
             MainController.setFXMLLoaderPrincipal(fxmlLoader);
 
             if (!(idTecnico.getText().equals(""))) {
@@ -243,10 +241,10 @@ public class PagamentoController {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("OrdemView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
-            Stage stage = MainController.getStageInicio();
+            Stage stage = MainController.getStagePrincipal();
             stage.setScene(scene);
 
-            MainController.setStageInicio(stage);
+            MainController.setStagePrincipal(stage);
             MainController.setFXMLLoaderPrincipal(fxmlLoader);
 
             if (!(idTecnico.getText().equals(""))) {
@@ -271,10 +269,10 @@ public class PagamentoController {
 
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("EstoqueView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1280, 650);
-            Stage stage = MainController.getStageInicio();
+            Stage stage = MainController.getStagePrincipal();
             stage.setScene(scene);
 
-            MainController.setStageInicio(stage);
+            MainController.setStagePrincipal(stage);
             MainController.setFXMLLoaderPrincipal(fxmlLoader);
 
             if (!(idTecnico.getText().equals(""))) {

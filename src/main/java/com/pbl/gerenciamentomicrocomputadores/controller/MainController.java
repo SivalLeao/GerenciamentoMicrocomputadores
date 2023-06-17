@@ -5,7 +5,7 @@ import javafx.stage.Stage;
 
 public class MainController {
 
-    private static Stage stageInicio;
+    private static Stage stagePrincipal;
 
     private static FXMLLoader fxmlLoaderPrincipal;
 
@@ -27,9 +27,9 @@ public class MainController {
 
     private static Stage stagePedidoSatisfacao;
 
-    public static Stage getStageInicio () { return stageInicio; }
+    public static Stage getStagePrincipal() { return stagePrincipal; }
 
-    public static void setStageInicio (Stage stageInicio) { MainController.stageInicio = stageInicio; }
+    public static void setStagePrincipal(Stage stagePrincipal) { MainController.stagePrincipal = stagePrincipal; }
 
     public static FXMLLoader getFXMLLoaderPrincipal() { return fxmlLoaderPrincipal; }
 
