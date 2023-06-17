@@ -4,7 +4,7 @@ import com.pbl.gerenciamentomicrocomputadores.MainApplication;
 import com.pbl.gerenciamentomicrocomputadores.controller.ConfirmacaoController;
 import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
 import com.pbl.gerenciamentomicrocomputadores.controller.MensagemController;
-import com.pbl.gerenciamentomicrocomputadores.controller.PedidoSatisfacaoController;
+import com.pbl.gerenciamentomicrocomputadores.controller.PedidoFinalizacaoController;
 import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardTecnicoController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
@@ -659,7 +659,7 @@ public class TecnicoController {
 
         try {
 
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("PedidoSatisfacaoView.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("PedidoFinalizacaoView.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
             stage.setResizable(false);
@@ -667,8 +667,8 @@ public class TecnicoController {
             stage.setScene(scene);
             stage.setAlwaysOnTop(true);
 
-            PedidoSatisfacaoController pedidoSatisfacaoController = fxmlLoader.getController();
-            pedidoSatisfacaoController.setIdOrdem(Integer.parseInt(idOrdem.getText()));
+            PedidoFinalizacaoController pedidoFinalizacaoController = fxmlLoader.getController();
+            pedidoFinalizacaoController.setIdOrdem(Integer.parseInt(idOrdem.getText()));
 
             MainController.setStagePedidoSatisfacao(stage);
 

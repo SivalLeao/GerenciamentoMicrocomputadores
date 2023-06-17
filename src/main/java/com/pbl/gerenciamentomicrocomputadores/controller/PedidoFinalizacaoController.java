@@ -6,12 +6,14 @@ import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class PedidoSatisfacaoController {
+public class PedidoFinalizacaoController {
 
+    @FXML private ChoiceBox<String> choiceBox;
     @FXML private TextField satisfacaoTexto;
     @FXML private Label mensagemDeErroSatisfacao;
     @FXML private Button responderBotao;
@@ -22,6 +24,12 @@ public class PedidoSatisfacaoController {
     void initialize() {
 
         mensagemDeErroSatisfacao.setVisible(false);
+
+        choiceBox.getItems().add("Cartão de crédito");
+        choiceBox.getItems().add("Transferência bancária");
+        choiceBox.getItems().add("Dinheiro");
+
+        choiceBox.setValue("Cartão de crédito");
     }
 
     @FXML
@@ -34,6 +42,7 @@ public class PedidoSatisfacaoController {
             if (DAO.getOrdemDeServico().checarPorId(idOrdem)) {
 
                 OrdemDeServico ordemDeServico = DAO.getOrdemDeServico().encontrarPorId(idOrdem);
+                ordemDeServico.setFormaPagamento(choiceBox.getValue());
                 ordemDeServico.setSatisfacaoCliente(satisfacaoTexto.getText());
                 DAO.getOrdemDeServico().atualizar(ordemDeServico);
 
