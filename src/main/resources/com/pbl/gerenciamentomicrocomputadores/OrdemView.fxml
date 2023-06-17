@@ -257,7 +257,7 @@
             </Pane>
             <Pane fx:id="paneDadosServico" onMousePressed="#pressed" prefHeight="522.0" prefWidth="357.0" style="-fx-background-color: #004b52;">
                <children>
-                  <Label fx:id="tipoDeServicoOrdem" alignment="CENTER" layoutX="32.0" layoutY="64.0" prefHeight="30.0" prefWidth="185.0" styleClass="label-personalizado">
+                  <Label fx:id="tipoDeServicoOrdem" alignment="CENTER" layoutX="86.0" layoutY="62.0" prefHeight="30.0" prefWidth="185.0" styleClass="label-personalizado">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -343,13 +343,22 @@
                               <Font name="Arial Black" size="14.0" />
                            </font>
                         </Label>
+                        <Button fx:id="relatorioBotao" layoutX="229.0" mnemonicParsing="false" onAction="#abrirRelatorioAcao" onMousePressed="#pressed" prefHeight="66.0" prefWidth="86.0" styleClass="Botao-relatorio" text="📄">
+                           <font>
+                              <Font name="Arial Bold" size="36.0" />
+                           </font>
+                        </Button>
+                        <Pane layoutX="229.0" layoutY="50.0" prefHeight="19.0" prefWidth="86.0">
+                           <children>
+                              <Label fx:id="Relatorio" alignment="CENTER" prefHeight="19.0" prefWidth="86.0" text="Relatório">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
                      </children>
                   </Pane>
-                  <Button fx:id="relatorioBotao" layoutX="239.0" layoutY="14.0" mnemonicParsing="false" onAction="#abrirRelatorioAcao" onMousePressed="#pressed" prefHeight="40.0" prefWidth="105.0" text="Relatório" textFill="WHITE">
-                     <font>
-                        <Font name="Arial Bold" size="12.0" />
-                     </font>
-                  </Button>
                </children>
             </Pane>
          </children>
