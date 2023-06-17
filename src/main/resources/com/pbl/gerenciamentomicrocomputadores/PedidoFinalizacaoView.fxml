@@ -16,7 +16,7 @@
       </Label>
       <TextField fx:id="satisfacaoTexto" alignment="TOP_LEFT" layoutX="34.0" layoutY="130.0" prefHeight="106.0" prefWidth="311.0" promptText="Digite a satisfação do cliente." />
       <Button fx:id="responderBotao" layoutX="146.0" layoutY="267.0" mnemonicParsing="false" onAction="#responderAcao" text="responder" />
-      <Label fx:id="mensagemDeErroSatisfacao" layoutX="34.0" layoutY="236.0" text="Entrada inválida, digite apenas caracteres alfabeticos ." textFill="#e50000" />
+      <Label fx:id="mensagemDeErroSatisfacao" layoutX="34.0" layoutY="236.0" text="Entrada inválida." textFill="#e50000" />
       <ChoiceBox fx:id="choiceBox" layoutX="193.0" layoutY="73.0" prefWidth="150.0" styleClass="selecao-itens" />
       <Label layoutX="34.0" layoutY="105.0" prefHeight="25.0" prefWidth="157.0" text="Satisfação do cliente: " textFill="WHITE">
          <font>
