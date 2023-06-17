@@ -3,10 +3,14 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
@@ -179,22 +183,22 @@
                   </ImageView>
                   <VBox layoutX="56.0" layoutY="11.0" prefHeight="91.0" prefWidth="198.0">
                      <children>
-                        <Label prefHeight="23.0" prefWidth="210.0" text="Luciano da Silva Carvalho">
+                        <Label fx:id="nomeCliente" prefHeight="23.0" prefWidth="210.0" text="Luciano da Silva Carvalho">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="204.0" text="xxx.xxx.xxx-xx">
+                        <Label fx:id="cpfCliente" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="204.0" text="xxx.xxx.xxx-xx">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label layoutX="10.0" layoutY="42.0" prefHeight="27.0" prefWidth="203.0" text="(yy) y yyyy-yyyy">
+                        <Label fx:id="telefoneCliente" layoutX="10.0" layoutY="42.0" prefHeight="27.0" prefWidth="203.0" text="(yy) y yyyy-yyyy">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="206.0" text="Rua A, numero 1">
+                        <Label fx:id="enderecoCliente" layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="206.0" text="Rua A, numero 1">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -213,11 +217,20 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="36.0" prefWidth="153.0" text="R$: 000,00">
-                                 <font>
-                                    <Font name="System Bold" size="20.0" />
-                                 </font>
-                              </Label>
+                              <HBox prefHeight="30.0" prefWidth="147.0">
+                                 <children>
+                                    <Label prefHeight="31.0" prefWidth="37.0" text="R$: ">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="valorFatura" prefHeight="30.0" prefWidth="114.0" text="000,00">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
                            </children>
                         </VBox>
                         <Line endX="-99.5" endY="-40.0" startX="-100.0" strokeWidth="2.0" />
@@ -231,7 +244,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="36.0" prefWidth="153.0" text=" DD/MM/AAAA">
+                              <Label fx:id="dataFinalizacaoServico" prefHeight="36.0" prefWidth="153.0" text=" DD/MM/AAAA">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font>
@@ -250,11 +263,27 @@
                               <Font name="System Bold" size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="22.0" prefWidth="315.0" text="Serviço aberto em: dd/mm/aaaa">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
+                        <HBox>
+                           <children>
+                              <Separator opacity="0.0" orientation="VERTICAL" prefHeight="17.0" prefWidth="65.0" />
+                              <Label prefHeight="17.0" prefWidth="109.0" text="Serviço aberto em: ">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </Label>
+                              <Label fx:id="dataInicioServico" prefHeight="17.0" prefWidth="109.0" text="DD/MM/AAAA">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </Label>
+                           </children>
+                        </HBox>
                      </children>
                   </VBox>
                   <HBox alignment="CENTER" layoutX="27.0" layoutY="234.0" prefHeight="32.0" prefWidth="315.0">
@@ -264,16 +293,34 @@
                               <Insets />
                            </opaqueInsets>
                            <children>
-                              <Label prefHeight="22.0" prefWidth="153.0" text="Pagador: Fulano da Silva">
-                                 <font>
-                                    <Font name="System Bold" size="11.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="36.0" prefWidth="153.0" text="ID do cliente: 1111">
-                                 <font>
-                                    <Font name="System Bold" size="11.0" />
-                                 </font>
-                              </Label>
+                              <HBox>
+                                 <children>
+                                    <Label prefHeight="16.0" prefWidth="53.0" text="Pagador: ">
+                                       <font>
+                                          <Font name="System Bold" size="11.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="nomePagador" prefHeight="16.0" prefWidth="103.0" text="Fulano da Silva">
+                                       <font>
+                                          <Font name="System Bold" size="11.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox>
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="75.0" text="ID do cliente: ">
+                                       <font>
+                                          <Font name="System Bold" size="11.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="idPagador" prefHeight="17.0" prefWidth="75.0" text="1112">
+                                       <font>
+                                          <Font name="System Bold" size="11.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
                            </children>
                         </VBox>
                         <Line endX="-100.0001220703125" endY="-29.6568603515625" startX="-100.0" strokeWidth="2.0" />
@@ -282,16 +329,34 @@
                               <Insets />
                            </opaqueInsets>
                            <children>
-                              <Label prefHeight="22.0" prefWidth="153.0" text=" Emitido por: Fernando Nasc...">
-                                 <font>
-                                    <Font name="System Bold" size="11.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="36.0" prefWidth="153.0" text=" ID do tecnico: 1112">
-                                 <font>
-                                    <Font name="System Bold" size="11.0" />
-                                 </font>
-                              </Label>
+                              <HBox>
+                                 <children>
+                                    <Label prefHeight="16.0" prefWidth="74.0" text=" Emitido por: ">
+                                       <font>
+                                          <Font name="System Bold" size="11.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="nomeEmissor" prefHeight="16.0" prefWidth="84.0" text="Sicrano">
+                                       <font>
+                                          <Font name="System Bold" size="11.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox>
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="79.0" text=" ID do tecnico: ">
+                                       <font>
+                                          <Font name="System Bold" size="11.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="idEmissor" prefHeight="17.0" prefWidth="79.0" text="1111">
+                                       <font>
+                                          <Font name="System Bold" size="11.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
                            </children>
                         </VBox>
                      </children>
@@ -336,7 +401,7 @@
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="235.0" layoutY="451.0" prefHeight="24.0" prefWidth="105.0" text="R$ 000.00">
+                  <Label alignment="CENTER_RIGHT" layoutX="235.0" layoutY="451.0" prefHeight="24.0" prefWidth="73.0" text="R$ ">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -346,6 +411,39 @@
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Label>
+                  <Label fx:id="valorTotal" alignment="CENTER_RIGHT" layoutX="310.0" layoutY="451.0" prefHeight="24.0" prefWidth="37.0" text="100.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane layoutX="23.0" layoutY="309.0" prefHeight="138.0" prefWidth="315.0">
+                     <content>
+                        <Pane prefHeight="134.0" prefWidth="310.0">
+                           <children>
+                              <Label fx:id="nomeServicoTexto" alignment="TOP_LEFT" prefWidth="103.0" text=" Fulano da Silva   " textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="11.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="qtdTexto" alignment="TOP_LEFT" layoutX="109.0" prefWidth="37.0" text="100  " textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="11.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="valorUnitarioServicoTexto" alignment="TOP_LEFT" layoutX="155.0" prefWidth="75.0" text="R$ 100.8         " textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="11.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="valorTotalServicoTexto" alignment="TOP_LEFT" layoutX="257.0" prefWidth="53.0" text="R$ 100.8  " textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="11.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </content>
+                  </ScrollPane>
                </children>
             </Pane>
          </children>
@@ -359,6 +457,17 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="250.0" layoutY="178.0" prefHeight="457.0" prefWidth="638.0" style="-fx-background-color: #00818D;" />
+      <Pane layoutX="250.0" layoutY="178.0" prefHeight="458.0" prefWidth="638.0" style="-fx-background-color: #00818D;">
+         <children>
+            <ScrollPane prefHeight="458.0" prefWidth="638.0">
+               <content>
+                  <GridPane fx:id="gridContainer">
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+         </children></Pane>
     </children>
 </Pane>
