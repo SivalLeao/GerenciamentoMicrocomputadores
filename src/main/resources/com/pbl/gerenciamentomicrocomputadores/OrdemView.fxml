@@ -172,7 +172,7 @@
                   <Font name="Arial Black" size="26.0" />
                </font>
             </Label>
-            <Button fx:id="novoServicoBotao" layoutX="437.0" layoutY="19.0" mnemonicParsing="false" onAction="#abaCadastrarOrdem" onMousePressed="#pressed" prefHeight="40.0" prefWidth="105.0" style="-fx-background-color: #004b52;" text="Novo serviço" textFill="WHITE">
+            <Button fx:id="novoServicoBotao" layoutX="437.0" layoutY="19.0" mnemonicParsing="false" onAction="#abaCadastrarOrdem" onMousePressed="#pressed" prefHeight="40.0" prefWidth="105.0" styleClass="botao-servico" text="Novo serviço" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
@@ -181,27 +181,27 @@
       </Pane>
       <Pane layoutX="276.0" layoutY="174.0" onMousePressed="#pressed" prefHeight="446.0" prefWidth="584.0" style="-fx-background-color: #00818d;">
          <children>
-            <Button fx:id="todosBotao" layoutX="23.0" layoutY="25.0" mnemonicParsing="false" onAction="#todosAcao" onMousePressed="#pressed" prefHeight="27.0" prefWidth="67.0" style="-fx-background-color: #004b52;" text="Todos" textFill="WHITE">
+            <Button fx:id="todosBotao" layoutX="23.0" layoutY="25.0" mnemonicParsing="false" onAction="#todosAcao" onMousePressed="#pressed" prefHeight="27.0" prefWidth="67.0" styleClass="botao-servico" text="Todos" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="emAndamentoBotao" layoutX="112.0" layoutY="25.0" mnemonicParsing="false" onAction="#emAndamentoAcao" onMousePressed="#pressed" prefHeight="27.0" prefWidth="113.0" style="-fx-background-color: #004b52;" text="Em andamento" textFill="WHITE">
+            <Button fx:id="emAndamentoBotao" layoutX="112.0" layoutY="25.0" mnemonicParsing="false" onAction="#emAndamentoAcao" onMousePressed="#pressed" prefHeight="27.0" prefWidth="113.0" styleClass="botao-servico" text="Em andamento" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="emEsperaBotao" layoutX="240.0" layoutY="25.0" mnemonicParsing="false" onAction="#emEsperaAcao" onMousePressed="#pressed" prefHeight="27.0" prefWidth="86.0" style="-fx-background-color: #004b52;" text="Em espera" textFill="WHITE">
+            <Button fx:id="emEsperaBotao" layoutX="240.0" layoutY="25.0" mnemonicParsing="false" onAction="#emEsperaAcao" onMousePressed="#pressed" prefHeight="27.0" prefWidth="86.0" styleClass="botao-servico" text="Em espera" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="finalizadosBotao" layoutX="344.0" layoutY="25.0" mnemonicParsing="false" onAction="#finalizadosAcao" onMousePressed="#pressed" prefHeight="27.0" prefWidth="92.0" style="-fx-background-color: #004b52;" text="Finalizados" textFill="WHITE">
+            <Button fx:id="finalizadosBotao" layoutX="344.0" layoutY="25.0" mnemonicParsing="false" onAction="#finalizadosAcao" onMousePressed="#pressed" prefHeight="27.0" prefWidth="92.0" styleClass="botao-servico" text="Finalizados" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="canceladosBotao" layoutX="458.0" layoutY="25.0" mnemonicParsing="false" onAction="#canceladosAcao" onMousePressed="#pressed" prefHeight="27.0" prefWidth="92.0" style="-fx-background-color: #004b52;" text="Cancelados" textFill="WHITE">
+            <Button fx:id="canceladosBotao" layoutX="458.0" layoutY="25.0" mnemonicParsing="false" onAction="#canceladosAcao" onMousePressed="#pressed" prefHeight="27.0" prefWidth="92.0" styleClass="botao-servico" text="Cancelados" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
