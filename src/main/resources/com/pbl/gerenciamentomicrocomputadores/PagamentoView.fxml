@@ -416,26 +416,26 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <ScrollPane layoutX="23.0" layoutY="309.0" prefHeight="138.0" prefWidth="315.0">
+                  <ScrollPane layoutX="23.0" layoutY="309.0" prefHeight="138.0" prefWidth="315.0" styleClass="scroll-pane-relatorio">
                      <content>
                         <Pane prefHeight="134.0" prefWidth="310.0">
                            <children>
-                              <Label fx:id="nomeServicoTexto" alignment="TOP_LEFT" prefWidth="103.0" text=" Fulano da Silva   " textFill="WHITE">
+                              <Label fx:id="nomeServicoTexto" alignment="TOP_LEFT" prefWidth="103.0" text=" Fulano da Silva   ">
                                  <font>
                                     <Font name="System Bold" size="11.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="qtdTexto" alignment="TOP_LEFT" layoutX="109.0" prefWidth="37.0" text="100  " textFill="WHITE">
+                              <Label fx:id="qtdTexto" alignment="CENTER" layoutX="109.0" prefHeight="16.0" prefWidth="27.0" text="100  ">
                                  <font>
                                     <Font name="System Bold" size="11.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="valorUnitarioServicoTexto" alignment="TOP_LEFT" layoutX="155.0" prefWidth="75.0" text="R$ 100.8         " textFill="WHITE">
+                              <Label fx:id="valorUnitarioServicoTexto" alignment="CENTER" contentDisplay="CENTER" layoutX="155.0" prefWidth="75.0" text="R$ 100.8         ">
                                  <font>
                                     <Font name="System Bold" size="11.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="valorTotalServicoTexto" alignment="TOP_LEFT" layoutX="257.0" prefWidth="53.0" text="R$ 100.8  " textFill="WHITE">
+                              <Label fx:id="valorTotalServicoTexto" alignment="CENTER" contentDisplay="CENTER" layoutX="257.0" prefWidth="53.0" text="R$ 100.8  ">
                                  <font>
                                     <Font name="System Bold" size="11.0" />
                                  </font>
@@ -459,7 +459,7 @@
       </Pane>
       <Pane layoutX="250.0" layoutY="178.0" prefHeight="458.0" prefWidth="638.0" style="-fx-background-color: #00818D;">
          <children>
-            <ScrollPane prefHeight="458.0" prefWidth="638.0">
+            <ScrollPane prefHeight="458.0" prefWidth="638.0" styleClass="custom-scroll-pane">
                <content>
                   <GridPane fx:id="gridContainer">
                     <rowConstraints>

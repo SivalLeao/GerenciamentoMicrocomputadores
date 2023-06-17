@@ -82,7 +82,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="quantidadePeca" layoutX="168.0" layoutY="193.0" prefHeight="25.0" prefWidth="94.0" promptText="Insira a quantidade" />
+            <TextField fx:id="quantidadePeca" alignment="CENTER" layoutX="168.0" layoutY="193.0" prefHeight="25.0" prefWidth="94.0" promptText="Insira a qnt." />
             <Label layoutX="1.0" layoutY="168.0" text="Quantidade Disponivel:" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
