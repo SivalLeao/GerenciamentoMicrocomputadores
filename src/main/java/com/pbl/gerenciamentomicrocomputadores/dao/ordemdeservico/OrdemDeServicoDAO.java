@@ -87,4 +87,10 @@ public interface OrdemDeServicoDAO extends CRUD<OrdemDeServico> {
 
     public List<OrdemDeServico> ordensEmAberto();
 
+    /** Método para retornar as ordens finalizadas.
+     *
+     * @return List - lista com as ordens finalizadas.*/
+
+    public List<OrdemDeServico> ordensFinalizadas();
+
 }

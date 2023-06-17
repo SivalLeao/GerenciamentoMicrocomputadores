@@ -350,6 +350,25 @@ public class OrdemDeServicoImpl implements OrdemDeServicoDAO {
         return listaEmAberto;
     }
 
+    /** Método para retornar as ordens finalizadas.
+     *
+     * @return List - lista com as ordens finalizadas.*/
+
+    public List<OrdemDeServico> ordensFinalizadas() {
+
+        List<OrdemDeServico> listaFinalizados = new ArrayList<>();
+
+        for (int i = 0; i < lista.size(); i++) {
+
+            if (lista.get(i).getStatusAtual().equals("Finalizado")) {
+
+                listaFinalizados.add(lista.get(i));
+            }
+        }
+
+        return listaFinalizados;
+    }
+
     /** Método para esvaziar o armazenamento de ordens de serviço. A função clear é usada para
      * limpar a lista. A contagem de ID é resetada para o valor inicial*/
 

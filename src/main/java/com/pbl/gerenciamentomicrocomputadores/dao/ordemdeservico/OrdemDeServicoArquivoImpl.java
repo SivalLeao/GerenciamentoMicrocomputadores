@@ -378,6 +378,25 @@ public class OrdemDeServicoArquivoImpl implements OrdemDeServicoDAO {
         return listaEmAberto;
     }
 
+    /** Método para retornar as ordens finalizadas.
+     *
+     * @return List - lista com as ordens finalizadas.*/
+
+    public List<OrdemDeServico> ordensFinalizadas() {
+
+        List<OrdemDeServico> listaFinalizados = new ArrayList<>();
+
+        for (int i = 0; i < lista.size(); i++) {
+
+            if (lista.get(i).getStatusAtual().equals("Finalizado")) {
+
+                listaFinalizados.add(lista.get(i));
+            }
+        }
+
+        return listaFinalizados;
+    }
+
     /** Método para esvaziar toda a lista de ordens de serviço, usando a função clear. O arquivo binário de
      * armazenamento é reescrito com a lista vazia.*/
 
