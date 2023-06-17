@@ -6,10 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
-import com.pbl.gerenciamentomicrocomputadores.controller.ConfirmacaoController;
-import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
-import com.pbl.gerenciamentomicrocomputadores.controller.MensagemController;
-import com.pbl.gerenciamentomicrocomputadores.controller.MyListener;
+import com.pbl.gerenciamentomicrocomputadores.controller.*;
 import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardOrdemController;
 import com.pbl.gerenciamentomicrocomputadores.controller.paginascadastrar.CadastrarOrdemController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
@@ -65,6 +62,7 @@ public class OrdemController {
     @FXML private Label tipoDeServicoOrdem;
     @FXML private Label listaPecas;
 
+    @FXML private Button relatorioBotao;
     @FXML private Button removerOrdemBotao;
     @FXML private Button cancelarOrdemBotao;
 
@@ -693,6 +691,31 @@ public class OrdemController {
 
             stage.show();
 
+        }
+        catch (java.io.IOException e) {
+
+        }
+
+    }
+
+    @FXML
+    void abrirRelatorioAcao(ActionEvent event) {
+
+        try {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("RelatorioView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+            stage.setScene(scene);
+            stage.setAlwaysOnTop(true);
+
+            RelatorioController relatorioController = fxmlLoader.getController();
+            relatorioController.setIdOrdem(Integer.parseInt(idOrdem.getText()));
+            relatorioController.atualizarRelatorio();
+
+            stage.show();
         }
         catch (java.io.IOException e) {
 
