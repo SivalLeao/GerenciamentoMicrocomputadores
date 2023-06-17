@@ -226,7 +226,7 @@
                         <Image url="@Icones/Estoque_branco-R15.png" />
                      </image>
                   </ImageView>
-                  <Pane layoutX="21.0" layoutY="113.0" onMousePressed="#pressed" prefHeight="346.0" prefWidth="315.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20;">
+                  <Pane layoutX="21.0" layoutY="113.0" onMousePressed="#pressed" prefHeight="346.0" prefWidth="315.0" styleClass="pane-info">
                      <children>
                         <Button fx:id="removerPecaBotao" layoutX="186.0" layoutY="300.0" mnemonicParsing="false" onAction="#removerPecaAcao" onMousePressed="#pressed" prefHeight="40.0" prefWidth="105.0" text="Remover" textFill="WHITE">
                            <font>
