@@ -2,7 +2,7 @@ package com.pbl.gerenciamentomicrocomputadores.controller.paginascadastrar;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
 import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
-import com.pbl.gerenciamentomicrocomputadores.controller.MensagemController;
+import com.pbl.gerenciamentomicrocomputadores.controller.mensagem.MensagemController;
 import com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais.TecnicoController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;

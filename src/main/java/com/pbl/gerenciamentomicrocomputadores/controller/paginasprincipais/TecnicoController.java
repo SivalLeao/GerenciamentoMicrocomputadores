@@ -1,10 +1,10 @@
 package com.pbl.gerenciamentomicrocomputadores.controller.paginasprincipais;
 
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
-import com.pbl.gerenciamentomicrocomputadores.controller.ConfirmacaoController;
+import com.pbl.gerenciamentomicrocomputadores.controller.confirmacao.ConfirmacaoController;
 import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
-import com.pbl.gerenciamentomicrocomputadores.controller.MensagemController;
-import com.pbl.gerenciamentomicrocomputadores.controller.PedidoFinalizacaoController;
+import com.pbl.gerenciamentomicrocomputadores.controller.mensagem.MensagemController;
+import com.pbl.gerenciamentomicrocomputadores.controller.finalizacaoservico.PedidoFinalizacaoController;
 import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardTecnicoController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;

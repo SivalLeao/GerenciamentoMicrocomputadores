@@ -4,6 +4,8 @@ import com.pbl.gerenciamentomicrocomputadores.MainApplication;
 import com.pbl.gerenciamentomicrocomputadores.controller.*;
 import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardClienteController;
 import com.pbl.gerenciamentomicrocomputadores.controller.cards.MiniCardOrdemController;
+import com.pbl.gerenciamentomicrocomputadores.controller.confirmacao.ConfirmacaoController;
+import com.pbl.gerenciamentomicrocomputadores.controller.mensagem.MensagemController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.Cliente;
 import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;

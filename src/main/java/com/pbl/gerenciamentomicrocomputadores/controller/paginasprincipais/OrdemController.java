@@ -8,7 +8,10 @@ import java.util.Map;
 import com.pbl.gerenciamentomicrocomputadores.MainApplication;
 import com.pbl.gerenciamentomicrocomputadores.controller.*;
 import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardOrdemController;
+import com.pbl.gerenciamentomicrocomputadores.controller.confirmacao.ConfirmacaoController;
+import com.pbl.gerenciamentomicrocomputadores.controller.mensagem.MensagemController;
 import com.pbl.gerenciamentomicrocomputadores.controller.paginascadastrar.CadastrarOrdemController;
+import com.pbl.gerenciamentomicrocomputadores.controller.relatorio.RelatorioController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
 import com.pbl.gerenciamentomicrocomputadores.model.Tecnico;
@@ -23,7 +26,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
-import javafx.stage.StageStyle;
 
 public class OrdemController {
 

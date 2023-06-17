@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="278.0" prefWidth="244.0" styleClass="confimacao-aba" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.ConfirmacaoController">
+<AnchorPane prefHeight="278.0" prefWidth="244.0" styleClass="confimacao-aba" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.confirmacao.ConfirmacaoController">
    <children>
       <Button fx:id="confirmarBotao" alignment="CENTER" contentDisplay="CENTER" layoutX="41.0" layoutY="180.0" mnemonicParsing="false" onAction="#confirmarAcao" prefHeight="65.0" prefWidth="65.0" styleClass="confimacao-botao">
          <graphic>

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="318.0" prefWidth="362.0" styleClass="cadastro" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.PedidoFinalizacaoController">
+<AnchorPane prefHeight="318.0" prefWidth="362.0" styleClass="cadastro" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.finalizacaoservico.PedidoFinalizacaoController">
    <children>
       <Label layoutX="94.0" layoutY="14.0" prefHeight="38.0" prefWidth="174.0" text="Finalizando Serviço" textFill="WHITE">
          <font>
