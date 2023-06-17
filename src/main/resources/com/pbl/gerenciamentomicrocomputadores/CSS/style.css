@@ -376,3 +376,13 @@
     -fx-cursor: hand;
 }
 
+.botao-servico {
+    -fx-background-color:  #004b52;
+    -fx-background-radius: 20;
+}
+
+.botao-servico: hover{
+    -fx-background-color:  #0097b2;
+    -fx-background-radius: 20;
+}
+
