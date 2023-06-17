@@ -14,7 +14,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <ScrollPane layoutX="8.0" layoutY="256.0" prefHeight="288.0" prefWidth="474.0" styleClass="scroll-pane-relatorio">
+            <ScrollPane layoutX="3.0" layoutY="80.0" prefHeight="449.0" prefWidth="474.0" styleClass="scroll-pane-relatorio">
                <content>
                   <Label fx:id="relatorioTexto" alignment="TOP_LEFT">
                      <font>
@@ -23,11 +23,6 @@
                   </Label>
                </content>
             </ScrollPane>
-            <Label fx:id="relatorioTexto" alignment="TOP_LEFT" layoutX="2.0" layoutY="82.0">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
          </children>
       </Pane>
    </children>
