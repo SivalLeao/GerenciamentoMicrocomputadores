@@ -4,6 +4,7 @@ import com.pbl.gerenciamentomicrocomputadores.MainApplication;
 import com.pbl.gerenciamentomicrocomputadores.controller.ConfirmacaoController;
 import com.pbl.gerenciamentomicrocomputadores.controller.MainController;
 import com.pbl.gerenciamentomicrocomputadores.controller.MensagemController;
+import com.pbl.gerenciamentomicrocomputadores.controller.PedidoSatisfacaoController;
 import com.pbl.gerenciamentomicrocomputadores.controller.cards.CardTecnicoController;
 import com.pbl.gerenciamentomicrocomputadores.dao.DAO;
 import com.pbl.gerenciamentomicrocomputadores.model.OrdemDeServico;
@@ -85,6 +86,10 @@ public class TecnicoController {
         if (MainController.getStageConfirmacao() != null) {
 
             MainController.getStageConfirmacao().close();
+        }
+        if (MainController.getStagePedidoSatisfacao() != null) {
+
+            MainController.getStagePedidoSatisfacao().close();
         }
 
     }
@@ -652,9 +657,33 @@ public class TecnicoController {
     @FXML
     void finalizarServicoAcao(ActionEvent event) {
 
+        try {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("PedidoSatisfacaoView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("/com/pbl/gerenciamentomicrocomputadores/Icones/Icone.png")));
+            stage.setScene(scene);
+            stage.setAlwaysOnTop(true);
+
+            PedidoSatisfacaoController pedidoSatisfacaoController = fxmlLoader.getController();
+            pedidoSatisfacaoController.setIdOrdem(Integer.parseInt(idOrdem.getText()));
+
+            MainController.setStagePedidoSatisfacao(stage);
+
+            stage.show();
+        }
+        catch (java.io.IOException e) {
+
+        }
+
+    }
+
+    public void finalizarServico () {
+
         DAO.getOrdemDeServico().atualizarStatus(Integer.parseInt(idOrdem.getText()), "Finalizado");
         modificarAbaServico();
-
     }
 
     @FXML

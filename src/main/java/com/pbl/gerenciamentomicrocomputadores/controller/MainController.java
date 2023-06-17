@@ -25,6 +25,8 @@ public class MainController {
 
     private static Stage stageConfirmacao;
 
+    private static Stage stagePedidoSatisfacao;
+
     public static Stage getStageInicio () { return stageInicio; }
 
     public static void setStageInicio (Stage stageInicio) { MainController.stageInicio = stageInicio; }
@@ -64,5 +66,9 @@ public class MainController {
     public static Stage getStageConfirmacao () { return stageConfirmacao; }
 
     public static void setStageConfirmacao (Stage stageConfirmacao) { MainController.stageConfirmacao = stageConfirmacao; }
+
+    public static Stage getStagePedidoSatisfacao () { return stagePedidoSatisfacao; }
+
+    public static void setStagePedidoSatisfacao (Stage stagePedidoSatisfacao) { MainController.stagePedidoSatisfacao = stagePedidoSatisfacao; }
 
 }
