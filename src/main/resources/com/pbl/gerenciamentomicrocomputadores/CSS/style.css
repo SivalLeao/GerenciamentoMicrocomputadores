@@ -344,3 +344,13 @@
     -fx-background-color: #ffffff;
     -fx-background-radius: 20;
 }
+
+.card-botao {
+    -fx-background-color:  #00768B;
+
+}
+
+.card-botao:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #00BFE1;
+}
