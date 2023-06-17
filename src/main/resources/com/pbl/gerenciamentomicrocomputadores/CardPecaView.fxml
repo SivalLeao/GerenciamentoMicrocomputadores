@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onMousePressed="#click" prefHeight="139.0" prefWidth="154.0" style="-fx-background-color: #00818d;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.cards.CardPecaController">
+<AnchorPane onMousePressed="#click" prefHeight="139.0" prefWidth="154.0" styleClass="card-botao" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.cards.CardPecaController">
    <children>
       <ImageView fitHeight="83.0" fitWidth="82.0" layoutX="40.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
