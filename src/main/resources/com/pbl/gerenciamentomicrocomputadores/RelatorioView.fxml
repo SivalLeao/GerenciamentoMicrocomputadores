@@ -23,7 +23,7 @@
                   </Label>
                </content>
             </ScrollPane>
-            <Label fx:id="relatorioTexto" alignment="TOP_LEFT" layoutX="2.0" layoutY="82.0" prefHeight="19.0" prefWidth="2.0">
+            <Label fx:id="relatorioTexto" alignment="TOP_LEFT" layoutX="2.0" layoutY="82.0">
                <font>
                   <Font size="13.0" />
                </font>

@@ -23,7 +23,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="nomeCliente" layoutX="108.0" layoutY="9.0" prefHeight="23.0" prefWidth="121.0" stylesheets="@CSS/estilo.css" textFill="#f3d0ac" underline="true" wrapText="true">
+      <Label fx:id="nomeCliente" layoutX="108.0" layoutY="9.0" prefHeight="23.0" prefWidth="121.0" textFill="#f3d0ac" underline="true" wrapText="true">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
