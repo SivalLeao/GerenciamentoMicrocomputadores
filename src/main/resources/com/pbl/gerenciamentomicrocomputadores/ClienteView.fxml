@@ -131,14 +131,14 @@
             </Pane>
             <Pane fx:id="paneSemCardsClientes" prefHeight="480.0" prefWidth="302.0" styleClass="menu-lateral">
                <children>
-                  <ImageView fitHeight="116.0" fitWidth="146.0" layoutX="75.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="235.0" fitWidth="222.0" layoutX="54.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Icones/Cliente-R15.png" />
+                        <Image url="@Icones/Sem%20cliente.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="46.0" layoutY="264.0" text="Sem clientes cadastrados.">
+                  <Label layoutX="46.0" layoutY="264.0" text="Sem clientes cadastrados." textFill="WHITE">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                </children>
