@@ -538,7 +538,7 @@ public class EstoqueController {
         if (idTecnico.getText().equals("")) {
 
             exibirMensagem("             " +
-                    "O técnico não está logado.\nFaça o login para alterar dados do cliente.");
+                    "O técnico não está logado.\nFaça o login para alterar dados da peça.");
 
         }
         else {
@@ -574,7 +574,7 @@ public class EstoqueController {
         if (idTecnico.getText().equals("")) {
 
             exibirMensagem("             " +
-                    "O técnico não está logado.\nFaça o login para alterar dados do cliente.");
+                    "O técnico não está logado.\nFaça o login para alterar dados da peça.");
 
         }
         else if (DAO.getOrdemDeServico().ordensUtilizandoPeca(nomePeca.getText()).size() > 0) {
