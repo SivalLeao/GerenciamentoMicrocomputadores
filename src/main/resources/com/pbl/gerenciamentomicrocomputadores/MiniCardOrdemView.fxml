@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="111.0" prefWidth="110.0" styleClass="pane-quina" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.gerenciamentomicrocomputadores.controller.cards.MiniCardOrdemController">
    <children>
@@ -13,7 +14,10 @@
       </Pane>
       <Pane layoutX="19.0" layoutY="56.0" prefHeight="43.0" prefWidth="72.0" style="-fx-background-color: #ffffff;">
          <children>
-            <Label layoutX="1.0" layoutY="1.0" prefHeight="50.0" prefWidth="72.0" text="TIPO SERV" />
+            <Label fx:id="tipoDeServico" alignment="CENTER" layoutX="1.0" layoutY="1.0" prefHeight="50.0" prefWidth="72.0" text="TIPO SERV">
+               <font>
+                  <Font size="11.0" />
+               </font></Label>
          </children>
       </Pane>
    </children>
