@@ -54,6 +54,7 @@ public class PagamentoController {
     @FXML private Label valorFatura;
     @FXML private Label dataFinalizacaoServico;
     @FXML private Label dataInicioServico;
+    @FXML private Label formaDePagamento;
     @FXML private Label nomePagador;
     @FXML private Label idPagador;
     @FXML private Label nomeEmissor;
@@ -360,18 +361,22 @@ public class PagamentoController {
         Cliente cliente = DAO.getCliente().encontrarPorId(ordemDeServico.getIdCliente());
         Tecnico tecnico = DAO.getTecnico().encontrarPorId(ordemDeServico.getIdTecnico());
 
-        cliente.setCpf(cliente.getCpf());
-        cliente.setTelefone(cliente.getTelefone());
+        String cpf = cliente.getCpf().substring(0,3) + "." + cliente.getCpf().substring(3,6)
+                + "." + cliente.getCpf().substring(6,9) + "-" + cliente.getCpf().substring(9);
+
+        String telefone = "(" + cliente.getTelefone().substring(0, 2) + ") " + cliente.getTelefone()
+                .substring(2, 7) + "-" +cliente.getTelefone().substring(7);
 
         DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         nomeCliente.setText(cliente.getNome());
-        cpfCliente.setText(cliente.getCpf());
-        telefoneCliente.setText(cliente.getTelefone());
+        cpfCliente.setText(cpf);
+        telefoneCliente.setText(telefone);
         enderecoCliente.setText(cliente.getEndereco());
         valorFatura.setText(Double.toString(ordemDeServico.calcularValorServico(DAO.getPeca().encontrarTodosMap())));
         dataFinalizacaoServico.setText(ordemDeServico.getData().getDataFim().format(formatador));
         dataInicioServico.setText(ordemDeServico.getData().getDataInicio().format(formatador));
+        formaDePagamento.setText(ordemDeServico.getFormaPagamento());
         nomePagador.setText(cliente.getNome());
         idPagador.setText(Integer.toString(cliente.getId()));
         nomeEmissor.setText(tecnico.getNome());

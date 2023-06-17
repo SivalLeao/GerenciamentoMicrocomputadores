@@ -295,7 +295,7 @@
                                     <Insets />
                                  </opaqueInsets>
                               </Label>
-                              <Label prefHeight="17.0" prefWidth="109.0" text="A vista">
+                              <Label fx:id="formaDePagamento" text="A vista">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
