@@ -535,6 +535,12 @@ public class TecnicoController {
                         "        Não pode ser removido.");
 
         }
+        else if (DAO.getOrdemDeServico().encontrarPorIdTecnico(
+                Integer.parseInt(idPerfil.getText())).size() != 0) {
+
+            exibirMensagem(" O técnico possui serviços no sistema.\n" +
+                    "        Não pode ser removido.");
+        }
         else {
 
             try {
